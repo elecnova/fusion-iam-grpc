@@ -1,4 +1,4 @@
-module github.com/elecnova/fusion-iam-grpc/gen/go
+module github.com/elecnova/fusion-iam-grpc
 
 go 1.27.1
 
