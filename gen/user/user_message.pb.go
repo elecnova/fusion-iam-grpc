@@ -480,7 +480,9 @@ type UpdateUserExtendRequest struct {
 	// 语种偏好
 	Language *string `protobuf:"bytes,5,opt,name=language,proto3,oneof" json:"language,omitempty"`
 	// 备注信息
-	Description   *string `protobuf:"bytes,6,opt,name=description,proto3,oneof" json:"description,omitempty"`
+	Description *string `protobuf:"bytes,6,opt,name=description,proto3,oneof" json:"description,omitempty"`
+	// 是否首次登录(false-否 true-是)
+	FirstLogin    *bool `protobuf:"varint,7,opt,name=first_login,proto3,oneof" json:"first_login,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -555,6 +557,13 @@ func (x *UpdateUserExtendRequest) GetDescription() string {
 		return *x.Description
 	}
 	return ""
+}
+
+func (x *UpdateUserExtendRequest) GetFirstLogin() bool {
+	if x != nil && x.FirstLogin != nil {
+		return *x.FirstLogin
+	}
+	return false
 }
 
 // Package message 用户中心-获取用户消息定义
@@ -1984,7 +1993,7 @@ const file_user_user_message_proto_rawDesc = "" +
 	"\x04type\x18\f \x01(\x05B\t\xbaH\x06\x1a\x04\x18\x03(\x01R\x04typeB\b\n" +
 	"\x06_stateB\x0e\n" +
 	"\f_email_stateB\x0e\n" +
-	"\f_first_login\"\xc6\x02\n" +
+	"\f_first_login\"\xfd\x02\n" +
 	"\x17UpdateUserExtendRequest\x12\x19\n" +
 	"\x02id\x18\x01 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18(R\x02id\x12\"\n" +
 	"\x05email\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x18<H\x00R\x05email\x88\x01\x01\x12$\n" +
@@ -1992,13 +2001,15 @@ const file_user_user_message_proto_rawDesc = "" +
 	"\tnick_name\x18\x04 \x01(\tB\b\xbaH\x05r\x03\x18\xff\x01H\x02R\tnick_name\x88\x01\x01\x12(\n" +
 	"\blanguage\x18\x05 \x01(\tB\a\xbaH\x04r\x02\x18\n" +
 	"H\x03R\blanguage\x88\x01\x01\x12/\n" +
-	"\vdescription\x18\x06 \x01(\tB\b\xbaH\x05r\x03\x18\xff\x01H\x04R\vdescription\x88\x01\x01B\b\n" +
+	"\vdescription\x18\x06 \x01(\tB\b\xbaH\x05r\x03\x18\xff\x01H\x04R\vdescription\x88\x01\x01\x12%\n" +
+	"\vfirst_login\x18\a \x01(\bH\x05R\vfirst_login\x88\x01\x01B\b\n" +
 	"\x06_emailB\t\n" +
 	"\a_mobileB\f\n" +
 	"\n" +
 	"_nick_nameB\v\n" +
 	"\t_languageB\x0e\n" +
-	"\f_description\"I\n" +
+	"\f_descriptionB\x0e\n" +
+	"\f_first_login\"I\n" +
 	"\x0eGetUserRequest\x12\x19\n" +
 	"\x02id\x18\x01 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18(R\x02id\x12\x1c\n" +
 	"\tis_avator\x18\x02 \x01(\bR\tis_avator\"\xeb\x04\n" +
