@@ -579,7 +579,9 @@ type GetUserResponse struct {
 	// 用户头像信息(仅支持获取用户信息时响应)
 	Avator string `protobuf:"bytes,18,opt,name=avator,proto3" json:"avator,omitempty"`
 	// 用户类型(1-普通用户 2-预定义用户 3-体验用户)
-	Type          int32 `protobuf:"varint,19,opt,name=type,proto3" json:"type,omitempty"`
+	Type int32 `protobuf:"varint,19,opt,name=type,proto3" json:"type,omitempty"`
+	// 是否已删除(0-未删除)
+	Deleted       int64 `protobuf:"varint,20,opt,name=deleted,proto3" json:"deleted,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -743,6 +745,13 @@ func (x *GetUserResponse) GetAvator() string {
 func (x *GetUserResponse) GetType() int32 {
 	if x != nil {
 		return x.Type
+	}
+	return 0
+}
+
+func (x *GetUserResponse) GetDeleted() int64 {
+	if x != nil {
+		return x.Deleted
 	}
 	return 0
 }
@@ -1901,7 +1910,7 @@ const file_user_user_message_proto_rawDesc = "" +
 	"\f_first_login\"I\n" +
 	"\x0eGetUserRequest\x12\x19\n" +
 	"\x02id\x18\x01 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18(R\x02id\x12\x1c\n" +
-	"\tis_avator\x18\x02 \x01(\bR\tis_avator\"\xef\x04\n" +
+	"\tis_avator\x18\x02 \x01(\bR\tis_avator\"\x89\x05\n" +
 	"\x0fGetUserResponse\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x1c\n" +
@@ -1922,7 +1931,8 @@ const file_user_user_message_proto_rawDesc = "" +
 	"\tupdate_at\x18\x10 \x01(\v2\x1a.google.protobuf.TimestampR\tupdate_at\x128\n" +
 	"\texpire_at\x18\x11 \x01(\v2\x1a.google.protobuf.TimestampR\texpire_at\x12\x16\n" +
 	"\x06avator\x18\x12 \x01(\tR\x06avator\x12\x12\n" +
-	"\x04type\x18\x13 \x01(\x05R\x04type\"\xac\x01\n" +
+	"\x04type\x18\x13 \x01(\x05R\x04type\x12\x18\n" +
+	"\adeleted\x18\x14 \x01(\x03R\adeleted\"\xac\x01\n" +
 	"\x10ListUsersRequest\x12!\n" +
 	"\akeyword\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x18<R\akeyword\x12$\n" +
 	"\x05state\x18\x02 \x01(\x05B\t\xbaH\x06\x1a\x04\x18\x03(\x01H\x00R\x05state\x88\x01\x01\x12\x1b\n" +
