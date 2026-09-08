@@ -32,6 +32,7 @@ const (
 	UserService_CreateUser_FullMethodName       = "/fusion.proto.user.UserService/CreateUser"
 	UserService_DeleteUser_FullMethodName       = "/fusion.proto.user.UserService/DeleteUser"
 	UserService_UpdateUser_FullMethodName       = "/fusion.proto.user.UserService/UpdateUser"
+	UserService_UpdateUserExtend_FullMethodName = "/fusion.proto.user.UserService/UpdateUserExtend"
 	UserService_GetUser_FullMethodName          = "/fusion.proto.user.UserService/GetUser"
 	UserService_ListUsers_FullMethodName        = "/fusion.proto.user.UserService/ListUsers"
 	UserService_ResetPassword_FullMethodName    = "/fusion.proto.user.UserService/ResetPassword"
@@ -59,6 +60,8 @@ type UserServiceClient interface {
 	DeleteUser(ctx context.Context, in *DeleteUserRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// 修改用户信息
 	UpdateUser(ctx context.Context, in *UpdateUserRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
+	// 修改用户邮箱、昵称、手机号码等信息
+	UpdateUserExtend(ctx context.Context, in *UpdateUserExtendRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// 获取用户信息
 	GetUser(ctx context.Context, in *GetUserRequest, opts ...grpc.CallOption) (*GetUserResponse, error)
 	// 列表用户信息
@@ -119,6 +122,16 @@ func (c *userServiceClient) UpdateUser(ctx context.Context, in *UpdateUserReques
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, UserService_UpdateUser_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *userServiceClient) UpdateUserExtend(ctx context.Context, in *UpdateUserExtendRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(emptypb.Empty)
+	err := c.cc.Invoke(ctx, UserService_UpdateUserExtend_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -270,6 +283,8 @@ type UserServiceServer interface {
 	DeleteUser(context.Context, *DeleteUserRequest) (*emptypb.Empty, error)
 	// 修改用户信息
 	UpdateUser(context.Context, *UpdateUserRequest) (*emptypb.Empty, error)
+	// 修改用户邮箱、昵称、手机号码等信息
+	UpdateUserExtend(context.Context, *UpdateUserExtendRequest) (*emptypb.Empty, error)
 	// 获取用户信息
 	GetUser(context.Context, *GetUserRequest) (*GetUserResponse, error)
 	// 列表用户信息
@@ -314,6 +329,9 @@ func (UnimplementedUserServiceServer) DeleteUser(context.Context, *DeleteUserReq
 }
 func (UnimplementedUserServiceServer) UpdateUser(context.Context, *UpdateUserRequest) (*emptypb.Empty, error) {
 	return nil, status.Error(codes.Unimplemented, "method UpdateUser not implemented")
+}
+func (UnimplementedUserServiceServer) UpdateUserExtend(context.Context, *UpdateUserExtendRequest) (*emptypb.Empty, error) {
+	return nil, status.Error(codes.Unimplemented, "method UpdateUserExtend not implemented")
 }
 func (UnimplementedUserServiceServer) GetUser(context.Context, *GetUserRequest) (*GetUserResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method GetUser not implemented")
@@ -425,6 +443,24 @@ func _UserService_UpdateUser_Handler(srv interface{}, ctx context.Context, dec f
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(UserServiceServer).UpdateUser(ctx, req.(*UpdateUserRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _UserService_UpdateUserExtend_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateUserExtendRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UserServiceServer).UpdateUserExtend(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: UserService_UpdateUserExtend_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UserServiceServer).UpdateUserExtend(ctx, req.(*UpdateUserExtendRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -670,6 +706,10 @@ var UserService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "UpdateUser",
 			Handler:    _UserService_UpdateUser_Handler,
+		},
+		{
+			MethodName: "UpdateUserExtend",
+			Handler:    _UserService_UpdateUserExtend_Handler,
 		},
 		{
 			MethodName: "GetUser",
