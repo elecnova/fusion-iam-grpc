@@ -618,7 +618,9 @@ func (x *ValidateTokenResponse) GetExpiresIn() int64 {
 type CheckTokenRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// 访问令牌
-	AccessToken   string `protobuf:"bytes,1,opt,name=access_token,proto3" json:"access_token,omitempty"`
+	AccessToken string `protobuf:"bytes,1,opt,name=access_token,proto3" json:"access_token,omitempty"`
+	// 当前用户语种
+	Language      string `protobuf:"bytes,2,opt,name=language,proto3" json:"language,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -656,6 +658,13 @@ func (*CheckTokenRequest) Descriptor() ([]byte, []int) {
 func (x *CheckTokenRequest) GetAccessToken() string {
 	if x != nil {
 		return x.AccessToken
+	}
+	return ""
+}
+
+func (x *CheckTokenRequest) GetLanguage() string {
+	if x != nil {
+		return x.Language
 	}
 	return ""
 }
@@ -1133,10 +1142,12 @@ const file_auth_auth_message_proto_rawDesc = "" +
 	"\rrefresh_token\x18\x03 \x01(\tR\rrefresh_token\x12\x1e\n" +
 	"\n" +
 	"expires_in\x18\x04 \x01(\x03R\n" +
-	"expires_in\"C\n" +
+	"expires_in\"h\n" +
 	"\x11CheckTokenRequest\x12.\n" +
 	"\faccess_token\x18\x01 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x01\x18\xf4\x03R\faccess_token\"\xb5\x01\n" +
+	"\xbaH\ar\x05\x10\x01\x18\xf4\x03R\faccess_token\x12#\n" +
+	"\blanguage\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x18\n" +
+	"R\blanguage\"\xb5\x01\n" +
 	"\x12CheckTokenResponse\x12\x18\n" +
 	"\auser_id\x18\x01 \x01(\tR\auser_id\x12'\n" +
 	"\tuser_name\x18\x02 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18<R\tuser_name\x12\x12\n" +
