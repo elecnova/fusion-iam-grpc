@@ -1024,7 +1024,9 @@ func (x *ChangePasswordRequest) GetNewPassword() string {
 type CheckNameRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// 用户名
-	Name          string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	// 忽略的用户ID
+	IgnoreId      string `protobuf:"bytes,2,opt,name=ignore_id,proto3" json:"ignore_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1066,11 +1068,20 @@ func (x *CheckNameRequest) GetName() string {
 	return ""
 }
 
+func (x *CheckNameRequest) GetIgnoreId() string {
+	if x != nil {
+		return x.IgnoreId
+	}
+	return ""
+}
+
 // Package message 用户中心-检查用户邮箱是否已存在消息定义
 type CheckEmailRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// 邮箱地址
-	Email         string `protobuf:"bytes,1,opt,name=email,proto3" json:"email,omitempty"`
+	Email string `protobuf:"bytes,1,opt,name=email,proto3" json:"email,omitempty"`
+	// 忽略的用户ID
+	IgnoreId      string `protobuf:"bytes,2,opt,name=ignore_id,proto3" json:"ignore_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1112,11 +1123,20 @@ func (x *CheckEmailRequest) GetEmail() string {
 	return ""
 }
 
+func (x *CheckEmailRequest) GetIgnoreId() string {
+	if x != nil {
+		return x.IgnoreId
+	}
+	return ""
+}
+
 // Package message 用户中心-检查用户手机号是否已存在消息定义
 type CheckMobileRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// 手机号码  string mobile = 1 [
-	Mobile        string `protobuf:"bytes,1,opt,name=mobile,proto3" json:"mobile,omitempty"`
+	Mobile string `protobuf:"bytes,1,opt,name=mobile,proto3" json:"mobile,omitempty"`
+	// 忽略的用户ID
+	IgnoreId      string `protobuf:"bytes,2,opt,name=ignore_id,proto3" json:"ignore_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1154,6 +1174,13 @@ func (*CheckMobileRequest) Descriptor() ([]byte, []int) {
 func (x *CheckMobileRequest) GetMobile() string {
 	if x != nil {
 		return x.Mobile
+	}
+	return ""
+}
+
+func (x *CheckMobileRequest) GetIgnoreId() string {
+	if x != nil {
+		return x.IgnoreId
 	}
 	return ""
 }
@@ -1954,13 +1981,16 @@ const file_user_user_message_proto_rawDesc = "" +
 	"\fold_password\x18\x02 \x01(\tB\n" +
 	"\xbaH\ar\x05\x10\x01\x18\xf4\x03R\fold_password\x12.\n" +
 	"\fnew_password\x18\x03 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x01\x18\xf4\x03R\fnew_password\"1\n" +
+	"\xbaH\ar\x05\x10\x01\x18\xf4\x03R\fnew_password\"O\n" +
 	"\x10CheckNameRequest\x12\x1d\n" +
-	"\x04name\x18\x01 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18<R\x04name\"4\n" +
+	"\x04name\x18\x01 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18<R\x04name\x12\x1c\n" +
+	"\tignore_id\x18\x02 \x01(\tR\tignore_id\"R\n" +
 	"\x11CheckEmailRequest\x12\x1f\n" +
-	"\x05email\x18\x01 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18dR\x05email\"7\n" +
+	"\x05email\x18\x01 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18dR\x05email\x12\x1c\n" +
+	"\tignore_id\x18\x02 \x01(\tR\tignore_id\"U\n" +
 	"\x12CheckMobileRequest\x12!\n" +
-	"\x06mobile\x18\x01 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18\x14R\x06mobile\"\x83\x01\n" +
+	"\x06mobile\x18\x01 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18\x14R\x06mobile\x12\x1c\n" +
+	"\tignore_id\x18\x02 \x01(\tR\tignore_id\"\x83\x01\n" +
 	"\x11CheckUserResponse\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x14\n" +
