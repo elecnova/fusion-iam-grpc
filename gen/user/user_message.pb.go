@@ -490,17 +490,17 @@ type UpdateUserExtendRequest struct {
 	// 用户ID
 	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	// 用户邮箱
-	Email string `protobuf:"bytes,2,opt,name=email,proto3" json:"email,omitempty"`
+	Email *string `protobuf:"bytes,2,opt,name=email,proto3,oneof" json:"email,omitempty"`
 	// 电话区号
-	AreaCode string `protobuf:"bytes,3,opt,name=area_code,proto3" json:"area_code,omitempty"`
+	AreaCode *string `protobuf:"bytes,3,opt,name=area_code,proto3,oneof" json:"area_code,omitempty"`
 	// 手机号码
-	Mobile string `protobuf:"bytes,4,opt,name=mobile,proto3" json:"mobile,omitempty"`
+	Mobile *string `protobuf:"bytes,4,opt,name=mobile,proto3,oneof" json:"mobile,omitempty"`
 	// 用户昵称
-	NickName string `protobuf:"bytes,5,opt,name=nick_name,proto3" json:"nick_name,omitempty"`
+	NickName *string `protobuf:"bytes,5,opt,name=nick_name,proto3,oneof" json:"nick_name,omitempty"`
 	// 语种偏好
-	Language string `protobuf:"bytes,6,opt,name=language,proto3" json:"language,omitempty"`
+	Language *string `protobuf:"bytes,6,opt,name=language,proto3,oneof" json:"language,omitempty"`
 	// 备注信息
-	Description   string `protobuf:"bytes,7,opt,name=description,proto3" json:"description,omitempty"`
+	Description   *string `protobuf:"bytes,7,opt,name=description,proto3,oneof" json:"description,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -543,43 +543,43 @@ func (x *UpdateUserExtendRequest) GetId() string {
 }
 
 func (x *UpdateUserExtendRequest) GetEmail() string {
-	if x != nil {
-		return x.Email
+	if x != nil && x.Email != nil {
+		return *x.Email
 	}
 	return ""
 }
 
 func (x *UpdateUserExtendRequest) GetAreaCode() string {
-	if x != nil {
-		return x.AreaCode
+	if x != nil && x.AreaCode != nil {
+		return *x.AreaCode
 	}
 	return ""
 }
 
 func (x *UpdateUserExtendRequest) GetMobile() string {
-	if x != nil {
-		return x.Mobile
+	if x != nil && x.Mobile != nil {
+		return *x.Mobile
 	}
 	return ""
 }
 
 func (x *UpdateUserExtendRequest) GetNickName() string {
-	if x != nil {
-		return x.NickName
+	if x != nil && x.NickName != nil {
+		return *x.NickName
 	}
 	return ""
 }
 
 func (x *UpdateUserExtendRequest) GetLanguage() string {
-	if x != nil {
-		return x.Language
+	if x != nil && x.Language != nil {
+		return *x.Language
 	}
 	return ""
 }
 
 func (x *UpdateUserExtendRequest) GetDescription() string {
-	if x != nil {
-		return x.Description
+	if x != nil && x.Description != nil {
+		return *x.Description
 	}
 	return ""
 }
@@ -2034,17 +2034,25 @@ const file_user_user_message_proto_rawDesc = "" +
 	"\x04type\x18\r \x01(\x05B\t\xbaH\x06\x1a\x04\x18\x03(\x01R\x04typeB\b\n" +
 	"\x06_stateB\x0e\n" +
 	"\f_email_stateB\x0e\n" +
-	"\f_first_login\"\x94\x02\n" +
+	"\f_first_login\"\x80\x03\n" +
 	"\x17UpdateUserExtendRequest\x12\x19\n" +
-	"\x02id\x18\x01 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18(R\x02id\x12\x1d\n" +
-	"\x05email\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x18<R\x05email\x12%\n" +
+	"\x02id\x18\x01 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18(R\x02id\x12\"\n" +
+	"\x05email\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x18<H\x00R\x05email\x88\x01\x01\x12*\n" +
 	"\tarea_code\x18\x03 \x01(\tB\a\xbaH\x04r\x02\x18\n" +
-	"R\tarea_code\x12\x1f\n" +
-	"\x06mobile\x18\x04 \x01(\tB\a\xbaH\x04r\x02\x18\x14R\x06mobile\x12&\n" +
-	"\tnick_name\x18\x05 \x01(\tB\b\xbaH\x05r\x03\x18\xff\x01R\tnick_name\x12#\n" +
+	"H\x01R\tarea_code\x88\x01\x01\x12$\n" +
+	"\x06mobile\x18\x04 \x01(\tB\a\xbaH\x04r\x02\x18\x14H\x02R\x06mobile\x88\x01\x01\x12+\n" +
+	"\tnick_name\x18\x05 \x01(\tB\b\xbaH\x05r\x03\x18\xff\x01H\x03R\tnick_name\x88\x01\x01\x12(\n" +
 	"\blanguage\x18\x06 \x01(\tB\a\xbaH\x04r\x02\x18\n" +
-	"R\blanguage\x12*\n" +
-	"\vdescription\x18\a \x01(\tB\b\xbaH\x05r\x03\x18\xff\x01R\vdescription\"I\n" +
+	"H\x04R\blanguage\x88\x01\x01\x12/\n" +
+	"\vdescription\x18\a \x01(\tB\b\xbaH\x05r\x03\x18\xff\x01H\x05R\vdescription\x88\x01\x01B\b\n" +
+	"\x06_emailB\f\n" +
+	"\n" +
+	"_area_codeB\t\n" +
+	"\a_mobileB\f\n" +
+	"\n" +
+	"_nick_nameB\v\n" +
+	"\t_languageB\x0e\n" +
+	"\f_description\"I\n" +
 	"\x0eGetUserRequest\x12\x19\n" +
 	"\x02id\x18\x01 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18(R\x02id\x12\x1c\n" +
 	"\tis_avator\x18\x02 \x01(\bR\tis_avator\"\x89\x05\n" +
@@ -2226,6 +2234,7 @@ func file_user_user_message_proto_init() {
 	}
 	file_user_user_message_proto_msgTypes[0].OneofWrappers = []any{}
 	file_user_user_message_proto_msgTypes[2].OneofWrappers = []any{}
+	file_user_user_message_proto_msgTypes[3].OneofWrappers = []any{}
 	file_user_user_message_proto_msgTypes[6].OneofWrappers = []any{}
 	file_user_user_message_proto_msgTypes[15].OneofWrappers = []any{
 		(*ChangeAvatarRequest_Meta)(nil),
