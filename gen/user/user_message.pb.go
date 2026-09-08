@@ -161,7 +161,11 @@ type CreateUserRequest struct {
 	// 有效时间(yyyy-MM-dd HH:mm:ss)
 	ExpireAt *timestamppb.Timestamp `protobuf:"bytes,9,opt,name=expire_at,proto3" json:"expire_at,omitempty"`
 	// 邮箱验证(1-未验证 2-已验证 3-验证失败)
-	EmailState    *int32 `protobuf:"varint,10,opt,name=email_state,proto3,oneof" json:"email_state,omitempty"`
+	EmailState *int32 `protobuf:"varint,10,opt,name=email_state,proto3,oneof" json:"email_state,omitempty"`
+	// 用户ID(可选)
+	Id *string `protobuf:"bytes,11,opt,name=id,proto3,oneof" json:"id,omitempty"`
+	// 用户类型(1-普通用户 2-预定义用户 3-体验用户)
+	Type          int32 `protobuf:"varint,12,opt,name=type,proto3" json:"type,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -266,6 +270,20 @@ func (x *CreateUserRequest) GetEmailState() int32 {
 	return 0
 }
 
+func (x *CreateUserRequest) GetId() string {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return ""
+}
+
+func (x *CreateUserRequest) GetType() int32 {
+	if x != nil {
+		return x.Type
+	}
+	return 0
+}
+
 // Package message 用户中心-删除用户消息定义
 type DeleteUserRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
@@ -338,7 +356,9 @@ type UpdateUserRequest struct {
 	// 是否首次登录(false-否 true-是)
 	FirstLogin *bool `protobuf:"varint,11,opt,name=first_login,proto3,oneof" json:"first_login,omitempty"`
 	// 有效时间(yyyy-MM-dd HH:mm:ss)
-	ExpireAt      *timestamppb.Timestamp `protobuf:"bytes,12,opt,name=expire_at,proto3" json:"expire_at,omitempty"`
+	ExpireAt *timestamppb.Timestamp `protobuf:"bytes,12,opt,name=expire_at,proto3" json:"expire_at,omitempty"`
+	// 用户类型(1-普通用户 2-预定义用户 3-体验用户)
+	Type          int32 `protobuf:"varint,13,opt,name=type,proto3" json:"type,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -457,6 +477,13 @@ func (x *UpdateUserRequest) GetExpireAt() *timestamppb.Timestamp {
 	return nil
 }
 
+func (x *UpdateUserRequest) GetType() int32 {
+	if x != nil {
+		return x.Type
+	}
+	return 0
+}
+
 // Package message 用户中心-获取用户消息定义
 type GetUserRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
@@ -550,7 +577,9 @@ type GetUserResponse struct {
 	// 有效时间(yyyy-MM-dd HH:mm:ss)
 	ExpireAt *timestamppb.Timestamp `protobuf:"bytes,17,opt,name=expire_at,proto3" json:"expire_at,omitempty"`
 	// 用户头像信息(仅支持获取用户信息时响应)
-	Avator        string `protobuf:"bytes,18,opt,name=avator,proto3" json:"avator,omitempty"`
+	Avator string `protobuf:"bytes,18,opt,name=avator,proto3" json:"avator,omitempty"`
+	// 用户类型(1-普通用户 2-预定义用户 3-体验用户)
+	Type          int32 `protobuf:"varint,19,opt,name=type,proto3" json:"type,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -709,6 +738,13 @@ func (x *GetUserResponse) GetAvator() string {
 		return x.Avator
 	}
 	return ""
+}
+
+func (x *GetUserResponse) GetType() int32 {
+	if x != nil {
+		return x.Type
+	}
+	return 0
 }
 
 // Package message 用户中心-列表用户请求消息定义
@@ -1821,7 +1857,7 @@ var File_user_user_message_proto protoreflect.FileDescriptor
 
 const file_user_user_message_proto_rawDesc = "" +
 	"\n" +
-	"\x17user/user_message.proto\x12\x11fusion.proto.user\x1a\x1bbuf/validate/validate.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xb6\x03\n" +
+	"\x17user/user_message.proto\x12\x11fusion.proto.user\x1a\x1bbuf/validate/validate.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xfa\x03\n" +
 	"\x11CreateUserRequest\x12\x1d\n" +
 	"\x04name\x18\x01 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18<R\x04name\x12&\n" +
 	"\bpassword\x18\x02 \x01(\tB\n" +
@@ -1836,10 +1872,13 @@ const file_user_user_message_proto_rawDesc = "" +
 	"\vdescription\x18\b \x01(\tB\b\xbaH\x05r\x03\x18\xff\x01R\vdescription\x128\n" +
 	"\texpire_at\x18\t \x01(\v2\x1a.google.protobuf.TimestampR\texpire_at\x120\n" +
 	"\vemail_state\x18\n" +
-	" \x01(\x05B\t\xbaH\x06\x1a\x04\x18\x03(\x01H\x00R\vemail_state\x88\x01\x01B\x0e\n" +
-	"\f_email_state\".\n" +
+	" \x01(\x05B\t\xbaH\x06\x1a\x04\x18\x03(\x01H\x00R\vemail_state\x88\x01\x01\x12\x1c\n" +
+	"\x02id\x18\v \x01(\tB\a\xbaH\x04r\x02\x18(H\x01R\x02id\x88\x01\x01\x12\x1d\n" +
+	"\x04type\x18\f \x01(\x05B\t\xbaH\x06\x1a\x04\x18\x03(\x01R\x04typeB\x0e\n" +
+	"\f_email_stateB\x05\n" +
+	"\x03_id\".\n" +
 	"\x11DeleteUserRequest\x12\x19\n" +
-	"\x02id\x18\x01 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18(R\x02id\"\x98\x04\n" +
+	"\x02id\x18\x01 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18(R\x02id\"\xb7\x04\n" +
 	"\x11UpdateUserRequest\x12\x19\n" +
 	"\x02id\x18\x01 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18(R\x02id\x12\x1d\n" +
 	"\x04name\x18\x02 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18<R\x04name\x12\x1d\n" +
@@ -1855,13 +1894,14 @@ const file_user_user_message_proto_rawDesc = "" +
 	"\vemail_state\x18\n" +
 	" \x01(\x05B\t\xbaH\x06\x1a\x04\x18\x03(\x01H\x01R\vemail_state\x88\x01\x01\x12-\n" +
 	"\vfirst_login\x18\v \x01(\bB\x06\xbaH\x03\xc8\x01\x01H\x02R\vfirst_login\x88\x01\x01\x128\n" +
-	"\texpire_at\x18\f \x01(\v2\x1a.google.protobuf.TimestampR\texpire_atB\b\n" +
+	"\texpire_at\x18\f \x01(\v2\x1a.google.protobuf.TimestampR\texpire_at\x12\x1d\n" +
+	"\x04type\x18\r \x01(\x05B\t\xbaH\x06\x1a\x04\x18\x03(\x01R\x04typeB\b\n" +
 	"\x06_stateB\x0e\n" +
 	"\f_email_stateB\x0e\n" +
 	"\f_first_login\"I\n" +
 	"\x0eGetUserRequest\x12\x19\n" +
 	"\x02id\x18\x01 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18(R\x02id\x12\x1c\n" +
-	"\tis_avator\x18\x02 \x01(\bR\tis_avator\"\xdb\x04\n" +
+	"\tis_avator\x18\x02 \x01(\bR\tis_avator\"\xef\x04\n" +
 	"\x0fGetUserResponse\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x1c\n" +
@@ -1881,7 +1921,8 @@ const file_user_user_message_proto_rawDesc = "" +
 	"\tcreate_at\x18\x0f \x01(\v2\x1a.google.protobuf.TimestampR\tcreate_at\x128\n" +
 	"\tupdate_at\x18\x10 \x01(\v2\x1a.google.protobuf.TimestampR\tupdate_at\x128\n" +
 	"\texpire_at\x18\x11 \x01(\v2\x1a.google.protobuf.TimestampR\texpire_at\x12\x16\n" +
-	"\x06avator\x18\x12 \x01(\tR\x06avator\"\xac\x01\n" +
+	"\x06avator\x18\x12 \x01(\tR\x06avator\x12\x12\n" +
+	"\x04type\x18\x13 \x01(\x05R\x04type\"\xac\x01\n" +
 	"\x10ListUsersRequest\x12!\n" +
 	"\akeyword\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x18<R\akeyword\x12$\n" +
 	"\x05state\x18\x02 \x01(\x05B\t\xbaH\x06\x1a\x04\x18\x03(\x01H\x00R\x05state\x88\x01\x01\x12\x1b\n" +
