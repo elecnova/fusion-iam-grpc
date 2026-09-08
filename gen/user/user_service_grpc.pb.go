@@ -41,8 +41,10 @@ const (
 	UserService_CheckEmail_FullMethodName       = "/fusion.proto.user.UserService/CheckEmail"
 	UserService_CheckMobile_FullMethodName      = "/fusion.proto.user.UserService/CheckMobile"
 	UserService_ChangeAvatar_FullMethodName     = "/fusion.proto.user.UserService/ChangeAvatar"
-	UserService_GetName_FullMethodName          = "/fusion.proto.user.UserService/GetName"
-	UserService_GetNames_FullMethodName         = "/fusion.proto.user.UserService/GetNames"
+	UserService_GetByID_FullMethodName          = "/fusion.proto.user.UserService/GetByID"
+	UserService_GetByIDs_FullMethodName         = "/fusion.proto.user.UserService/GetByIDs"
+	UserService_GetByName_FullMethodName        = "/fusion.proto.user.UserService/GetByName"
+	UserService_GetByNames_FullMethodName       = "/fusion.proto.user.UserService/GetByNames"
 )
 
 // UserServiceClient is the client API for UserService service.
@@ -76,9 +78,13 @@ type UserServiceClient interface {
 	// 修改用户头像
 	ChangeAvatar(ctx context.Context, opts ...grpc.CallOption) (grpc.ClientStreamingClient[ChangeAvatarRequest, ChangeAvatarResponse], error)
 	// 根据用户ID获取用户名和昵称
-	GetName(ctx context.Context, in *GetNameRequest, opts ...grpc.CallOption) (*GetNameResponse, error)
+	GetByID(ctx context.Context, in *GetByIDRequest, opts ...grpc.CallOption) (*GetNameResponse, error)
 	// 根据用户ID列表获取用户名和昵称
-	GetNames(ctx context.Context, in *GetNamesRequest, opts ...grpc.CallOption) (*GetNamesResponse, error)
+	GetByIDs(ctx context.Context, in *GetByIDsRequest, opts ...grpc.CallOption) (*GetNamesResponse, error)
+	// 根据用户名获取用户名和昵称
+	GetByName(ctx context.Context, in *GetByNameRequest, opts ...grpc.CallOption) (*GetNameResponse, error)
+	// 根据用户名列表获取用户名和昵称
+	GetByNames(ctx context.Context, in *GetByNamesRequest, opts ...grpc.CallOption) (*GetNamesResponse, error)
 }
 
 type userServiceClient struct {
@@ -212,20 +218,40 @@ func (c *userServiceClient) ChangeAvatar(ctx context.Context, opts ...grpc.CallO
 // This type alias is provided for backwards compatibility with existing code that references the prior non-generic stream type by name.
 type UserService_ChangeAvatarClient = grpc.ClientStreamingClient[ChangeAvatarRequest, ChangeAvatarResponse]
 
-func (c *userServiceClient) GetName(ctx context.Context, in *GetNameRequest, opts ...grpc.CallOption) (*GetNameResponse, error) {
+func (c *userServiceClient) GetByID(ctx context.Context, in *GetByIDRequest, opts ...grpc.CallOption) (*GetNameResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(GetNameResponse)
-	err := c.cc.Invoke(ctx, UserService_GetName_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, UserService_GetByID_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *userServiceClient) GetNames(ctx context.Context, in *GetNamesRequest, opts ...grpc.CallOption) (*GetNamesResponse, error) {
+func (c *userServiceClient) GetByIDs(ctx context.Context, in *GetByIDsRequest, opts ...grpc.CallOption) (*GetNamesResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(GetNamesResponse)
-	err := c.cc.Invoke(ctx, UserService_GetNames_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, UserService_GetByIDs_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *userServiceClient) GetByName(ctx context.Context, in *GetByNameRequest, opts ...grpc.CallOption) (*GetNameResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetNameResponse)
+	err := c.cc.Invoke(ctx, UserService_GetByName_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *userServiceClient) GetByNames(ctx context.Context, in *GetByNamesRequest, opts ...grpc.CallOption) (*GetNamesResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetNamesResponse)
+	err := c.cc.Invoke(ctx, UserService_GetByNames_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -263,9 +289,13 @@ type UserServiceServer interface {
 	// 修改用户头像
 	ChangeAvatar(grpc.ClientStreamingServer[ChangeAvatarRequest, ChangeAvatarResponse]) error
 	// 根据用户ID获取用户名和昵称
-	GetName(context.Context, *GetNameRequest) (*GetNameResponse, error)
+	GetByID(context.Context, *GetByIDRequest) (*GetNameResponse, error)
 	// 根据用户ID列表获取用户名和昵称
-	GetNames(context.Context, *GetNamesRequest) (*GetNamesResponse, error)
+	GetByIDs(context.Context, *GetByIDsRequest) (*GetNamesResponse, error)
+	// 根据用户名获取用户名和昵称
+	GetByName(context.Context, *GetByNameRequest) (*GetNameResponse, error)
+	// 根据用户名列表获取用户名和昵称
+	GetByNames(context.Context, *GetByNamesRequest) (*GetNamesResponse, error)
 	mustEmbedUnimplementedUserServiceServer()
 }
 
@@ -312,11 +342,17 @@ func (UnimplementedUserServiceServer) CheckMobile(context.Context, *CheckMobileR
 func (UnimplementedUserServiceServer) ChangeAvatar(grpc.ClientStreamingServer[ChangeAvatarRequest, ChangeAvatarResponse]) error {
 	return status.Error(codes.Unimplemented, "method ChangeAvatar not implemented")
 }
-func (UnimplementedUserServiceServer) GetName(context.Context, *GetNameRequest) (*GetNameResponse, error) {
-	return nil, status.Error(codes.Unimplemented, "method GetName not implemented")
+func (UnimplementedUserServiceServer) GetByID(context.Context, *GetByIDRequest) (*GetNameResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method GetByID not implemented")
 }
-func (UnimplementedUserServiceServer) GetNames(context.Context, *GetNamesRequest) (*GetNamesResponse, error) {
-	return nil, status.Error(codes.Unimplemented, "method GetNames not implemented")
+func (UnimplementedUserServiceServer) GetByIDs(context.Context, *GetByIDsRequest) (*GetNamesResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method GetByIDs not implemented")
+}
+func (UnimplementedUserServiceServer) GetByName(context.Context, *GetByNameRequest) (*GetNameResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method GetByName not implemented")
+}
+func (UnimplementedUserServiceServer) GetByNames(context.Context, *GetByNamesRequest) (*GetNamesResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method GetByNames not implemented")
 }
 func (UnimplementedUserServiceServer) mustEmbedUnimplementedUserServiceServer() {}
 func (UnimplementedUserServiceServer) testEmbeddedByValue()                     {}
@@ -544,38 +580,74 @@ func _UserService_ChangeAvatar_Handler(srv interface{}, stream grpc.ServerStream
 // This type alias is provided for backwards compatibility with existing code that references the prior non-generic stream type by name.
 type UserService_ChangeAvatarServer = grpc.ClientStreamingServer[ChangeAvatarRequest, ChangeAvatarResponse]
 
-func _UserService_GetName_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetNameRequest)
+func _UserService_GetByID_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetByIDRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(UserServiceServer).GetName(ctx, in)
+		return srv.(UserServiceServer).GetByID(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: UserService_GetName_FullMethodName,
+		FullMethod: UserService_GetByID_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(UserServiceServer).GetName(ctx, req.(*GetNameRequest))
+		return srv.(UserServiceServer).GetByID(ctx, req.(*GetByIDRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _UserService_GetNames_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetNamesRequest)
+func _UserService_GetByIDs_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetByIDsRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(UserServiceServer).GetNames(ctx, in)
+		return srv.(UserServiceServer).GetByIDs(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: UserService_GetNames_FullMethodName,
+		FullMethod: UserService_GetByIDs_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(UserServiceServer).GetNames(ctx, req.(*GetNamesRequest))
+		return srv.(UserServiceServer).GetByIDs(ctx, req.(*GetByIDsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _UserService_GetByName_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetByNameRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UserServiceServer).GetByName(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: UserService_GetByName_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UserServiceServer).GetByName(ctx, req.(*GetByNameRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _UserService_GetByNames_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetByNamesRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UserServiceServer).GetByNames(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: UserService_GetByNames_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UserServiceServer).GetByNames(ctx, req.(*GetByNamesRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -632,12 +704,20 @@ var UserService_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _UserService_CheckMobile_Handler,
 		},
 		{
-			MethodName: "GetName",
-			Handler:    _UserService_GetName_Handler,
+			MethodName: "GetByID",
+			Handler:    _UserService_GetByID_Handler,
 		},
 		{
-			MethodName: "GetNames",
-			Handler:    _UserService_GetNames_Handler,
+			MethodName: "GetByIDs",
+			Handler:    _UserService_GetByIDs_Handler,
+		},
+		{
+			MethodName: "GetByName",
+			Handler:    _UserService_GetByName_Handler,
+		},
+		{
+			MethodName: "GetByNames",
+			Handler:    _UserService_GetByNames_Handler,
 		},
 	},
 	Streams: []grpc.StreamDesc{

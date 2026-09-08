@@ -1466,28 +1466,28 @@ func (x *ChangeAvatarResponse) GetSize() int64 {
 	return 0
 }
 
-type GetNameRequest struct {
+type GetByNameRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// 用户ID
-	Id            string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	// 用户名
+	Name          string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *GetNameRequest) Reset() {
-	*x = GetNameRequest{}
+func (x *GetByNameRequest) Reset() {
+	*x = GetByNameRequest{}
 	mi := &file_user_user_message_proto_msgTypes[17]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *GetNameRequest) String() string {
+func (x *GetByNameRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*GetNameRequest) ProtoMessage() {}
+func (*GetByNameRequest) ProtoMessage() {}
 
-func (x *GetNameRequest) ProtoReflect() protoreflect.Message {
+func (x *GetByNameRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_user_user_message_proto_msgTypes[17]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -1499,24 +1499,26 @@ func (x *GetNameRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use GetNameRequest.ProtoReflect.Descriptor instead.
-func (*GetNameRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use GetByNameRequest.ProtoReflect.Descriptor instead.
+func (*GetByNameRequest) Descriptor() ([]byte, []int) {
 	return file_user_user_message_proto_rawDescGZIP(), []int{17}
 }
 
-func (x *GetNameRequest) GetId() string {
+func (x *GetByNameRequest) GetName() string {
 	if x != nil {
-		return x.Id
+		return x.Name
 	}
 	return ""
 }
 
 type GetNameResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
+	// 用户ID
+	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	// 用户名
-	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	Name string `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
 	// 用户昵称
-	NickName      *string `protobuf:"bytes,2,opt,name=nick_name,json=nickName,proto3,oneof" json:"nick_name,omitempty"`
+	NickName      *string `protobuf:"bytes,3,opt,name=nick_name,json=nickName,proto3,oneof" json:"nick_name,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1551,6 +1553,13 @@ func (*GetNameResponse) Descriptor() ([]byte, []int) {
 	return file_user_user_message_proto_rawDescGZIP(), []int{18}
 }
 
+func (x *GetNameResponse) GetId() string {
+	if x != nil {
+		return x.Id
+	}
+	return ""
+}
+
 func (x *GetNameResponse) GetName() string {
 	if x != nil {
 		return x.Name
@@ -1565,28 +1574,28 @@ func (x *GetNameResponse) GetNickName() string {
 	return ""
 }
 
-type GetNamesRequest struct {
+type GetByNamesRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// 用户ID
-	Id            []string `protobuf:"bytes,1,rep,name=id,proto3" json:"id,omitempty"`
+	// 用户名
+	Name          []string `protobuf:"bytes,1,rep,name=name,proto3" json:"name,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *GetNamesRequest) Reset() {
-	*x = GetNamesRequest{}
+func (x *GetByNamesRequest) Reset() {
+	*x = GetByNamesRequest{}
 	mi := &file_user_user_message_proto_msgTypes[19]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *GetNamesRequest) String() string {
+func (x *GetByNamesRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*GetNamesRequest) ProtoMessage() {}
+func (*GetByNamesRequest) ProtoMessage() {}
 
-func (x *GetNamesRequest) ProtoReflect() protoreflect.Message {
+func (x *GetByNamesRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_user_user_message_proto_msgTypes[19]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -1598,14 +1607,14 @@ func (x *GetNamesRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use GetNamesRequest.ProtoReflect.Descriptor instead.
-func (*GetNamesRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use GetByNamesRequest.ProtoReflect.Descriptor instead.
+func (*GetByNamesRequest) Descriptor() ([]byte, []int) {
 	return file_user_user_message_proto_rawDescGZIP(), []int{19}
 }
 
-func (x *GetNamesRequest) GetId() []string {
+func (x *GetByNamesRequest) GetName() []string {
 	if x != nil {
-		return x.Id
+		return x.Name
 	}
 	return nil
 }
@@ -1655,6 +1664,96 @@ func (x *GetNamesResponse) GetNameInfo() []*GetNamesResponse_UserNameInfo {
 	return nil
 }
 
+type GetByIDRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// 用户ID
+	Id            string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetByIDRequest) Reset() {
+	*x = GetByIDRequest{}
+	mi := &file_user_user_message_proto_msgTypes[21]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetByIDRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetByIDRequest) ProtoMessage() {}
+
+func (x *GetByIDRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_user_user_message_proto_msgTypes[21]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetByIDRequest.ProtoReflect.Descriptor instead.
+func (*GetByIDRequest) Descriptor() ([]byte, []int) {
+	return file_user_user_message_proto_rawDescGZIP(), []int{21}
+}
+
+func (x *GetByIDRequest) GetId() string {
+	if x != nil {
+		return x.Id
+	}
+	return ""
+}
+
+type GetByIDsRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// 用户ID
+	Id            []string `protobuf:"bytes,1,rep,name=id,proto3" json:"id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetByIDsRequest) Reset() {
+	*x = GetByIDsRequest{}
+	mi := &file_user_user_message_proto_msgTypes[22]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetByIDsRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetByIDsRequest) ProtoMessage() {}
+
+func (x *GetByIDsRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_user_user_message_proto_msgTypes[22]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetByIDsRequest.ProtoReflect.Descriptor instead.
+func (*GetByIDsRequest) Descriptor() ([]byte, []int) {
+	return file_user_user_message_proto_rawDescGZIP(), []int{22}
+}
+
+func (x *GetByIDsRequest) GetId() []string {
+	if x != nil {
+		return x.Id
+	}
+	return nil
+}
+
 type GetNamesResponse_UserNameInfo struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// 用户ID
@@ -1669,7 +1768,7 @@ type GetNamesResponse_UserNameInfo struct {
 
 func (x *GetNamesResponse_UserNameInfo) Reset() {
 	*x = GetNamesResponse_UserNameInfo{}
-	mi := &file_user_user_message_proto_msgTypes[21]
+	mi := &file_user_user_message_proto_msgTypes[23]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1681,7 +1780,7 @@ func (x *GetNamesResponse_UserNameInfo) String() string {
 func (*GetNamesResponse_UserNameInfo) ProtoMessage() {}
 
 func (x *GetNamesResponse_UserNameInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_user_user_message_proto_msgTypes[21]
+	mi := &file_user_user_message_proto_msgTypes[23]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1832,16 +1931,17 @@ const file_user_user_message_proto_rawDesc = "" +
 	"\x06height\x18\x04 \x01(\x05R\x06height\"]\n" +
 	"\x14ChangeAvatarResponse\x121\n" +
 	"\x06result\x18\x01 \x01(\x0e2\x19.fusion.proto.user.ResultR\x06result\x12\x12\n" +
-	"\x04size\x18\x02 \x01(\x03R\x04size\"+\n" +
-	"\x0eGetNameRequest\x12\x19\n" +
-	"\x02id\x18\x01 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18(R\x02id\"U\n" +
-	"\x0fGetNameResponse\x12\x12\n" +
-	"\x04name\x18\x01 \x01(\tR\x04name\x12 \n" +
-	"\tnick_name\x18\x02 \x01(\tH\x00R\bnickName\x88\x01\x01B\f\n" +
+	"\x04size\x18\x02 \x01(\x03R\x04size\"1\n" +
+	"\x10GetByNameRequest\x12\x1d\n" +
+	"\x04name\x18\x01 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18(R\x04name\"e\n" +
+	"\x0fGetNameResponse\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
+	"\x04name\x18\x02 \x01(\tR\x04name\x12 \n" +
+	"\tnick_name\x18\x03 \x01(\tH\x00R\bnickName\x88\x01\x01B\f\n" +
 	"\n" +
-	"_nick_name\",\n" +
-	"\x0fGetNamesRequest\x12\x19\n" +
-	"\x02id\x18\x01 \x03(\tB\t\xbaH\x06r\x04\x10\x01\x18(R\x02id\"\xc5\x01\n" +
+	"_nick_name\"2\n" +
+	"\x11GetByNamesRequest\x12\x1d\n" +
+	"\x04name\x18\x01 \x03(\tB\t\xbaH\x06r\x04\x10\x01\x18(R\x04name\"\xc5\x01\n" +
 	"\x10GetNamesResponse\x12M\n" +
 	"\tname_info\x18\x01 \x03(\v20.fusion.proto.user.GetNamesResponse.UserNameInfoR\bnameInfo\x1ab\n" +
 	"\fUserNameInfo\x12\x0e\n" +
@@ -1849,7 +1949,11 @@ const file_user_user_message_proto_rawDesc = "" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12 \n" +
 	"\tnick_name\x18\x03 \x01(\tH\x00R\bnickName\x88\x01\x01B\f\n" +
 	"\n" +
-	"_nick_name*9\n" +
+	"_nick_name\"+\n" +
+	"\x0eGetByIDRequest\x12\x19\n" +
+	"\x02id\x18\x01 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18(R\x02id\",\n" +
+	"\x0fGetByIDsRequest\x12\x19\n" +
+	"\x02id\x18\x01 \x03(\tB\t\xbaH\x06r\x04\x10\x01\x18(R\x02id*9\n" +
 	"\x06Result\x12\x16\n" +
 	"\x12RESULT_UNSPECIFIED\x10\x00\x12\v\n" +
 	"\aSUCCESS\x10\x01\x12\n" +
@@ -1875,7 +1979,7 @@ func file_user_user_message_proto_rawDescGZIP() []byte {
 }
 
 var file_user_user_message_proto_enumTypes = make([]protoimpl.EnumInfo, 2)
-var file_user_user_message_proto_msgTypes = make([]protoimpl.MessageInfo, 22)
+var file_user_user_message_proto_msgTypes = make([]protoimpl.MessageInfo, 24)
 var file_user_user_message_proto_goTypes = []any{
 	(Result)(0),                           // 0: fusion.proto.user.Result
 	(AvatarContentType)(0),                // 1: fusion.proto.user.AvatarContentType
@@ -1896,24 +2000,26 @@ var file_user_user_message_proto_goTypes = []any{
 	(*ChangeAvatarRequest)(nil),           // 16: fusion.proto.user.ChangeAvatarRequest
 	(*ChangeAvatarMeta)(nil),              // 17: fusion.proto.user.ChangeAvatarMeta
 	(*ChangeAvatarResponse)(nil),          // 18: fusion.proto.user.ChangeAvatarResponse
-	(*GetNameRequest)(nil),                // 19: fusion.proto.user.GetNameRequest
+	(*GetByNameRequest)(nil),              // 19: fusion.proto.user.GetByNameRequest
 	(*GetNameResponse)(nil),               // 20: fusion.proto.user.GetNameResponse
-	(*GetNamesRequest)(nil),               // 21: fusion.proto.user.GetNamesRequest
+	(*GetByNamesRequest)(nil),             // 21: fusion.proto.user.GetByNamesRequest
 	(*GetNamesResponse)(nil),              // 22: fusion.proto.user.GetNamesResponse
-	(*GetNamesResponse_UserNameInfo)(nil), // 23: fusion.proto.user.GetNamesResponse.UserNameInfo
-	(*timestamppb.Timestamp)(nil),         // 24: google.protobuf.Timestamp
+	(*GetByIDRequest)(nil),                // 23: fusion.proto.user.GetByIDRequest
+	(*GetByIDsRequest)(nil),               // 24: fusion.proto.user.GetByIDsRequest
+	(*GetNamesResponse_UserNameInfo)(nil), // 25: fusion.proto.user.GetNamesResponse.UserNameInfo
+	(*timestamppb.Timestamp)(nil),         // 26: google.protobuf.Timestamp
 }
 var file_user_user_message_proto_depIdxs = []int32{
-	24, // 0: fusion.proto.user.CreateUserRequest.expire_at:type_name -> google.protobuf.Timestamp
-	24, // 1: fusion.proto.user.UpdateUserRequest.expire_at:type_name -> google.protobuf.Timestamp
-	24, // 2: fusion.proto.user.GetUserResponse.create_at:type_name -> google.protobuf.Timestamp
-	24, // 3: fusion.proto.user.GetUserResponse.update_at:type_name -> google.protobuf.Timestamp
-	24, // 4: fusion.proto.user.GetUserResponse.expire_at:type_name -> google.protobuf.Timestamp
+	26, // 0: fusion.proto.user.CreateUserRequest.expire_at:type_name -> google.protobuf.Timestamp
+	26, // 1: fusion.proto.user.UpdateUserRequest.expire_at:type_name -> google.protobuf.Timestamp
+	26, // 2: fusion.proto.user.GetUserResponse.create_at:type_name -> google.protobuf.Timestamp
+	26, // 3: fusion.proto.user.GetUserResponse.update_at:type_name -> google.protobuf.Timestamp
+	26, // 4: fusion.proto.user.GetUserResponse.expire_at:type_name -> google.protobuf.Timestamp
 	6,  // 5: fusion.proto.user.ListUsersResponse.data:type_name -> fusion.proto.user.GetUserResponse
 	17, // 6: fusion.proto.user.ChangeAvatarRequest.meta:type_name -> fusion.proto.user.ChangeAvatarMeta
 	1,  // 7: fusion.proto.user.ChangeAvatarMeta.content_type:type_name -> fusion.proto.user.AvatarContentType
 	0,  // 8: fusion.proto.user.ChangeAvatarResponse.result:type_name -> fusion.proto.user.Result
-	23, // 9: fusion.proto.user.GetNamesResponse.name_info:type_name -> fusion.proto.user.GetNamesResponse.UserNameInfo
+	25, // 9: fusion.proto.user.GetNamesResponse.name_info:type_name -> fusion.proto.user.GetNamesResponse.UserNameInfo
 	10, // [10:10] is the sub-list for method output_type
 	10, // [10:10] is the sub-list for method input_type
 	10, // [10:10] is the sub-list for extension type_name
@@ -1934,14 +2040,14 @@ func file_user_user_message_proto_init() {
 		(*ChangeAvatarRequest_Chunk)(nil),
 	}
 	file_user_user_message_proto_msgTypes[18].OneofWrappers = []any{}
-	file_user_user_message_proto_msgTypes[21].OneofWrappers = []any{}
+	file_user_user_message_proto_msgTypes[23].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_user_user_message_proto_rawDesc), len(file_user_user_message_proto_rawDesc)),
 			NumEnums:      2,
-			NumMessages:   22,
+			NumMessages:   24,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
