@@ -148,20 +148,18 @@ type CreateUserRequest struct {
 	Password string `protobuf:"bytes,2,opt,name=password,proto3" json:"password,omitempty"`
 	// 用户邮箱
 	Email string `protobuf:"bytes,3,opt,name=email,proto3" json:"email,omitempty"`
-	// 电话区号
-	AreaCode string `protobuf:"bytes,4,opt,name=area_code,proto3" json:"area_code,omitempty"`
 	// 手机号码
-	Mobile string `protobuf:"bytes,5,opt,name=mobile,proto3" json:"mobile,omitempty"`
+	Mobile string `protobuf:"bytes,4,opt,name=mobile,proto3" json:"mobile,omitempty"`
 	// 用户昵称
-	NickName string `protobuf:"bytes,6,opt,name=nick_name,proto3" json:"nick_name,omitempty"`
+	NickName string `protobuf:"bytes,5,opt,name=nick_name,proto3" json:"nick_name,omitempty"`
 	// 语种偏好
-	Language string `protobuf:"bytes,7,opt,name=language,proto3" json:"language,omitempty"`
+	Language string `protobuf:"bytes,6,opt,name=language,proto3" json:"language,omitempty"`
 	// 备注信息
-	Description string `protobuf:"bytes,8,opt,name=description,proto3" json:"description,omitempty"`
+	Description string `protobuf:"bytes,7,opt,name=description,proto3" json:"description,omitempty"`
 	// 有效时间(yyyy-MM-dd HH:mm:ss)
-	ExpireAt *timestamppb.Timestamp `protobuf:"bytes,9,opt,name=expire_at,proto3" json:"expire_at,omitempty"`
+	ExpireAt *timestamppb.Timestamp `protobuf:"bytes,8,opt,name=expire_at,proto3" json:"expire_at,omitempty"`
 	// 邮箱验证(1-未验证 2-已验证 3-验证失败)
-	EmailState *int32 `protobuf:"varint,10,opt,name=email_state,proto3,oneof" json:"email_state,omitempty"`
+	EmailState *int32 `protobuf:"varint,9,opt,name=email_state,proto3,oneof" json:"email_state,omitempty"`
 	// 用户ID(可选)
 	Id *string `protobuf:"bytes,11,opt,name=id,proto3,oneof" json:"id,omitempty"`
 	// 用户类型(1-普通用户 2-预定义用户 3-体验用户)
@@ -217,13 +215,6 @@ func (x *CreateUserRequest) GetPassword() string {
 func (x *CreateUserRequest) GetEmail() string {
 	if x != nil {
 		return x.Email
-	}
-	return ""
-}
-
-func (x *CreateUserRequest) GetAreaCode() string {
-	if x != nil {
-		return x.AreaCode
 	}
 	return ""
 }
@@ -339,26 +330,24 @@ type UpdateUserRequest struct {
 	Name string `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
 	// 用户邮箱
 	Email string `protobuf:"bytes,3,opt,name=email,proto3" json:"email,omitempty"`
-	// 电话区号
-	AreaCode string `protobuf:"bytes,4,opt,name=area_code,proto3" json:"area_code,omitempty"`
 	// 手机号码
-	Mobile string `protobuf:"bytes,5,opt,name=mobile,proto3" json:"mobile,omitempty"`
+	Mobile string `protobuf:"bytes,4,opt,name=mobile,proto3" json:"mobile,omitempty"`
 	// 用户昵称
-	NickName string `protobuf:"bytes,6,opt,name=nick_name,proto3" json:"nick_name,omitempty"`
+	NickName string `protobuf:"bytes,5,opt,name=nick_name,proto3" json:"nick_name,omitempty"`
 	// 语种偏好
-	Language string `protobuf:"bytes,7,opt,name=language,proto3" json:"language,omitempty"`
+	Language string `protobuf:"bytes,6,opt,name=language,proto3" json:"language,omitempty"`
 	// 备注信息
-	Description string `protobuf:"bytes,8,opt,name=description,proto3" json:"description,omitempty"`
+	Description string `protobuf:"bytes,7,opt,name=description,proto3" json:"description,omitempty"`
 	// 用户状态(1-正常 2-禁用 3-锁定)
-	State *int32 `protobuf:"varint,9,opt,name=state,proto3,oneof" json:"state,omitempty"`
+	State *int32 `protobuf:"varint,8,opt,name=state,proto3,oneof" json:"state,omitempty"`
 	// 邮箱验证(1-未验证 2-已验证 3-验证失败)
-	EmailState *int32 `protobuf:"varint,10,opt,name=email_state,proto3,oneof" json:"email_state,omitempty"`
+	EmailState *int32 `protobuf:"varint,9,opt,name=email_state,proto3,oneof" json:"email_state,omitempty"`
 	// 是否首次登录(false-否 true-是)
-	FirstLogin *bool `protobuf:"varint,11,opt,name=first_login,proto3,oneof" json:"first_login,omitempty"`
+	FirstLogin *bool `protobuf:"varint,10,opt,name=first_login,proto3,oneof" json:"first_login,omitempty"`
 	// 有效时间(yyyy-MM-dd HH:mm:ss)
-	ExpireAt *timestamppb.Timestamp `protobuf:"bytes,12,opt,name=expire_at,proto3" json:"expire_at,omitempty"`
+	ExpireAt *timestamppb.Timestamp `protobuf:"bytes,11,opt,name=expire_at,proto3" json:"expire_at,omitempty"`
 	// 用户类型(1-普通用户 2-预定义用户 3-体验用户)
-	Type          int32 `protobuf:"varint,13,opt,name=type,proto3" json:"type,omitempty"`
+	Type          int32 `protobuf:"varint,12,opt,name=type,proto3" json:"type,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -410,13 +399,6 @@ func (x *UpdateUserRequest) GetName() string {
 func (x *UpdateUserRequest) GetEmail() string {
 	if x != nil {
 		return x.Email
-	}
-	return ""
-}
-
-func (x *UpdateUserRequest) GetAreaCode() string {
-	if x != nil {
-		return x.AreaCode
 	}
 	return ""
 }
@@ -491,16 +473,14 @@ type UpdateUserExtendRequest struct {
 	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	// 用户邮箱
 	Email *string `protobuf:"bytes,2,opt,name=email,proto3,oneof" json:"email,omitempty"`
-	// 电话区号
-	AreaCode *string `protobuf:"bytes,3,opt,name=area_code,proto3,oneof" json:"area_code,omitempty"`
 	// 手机号码
-	Mobile *string `protobuf:"bytes,4,opt,name=mobile,proto3,oneof" json:"mobile,omitempty"`
+	Mobile *string `protobuf:"bytes,3,opt,name=mobile,proto3,oneof" json:"mobile,omitempty"`
 	// 用户昵称
-	NickName *string `protobuf:"bytes,5,opt,name=nick_name,proto3,oneof" json:"nick_name,omitempty"`
+	NickName *string `protobuf:"bytes,4,opt,name=nick_name,proto3,oneof" json:"nick_name,omitempty"`
 	// 语种偏好
-	Language *string `protobuf:"bytes,6,opt,name=language,proto3,oneof" json:"language,omitempty"`
+	Language *string `protobuf:"bytes,5,opt,name=language,proto3,oneof" json:"language,omitempty"`
 	// 备注信息
-	Description   *string `protobuf:"bytes,7,opt,name=description,proto3,oneof" json:"description,omitempty"`
+	Description   *string `protobuf:"bytes,6,opt,name=description,proto3,oneof" json:"description,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -545,13 +525,6 @@ func (x *UpdateUserExtendRequest) GetId() string {
 func (x *UpdateUserExtendRequest) GetEmail() string {
 	if x != nil && x.Email != nil {
 		return *x.Email
-	}
-	return ""
-}
-
-func (x *UpdateUserExtendRequest) GetAreaCode() string {
-	if x != nil && x.AreaCode != nil {
-		return *x.AreaCode
 	}
 	return ""
 }
@@ -650,38 +623,36 @@ type GetUserResponse struct {
 	NickName string `protobuf:"bytes,3,opt,name=nick_name,proto3" json:"nick_name,omitempty"`
 	// 电子邮箱
 	Email string `protobuf:"bytes,4,opt,name=email,proto3" json:"email,omitempty"`
-	// 电话区号
-	AreaCode string `protobuf:"bytes,5,opt,name=area_code,proto3" json:"area_code,omitempty"`
 	// 手机号码
-	Mobile string `protobuf:"bytes,6,opt,name=mobile,proto3" json:"mobile,omitempty"`
+	Mobile string `protobuf:"bytes,5,opt,name=mobile,proto3" json:"mobile,omitempty"`
 	// 备注
-	Description string `protobuf:"bytes,7,opt,name=description,proto3" json:"description,omitempty"`
+	Description string `protobuf:"bytes,6,opt,name=description,proto3" json:"description,omitempty"`
 	// 语种偏好
-	Language string `protobuf:"bytes,8,opt,name=language,proto3" json:"language,omitempty"`
+	Language string `protobuf:"bytes,7,opt,name=language,proto3" json:"language,omitempty"`
 	// 用户状态(1-正常 2-禁用 3-锁定)
-	State int32 `protobuf:"varint,9,opt,name=state,proto3" json:"state,omitempty"`
+	State int32 `protobuf:"varint,8,opt,name=state,proto3" json:"state,omitempty"`
 	// 邮箱验证(1-未验证 2-已验证 3-验证失败)
-	EmailState int32 `protobuf:"varint,10,opt,name=email_state,proto3" json:"email_state,omitempty"`
+	EmailState int32 `protobuf:"varint,9,opt,name=email_state,proto3" json:"email_state,omitempty"`
 	// 是否首次登录(false-否 true-是)
-	FirstLogin bool `protobuf:"varint,11,opt,name=first_login,proto3" json:"first_login,omitempty"`
+	FirstLogin bool `protobuf:"varint,10,opt,name=first_login,proto3" json:"first_login,omitempty"`
 	// 创建人ID
-	CreateBy string `protobuf:"bytes,12,opt,name=create_by,proto3" json:"create_by,omitempty"`
+	CreateBy string `protobuf:"bytes,11,opt,name=create_by,proto3" json:"create_by,omitempty"`
 	// 创建人用户名（昵称）
-	CreateName string `protobuf:"bytes,13,opt,name=create_name,proto3" json:"create_name,omitempty"`
+	CreateName string `protobuf:"bytes,12,opt,name=create_name,proto3" json:"create_name,omitempty"`
 	// 更新人ID
-	UpdateBy string `protobuf:"bytes,14,opt,name=update_by,proto3" json:"update_by,omitempty"`
+	UpdateBy string `protobuf:"bytes,13,opt,name=update_by,proto3" json:"update_by,omitempty"`
 	// 创建时间
-	CreateAt *timestamppb.Timestamp `protobuf:"bytes,15,opt,name=create_at,proto3" json:"create_at,omitempty"`
+	CreateAt *timestamppb.Timestamp `protobuf:"bytes,14,opt,name=create_at,proto3" json:"create_at,omitempty"`
 	// 更新时间
-	UpdateAt *timestamppb.Timestamp `protobuf:"bytes,16,opt,name=update_at,proto3" json:"update_at,omitempty"`
+	UpdateAt *timestamppb.Timestamp `protobuf:"bytes,15,opt,name=update_at,proto3" json:"update_at,omitempty"`
 	// 有效时间(yyyy-MM-dd HH:mm:ss)
-	ExpireAt *timestamppb.Timestamp `protobuf:"bytes,17,opt,name=expire_at,proto3" json:"expire_at,omitempty"`
+	ExpireAt *timestamppb.Timestamp `protobuf:"bytes,16,opt,name=expire_at,proto3" json:"expire_at,omitempty"`
 	// 用户头像信息(仅支持获取用户信息时响应)
-	Avator string `protobuf:"bytes,18,opt,name=avator,proto3" json:"avator,omitempty"`
+	Avator string `protobuf:"bytes,17,opt,name=avator,proto3" json:"avator,omitempty"`
 	// 用户类型(1-普通用户 2-预定义用户 3-体验用户)
-	Type int32 `protobuf:"varint,19,opt,name=type,proto3" json:"type,omitempty"`
+	Type int32 `protobuf:"varint,18,opt,name=type,proto3" json:"type,omitempty"`
 	// 是否已删除(0-未删除)
-	Deleted       int64 `protobuf:"varint,20,opt,name=deleted,proto3" json:"deleted,omitempty"`
+	Deleted       int64 `protobuf:"varint,19,opt,name=deleted,proto3" json:"deleted,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -740,13 +711,6 @@ func (x *GetUserResponse) GetNickName() string {
 func (x *GetUserResponse) GetEmail() string {
 	if x != nil {
 		return x.Email
-	}
-	return ""
-}
-
-func (x *GetUserResponse) GetAreaCode() string {
-	if x != nil {
-		return x.AreaCode
 	}
 	return ""
 }
@@ -1294,10 +1258,8 @@ type CheckUserResponse struct {
 	Name string `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
 	// 电子邮箱
 	Email string `protobuf:"bytes,3,opt,name=email,proto3" json:"email,omitempty"`
-	// 电话区号
-	AreaCode string `protobuf:"bytes,4,opt,name=area_code,proto3" json:"area_code,omitempty"`
 	// 手机号码
-	Mobile        string `protobuf:"bytes,5,opt,name=mobile,proto3" json:"mobile,omitempty"`
+	Mobile        string `protobuf:"bytes,4,opt,name=mobile,proto3" json:"mobile,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1349,13 +1311,6 @@ func (x *CheckUserResponse) GetName() string {
 func (x *CheckUserResponse) GetEmail() string {
 	if x != nil {
 		return x.Email
-	}
-	return ""
-}
-
-func (x *CheckUserResponse) GetAreaCode() string {
-	if x != nil {
-		return x.AreaCode
 	}
 	return ""
 }
@@ -1993,61 +1948,52 @@ var File_user_user_message_proto protoreflect.FileDescriptor
 
 const file_user_user_message_proto_rawDesc = "" +
 	"\n" +
-	"\x17user/user_message.proto\x12\x11fusion.proto.user\x1a\x1bbuf/validate/validate.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xfa\x03\n" +
+	"\x17user/user_message.proto\x12\x11fusion.proto.user\x1a\x1bbuf/validate/validate.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xd3\x03\n" +
 	"\x11CreateUserRequest\x12\x1d\n" +
 	"\x04name\x18\x01 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18<R\x04name\x12&\n" +
 	"\bpassword\x18\x02 \x01(\tB\n" +
 	"\xbaH\ar\x05\x10\x01\x18\xac\x02R\bpassword\x12\x1d\n" +
-	"\x05email\x18\x03 \x01(\tB\a\xbaH\x04r\x02\x18<R\x05email\x12%\n" +
-	"\tarea_code\x18\x04 \x01(\tB\a\xbaH\x04r\x02\x18\n" +
-	"R\tarea_code\x12\x1f\n" +
-	"\x06mobile\x18\x05 \x01(\tB\a\xbaH\x04r\x02\x18\x14R\x06mobile\x12&\n" +
-	"\tnick_name\x18\x06 \x01(\tB\b\xbaH\x05r\x03\x18\xff\x01R\tnick_name\x12#\n" +
-	"\blanguage\x18\a \x01(\tB\a\xbaH\x04r\x02\x18\n" +
+	"\x05email\x18\x03 \x01(\tB\a\xbaH\x04r\x02\x18<R\x05email\x12\x1f\n" +
+	"\x06mobile\x18\x04 \x01(\tB\a\xbaH\x04r\x02\x18\x14R\x06mobile\x12&\n" +
+	"\tnick_name\x18\x05 \x01(\tB\b\xbaH\x05r\x03\x18\xff\x01R\tnick_name\x12#\n" +
+	"\blanguage\x18\x06 \x01(\tB\a\xbaH\x04r\x02\x18\n" +
 	"R\blanguage\x12*\n" +
-	"\vdescription\x18\b \x01(\tB\b\xbaH\x05r\x03\x18\xff\x01R\vdescription\x128\n" +
-	"\texpire_at\x18\t \x01(\v2\x1a.google.protobuf.TimestampR\texpire_at\x120\n" +
-	"\vemail_state\x18\n" +
-	" \x01(\x05B\t\xbaH\x06\x1a\x04\x18\x03(\x01H\x00R\vemail_state\x88\x01\x01\x12\x1c\n" +
+	"\vdescription\x18\a \x01(\tB\b\xbaH\x05r\x03\x18\xff\x01R\vdescription\x128\n" +
+	"\texpire_at\x18\b \x01(\v2\x1a.google.protobuf.TimestampR\texpire_at\x120\n" +
+	"\vemail_state\x18\t \x01(\x05B\t\xbaH\x06\x1a\x04\x18\x03(\x01H\x00R\vemail_state\x88\x01\x01\x12\x1c\n" +
 	"\x02id\x18\v \x01(\tB\a\xbaH\x04r\x02\x18(H\x01R\x02id\x88\x01\x01\x12\x1d\n" +
 	"\x04type\x18\f \x01(\x05B\t\xbaH\x06\x1a\x04\x18\x03(\x01R\x04typeB\x0e\n" +
 	"\f_email_stateB\x05\n" +
 	"\x03_id\".\n" +
 	"\x11DeleteUserRequest\x12\x19\n" +
-	"\x02id\x18\x01 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18(R\x02id\"\xb7\x04\n" +
+	"\x02id\x18\x01 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18(R\x02id\"\x90\x04\n" +
 	"\x11UpdateUserRequest\x12\x19\n" +
 	"\x02id\x18\x01 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18(R\x02id\x12\x1d\n" +
 	"\x04name\x18\x02 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18<R\x04name\x12\x1d\n" +
-	"\x05email\x18\x03 \x01(\tB\a\xbaH\x04r\x02\x18<R\x05email\x12%\n" +
-	"\tarea_code\x18\x04 \x01(\tB\a\xbaH\x04r\x02\x18\n" +
-	"R\tarea_code\x12\x1f\n" +
-	"\x06mobile\x18\x05 \x01(\tB\a\xbaH\x04r\x02\x18\x14R\x06mobile\x12&\n" +
-	"\tnick_name\x18\x06 \x01(\tB\b\xbaH\x05r\x03\x18\xff\x01R\tnick_name\x12#\n" +
-	"\blanguage\x18\a \x01(\tB\a\xbaH\x04r\x02\x18\n" +
+	"\x05email\x18\x03 \x01(\tB\a\xbaH\x04r\x02\x18<R\x05email\x12\x1f\n" +
+	"\x06mobile\x18\x04 \x01(\tB\a\xbaH\x04r\x02\x18\x14R\x06mobile\x12&\n" +
+	"\tnick_name\x18\x05 \x01(\tB\b\xbaH\x05r\x03\x18\xff\x01R\tnick_name\x12#\n" +
+	"\blanguage\x18\x06 \x01(\tB\a\xbaH\x04r\x02\x18\n" +
 	"R\blanguage\x12*\n" +
-	"\vdescription\x18\b \x01(\tB\b\xbaH\x05r\x03\x18\xff\x01R\vdescription\x12$\n" +
-	"\x05state\x18\t \x01(\x05B\t\xbaH\x06\x1a\x04\x18\x03(\x01H\x00R\x05state\x88\x01\x01\x120\n" +
-	"\vemail_state\x18\n" +
-	" \x01(\x05B\t\xbaH\x06\x1a\x04\x18\x03(\x01H\x01R\vemail_state\x88\x01\x01\x12-\n" +
-	"\vfirst_login\x18\v \x01(\bB\x06\xbaH\x03\xc8\x01\x01H\x02R\vfirst_login\x88\x01\x01\x128\n" +
-	"\texpire_at\x18\f \x01(\v2\x1a.google.protobuf.TimestampR\texpire_at\x12\x1d\n" +
-	"\x04type\x18\r \x01(\x05B\t\xbaH\x06\x1a\x04\x18\x03(\x01R\x04typeB\b\n" +
+	"\vdescription\x18\a \x01(\tB\b\xbaH\x05r\x03\x18\xff\x01R\vdescription\x12$\n" +
+	"\x05state\x18\b \x01(\x05B\t\xbaH\x06\x1a\x04\x18\x03(\x01H\x00R\x05state\x88\x01\x01\x120\n" +
+	"\vemail_state\x18\t \x01(\x05B\t\xbaH\x06\x1a\x04\x18\x03(\x01H\x01R\vemail_state\x88\x01\x01\x12-\n" +
+	"\vfirst_login\x18\n" +
+	" \x01(\bB\x06\xbaH\x03\xc8\x01\x01H\x02R\vfirst_login\x88\x01\x01\x128\n" +
+	"\texpire_at\x18\v \x01(\v2\x1a.google.protobuf.TimestampR\texpire_at\x12\x1d\n" +
+	"\x04type\x18\f \x01(\x05B\t\xbaH\x06\x1a\x04\x18\x03(\x01R\x04typeB\b\n" +
 	"\x06_stateB\x0e\n" +
 	"\f_email_stateB\x0e\n" +
-	"\f_first_login\"\x80\x03\n" +
+	"\f_first_login\"\xc6\x02\n" +
 	"\x17UpdateUserExtendRequest\x12\x19\n" +
 	"\x02id\x18\x01 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18(R\x02id\x12\"\n" +
-	"\x05email\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x18<H\x00R\x05email\x88\x01\x01\x12*\n" +
-	"\tarea_code\x18\x03 \x01(\tB\a\xbaH\x04r\x02\x18\n" +
-	"H\x01R\tarea_code\x88\x01\x01\x12$\n" +
-	"\x06mobile\x18\x04 \x01(\tB\a\xbaH\x04r\x02\x18\x14H\x02R\x06mobile\x88\x01\x01\x12+\n" +
-	"\tnick_name\x18\x05 \x01(\tB\b\xbaH\x05r\x03\x18\xff\x01H\x03R\tnick_name\x88\x01\x01\x12(\n" +
-	"\blanguage\x18\x06 \x01(\tB\a\xbaH\x04r\x02\x18\n" +
-	"H\x04R\blanguage\x88\x01\x01\x12/\n" +
-	"\vdescription\x18\a \x01(\tB\b\xbaH\x05r\x03\x18\xff\x01H\x05R\vdescription\x88\x01\x01B\b\n" +
-	"\x06_emailB\f\n" +
-	"\n" +
-	"_area_codeB\t\n" +
+	"\x05email\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x18<H\x00R\x05email\x88\x01\x01\x12$\n" +
+	"\x06mobile\x18\x03 \x01(\tB\a\xbaH\x04r\x02\x18\x14H\x01R\x06mobile\x88\x01\x01\x12+\n" +
+	"\tnick_name\x18\x04 \x01(\tB\b\xbaH\x05r\x03\x18\xff\x01H\x02R\tnick_name\x88\x01\x01\x12(\n" +
+	"\blanguage\x18\x05 \x01(\tB\a\xbaH\x04r\x02\x18\n" +
+	"H\x03R\blanguage\x88\x01\x01\x12/\n" +
+	"\vdescription\x18\x06 \x01(\tB\b\xbaH\x05r\x03\x18\xff\x01H\x04R\vdescription\x88\x01\x01B\b\n" +
+	"\x06_emailB\t\n" +
 	"\a_mobileB\f\n" +
 	"\n" +
 	"_nick_nameB\v\n" +
@@ -2055,29 +2001,28 @@ const file_user_user_message_proto_rawDesc = "" +
 	"\f_description\"I\n" +
 	"\x0eGetUserRequest\x12\x19\n" +
 	"\x02id\x18\x01 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18(R\x02id\x12\x1c\n" +
-	"\tis_avator\x18\x02 \x01(\bR\tis_avator\"\x89\x05\n" +
+	"\tis_avator\x18\x02 \x01(\bR\tis_avator\"\xeb\x04\n" +
 	"\x0fGetUserResponse\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x1c\n" +
 	"\tnick_name\x18\x03 \x01(\tR\tnick_name\x12\x14\n" +
-	"\x05email\x18\x04 \x01(\tR\x05email\x12\x1c\n" +
-	"\tarea_code\x18\x05 \x01(\tR\tarea_code\x12\x16\n" +
-	"\x06mobile\x18\x06 \x01(\tR\x06mobile\x12 \n" +
-	"\vdescription\x18\a \x01(\tR\vdescription\x12\x1a\n" +
-	"\blanguage\x18\b \x01(\tR\blanguage\x12\x14\n" +
-	"\x05state\x18\t \x01(\x05R\x05state\x12 \n" +
-	"\vemail_state\x18\n" +
-	" \x01(\x05R\vemail_state\x12 \n" +
-	"\vfirst_login\x18\v \x01(\bR\vfirst_login\x12\x1c\n" +
-	"\tcreate_by\x18\f \x01(\tR\tcreate_by\x12 \n" +
-	"\vcreate_name\x18\r \x01(\tR\vcreate_name\x12\x1c\n" +
-	"\tupdate_by\x18\x0e \x01(\tR\tupdate_by\x128\n" +
-	"\tcreate_at\x18\x0f \x01(\v2\x1a.google.protobuf.TimestampR\tcreate_at\x128\n" +
-	"\tupdate_at\x18\x10 \x01(\v2\x1a.google.protobuf.TimestampR\tupdate_at\x128\n" +
-	"\texpire_at\x18\x11 \x01(\v2\x1a.google.protobuf.TimestampR\texpire_at\x12\x16\n" +
-	"\x06avator\x18\x12 \x01(\tR\x06avator\x12\x12\n" +
-	"\x04type\x18\x13 \x01(\x05R\x04type\x12\x18\n" +
-	"\adeleted\x18\x14 \x01(\x03R\adeleted\"\xac\x01\n" +
+	"\x05email\x18\x04 \x01(\tR\x05email\x12\x16\n" +
+	"\x06mobile\x18\x05 \x01(\tR\x06mobile\x12 \n" +
+	"\vdescription\x18\x06 \x01(\tR\vdescription\x12\x1a\n" +
+	"\blanguage\x18\a \x01(\tR\blanguage\x12\x14\n" +
+	"\x05state\x18\b \x01(\x05R\x05state\x12 \n" +
+	"\vemail_state\x18\t \x01(\x05R\vemail_state\x12 \n" +
+	"\vfirst_login\x18\n" +
+	" \x01(\bR\vfirst_login\x12\x1c\n" +
+	"\tcreate_by\x18\v \x01(\tR\tcreate_by\x12 \n" +
+	"\vcreate_name\x18\f \x01(\tR\vcreate_name\x12\x1c\n" +
+	"\tupdate_by\x18\r \x01(\tR\tupdate_by\x128\n" +
+	"\tcreate_at\x18\x0e \x01(\v2\x1a.google.protobuf.TimestampR\tcreate_at\x128\n" +
+	"\tupdate_at\x18\x0f \x01(\v2\x1a.google.protobuf.TimestampR\tupdate_at\x128\n" +
+	"\texpire_at\x18\x10 \x01(\v2\x1a.google.protobuf.TimestampR\texpire_at\x12\x16\n" +
+	"\x06avator\x18\x11 \x01(\tR\x06avator\x12\x12\n" +
+	"\x04type\x18\x12 \x01(\x05R\x04type\x12\x18\n" +
+	"\adeleted\x18\x13 \x01(\x03R\adeleted\"\xac\x01\n" +
 	"\x10ListUsersRequest\x12!\n" +
 	"\akeyword\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x18<R\akeyword\x12$\n" +
 	"\x05state\x18\x02 \x01(\x05B\t\xbaH\x06\x1a\x04\x18\x03(\x01H\x00R\x05state\x88\x01\x01\x12\x1b\n" +
@@ -2108,13 +2053,12 @@ const file_user_user_message_proto_rawDesc = "" +
 	"\tignore_id\x18\x02 \x01(\tR\tignore_id\"U\n" +
 	"\x12CheckMobileRequest\x12!\n" +
 	"\x06mobile\x18\x01 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18\x14R\x06mobile\x12\x1c\n" +
-	"\tignore_id\x18\x02 \x01(\tR\tignore_id\"\x83\x01\n" +
+	"\tignore_id\x18\x02 \x01(\tR\tignore_id\"e\n" +
 	"\x11CheckUserResponse\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x14\n" +
-	"\x05email\x18\x03 \x01(\tR\x05email\x12\x1c\n" +
-	"\tarea_code\x18\x04 \x01(\tR\tarea_code\x12\x16\n" +
-	"\x06mobile\x18\x05 \x01(\tR\x06mobile\"\\\n" +
+	"\x05email\x18\x03 \x01(\tR\x05email\x12\x16\n" +
+	"\x06mobile\x18\x04 \x01(\tR\x06mobile\"\\\n" +
 	"\x17ValidatePasswordRequest\x12\x19\n" +
 	"\x02id\x18\x01 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18(R\x02id\x12&\n" +
 	"\bpassword\x18\x02 \x01(\tB\n" +
