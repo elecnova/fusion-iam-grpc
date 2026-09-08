@@ -669,8 +669,10 @@ type CheckTokenResponse struct {
 	UserName string `protobuf:"bytes,2,opt,name=user_name,proto3" json:"user_name,omitempty"`
 	// 用户类型(1-普通用户 2-预定义用户 3-体验用户)
 	Type int32 `protobuf:"varint,3,opt,name=type,proto3" json:"type,omitempty"`
+	// 用户状态(1-正常 2-禁用 3-锁定)
+	State int32 `protobuf:"varint,4,opt,name=state,proto3" json:"state,omitempty"`
 	// 用户角色列表
-	Roles         []*UserRoles `protobuf:"bytes,4,rep,name=roles,proto3" json:"roles,omitempty"`
+	Roles         []*UserRoles `protobuf:"bytes,5,rep,name=roles,proto3" json:"roles,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -722,6 +724,13 @@ func (x *CheckTokenResponse) GetUserName() string {
 func (x *CheckTokenResponse) GetType() int32 {
 	if x != nil {
 		return x.Type
+	}
+	return 0
+}
+
+func (x *CheckTokenResponse) GetState() int32 {
+	if x != nil {
+		return x.State
 	}
 	return 0
 }
@@ -1127,12 +1136,13 @@ const file_auth_auth_message_proto_rawDesc = "" +
 	"expires_in\"C\n" +
 	"\x11CheckTokenRequest\x12.\n" +
 	"\faccess_token\x18\x01 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x01\x18\xf4\x03R\faccess_token\"\x9f\x01\n" +
+	"\xbaH\ar\x05\x10\x01\x18\xf4\x03R\faccess_token\"\xb5\x01\n" +
 	"\x12CheckTokenResponse\x12\x18\n" +
 	"\auser_id\x18\x01 \x01(\tR\auser_id\x12'\n" +
 	"\tuser_name\x18\x02 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18<R\tuser_name\x12\x12\n" +
-	"\x04type\x18\x03 \x01(\x05R\x04type\x122\n" +
-	"\x05roles\x18\x04 \x03(\v2\x1c.fusion.proto.auth.UserRolesR\x05roles\"\x90\x01\n" +
+	"\x04type\x18\x03 \x01(\x05R\x04type\x12\x14\n" +
+	"\x05state\x18\x04 \x01(\x05R\x05state\x122\n" +
+	"\x05roles\x18\x05 \x03(\v2\x1c.fusion.proto.auth.UserRolesR\x05roles\"\x90\x01\n" +
 	"\tUserRoles\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
 	"\x04code\x18\x02 \x01(\tR\x04code\x12\x12\n" +
