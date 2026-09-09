@@ -33,34 +33,31 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-// Package message 根据key或id获取字典信息消息请求定义
-type GetDictRequest struct {
+// Package message 根据ID获取字典信息消息请求定义
+type GetDictByIDRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Types that are valid to be assigned to Selector:
-	//
-	//	*GetDictRequest_Key
-	//	*GetDictRequest_Id
-	Selector isGetDictRequest_Selector `protobuf_oneof:"selector"`
+	// 字典ID
+	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	// 标记位（1-获取全部字段 2-仅获取数据字典的value字段）
-	Flag          int32 `protobuf:"varint,3,opt,name=flag,proto3" json:"flag,omitempty"`
+	Flag          int32 `protobuf:"varint,2,opt,name=flag,proto3" json:"flag,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *GetDictRequest) Reset() {
-	*x = GetDictRequest{}
+func (x *GetDictByIDRequest) Reset() {
+	*x = GetDictByIDRequest{}
 	mi := &file_dictionary_dictionary_message_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *GetDictRequest) String() string {
+func (x *GetDictByIDRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*GetDictRequest) ProtoMessage() {}
+func (*GetDictByIDRequest) ProtoMessage() {}
 
-func (x *GetDictRequest) ProtoReflect() protoreflect.Message {
+func (x *GetDictByIDRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_dictionary_dictionary_message_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -72,62 +69,81 @@ func (x *GetDictRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use GetDictRequest.ProtoReflect.Descriptor instead.
-func (*GetDictRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use GetDictByIDRequest.ProtoReflect.Descriptor instead.
+func (*GetDictByIDRequest) Descriptor() ([]byte, []int) {
 	return file_dictionary_dictionary_message_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *GetDictRequest) GetSelector() isGetDictRequest_Selector {
+func (x *GetDictByIDRequest) GetId() string {
 	if x != nil {
-		return x.Selector
-	}
-	return nil
-}
-
-func (x *GetDictRequest) GetKey() string {
-	if x != nil {
-		if x, ok := x.Selector.(*GetDictRequest_Key); ok {
-			return x.Key
-		}
+		return x.Id
 	}
 	return ""
 }
 
-func (x *GetDictRequest) GetId() string {
-	if x != nil {
-		if x, ok := x.Selector.(*GetDictRequest_Id); ok {
-			return x.Id
-		}
-	}
-	return ""
-}
-
-func (x *GetDictRequest) GetFlag() int32 {
+func (x *GetDictByIDRequest) GetFlag() int32 {
 	if x != nil {
 		return x.Flag
 	}
 	return 0
 }
 
-type isGetDictRequest_Selector interface {
-	isGetDictRequest_Selector()
-}
-
-type GetDictRequest_Key struct {
+// Package message 根据Key获取字典信息消息请求定义
+type GetDictByKeyRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
 	// 数据字典键
-	Key string `protobuf:"bytes,1,opt,name=key,proto3,oneof"`
+	Key string `protobuf:"bytes,1,opt,name=key,proto3" json:"key,omitempty"`
+	// 标记位（1-获取全部字段 2-仅获取数据字典的value字段）
+	Flag          int32 `protobuf:"varint,2,opt,name=flag,proto3" json:"flag,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
 }
 
-type GetDictRequest_Id struct {
-	// 字典ID
-	Id string `protobuf:"bytes,2,opt,name=id,proto3,oneof"`
+func (x *GetDictByKeyRequest) Reset() {
+	*x = GetDictByKeyRequest{}
+	mi := &file_dictionary_dictionary_message_proto_msgTypes[1]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
 }
 
-func (*GetDictRequest_Key) isGetDictRequest_Selector() {}
+func (x *GetDictByKeyRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
 
-func (*GetDictRequest_Id) isGetDictRequest_Selector() {}
+func (*GetDictByKeyRequest) ProtoMessage() {}
 
-// Package message 根据key获取字典信息消息响应定义
+func (x *GetDictByKeyRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_dictionary_dictionary_message_proto_msgTypes[1]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetDictByKeyRequest.ProtoReflect.Descriptor instead.
+func (*GetDictByKeyRequest) Descriptor() ([]byte, []int) {
+	return file_dictionary_dictionary_message_proto_rawDescGZIP(), []int{1}
+}
+
+func (x *GetDictByKeyRequest) GetKey() string {
+	if x != nil {
+		return x.Key
+	}
+	return ""
+}
+
+func (x *GetDictByKeyRequest) GetFlag() int32 {
+	if x != nil {
+		return x.Flag
+	}
+	return 0
+}
+
+// Package message 根据key或id获取字典信息消息响应定义
 type GetDictResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Types that are valid to be assigned to Result:
@@ -143,7 +159,7 @@ type GetDictResponse struct {
 
 func (x *GetDictResponse) Reset() {
 	*x = GetDictResponse{}
-	mi := &file_dictionary_dictionary_message_proto_msgTypes[1]
+	mi := &file_dictionary_dictionary_message_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -155,7 +171,7 @@ func (x *GetDictResponse) String() string {
 func (*GetDictResponse) ProtoMessage() {}
 
 func (x *GetDictResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_dictionary_dictionary_message_proto_msgTypes[1]
+	mi := &file_dictionary_dictionary_message_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -168,7 +184,7 @@ func (x *GetDictResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetDictResponse.ProtoReflect.Descriptor instead.
 func (*GetDictResponse) Descriptor() ([]byte, []int) {
-	return file_dictionary_dictionary_message_proto_rawDescGZIP(), []int{1}
+	return file_dictionary_dictionary_message_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *GetDictResponse) GetResult() isGetDictResponse_Result {
@@ -236,7 +252,7 @@ type CreateDictRequest struct {
 
 func (x *CreateDictRequest) Reset() {
 	*x = CreateDictRequest{}
-	mi := &file_dictionary_dictionary_message_proto_msgTypes[2]
+	mi := &file_dictionary_dictionary_message_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -248,7 +264,7 @@ func (x *CreateDictRequest) String() string {
 func (*CreateDictRequest) ProtoMessage() {}
 
 func (x *CreateDictRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_dictionary_dictionary_message_proto_msgTypes[2]
+	mi := &file_dictionary_dictionary_message_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -261,7 +277,7 @@ func (x *CreateDictRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateDictRequest.ProtoReflect.Descriptor instead.
 func (*CreateDictRequest) Descriptor() ([]byte, []int) {
-	return file_dictionary_dictionary_message_proto_rawDescGZIP(), []int{2}
+	return file_dictionary_dictionary_message_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *CreateDictRequest) GetKey() string {
@@ -296,7 +312,7 @@ type CreateDictResponse struct {
 
 func (x *CreateDictResponse) Reset() {
 	*x = CreateDictResponse{}
-	mi := &file_dictionary_dictionary_message_proto_msgTypes[3]
+	mi := &file_dictionary_dictionary_message_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -308,7 +324,7 @@ func (x *CreateDictResponse) String() string {
 func (*CreateDictResponse) ProtoMessage() {}
 
 func (x *CreateDictResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_dictionary_dictionary_message_proto_msgTypes[3]
+	mi := &file_dictionary_dictionary_message_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -321,7 +337,7 @@ func (x *CreateDictResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateDictResponse.ProtoReflect.Descriptor instead.
 func (*CreateDictResponse) Descriptor() ([]byte, []int) {
-	return file_dictionary_dictionary_message_proto_rawDescGZIP(), []int{3}
+	return file_dictionary_dictionary_message_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *CreateDictResponse) GetId() string {
@@ -348,7 +364,7 @@ type UpdateDictRequest struct {
 
 func (x *UpdateDictRequest) Reset() {
 	*x = UpdateDictRequest{}
-	mi := &file_dictionary_dictionary_message_proto_msgTypes[4]
+	mi := &file_dictionary_dictionary_message_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -360,7 +376,7 @@ func (x *UpdateDictRequest) String() string {
 func (*UpdateDictRequest) ProtoMessage() {}
 
 func (x *UpdateDictRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_dictionary_dictionary_message_proto_msgTypes[4]
+	mi := &file_dictionary_dictionary_message_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -373,7 +389,7 @@ func (x *UpdateDictRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateDictRequest.ProtoReflect.Descriptor instead.
 func (*UpdateDictRequest) Descriptor() ([]byte, []int) {
-	return file_dictionary_dictionary_message_proto_rawDescGZIP(), []int{4}
+	return file_dictionary_dictionary_message_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *UpdateDictRequest) GetId() string {
@@ -415,7 +431,7 @@ type DeleteDictRequest struct {
 
 func (x *DeleteDictRequest) Reset() {
 	*x = DeleteDictRequest{}
-	mi := &file_dictionary_dictionary_message_proto_msgTypes[5]
+	mi := &file_dictionary_dictionary_message_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -427,7 +443,7 @@ func (x *DeleteDictRequest) String() string {
 func (*DeleteDictRequest) ProtoMessage() {}
 
 func (x *DeleteDictRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_dictionary_dictionary_message_proto_msgTypes[5]
+	mi := &file_dictionary_dictionary_message_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -440,7 +456,7 @@ func (x *DeleteDictRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteDictRequest.ProtoReflect.Descriptor instead.
 func (*DeleteDictRequest) Descriptor() ([]byte, []int) {
-	return file_dictionary_dictionary_message_proto_rawDescGZIP(), []int{5}
+	return file_dictionary_dictionary_message_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *DeleteDictRequest) GetId() string {
@@ -465,7 +481,7 @@ type ListDictRequest struct {
 
 func (x *ListDictRequest) Reset() {
 	*x = ListDictRequest{}
-	mi := &file_dictionary_dictionary_message_proto_msgTypes[6]
+	mi := &file_dictionary_dictionary_message_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -477,7 +493,7 @@ func (x *ListDictRequest) String() string {
 func (*ListDictRequest) ProtoMessage() {}
 
 func (x *ListDictRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_dictionary_dictionary_message_proto_msgTypes[6]
+	mi := &file_dictionary_dictionary_message_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -490,7 +506,7 @@ func (x *ListDictRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListDictRequest.ProtoReflect.Descriptor instead.
 func (*ListDictRequest) Descriptor() ([]byte, []int) {
-	return file_dictionary_dictionary_message_proto_rawDescGZIP(), []int{6}
+	return file_dictionary_dictionary_message_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *ListDictRequest) GetKeywords() string {
@@ -533,7 +549,7 @@ type ListDictResponse struct {
 
 func (x *ListDictResponse) Reset() {
 	*x = ListDictResponse{}
-	mi := &file_dictionary_dictionary_message_proto_msgTypes[7]
+	mi := &file_dictionary_dictionary_message_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -545,7 +561,7 @@ func (x *ListDictResponse) String() string {
 func (*ListDictResponse) ProtoMessage() {}
 
 func (x *ListDictResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_dictionary_dictionary_message_proto_msgTypes[7]
+	mi := &file_dictionary_dictionary_message_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -558,7 +574,7 @@ func (x *ListDictResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListDictResponse.ProtoReflect.Descriptor instead.
 func (*ListDictResponse) Descriptor() ([]byte, []int) {
-	return file_dictionary_dictionary_message_proto_rawDescGZIP(), []int{7}
+	return file_dictionary_dictionary_message_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *ListDictResponse) GetData() []*DictData {
@@ -623,7 +639,7 @@ type DictData struct {
 
 func (x *DictData) Reset() {
 	*x = DictData{}
-	mi := &file_dictionary_dictionary_message_proto_msgTypes[8]
+	mi := &file_dictionary_dictionary_message_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -635,7 +651,7 @@ func (x *DictData) String() string {
 func (*DictData) ProtoMessage() {}
 
 func (x *DictData) ProtoReflect() protoreflect.Message {
-	mi := &file_dictionary_dictionary_message_proto_msgTypes[8]
+	mi := &file_dictionary_dictionary_message_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -648,7 +664,7 @@ func (x *DictData) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DictData.ProtoReflect.Descriptor instead.
 func (*DictData) Descriptor() ([]byte, []int) {
-	return file_dictionary_dictionary_message_proto_rawDescGZIP(), []int{8}
+	return file_dictionary_dictionary_message_proto_rawDescGZIP(), []int{9}
 }
 
 func (x *DictData) GetId() string {
@@ -745,7 +761,7 @@ type DictDetail struct {
 
 func (x *DictDetail) Reset() {
 	*x = DictDetail{}
-	mi := &file_dictionary_dictionary_message_proto_msgTypes[9]
+	mi := &file_dictionary_dictionary_message_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -757,7 +773,7 @@ func (x *DictDetail) String() string {
 func (*DictDetail) ProtoMessage() {}
 
 func (x *DictDetail) ProtoReflect() protoreflect.Message {
-	mi := &file_dictionary_dictionary_message_proto_msgTypes[9]
+	mi := &file_dictionary_dictionary_message_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -770,7 +786,7 @@ func (x *DictDetail) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DictDetail.ProtoReflect.Descriptor instead.
 func (*DictDetail) Descriptor() ([]byte, []int) {
-	return file_dictionary_dictionary_message_proto_rawDescGZIP(), []int{9}
+	return file_dictionary_dictionary_message_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *DictDetail) GetId() string {
@@ -850,1135 +866,17 @@ func (x *DictDetail) GetCreateByName() string {
 	return ""
 }
 
-// Package message 键值对消息定义
-type KVPair struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// 键
-	Key string `protobuf:"bytes,1,opt,name=key,proto3" json:"key,omitempty"`
-	// 值
-	Value         string `protobuf:"bytes,2,opt,name=value,proto3" json:"value,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *KVPair) Reset() {
-	*x = KVPair{}
-	mi := &file_dictionary_dictionary_message_proto_msgTypes[10]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *KVPair) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*KVPair) ProtoMessage() {}
-
-func (x *KVPair) ProtoReflect() protoreflect.Message {
-	mi := &file_dictionary_dictionary_message_proto_msgTypes[10]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use KVPair.ProtoReflect.Descriptor instead.
-func (*KVPair) Descriptor() ([]byte, []int) {
-	return file_dictionary_dictionary_message_proto_rawDescGZIP(), []int{10}
-}
-
-func (x *KVPair) GetKey() string {
-	if x != nil {
-		return x.Key
-	}
-	return ""
-}
-
-func (x *KVPair) GetValue() string {
-	if x != nil {
-		return x.Value
-	}
-	return ""
-}
-
-// Package message 读取字典键值对列表请求消息定义
-type GetKVDictRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// 字典键
-	Key           string `protobuf:"bytes,1,opt,name=key,proto3" json:"key,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *GetKVDictRequest) Reset() {
-	*x = GetKVDictRequest{}
-	mi := &file_dictionary_dictionary_message_proto_msgTypes[11]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *GetKVDictRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*GetKVDictRequest) ProtoMessage() {}
-
-func (x *GetKVDictRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_dictionary_dictionary_message_proto_msgTypes[11]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use GetKVDictRequest.ProtoReflect.Descriptor instead.
-func (*GetKVDictRequest) Descriptor() ([]byte, []int) {
-	return file_dictionary_dictionary_message_proto_rawDescGZIP(), []int{11}
-}
-
-func (x *GetKVDictRequest) GetKey() string {
-	if x != nil {
-		return x.Key
-	}
-	return ""
-}
-
-// Package message 读取字典键值对列表响应消息定义
-type GetKVDictResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// 键值对列表
-	Data          []*KVPair `protobuf:"bytes,1,rep,name=data,proto3" json:"data,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *GetKVDictResponse) Reset() {
-	*x = GetKVDictResponse{}
-	mi := &file_dictionary_dictionary_message_proto_msgTypes[12]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *GetKVDictResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*GetKVDictResponse) ProtoMessage() {}
-
-func (x *GetKVDictResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_dictionary_dictionary_message_proto_msgTypes[12]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use GetKVDictResponse.ProtoReflect.Descriptor instead.
-func (*GetKVDictResponse) Descriptor() ([]byte, []int) {
-	return file_dictionary_dictionary_message_proto_rawDescGZIP(), []int{12}
-}
-
-func (x *GetKVDictResponse) GetData() []*KVPair {
-	if x != nil {
-		return x.Data
-	}
-	return nil
-}
-
-// Package message 获取系统类型列表请求消息定义
-type GetSystemModelRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// 语言(zh/en)
-	Lang          string `protobuf:"bytes,1,opt,name=lang,proto3" json:"lang,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *GetSystemModelRequest) Reset() {
-	*x = GetSystemModelRequest{}
-	mi := &file_dictionary_dictionary_message_proto_msgTypes[13]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *GetSystemModelRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*GetSystemModelRequest) ProtoMessage() {}
-
-func (x *GetSystemModelRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_dictionary_dictionary_message_proto_msgTypes[13]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use GetSystemModelRequest.ProtoReflect.Descriptor instead.
-func (*GetSystemModelRequest) Descriptor() ([]byte, []int) {
-	return file_dictionary_dictionary_message_proto_rawDescGZIP(), []int{13}
-}
-
-func (x *GetSystemModelRequest) GetLang() string {
-	if x != nil {
-		return x.Lang
-	}
-	return ""
-}
-
-// Package message 获取系统类型列表响应消息定义
-type GetSystemModelResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// 系统类型列表
-	Data          []*KVPair `protobuf:"bytes,1,rep,name=data,proto3" json:"data,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *GetSystemModelResponse) Reset() {
-	*x = GetSystemModelResponse{}
-	mi := &file_dictionary_dictionary_message_proto_msgTypes[14]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *GetSystemModelResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*GetSystemModelResponse) ProtoMessage() {}
-
-func (x *GetSystemModelResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_dictionary_dictionary_message_proto_msgTypes[14]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use GetSystemModelResponse.ProtoReflect.Descriptor instead.
-func (*GetSystemModelResponse) Descriptor() ([]byte, []int) {
-	return file_dictionary_dictionary_message_proto_rawDescGZIP(), []int{14}
-}
-
-func (x *GetSystemModelResponse) GetData() []*KVPair {
-	if x != nil {
-		return x.Data
-	}
-	return nil
-}
-
-// Package message 获取地区电话区号请求消息定义
-type GetGlobalCodeRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// 语言(zh/en)
-	Lang          string `protobuf:"bytes,1,opt,name=lang,proto3" json:"lang,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *GetGlobalCodeRequest) Reset() {
-	*x = GetGlobalCodeRequest{}
-	mi := &file_dictionary_dictionary_message_proto_msgTypes[15]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *GetGlobalCodeRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*GetGlobalCodeRequest) ProtoMessage() {}
-
-func (x *GetGlobalCodeRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_dictionary_dictionary_message_proto_msgTypes[15]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use GetGlobalCodeRequest.ProtoReflect.Descriptor instead.
-func (*GetGlobalCodeRequest) Descriptor() ([]byte, []int) {
-	return file_dictionary_dictionary_message_proto_rawDescGZIP(), []int{15}
-}
-
-func (x *GetGlobalCodeRequest) GetLang() string {
-	if x != nil {
-		return x.Lang
-	}
-	return ""
-}
-
-// Package message 地区电话区号
-type DictAreaCode struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// 地区ID
-	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	// 地区名称
-	Name string `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
-	// 电话区号
-	PhoneCode string `protobuf:"bytes,3,opt,name=phone_code,proto3" json:"phone_code,omitempty"`
-	// 排序
-	Sort          int32 `protobuf:"varint,4,opt,name=sort,proto3" json:"sort,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DictAreaCode) Reset() {
-	*x = DictAreaCode{}
-	mi := &file_dictionary_dictionary_message_proto_msgTypes[16]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DictAreaCode) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DictAreaCode) ProtoMessage() {}
-
-func (x *DictAreaCode) ProtoReflect() protoreflect.Message {
-	mi := &file_dictionary_dictionary_message_proto_msgTypes[16]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DictAreaCode.ProtoReflect.Descriptor instead.
-func (*DictAreaCode) Descriptor() ([]byte, []int) {
-	return file_dictionary_dictionary_message_proto_rawDescGZIP(), []int{16}
-}
-
-func (x *DictAreaCode) GetId() string {
-	if x != nil {
-		return x.Id
-	}
-	return ""
-}
-
-func (x *DictAreaCode) GetName() string {
-	if x != nil {
-		return x.Name
-	}
-	return ""
-}
-
-func (x *DictAreaCode) GetPhoneCode() string {
-	if x != nil {
-		return x.PhoneCode
-	}
-	return ""
-}
-
-func (x *DictAreaCode) GetSort() int32 {
-	if x != nil {
-		return x.Sort
-	}
-	return 0
-}
-
-// Package message 获取地区电话区号响应消息定义
-type GetGlobalCodeResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// 地区电话区号列表
-	Data          []*DictAreaCode `protobuf:"bytes,1,rep,name=data,proto3" json:"data,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *GetGlobalCodeResponse) Reset() {
-	*x = GetGlobalCodeResponse{}
-	mi := &file_dictionary_dictionary_message_proto_msgTypes[17]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *GetGlobalCodeResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*GetGlobalCodeResponse) ProtoMessage() {}
-
-func (x *GetGlobalCodeResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_dictionary_dictionary_message_proto_msgTypes[17]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use GetGlobalCodeResponse.ProtoReflect.Descriptor instead.
-func (*GetGlobalCodeResponse) Descriptor() ([]byte, []int) {
-	return file_dictionary_dictionary_message_proto_rawDescGZIP(), []int{17}
-}
-
-func (x *GetGlobalCodeResponse) GetData() []*DictAreaCode {
-	if x != nil {
-		return x.Data
-	}
-	return nil
-}
-
-// Package message 客服咨询联系方式
-type ContactInfo struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// 关键字
-	Key string `protobuf:"bytes,1,opt,name=key,proto3" json:"key,omitempty"`
-	// 描述
-	Desc string `protobuf:"bytes,2,opt,name=desc,proto3" json:"desc,omitempty"`
-	// 名称
-	Name string `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`
-	// 当前设置
-	Value string `protobuf:"bytes,4,opt,name=value,proto3" json:"value,omitempty"`
-	// 排序
-	Sort          int32 `protobuf:"varint,5,opt,name=sort,proto3" json:"sort,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ContactInfo) Reset() {
-	*x = ContactInfo{}
-	mi := &file_dictionary_dictionary_message_proto_msgTypes[18]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ContactInfo) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ContactInfo) ProtoMessage() {}
-
-func (x *ContactInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_dictionary_dictionary_message_proto_msgTypes[18]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ContactInfo.ProtoReflect.Descriptor instead.
-func (*ContactInfo) Descriptor() ([]byte, []int) {
-	return file_dictionary_dictionary_message_proto_rawDescGZIP(), []int{18}
-}
-
-func (x *ContactInfo) GetKey() string {
-	if x != nil {
-		return x.Key
-	}
-	return ""
-}
-
-func (x *ContactInfo) GetDesc() string {
-	if x != nil {
-		return x.Desc
-	}
-	return ""
-}
-
-func (x *ContactInfo) GetName() string {
-	if x != nil {
-		return x.Name
-	}
-	return ""
-}
-
-func (x *ContactInfo) GetValue() string {
-	if x != nil {
-		return x.Value
-	}
-	return ""
-}
-
-func (x *ContactInfo) GetSort() int32 {
-	if x != nil {
-		return x.Sort
-	}
-	return 0
-}
-
-// Package message 获取客服咨询联系方式响应消息定义
-type GetContactResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// 联系方式列表
-	Data          []*ContactInfo `protobuf:"bytes,1,rep,name=data,proto3" json:"data,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *GetContactResponse) Reset() {
-	*x = GetContactResponse{}
-	mi := &file_dictionary_dictionary_message_proto_msgTypes[19]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *GetContactResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*GetContactResponse) ProtoMessage() {}
-
-func (x *GetContactResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_dictionary_dictionary_message_proto_msgTypes[19]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use GetContactResponse.ProtoReflect.Descriptor instead.
-func (*GetContactResponse) Descriptor() ([]byte, []int) {
-	return file_dictionary_dictionary_message_proto_rawDescGZIP(), []int{19}
-}
-
-func (x *GetContactResponse) GetData() []*ContactInfo {
-	if x != nil {
-		return x.Data
-	}
-	return nil
-}
-
-// Package message 修改客服咨询联系方式请求消息定义
-type UpdateContactRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// 联系方式列表
-	Contacts      []*ContactInfo `protobuf:"bytes,1,rep,name=contacts,proto3" json:"contacts,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *UpdateContactRequest) Reset() {
-	*x = UpdateContactRequest{}
-	mi := &file_dictionary_dictionary_message_proto_msgTypes[20]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *UpdateContactRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*UpdateContactRequest) ProtoMessage() {}
-
-func (x *UpdateContactRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_dictionary_dictionary_message_proto_msgTypes[20]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use UpdateContactRequest.ProtoReflect.Descriptor instead.
-func (*UpdateContactRequest) Descriptor() ([]byte, []int) {
-	return file_dictionary_dictionary_message_proto_rawDescGZIP(), []int{20}
-}
-
-func (x *UpdateContactRequest) GetContacts() []*ContactInfo {
-	if x != nil {
-		return x.Contacts
-	}
-	return nil
-}
-
-// Package message 平台产品信息
-type ProductInfo struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// id
-	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	// 名称
-	Name string `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
-	// 昵称
-	Nickname      string `protobuf:"bytes,3,opt,name=nickname,proto3" json:"nickname,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ProductInfo) Reset() {
-	*x = ProductInfo{}
-	mi := &file_dictionary_dictionary_message_proto_msgTypes[21]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ProductInfo) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ProductInfo) ProtoMessage() {}
-
-func (x *ProductInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_dictionary_dictionary_message_proto_msgTypes[21]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ProductInfo.ProtoReflect.Descriptor instead.
-func (*ProductInfo) Descriptor() ([]byte, []int) {
-	return file_dictionary_dictionary_message_proto_rawDescGZIP(), []int{21}
-}
-
-func (x *ProductInfo) GetId() string {
-	if x != nil {
-		return x.Id
-	}
-	return ""
-}
-
-func (x *ProductInfo) GetName() string {
-	if x != nil {
-		return x.Name
-	}
-	return ""
-}
-
-func (x *ProductInfo) GetNickname() string {
-	if x != nil {
-		return x.Nickname
-	}
-	return ""
-}
-
-// Package message 获取平台产品(网关)列表响应消息定义
-type GetGWListResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// 平台产品列表
-	Data          []*ProductInfo `protobuf:"bytes,1,rep,name=data,proto3" json:"data,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *GetGWListResponse) Reset() {
-	*x = GetGWListResponse{}
-	mi := &file_dictionary_dictionary_message_proto_msgTypes[22]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *GetGWListResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*GetGWListResponse) ProtoMessage() {}
-
-func (x *GetGWListResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_dictionary_dictionary_message_proto_msgTypes[22]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use GetGWListResponse.ProtoReflect.Descriptor instead.
-func (*GetGWListResponse) Descriptor() ([]byte, []int) {
-	return file_dictionary_dictionary_message_proto_rawDescGZIP(), []int{22}
-}
-
-func (x *GetGWListResponse) GetData() []*ProductInfo {
-	if x != nil {
-		return x.Data
-	}
-	return nil
-}
-
-// Package message EMS网关型号项
-type EmsGatewayItem struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// 网关ID
-	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	// 网关名称
-	Name string `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
-	// 网关别称
-	Nickname string `protobuf:"bytes,3,opt,name=nickname,proto3" json:"nickname,omitempty"`
-	// 网关类别(储能网关-ess.gw 采集网关-pv.gw 二级并网柜网关-eco.gw)
-	Sort          string `protobuf:"bytes,4,opt,name=sort,proto3" json:"sort,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *EmsGatewayItem) Reset() {
-	*x = EmsGatewayItem{}
-	mi := &file_dictionary_dictionary_message_proto_msgTypes[23]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *EmsGatewayItem) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*EmsGatewayItem) ProtoMessage() {}
-
-func (x *EmsGatewayItem) ProtoReflect() protoreflect.Message {
-	mi := &file_dictionary_dictionary_message_proto_msgTypes[23]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use EmsGatewayItem.ProtoReflect.Descriptor instead.
-func (*EmsGatewayItem) Descriptor() ([]byte, []int) {
-	return file_dictionary_dictionary_message_proto_rawDescGZIP(), []int{23}
-}
-
-func (x *EmsGatewayItem) GetId() string {
-	if x != nil {
-		return x.Id
-	}
-	return ""
-}
-
-func (x *EmsGatewayItem) GetName() string {
-	if x != nil {
-		return x.Name
-	}
-	return ""
-}
-
-func (x *EmsGatewayItem) GetNickname() string {
-	if x != nil {
-		return x.Nickname
-	}
-	return ""
-}
-
-func (x *EmsGatewayItem) GetSort() string {
-	if x != nil {
-		return x.Sort
-	}
-	return ""
-}
-
-// Package message EMS网关型号
-type EmsGatewayInfo struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// 型号ID
-	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	// 型号名称
-	Name string `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
-	// 型号别称
-	Nickname string `protobuf:"bytes,3,opt,name=nickname,proto3" json:"nickname,omitempty"`
-	// 网关列表
-	Gateways []*EmsGatewayItem `protobuf:"bytes,4,rep,name=gateways,json=gateway,proto3" json:"gateways,omitempty"`
-	// EMS类别(1 - elecnova ems[x86] 2 - gold ems[arm])
-	Sort          int32 `protobuf:"varint,5,opt,name=sort,proto3" json:"sort,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *EmsGatewayInfo) Reset() {
-	*x = EmsGatewayInfo{}
-	mi := &file_dictionary_dictionary_message_proto_msgTypes[24]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *EmsGatewayInfo) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*EmsGatewayInfo) ProtoMessage() {}
-
-func (x *EmsGatewayInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_dictionary_dictionary_message_proto_msgTypes[24]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use EmsGatewayInfo.ProtoReflect.Descriptor instead.
-func (*EmsGatewayInfo) Descriptor() ([]byte, []int) {
-	return file_dictionary_dictionary_message_proto_rawDescGZIP(), []int{24}
-}
-
-func (x *EmsGatewayInfo) GetId() string {
-	if x != nil {
-		return x.Id
-	}
-	return ""
-}
-
-func (x *EmsGatewayInfo) GetName() string {
-	if x != nil {
-		return x.Name
-	}
-	return ""
-}
-
-func (x *EmsGatewayInfo) GetNickname() string {
-	if x != nil {
-		return x.Nickname
-	}
-	return ""
-}
-
-func (x *EmsGatewayInfo) GetGateways() []*EmsGatewayItem {
-	if x != nil {
-		return x.Gateways
-	}
-	return nil
-}
-
-func (x *EmsGatewayInfo) GetSort() int32 {
-	if x != nil {
-		return x.Sort
-	}
-	return 0
-}
-
-// Package message 获取EMS网关型号列表响应消息定义
-type EmsGatewayResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// EMS网关型号列表
-	Data          []*EmsGatewayInfo `protobuf:"bytes,1,rep,name=data,proto3" json:"data,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *EmsGatewayResponse) Reset() {
-	*x = EmsGatewayResponse{}
-	mi := &file_dictionary_dictionary_message_proto_msgTypes[25]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *EmsGatewayResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*EmsGatewayResponse) ProtoMessage() {}
-
-func (x *EmsGatewayResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_dictionary_dictionary_message_proto_msgTypes[25]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use EmsGatewayResponse.ProtoReflect.Descriptor instead.
-func (*EmsGatewayResponse) Descriptor() ([]byte, []int) {
-	return file_dictionary_dictionary_message_proto_rawDescGZIP(), []int{25}
-}
-
-func (x *EmsGatewayResponse) GetData() []*EmsGatewayInfo {
-	if x != nil {
-		return x.Data
-	}
-	return nil
-}
-
-// Package message 获取模板型号列表请求消息定义
-type GetProModelRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// 模板类型(ess储能 pv光伏，空为全部)
-	TplType string `protobuf:"bytes,1,opt,name=tpl_type,proto3" json:"tpl_type,omitempty"`
-	// 语言(zh/en)
-	Lang          string `protobuf:"bytes,2,opt,name=lang,proto3" json:"lang,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *GetProModelRequest) Reset() {
-	*x = GetProModelRequest{}
-	mi := &file_dictionary_dictionary_message_proto_msgTypes[26]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *GetProModelRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*GetProModelRequest) ProtoMessage() {}
-
-func (x *GetProModelRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_dictionary_dictionary_message_proto_msgTypes[26]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use GetProModelRequest.ProtoReflect.Descriptor instead.
-func (*GetProModelRequest) Descriptor() ([]byte, []int) {
-	return file_dictionary_dictionary_message_proto_rawDescGZIP(), []int{26}
-}
-
-func (x *GetProModelRequest) GetTplType() string {
-	if x != nil {
-		return x.TplType
-	}
-	return ""
-}
-
-func (x *GetProModelRequest) GetLang() string {
-	if x != nil {
-		return x.Lang
-	}
-	return ""
-}
-
-// Package message 模板型号(列表项)
-type DictProductModel struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// 设备型号
-	Key string `protobuf:"bytes,1,opt,name=key,proto3" json:"key,omitempty"`
-	// 设备型号名称
-	Name string `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
-	// 类型(ess/pv)
-	Type          string `protobuf:"bytes,3,opt,name=type,proto3" json:"type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DictProductModel) Reset() {
-	*x = DictProductModel{}
-	mi := &file_dictionary_dictionary_message_proto_msgTypes[27]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DictProductModel) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DictProductModel) ProtoMessage() {}
-
-func (x *DictProductModel) ProtoReflect() protoreflect.Message {
-	mi := &file_dictionary_dictionary_message_proto_msgTypes[27]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DictProductModel.ProtoReflect.Descriptor instead.
-func (*DictProductModel) Descriptor() ([]byte, []int) {
-	return file_dictionary_dictionary_message_proto_rawDescGZIP(), []int{27}
-}
-
-func (x *DictProductModel) GetKey() string {
-	if x != nil {
-		return x.Key
-	}
-	return ""
-}
-
-func (x *DictProductModel) GetName() string {
-	if x != nil {
-		return x.Name
-	}
-	return ""
-}
-
-func (x *DictProductModel) GetType() string {
-	if x != nil {
-		return x.Type
-	}
-	return ""
-}
-
-// Package message 获取模板型号列表响应消息定义
-type GetProModelResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// 模板型号列表
-	Data          []*DictProductModel `protobuf:"bytes,1,rep,name=data,proto3" json:"data,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *GetProModelResponse) Reset() {
-	*x = GetProModelResponse{}
-	mi := &file_dictionary_dictionary_message_proto_msgTypes[28]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *GetProModelResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*GetProModelResponse) ProtoMessage() {}
-
-func (x *GetProModelResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_dictionary_dictionary_message_proto_msgTypes[28]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use GetProModelResponse.ProtoReflect.Descriptor instead.
-func (*GetProModelResponse) Descriptor() ([]byte, []int) {
-	return file_dictionary_dictionary_message_proto_rawDescGZIP(), []int{28}
-}
-
-func (x *GetProModelResponse) GetData() []*DictProductModel {
-	if x != nil {
-		return x.Data
-	}
-	return nil
-}
-
-// Package message 新增模板型号请求消息定义
-type CreateProModelRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// 语种 {"zh":"中文", "en":"English"}
-	Lang map[string]string `protobuf:"bytes,1,rep,name=lang,proto3" json:"lang,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
-	// 设备型号
-	Key string `protobuf:"bytes,2,opt,name=key,proto3" json:"key,omitempty"`
-	// 模板类型(ess/pv)
-	Type          string `protobuf:"bytes,3,opt,name=type,proto3" json:"type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *CreateProModelRequest) Reset() {
-	*x = CreateProModelRequest{}
-	mi := &file_dictionary_dictionary_message_proto_msgTypes[29]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *CreateProModelRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*CreateProModelRequest) ProtoMessage() {}
-
-func (x *CreateProModelRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_dictionary_dictionary_message_proto_msgTypes[29]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use CreateProModelRequest.ProtoReflect.Descriptor instead.
-func (*CreateProModelRequest) Descriptor() ([]byte, []int) {
-	return file_dictionary_dictionary_message_proto_rawDescGZIP(), []int{29}
-}
-
-func (x *CreateProModelRequest) GetLang() map[string]string {
-	if x != nil {
-		return x.Lang
-	}
-	return nil
-}
-
-func (x *CreateProModelRequest) GetKey() string {
-	if x != nil {
-		return x.Key
-	}
-	return ""
-}
-
-func (x *CreateProModelRequest) GetType() string {
-	if x != nil {
-		return x.Type
-	}
-	return ""
-}
-
 var File_dictionary_dictionary_message_proto protoreflect.FileDescriptor
 
 const file_dictionary_dictionary_message_proto_rawDesc = "" +
 	"\n" +
-	"#dictionary/dictionary_message.proto\x12\x17fusion.proto.dictionary\x1a\x1bbuf/validate/validate.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"w\n" +
-	"\x0eGetDictRequest\x12\x1d\n" +
-	"\x03key\x18\x01 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18dH\x00R\x03key\x12\x1b\n" +
-	"\x02id\x18\x02 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18(H\x00R\x02id\x12\x1d\n" +
-	"\x04flag\x18\x03 \x01(\x05B\t\xbaH\x06\x1a\x04\x18\x02 \x00R\x04flagB\n" +
-	"\n" +
-	"\bselector\"\x82\x01\n" +
+	"#dictionary/dictionary_message.proto\x12\x17fusion.proto.dictionary\x1a\x1bbuf/validate/validate.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"N\n" +
+	"\x12GetDictByIDRequest\x12\x19\n" +
+	"\x02id\x18\x01 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18(R\x02id\x12\x1d\n" +
+	"\x04flag\x18\x02 \x01(\x05B\t\xbaH\x06\x1a\x04\x18\x02 \x00R\x04flag\"Q\n" +
+	"\x13GetDictByKeyRequest\x12\x1b\n" +
+	"\x03key\x18\x01 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18dR\x03key\x12\x1d\n" +
+	"\x04flag\x18\x02 \x01(\x05B\t\xbaH\x06\x1a\x04\x18\x02 \x00R\x04flag\"\x82\x01\n" +
 	"\x0fGetDictResponse\x129\n" +
 	"\x04data\x18\x01 \x01(\v2#.fusion.proto.dictionary.DictDetailH\x00R\x04data\x12\x16\n" +
 	"\x05value\x18\x02 \x01(\tH\x00R\x05value\x12\x12\n" +
@@ -2031,77 +929,7 @@ const file_dictionary_dictionary_message_proto_rawDesc = "" +
 	"\tdeletable\x18\t \x01(\bR\tdeletable\x12&\n" +
 	"\x0eupdate_by_name\x18\n" +
 	" \x01(\tR\x0eupdate_by_name\x12&\n" +
-	"\x0ecreate_by_name\x18\v \x01(\tR\x0ecreate_by_name\"0\n" +
-	"\x06KVPair\x12\x10\n" +
-	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value\"/\n" +
-	"\x10GetKVDictRequest\x12\x1b\n" +
-	"\x03key\x18\x01 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18dR\x03key\"H\n" +
-	"\x11GetKVDictResponse\x123\n" +
-	"\x04data\x18\x01 \x03(\v2\x1f.fusion.proto.dictionary.KVPairR\x04data\"4\n" +
-	"\x15GetSystemModelRequest\x12\x1b\n" +
-	"\x04lang\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x18\n" +
-	"R\x04lang\"M\n" +
-	"\x16GetSystemModelResponse\x123\n" +
-	"\x04data\x18\x01 \x03(\v2\x1f.fusion.proto.dictionary.KVPairR\x04data\"3\n" +
-	"\x14GetGlobalCodeRequest\x12\x1b\n" +
-	"\x04lang\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x18\n" +
-	"R\x04lang\"f\n" +
-	"\fDictAreaCode\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
-	"\x04name\x18\x02 \x01(\tR\x04name\x12\x1e\n" +
-	"\n" +
-	"phone_code\x18\x03 \x01(\tR\n" +
-	"phone_code\x12\x12\n" +
-	"\x04sort\x18\x04 \x01(\x05R\x04sort\"R\n" +
-	"\x15GetGlobalCodeResponse\x129\n" +
-	"\x04data\x18\x01 \x03(\v2%.fusion.proto.dictionary.DictAreaCodeR\x04data\"q\n" +
-	"\vContactInfo\x12\x10\n" +
-	"\x03key\x18\x01 \x01(\tR\x03key\x12\x12\n" +
-	"\x04desc\x18\x02 \x01(\tR\x04desc\x12\x12\n" +
-	"\x04name\x18\x03 \x01(\tR\x04name\x12\x14\n" +
-	"\x05value\x18\x04 \x01(\tR\x05value\x12\x12\n" +
-	"\x04sort\x18\x05 \x01(\x05R\x04sort\"N\n" +
-	"\x12GetContactResponse\x128\n" +
-	"\x04data\x18\x01 \x03(\v2$.fusion.proto.dictionary.ContactInfoR\x04data\"X\n" +
-	"\x14UpdateContactRequest\x12@\n" +
-	"\bcontacts\x18\x01 \x03(\v2$.fusion.proto.dictionary.ContactInfoR\bcontacts\"M\n" +
-	"\vProductInfo\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
-	"\x04name\x18\x02 \x01(\tR\x04name\x12\x1a\n" +
-	"\bnickname\x18\x03 \x01(\tR\bnickname\"M\n" +
-	"\x11GetGWListResponse\x128\n" +
-	"\x04data\x18\x01 \x03(\v2$.fusion.proto.dictionary.ProductInfoR\x04data\"d\n" +
-	"\x0eEmsGatewayItem\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
-	"\x04name\x18\x02 \x01(\tR\x04name\x12\x1a\n" +
-	"\bnickname\x18\x03 \x01(\tR\bnickname\x12\x12\n" +
-	"\x04sort\x18\x04 \x01(\tR\x04sort\"\xa8\x01\n" +
-	"\x0eEmsGatewayInfo\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
-	"\x04name\x18\x02 \x01(\tR\x04name\x12\x1a\n" +
-	"\bnickname\x18\x03 \x01(\tR\bnickname\x12B\n" +
-	"\bgateways\x18\x04 \x03(\v2'.fusion.proto.dictionary.EmsGatewayItemR\agateway\x12\x12\n" +
-	"\x04sort\x18\x05 \x01(\x05R\x04sort\"Q\n" +
-	"\x12EmsGatewayResponse\x12;\n" +
-	"\x04data\x18\x01 \x03(\v2'.fusion.proto.dictionary.EmsGatewayInfoR\x04data\"V\n" +
-	"\x12GetProModelRequest\x12#\n" +
-	"\btpl_type\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x18\x14R\btpl_type\x12\x1b\n" +
-	"\x04lang\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x18\n" +
-	"R\x04lang\"L\n" +
-	"\x10DictProductModel\x12\x10\n" +
-	"\x03key\x18\x01 \x01(\tR\x03key\x12\x12\n" +
-	"\x04name\x18\x02 \x01(\tR\x04name\x12\x12\n" +
-	"\x04type\x18\x03 \x01(\tR\x04type\"T\n" +
-	"\x13GetProModelResponse\x12=\n" +
-	"\x04data\x18\x01 \x03(\v2).fusion.proto.dictionary.DictProductModelR\x04data\"\xda\x01\n" +
-	"\x15CreateProModelRequest\x12L\n" +
-	"\x04lang\x18\x01 \x03(\v28.fusion.proto.dictionary.CreateProModelRequest.LangEntryR\x04lang\x12\x1b\n" +
-	"\x03key\x18\x02 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18dR\x03key\x12\x1d\n" +
-	"\x04type\x18\x03 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18\x14R\x04type\x1a7\n" +
-	"\tLangEntry\x12\x10\n" +
-	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01B\xd7\x01\n" +
+	"\x0ecreate_by_name\x18\v \x01(\tR\x0ecreate_by_nameB\xd7\x01\n" +
 	"\x1bcom.fusion.proto.dictionaryB\x16DictionaryMessageProtoP\x01Z\"fusion.proto.dictionary;dictionary\xa2\x02\x03FPD\xaa\x02\x17Fusion.Proto.Dictionary\xca\x02\x17Fusion\\Proto\\Dictionary\xe2\x02#Fusion\\Proto\\Dictionary\\GPBMetadata\xea\x02\x19Fusion::Proto::Dictionaryb\x06proto3"
 
 var (
@@ -2116,61 +944,31 @@ func file_dictionary_dictionary_message_proto_rawDescGZIP() []byte {
 	return file_dictionary_dictionary_message_proto_rawDescData
 }
 
-var file_dictionary_dictionary_message_proto_msgTypes = make([]protoimpl.MessageInfo, 31)
+var file_dictionary_dictionary_message_proto_msgTypes = make([]protoimpl.MessageInfo, 11)
 var file_dictionary_dictionary_message_proto_goTypes = []any{
-	(*GetDictRequest)(nil),         // 0: fusion.proto.dictionary.GetDictRequest
-	(*GetDictResponse)(nil),        // 1: fusion.proto.dictionary.GetDictResponse
-	(*CreateDictRequest)(nil),      // 2: fusion.proto.dictionary.CreateDictRequest
-	(*CreateDictResponse)(nil),     // 3: fusion.proto.dictionary.CreateDictResponse
-	(*UpdateDictRequest)(nil),      // 4: fusion.proto.dictionary.UpdateDictRequest
-	(*DeleteDictRequest)(nil),      // 5: fusion.proto.dictionary.DeleteDictRequest
-	(*ListDictRequest)(nil),        // 6: fusion.proto.dictionary.ListDictRequest
-	(*ListDictResponse)(nil),       // 7: fusion.proto.dictionary.ListDictResponse
-	(*DictData)(nil),               // 8: fusion.proto.dictionary.DictData
-	(*DictDetail)(nil),             // 9: fusion.proto.dictionary.DictDetail
-	(*KVPair)(nil),                 // 10: fusion.proto.dictionary.KVPair
-	(*GetKVDictRequest)(nil),       // 11: fusion.proto.dictionary.GetKVDictRequest
-	(*GetKVDictResponse)(nil),      // 12: fusion.proto.dictionary.GetKVDictResponse
-	(*GetSystemModelRequest)(nil),  // 13: fusion.proto.dictionary.GetSystemModelRequest
-	(*GetSystemModelResponse)(nil), // 14: fusion.proto.dictionary.GetSystemModelResponse
-	(*GetGlobalCodeRequest)(nil),   // 15: fusion.proto.dictionary.GetGlobalCodeRequest
-	(*DictAreaCode)(nil),           // 16: fusion.proto.dictionary.DictAreaCode
-	(*GetGlobalCodeResponse)(nil),  // 17: fusion.proto.dictionary.GetGlobalCodeResponse
-	(*ContactInfo)(nil),            // 18: fusion.proto.dictionary.ContactInfo
-	(*GetContactResponse)(nil),     // 19: fusion.proto.dictionary.GetContactResponse
-	(*UpdateContactRequest)(nil),   // 20: fusion.proto.dictionary.UpdateContactRequest
-	(*ProductInfo)(nil),            // 21: fusion.proto.dictionary.ProductInfo
-	(*GetGWListResponse)(nil),      // 22: fusion.proto.dictionary.GetGWListResponse
-	(*EmsGatewayItem)(nil),         // 23: fusion.proto.dictionary.EmsGatewayItem
-	(*EmsGatewayInfo)(nil),         // 24: fusion.proto.dictionary.EmsGatewayInfo
-	(*EmsGatewayResponse)(nil),     // 25: fusion.proto.dictionary.EmsGatewayResponse
-	(*GetProModelRequest)(nil),     // 26: fusion.proto.dictionary.GetProModelRequest
-	(*DictProductModel)(nil),       // 27: fusion.proto.dictionary.DictProductModel
-	(*GetProModelResponse)(nil),    // 28: fusion.proto.dictionary.GetProModelResponse
-	(*CreateProModelRequest)(nil),  // 29: fusion.proto.dictionary.CreateProModelRequest
-	nil,                            // 30: fusion.proto.dictionary.CreateProModelRequest.LangEntry
-	(*timestamppb.Timestamp)(nil),  // 31: google.protobuf.Timestamp
+	(*GetDictByIDRequest)(nil),    // 0: fusion.proto.dictionary.GetDictByIDRequest
+	(*GetDictByKeyRequest)(nil),   // 1: fusion.proto.dictionary.GetDictByKeyRequest
+	(*GetDictResponse)(nil),       // 2: fusion.proto.dictionary.GetDictResponse
+	(*CreateDictRequest)(nil),     // 3: fusion.proto.dictionary.CreateDictRequest
+	(*CreateDictResponse)(nil),    // 4: fusion.proto.dictionary.CreateDictResponse
+	(*UpdateDictRequest)(nil),     // 5: fusion.proto.dictionary.UpdateDictRequest
+	(*DeleteDictRequest)(nil),     // 6: fusion.proto.dictionary.DeleteDictRequest
+	(*ListDictRequest)(nil),       // 7: fusion.proto.dictionary.ListDictRequest
+	(*ListDictResponse)(nil),      // 8: fusion.proto.dictionary.ListDictResponse
+	(*DictData)(nil),              // 9: fusion.proto.dictionary.DictData
+	(*DictDetail)(nil),            // 10: fusion.proto.dictionary.DictDetail
+	(*timestamppb.Timestamp)(nil), // 11: google.protobuf.Timestamp
 }
 var file_dictionary_dictionary_message_proto_depIdxs = []int32{
-	9,  // 0: fusion.proto.dictionary.GetDictResponse.data:type_name -> fusion.proto.dictionary.DictDetail
-	8,  // 1: fusion.proto.dictionary.ListDictResponse.data:type_name -> fusion.proto.dictionary.DictData
-	31, // 2: fusion.proto.dictionary.DictDetail.update_at:type_name -> google.protobuf.Timestamp
-	31, // 3: fusion.proto.dictionary.DictDetail.create_at:type_name -> google.protobuf.Timestamp
-	10, // 4: fusion.proto.dictionary.GetKVDictResponse.data:type_name -> fusion.proto.dictionary.KVPair
-	10, // 5: fusion.proto.dictionary.GetSystemModelResponse.data:type_name -> fusion.proto.dictionary.KVPair
-	16, // 6: fusion.proto.dictionary.GetGlobalCodeResponse.data:type_name -> fusion.proto.dictionary.DictAreaCode
-	18, // 7: fusion.proto.dictionary.GetContactResponse.data:type_name -> fusion.proto.dictionary.ContactInfo
-	18, // 8: fusion.proto.dictionary.UpdateContactRequest.contacts:type_name -> fusion.proto.dictionary.ContactInfo
-	21, // 9: fusion.proto.dictionary.GetGWListResponse.data:type_name -> fusion.proto.dictionary.ProductInfo
-	23, // 10: fusion.proto.dictionary.EmsGatewayInfo.gateways:type_name -> fusion.proto.dictionary.EmsGatewayItem
-	24, // 11: fusion.proto.dictionary.EmsGatewayResponse.data:type_name -> fusion.proto.dictionary.EmsGatewayInfo
-	27, // 12: fusion.proto.dictionary.GetProModelResponse.data:type_name -> fusion.proto.dictionary.DictProductModel
-	30, // 13: fusion.proto.dictionary.CreateProModelRequest.lang:type_name -> fusion.proto.dictionary.CreateProModelRequest.LangEntry
-	14, // [14:14] is the sub-list for method output_type
-	14, // [14:14] is the sub-list for method input_type
-	14, // [14:14] is the sub-list for extension type_name
-	14, // [14:14] is the sub-list for extension extendee
-	0,  // [0:14] is the sub-list for field type_name
+	10, // 0: fusion.proto.dictionary.GetDictResponse.data:type_name -> fusion.proto.dictionary.DictDetail
+	9,  // 1: fusion.proto.dictionary.ListDictResponse.data:type_name -> fusion.proto.dictionary.DictData
+	11, // 2: fusion.proto.dictionary.DictDetail.update_at:type_name -> google.protobuf.Timestamp
+	11, // 3: fusion.proto.dictionary.DictDetail.create_at:type_name -> google.protobuf.Timestamp
+	4,  // [4:4] is the sub-list for method output_type
+	4,  // [4:4] is the sub-list for method input_type
+	4,  // [4:4] is the sub-list for extension type_name
+	4,  // [4:4] is the sub-list for extension extendee
+	0,  // [0:4] is the sub-list for field type_name
 }
 
 func init() { file_dictionary_dictionary_message_proto_init() }
@@ -2178,11 +976,7 @@ func file_dictionary_dictionary_message_proto_init() {
 	if File_dictionary_dictionary_message_proto != nil {
 		return
 	}
-	file_dictionary_dictionary_message_proto_msgTypes[0].OneofWrappers = []any{
-		(*GetDictRequest_Key)(nil),
-		(*GetDictRequest_Id)(nil),
-	}
-	file_dictionary_dictionary_message_proto_msgTypes[1].OneofWrappers = []any{
+	file_dictionary_dictionary_message_proto_msgTypes[2].OneofWrappers = []any{
 		(*GetDictResponse_Data)(nil),
 		(*GetDictResponse_Value)(nil),
 	}
@@ -2192,7 +986,7 @@ func file_dictionary_dictionary_message_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_dictionary_dictionary_message_proto_rawDesc), len(file_dictionary_dictionary_message_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   31,
+			NumMessages:   11,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
