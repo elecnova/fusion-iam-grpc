@@ -953,6 +953,116 @@ func (x *TreeMenuResponse) GetData() []*MenuTreeNode {
 	return nil
 }
 
+// Package message 获取角色菜单ID列表请求消息定义
+type GetMenuRolesRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// 角色ID
+	RoleId string `protobuf:"bytes,1,opt,name=role_id,proto3" json:"role_id,omitempty"`
+	// 用户ID（当project_id非空时用于解析用户在该项目的角色）
+	UserId string `protobuf:"bytes,2,opt,name=user_id,proto3" json:"user_id,omitempty"`
+	// 项目ID，非空时优先以用户在该项目的角色为准
+	ProjectId     string `protobuf:"bytes,3,opt,name=project_id,proto3" json:"project_id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetMenuRolesRequest) Reset() {
+	*x = GetMenuRolesRequest{}
+	mi := &file_menu_menu_message_proto_msgTypes[12]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetMenuRolesRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetMenuRolesRequest) ProtoMessage() {}
+
+func (x *GetMenuRolesRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_menu_menu_message_proto_msgTypes[12]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetMenuRolesRequest.ProtoReflect.Descriptor instead.
+func (*GetMenuRolesRequest) Descriptor() ([]byte, []int) {
+	return file_menu_menu_message_proto_rawDescGZIP(), []int{12}
+}
+
+func (x *GetMenuRolesRequest) GetRoleId() string {
+	if x != nil {
+		return x.RoleId
+	}
+	return ""
+}
+
+func (x *GetMenuRolesRequest) GetUserId() string {
+	if x != nil {
+		return x.UserId
+	}
+	return ""
+}
+
+func (x *GetMenuRolesRequest) GetProjectId() string {
+	if x != nil {
+		return x.ProjectId
+	}
+	return ""
+}
+
+// Package message 获取角色菜单ID列表响应消息定义
+type GetMenuRolesResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// 菜单ID列表
+	MenuIds       []string `protobuf:"bytes,1,rep,name=menu_ids,proto3" json:"menu_ids,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetMenuRolesResponse) Reset() {
+	*x = GetMenuRolesResponse{}
+	mi := &file_menu_menu_message_proto_msgTypes[13]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetMenuRolesResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetMenuRolesResponse) ProtoMessage() {}
+
+func (x *GetMenuRolesResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_menu_menu_message_proto_msgTypes[13]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetMenuRolesResponse.ProtoReflect.Descriptor instead.
+func (*GetMenuRolesResponse) Descriptor() ([]byte, []int) {
+	return file_menu_menu_message_proto_rawDescGZIP(), []int{13}
+}
+
+func (x *GetMenuRolesResponse) GetMenuIds() []string {
+	if x != nil {
+		return x.MenuIds
+	}
+	return nil
+}
+
 var File_menu_menu_message_proto protoreflect.FileDescriptor
 
 const file_menu_menu_message_proto_rawDesc = "" +
@@ -1032,7 +1142,15 @@ const file_menu_menu_message_proto_rawDesc = "" +
 	" \x01(\x05R\achannel\x12;\n" +
 	"\bchildren\x18\v \x03(\v2\x1f.fusion.proto.menu.MenuTreeNodeR\bchildren\"G\n" +
 	"\x10TreeMenuResponse\x123\n" +
-	"\x04data\x18\x01 \x03(\v2\x1f.fusion.proto.menu.MenuTreeNodeR\x04dataB\xa7\x01\n" +
+	"\x04data\x18\x01 \x03(\v2\x1f.fusion.proto.menu.MenuTreeNodeR\x04data\"\x84\x01\n" +
+	"\x13GetMenuRolesRequest\x12!\n" +
+	"\arole_id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x18(R\arole_id\x12!\n" +
+	"\auser_id\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x18(R\auser_id\x12'\n" +
+	"\n" +
+	"project_id\x18\x03 \x01(\tB\a\xbaH\x04r\x02\x18(R\n" +
+	"project_id\"2\n" +
+	"\x14GetMenuRolesResponse\x12\x1a\n" +
+	"\bmenu_ids\x18\x01 \x03(\tR\bmenu_idsB\xa7\x01\n" +
 	"\x15com.fusion.proto.menuB\x10MenuMessageProtoP\x01Z\x16fusion.proto.menu;menu\xa2\x02\x03FPM\xaa\x02\x11Fusion.Proto.Menu\xca\x02\x11Fusion\\Proto\\Menu\xe2\x02\x1dFusion\\Proto\\Menu\\GPBMetadata\xea\x02\x13Fusion::Proto::Menub\x06proto3"
 
 var (
@@ -1047,20 +1165,22 @@ func file_menu_menu_message_proto_rawDescGZIP() []byte {
 	return file_menu_menu_message_proto_rawDescData
 }
 
-var file_menu_menu_message_proto_msgTypes = make([]protoimpl.MessageInfo, 12)
+var file_menu_menu_message_proto_msgTypes = make([]protoimpl.MessageInfo, 14)
 var file_menu_menu_message_proto_goTypes = []any{
-	(*MenuName)(nil),           // 0: fusion.proto.menu.MenuName
-	(*MenuData)(nil),           // 1: fusion.proto.menu.MenuData
-	(*GetMenuRequest)(nil),     // 2: fusion.proto.menu.GetMenuRequest
-	(*GetMenuResponse)(nil),    // 3: fusion.proto.menu.GetMenuResponse
-	(*UpsertMenuRequest)(nil),  // 4: fusion.proto.menu.UpsertMenuRequest
-	(*UpsertMenuResponse)(nil), // 5: fusion.proto.menu.UpsertMenuResponse
-	(*DeleteMenuRequest)(nil),  // 6: fusion.proto.menu.DeleteMenuRequest
-	(*ListMenusRequest)(nil),   // 7: fusion.proto.menu.ListMenusRequest
-	(*ListMenusResponse)(nil),  // 8: fusion.proto.menu.ListMenusResponse
-	(*TreeMenuRequest)(nil),    // 9: fusion.proto.menu.TreeMenuRequest
-	(*MenuTreeNode)(nil),       // 10: fusion.proto.menu.MenuTreeNode
-	(*TreeMenuResponse)(nil),   // 11: fusion.proto.menu.TreeMenuResponse
+	(*MenuName)(nil),             // 0: fusion.proto.menu.MenuName
+	(*MenuData)(nil),             // 1: fusion.proto.menu.MenuData
+	(*GetMenuRequest)(nil),       // 2: fusion.proto.menu.GetMenuRequest
+	(*GetMenuResponse)(nil),      // 3: fusion.proto.menu.GetMenuResponse
+	(*UpsertMenuRequest)(nil),    // 4: fusion.proto.menu.UpsertMenuRequest
+	(*UpsertMenuResponse)(nil),   // 5: fusion.proto.menu.UpsertMenuResponse
+	(*DeleteMenuRequest)(nil),    // 6: fusion.proto.menu.DeleteMenuRequest
+	(*ListMenusRequest)(nil),     // 7: fusion.proto.menu.ListMenusRequest
+	(*ListMenusResponse)(nil),    // 8: fusion.proto.menu.ListMenusResponse
+	(*TreeMenuRequest)(nil),      // 9: fusion.proto.menu.TreeMenuRequest
+	(*MenuTreeNode)(nil),         // 10: fusion.proto.menu.MenuTreeNode
+	(*TreeMenuResponse)(nil),     // 11: fusion.proto.menu.TreeMenuResponse
+	(*GetMenuRolesRequest)(nil),  // 12: fusion.proto.menu.GetMenuRolesRequest
+	(*GetMenuRolesResponse)(nil), // 13: fusion.proto.menu.GetMenuRolesResponse
 }
 var file_menu_menu_message_proto_depIdxs = []int32{
 	0,  // 0: fusion.proto.menu.MenuData.name_detail:type_name -> fusion.proto.menu.MenuName
@@ -1089,7 +1209,7 @@ func file_menu_menu_message_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_menu_menu_message_proto_rawDesc), len(file_menu_menu_message_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   12,
+			NumMessages:   14,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

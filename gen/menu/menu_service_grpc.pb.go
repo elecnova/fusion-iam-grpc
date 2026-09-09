@@ -30,11 +30,12 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	MenuService_GetMenu_FullMethodName    = "/fusion.proto.menu.MenuService/GetMenu"
-	MenuService_UpsertMenu_FullMethodName = "/fusion.proto.menu.MenuService/UpsertMenu"
-	MenuService_DeleteMenu_FullMethodName = "/fusion.proto.menu.MenuService/DeleteMenu"
-	MenuService_ListMenus_FullMethodName  = "/fusion.proto.menu.MenuService/ListMenus"
-	MenuService_TreeMenu_FullMethodName   = "/fusion.proto.menu.MenuService/TreeMenu"
+	MenuService_GetMenu_FullMethodName      = "/fusion.proto.menu.MenuService/GetMenu"
+	MenuService_UpsertMenu_FullMethodName   = "/fusion.proto.menu.MenuService/UpsertMenu"
+	MenuService_DeleteMenu_FullMethodName   = "/fusion.proto.menu.MenuService/DeleteMenu"
+	MenuService_ListMenus_FullMethodName    = "/fusion.proto.menu.MenuService/ListMenus"
+	MenuService_TreeMenu_FullMethodName     = "/fusion.proto.menu.MenuService/TreeMenu"
+	MenuService_GetMenuRoles_FullMethodName = "/fusion.proto.menu.MenuService/GetMenuRoles"
 )
 
 // MenuServiceClient is the client API for MenuService service.
@@ -53,6 +54,8 @@ type MenuServiceClient interface {
 	ListMenus(ctx context.Context, in *ListMenusRequest, opts ...grpc.CallOption) (*ListMenusResponse, error)
 	// 获取全局菜单树
 	TreeMenu(ctx context.Context, in *TreeMenuRequest, opts ...grpc.CallOption) (*TreeMenuResponse, error)
+	// 获取指定角色的菜单ID列表
+	GetMenuRoles(ctx context.Context, in *GetMenuRolesRequest, opts ...grpc.CallOption) (*GetMenuRolesResponse, error)
 }
 
 type menuServiceClient struct {
@@ -113,6 +116,16 @@ func (c *menuServiceClient) TreeMenu(ctx context.Context, in *TreeMenuRequest, o
 	return out, nil
 }
 
+func (c *menuServiceClient) GetMenuRoles(ctx context.Context, in *GetMenuRolesRequest, opts ...grpc.CallOption) (*GetMenuRolesResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetMenuRolesResponse)
+	err := c.cc.Invoke(ctx, MenuService_GetMenuRoles_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // MenuServiceServer is the server API for MenuService service.
 // All implementations must embed UnimplementedMenuServiceServer
 // for forward compatibility.
@@ -129,6 +142,8 @@ type MenuServiceServer interface {
 	ListMenus(context.Context, *ListMenusRequest) (*ListMenusResponse, error)
 	// 获取全局菜单树
 	TreeMenu(context.Context, *TreeMenuRequest) (*TreeMenuResponse, error)
+	// 获取指定角色的菜单ID列表
+	GetMenuRoles(context.Context, *GetMenuRolesRequest) (*GetMenuRolesResponse, error)
 	mustEmbedUnimplementedMenuServiceServer()
 }
 
@@ -153,6 +168,9 @@ func (UnimplementedMenuServiceServer) ListMenus(context.Context, *ListMenusReque
 }
 func (UnimplementedMenuServiceServer) TreeMenu(context.Context, *TreeMenuRequest) (*TreeMenuResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method TreeMenu not implemented")
+}
+func (UnimplementedMenuServiceServer) GetMenuRoles(context.Context, *GetMenuRolesRequest) (*GetMenuRolesResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method GetMenuRoles not implemented")
 }
 func (UnimplementedMenuServiceServer) mustEmbedUnimplementedMenuServiceServer() {}
 func (UnimplementedMenuServiceServer) testEmbeddedByValue()                     {}
@@ -265,6 +283,24 @@ func _MenuService_TreeMenu_Handler(srv interface{}, ctx context.Context, dec fun
 	return interceptor(ctx, in, info, handler)
 }
 
+func _MenuService_GetMenuRoles_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetMenuRolesRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MenuServiceServer).GetMenuRoles(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: MenuService_GetMenuRoles_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MenuServiceServer).GetMenuRoles(ctx, req.(*GetMenuRolesRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // MenuService_ServiceDesc is the grpc.ServiceDesc for MenuService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -291,6 +327,10 @@ var MenuService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "TreeMenu",
 			Handler:    _MenuService_TreeMenu_Handler,
+		},
+		{
+			MethodName: "GetMenuRoles",
+			Handler:    _MenuService_GetMenuRoles_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

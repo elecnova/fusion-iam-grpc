@@ -36,7 +36,7 @@ var File_menu_menu_service_proto protoreflect.FileDescriptor
 
 const file_menu_menu_service_proto_rawDesc = "" +
 	"\n" +
-	"\x17menu/menu_service.proto\x12\x11fusion.proto.menu\x1a\x1cgoogle/api/annotations.proto\x1a\x17google/api/client.proto\x1a\x1bgoogle/protobuf/empty.proto\x1a\x17menu/menu_message.proto2\xd1\x05\n" +
+	"\x17menu/menu_service.proto\x12\x11fusion.proto.menu\x1a\x1cgoogle/api/annotations.proto\x1a\x17google/api/client.proto\x1a\x1bgoogle/protobuf/empty.proto\x1a\x17menu/menu_message.proto2\xff\x06\n" +
 	"\vMenuService\x12}\n" +
 	"\aGetMenu\x12!.fusion.proto.menu.GetMenuRequest\x1a\".fusion.proto.menu.GetMenuResponse\"+\xdaA\vid,language\x82\xd3\xe4\x93\x02\x17\x12\x15/3rd-api/v2/menu/{id}\x12\x93\x01\n" +
 	"\n" +
@@ -44,37 +44,42 @@ const file_menu_menu_service_proto_rawDesc = "" +
 	"\n" +
 	"DeleteMenu\x12$.fusion.proto.menu.DeleteMenuRequest\x1a\x16.google.protobuf.Empty\"\"\xdaA\x02id\x82\xd3\xe4\x93\x02\x17*\x15/3rd-api/v2/menu/{id}\x12\xac\x01\n" +
 	"\tListMenus\x12#.fusion.proto.menu.ListMenusRequest\x1a$.fusion.proto.menu.ListMenusResponse\"T\xdaA8keywords,name,type,state,channel,page,page_size,language\x82\xd3\xe4\x93\x02\x13\x12\x11/3rd-api/v2/menus\x12\x8d\x01\n" +
-	"\bTreeMenu\x12\".fusion.proto.menu.TreeMenuRequest\x1a#.fusion.proto.menu.TreeMenuResponse\"8\xdaA\x18channel,role_id,language\x82\xd3\xe4\x93\x02\x17\x12\x15/3rd-api/v2/menu/treeB\xa7\x01\n" +
+	"\bTreeMenu\x12\".fusion.proto.menu.TreeMenuRequest\x1a#.fusion.proto.menu.TreeMenuResponse\"8\xdaA\x18channel,role_id,language\x82\xd3\xe4\x93\x02\x17\x12\x15/3rd-api/v2/menu/tree\x12\xab\x01\n" +
+	"\fGetMenuRoles\x12&.fusion.proto.menu.GetMenuRolesRequest\x1a'.fusion.proto.menu.GetMenuRolesResponse\"J\xdaA\x1arole_id,user_id,project_id\x82\xd3\xe4\x93\x02'\x12%/3rd-api/v2/menu/role-menus/{role_id}B\xa7\x01\n" +
 	"\x15com.fusion.proto.menuB\x10MenuServiceProtoP\x01Z\x16fusion.proto.menu;menu\xa2\x02\x03FPM\xaa\x02\x11Fusion.Proto.Menu\xca\x02\x11Fusion\\Proto\\Menu\xe2\x02\x1dFusion\\Proto\\Menu\\GPBMetadata\xea\x02\x13Fusion::Proto::Menub\x06proto3"
 
 var file_menu_menu_service_proto_goTypes = []any{
-	(*GetMenuRequest)(nil),     // 0: fusion.proto.menu.GetMenuRequest
-	(*UpsertMenuRequest)(nil),  // 1: fusion.proto.menu.UpsertMenuRequest
-	(*DeleteMenuRequest)(nil),  // 2: fusion.proto.menu.DeleteMenuRequest
-	(*ListMenusRequest)(nil),   // 3: fusion.proto.menu.ListMenusRequest
-	(*TreeMenuRequest)(nil),    // 4: fusion.proto.menu.TreeMenuRequest
-	(*GetMenuResponse)(nil),    // 5: fusion.proto.menu.GetMenuResponse
-	(*UpsertMenuResponse)(nil), // 6: fusion.proto.menu.UpsertMenuResponse
-	(*emptypb.Empty)(nil),      // 7: google.protobuf.Empty
-	(*ListMenusResponse)(nil),  // 8: fusion.proto.menu.ListMenusResponse
-	(*TreeMenuResponse)(nil),   // 9: fusion.proto.menu.TreeMenuResponse
+	(*GetMenuRequest)(nil),       // 0: fusion.proto.menu.GetMenuRequest
+	(*UpsertMenuRequest)(nil),    // 1: fusion.proto.menu.UpsertMenuRequest
+	(*DeleteMenuRequest)(nil),    // 2: fusion.proto.menu.DeleteMenuRequest
+	(*ListMenusRequest)(nil),     // 3: fusion.proto.menu.ListMenusRequest
+	(*TreeMenuRequest)(nil),      // 4: fusion.proto.menu.TreeMenuRequest
+	(*GetMenuRolesRequest)(nil),  // 5: fusion.proto.menu.GetMenuRolesRequest
+	(*GetMenuResponse)(nil),      // 6: fusion.proto.menu.GetMenuResponse
+	(*UpsertMenuResponse)(nil),   // 7: fusion.proto.menu.UpsertMenuResponse
+	(*emptypb.Empty)(nil),        // 8: google.protobuf.Empty
+	(*ListMenusResponse)(nil),    // 9: fusion.proto.menu.ListMenusResponse
+	(*TreeMenuResponse)(nil),     // 10: fusion.proto.menu.TreeMenuResponse
+	(*GetMenuRolesResponse)(nil), // 11: fusion.proto.menu.GetMenuRolesResponse
 }
 var file_menu_menu_service_proto_depIdxs = []int32{
-	0, // 0: fusion.proto.menu.MenuService.GetMenu:input_type -> fusion.proto.menu.GetMenuRequest
-	1, // 1: fusion.proto.menu.MenuService.UpsertMenu:input_type -> fusion.proto.menu.UpsertMenuRequest
-	2, // 2: fusion.proto.menu.MenuService.DeleteMenu:input_type -> fusion.proto.menu.DeleteMenuRequest
-	3, // 3: fusion.proto.menu.MenuService.ListMenus:input_type -> fusion.proto.menu.ListMenusRequest
-	4, // 4: fusion.proto.menu.MenuService.TreeMenu:input_type -> fusion.proto.menu.TreeMenuRequest
-	5, // 5: fusion.proto.menu.MenuService.GetMenu:output_type -> fusion.proto.menu.GetMenuResponse
-	6, // 6: fusion.proto.menu.MenuService.UpsertMenu:output_type -> fusion.proto.menu.UpsertMenuResponse
-	7, // 7: fusion.proto.menu.MenuService.DeleteMenu:output_type -> google.protobuf.Empty
-	8, // 8: fusion.proto.menu.MenuService.ListMenus:output_type -> fusion.proto.menu.ListMenusResponse
-	9, // 9: fusion.proto.menu.MenuService.TreeMenu:output_type -> fusion.proto.menu.TreeMenuResponse
-	5, // [5:10] is the sub-list for method output_type
-	0, // [0:5] is the sub-list for method input_type
-	0, // [0:0] is the sub-list for extension type_name
-	0, // [0:0] is the sub-list for extension extendee
-	0, // [0:0] is the sub-list for field type_name
+	0,  // 0: fusion.proto.menu.MenuService.GetMenu:input_type -> fusion.proto.menu.GetMenuRequest
+	1,  // 1: fusion.proto.menu.MenuService.UpsertMenu:input_type -> fusion.proto.menu.UpsertMenuRequest
+	2,  // 2: fusion.proto.menu.MenuService.DeleteMenu:input_type -> fusion.proto.menu.DeleteMenuRequest
+	3,  // 3: fusion.proto.menu.MenuService.ListMenus:input_type -> fusion.proto.menu.ListMenusRequest
+	4,  // 4: fusion.proto.menu.MenuService.TreeMenu:input_type -> fusion.proto.menu.TreeMenuRequest
+	5,  // 5: fusion.proto.menu.MenuService.GetMenuRoles:input_type -> fusion.proto.menu.GetMenuRolesRequest
+	6,  // 6: fusion.proto.menu.MenuService.GetMenu:output_type -> fusion.proto.menu.GetMenuResponse
+	7,  // 7: fusion.proto.menu.MenuService.UpsertMenu:output_type -> fusion.proto.menu.UpsertMenuResponse
+	8,  // 8: fusion.proto.menu.MenuService.DeleteMenu:output_type -> google.protobuf.Empty
+	9,  // 9: fusion.proto.menu.MenuService.ListMenus:output_type -> fusion.proto.menu.ListMenusResponse
+	10, // 10: fusion.proto.menu.MenuService.TreeMenu:output_type -> fusion.proto.menu.TreeMenuResponse
+	11, // 11: fusion.proto.menu.MenuService.GetMenuRoles:output_type -> fusion.proto.menu.GetMenuRolesResponse
+	6,  // [6:12] is the sub-list for method output_type
+	0,  // [0:6] is the sub-list for method input_type
+	0,  // [0:0] is the sub-list for extension type_name
+	0,  // [0:0] is the sub-list for extension extendee
+	0,  // [0:0] is the sub-list for field type_name
 }
 
 func init() { file_menu_menu_service_proto_init() }

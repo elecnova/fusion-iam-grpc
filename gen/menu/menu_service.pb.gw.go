@@ -224,6 +224,59 @@ func local_request_MenuService_TreeMenu_0(ctx context.Context, marshaler runtime
 	return msg, metadata, err
 }
 
+var filter_MenuService_GetMenuRoles_0 = &utilities.DoubleArray{Encoding: map[string]int{"role_id": 0}, Base: []int{1, 1, 0}, Check: []int{0, 1, 2}}
+
+func request_MenuService_GetMenuRoles_0(ctx context.Context, marshaler runtime.Marshaler, client MenuServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var (
+		protoReq GetMenuRolesRequest
+		metadata runtime.ServerMetadata
+		err      error
+	)
+	val, ok := pathParams["role_id"]
+	if !ok {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "role_id")
+	}
+	protoReq.RoleId, err = runtime.String(val)
+	if err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "role_id", err)
+	}
+	if err := req.ParseForm(); err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
+	}
+	if err := runtime.PopulateQueryParameters(&protoReq, req.Form, filter_MenuService_GetMenuRoles_0); err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
+	}
+	if req.Body != nil {
+		_, _ = io.Copy(io.Discard, req.Body)
+	}
+	msg, err := client.GetMenuRoles(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
+	return msg, metadata, err
+}
+
+func local_request_MenuService_GetMenuRoles_0(ctx context.Context, marshaler runtime.Marshaler, server MenuServiceServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var (
+		protoReq GetMenuRolesRequest
+		metadata runtime.ServerMetadata
+		err      error
+	)
+	val, ok := pathParams["role_id"]
+	if !ok {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "role_id")
+	}
+	protoReq.RoleId, err = runtime.String(val)
+	if err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "role_id", err)
+	}
+	if err := req.ParseForm(); err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
+	}
+	if err := runtime.PopulateQueryParameters(&protoReq, req.Form, filter_MenuService_GetMenuRoles_0); err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
+	}
+	msg, err := server.GetMenuRoles(ctx, &protoReq)
+	return msg, metadata, err
+}
+
 // RegisterMenuServiceHandlerServer registers the http handlers for service MenuService to "mux".
 // UnaryRPC     :call MenuServiceServer directly.
 // StreamingRPC :currently unsupported pending https://github.com/grpc/grpc-go/issues/906.
@@ -329,6 +382,26 @@ func RegisterMenuServiceHandlerServer(ctx context.Context, mux *runtime.ServeMux
 			return
 		}
 		forward_MenuService_TreeMenu_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+	})
+	mux.Handle(http.MethodGet, pattern_MenuService_GetMenuRoles_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+		ctx, cancel := context.WithCancel(req.Context())
+		defer cancel()
+		var stream runtime.ServerTransportStream
+		ctx = grpc.NewContextWithServerTransportStream(ctx, &stream)
+		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
+		annotatedContext, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/fusion.proto.menu.MenuService/GetMenuRoles", runtime.WithHTTPPathPattern("/3rd-api/v2/menu/role-menus/{role_id}"))
+		if err != nil {
+			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
+			return
+		}
+		resp, md, err := local_request_MenuService_GetMenuRoles_0(annotatedContext, inboundMarshaler, server, req, pathParams)
+		md.HeaderMD, md.TrailerMD = metadata.Join(md.HeaderMD, stream.Header()), metadata.Join(md.TrailerMD, stream.Trailer())
+		annotatedContext = runtime.NewServerMetadataContext(annotatedContext, md)
+		if err != nil {
+			runtime.HTTPError(annotatedContext, mux, outboundMarshaler, w, req, err)
+			return
+		}
+		forward_MenuService_GetMenuRoles_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 	})
 
 	return nil
@@ -455,21 +528,40 @@ func RegisterMenuServiceHandlerClient(ctx context.Context, mux *runtime.ServeMux
 		}
 		forward_MenuService_TreeMenu_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 	})
+	mux.Handle(http.MethodGet, pattern_MenuService_GetMenuRoles_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+		ctx, cancel := context.WithCancel(req.Context())
+		defer cancel()
+		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
+		annotatedContext, err := runtime.AnnotateContext(ctx, mux, req, "/fusion.proto.menu.MenuService/GetMenuRoles", runtime.WithHTTPPathPattern("/3rd-api/v2/menu/role-menus/{role_id}"))
+		if err != nil {
+			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
+			return
+		}
+		resp, md, err := request_MenuService_GetMenuRoles_0(annotatedContext, inboundMarshaler, client, req, pathParams)
+		annotatedContext = runtime.NewServerMetadataContext(annotatedContext, md)
+		if err != nil {
+			runtime.HTTPError(annotatedContext, mux, outboundMarshaler, w, req, err)
+			return
+		}
+		forward_MenuService_GetMenuRoles_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+	})
 	return nil
 }
 
 var (
-	pattern_MenuService_GetMenu_0    = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3}, []string{"3rd-api", "v2", "menu", "id"}, ""))
-	pattern_MenuService_UpsertMenu_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"3rd-api", "v2", "menu"}, ""))
-	pattern_MenuService_DeleteMenu_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3}, []string{"3rd-api", "v2", "menu", "id"}, ""))
-	pattern_MenuService_ListMenus_0  = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"3rd-api", "v2", "menus"}, ""))
-	pattern_MenuService_TreeMenu_0   = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3}, []string{"3rd-api", "v2", "menu", "tree"}, ""))
+	pattern_MenuService_GetMenu_0      = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3}, []string{"3rd-api", "v2", "menu", "id"}, ""))
+	pattern_MenuService_UpsertMenu_0   = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"3rd-api", "v2", "menu"}, ""))
+	pattern_MenuService_DeleteMenu_0   = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3}, []string{"3rd-api", "v2", "menu", "id"}, ""))
+	pattern_MenuService_ListMenus_0    = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"3rd-api", "v2", "menus"}, ""))
+	pattern_MenuService_TreeMenu_0     = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3}, []string{"3rd-api", "v2", "menu", "tree"}, ""))
+	pattern_MenuService_GetMenuRoles_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4}, []string{"3rd-api", "v2", "menu", "role-menus", "role_id"}, ""))
 )
 
 var (
-	forward_MenuService_GetMenu_0    = runtime.ForwardResponseMessage
-	forward_MenuService_UpsertMenu_0 = runtime.ForwardResponseMessage
-	forward_MenuService_DeleteMenu_0 = runtime.ForwardResponseMessage
-	forward_MenuService_ListMenus_0  = runtime.ForwardResponseMessage
-	forward_MenuService_TreeMenu_0   = runtime.ForwardResponseMessage
+	forward_MenuService_GetMenu_0      = runtime.ForwardResponseMessage
+	forward_MenuService_UpsertMenu_0   = runtime.ForwardResponseMessage
+	forward_MenuService_DeleteMenu_0   = runtime.ForwardResponseMessage
+	forward_MenuService_ListMenus_0    = runtime.ForwardResponseMessage
+	forward_MenuService_TreeMenu_0     = runtime.ForwardResponseMessage
+	forward_MenuService_GetMenuRoles_0 = runtime.ForwardResponseMessage
 )
