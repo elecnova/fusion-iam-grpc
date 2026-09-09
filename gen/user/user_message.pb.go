@@ -839,7 +839,9 @@ type ListUsersRequest struct {
 	// 页码
 	Page int32 `protobuf:"varint,3,opt,name=page,proto3" json:"page,omitempty"`
 	// 分页大小
-	PageSize      int32 `protobuf:"varint,4,opt,name=page_size,proto3" json:"page_size,omitempty"`
+	PageSize int32 `protobuf:"varint,4,opt,name=page_size,proto3" json:"page_size,omitempty"`
+	// 项目ID
+	ProjectId     []string `protobuf:"bytes,5,rep,name=project_id,proto3" json:"project_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -900,6 +902,13 @@ func (x *ListUsersRequest) GetPageSize() int32 {
 		return x.PageSize
 	}
 	return 0
+}
+
+func (x *ListUsersRequest) GetProjectId() []string {
+	if x != nil {
+		return x.ProjectId
+	}
+	return nil
 }
 
 type ListUsersResponse struct {
@@ -980,7 +989,9 @@ type AllUsersRequest struct {
 	// 模糊搜索关键字，可搜索用户账号、昵称、手机号
 	Keyword string `protobuf:"bytes,1,opt,name=keyword,proto3" json:"keyword,omitempty"`
 	// 用户状态(1-正常 2-禁用 3-锁定)
-	State         *int32 `protobuf:"varint,2,opt,name=state,proto3,oneof" json:"state,omitempty"`
+	State *int32 `protobuf:"varint,2,opt,name=state,proto3,oneof" json:"state,omitempty"`
+	// 项目ID
+	ProjectId     []string `protobuf:"bytes,3,rep,name=project_id,proto3" json:"project_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1027,6 +1038,13 @@ func (x *AllUsersRequest) GetState() int32 {
 		return *x.State
 	}
 	return 0
+}
+
+func (x *AllUsersRequest) GetProjectId() []string {
+	if x != nil {
+		return x.ProjectId
+	}
+	return nil
 }
 
 type AllUsersResponse struct {
@@ -2133,22 +2151,28 @@ const file_user_user_message_proto_rawDesc = "" +
 	"\texpire_at\x18\x10 \x01(\v2\x1a.google.protobuf.TimestampR\texpire_at\x12\x16\n" +
 	"\x06avator\x18\x11 \x01(\tR\x06avator\x12\x12\n" +
 	"\x04type\x18\x12 \x01(\x05R\x04type\x12\x18\n" +
-	"\adeleted\x18\x13 \x01(\x03R\adeleted\"\xac\x01\n" +
+	"\adeleted\x18\x13 \x01(\x03R\adeleted\"\xcc\x01\n" +
 	"\x10ListUsersRequest\x12!\n" +
 	"\akeyword\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x18<R\akeyword\x12$\n" +
 	"\x05state\x18\x02 \x01(\x05B\t\xbaH\x06\x1a\x04\x18\x03(\x01H\x00R\x05state\x88\x01\x01\x12\x1b\n" +
 	"\x04page\x18\x03 \x01(\x05B\a\xbaH\x04\x1a\x02 \x00R\x04page\x12(\n" +
 	"\tpage_size\x18\x04 \x01(\x05B\n" +
-	"\xbaH\a\x1a\x05\x18\xac\x02 \x00R\tpage_sizeB\b\n" +
+	"\xbaH\a\x1a\x05\x18\xac\x02 \x00R\tpage_size\x12\x1e\n" +
+	"\n" +
+	"project_id\x18\x05 \x03(\tR\n" +
+	"project_idB\b\n" +
 	"\x06_state\"\x93\x01\n" +
 	"\x11ListUsersResponse\x126\n" +
 	"\x04data\x18\x01 \x03(\v2\".fusion.proto.user.GetUserResponseR\x04data\x12\x12\n" +
 	"\x04page\x18\x02 \x01(\x05R\x04page\x12\x1c\n" +
 	"\tpage_size\x18\x03 \x01(\x05R\tpage_size\x12\x14\n" +
-	"\x05total\x18\x04 \x01(\x03R\x05total\"d\n" +
+	"\x05total\x18\x04 \x01(\x03R\x05total\"\x84\x01\n" +
 	"\x0fAllUsersRequest\x12!\n" +
 	"\akeyword\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x18<R\akeyword\x12$\n" +
-	"\x05state\x18\x02 \x01(\x05B\t\xbaH\x06\x1a\x04\x18\x03(\x01H\x00R\x05state\x88\x01\x01B\b\n" +
+	"\x05state\x18\x02 \x01(\x05B\t\xbaH\x06\x1a\x04\x18\x03(\x01H\x00R\x05state\x88\x01\x01\x12\x1e\n" +
+	"\n" +
+	"project_id\x18\x03 \x03(\tR\n" +
+	"project_idB\b\n" +
 	"\x06_state\"J\n" +
 	"\x10AllUsersResponse\x126\n" +
 	"\x04data\x18\x01 \x03(\v2\".fusion.proto.user.GetUserResponseR\x04data\"a\n" +
