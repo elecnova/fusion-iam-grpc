@@ -35,7 +35,7 @@ var File_user_user_service_proto protoreflect.FileDescriptor
 
 const file_user_user_service_proto_rawDesc = "" +
 	"\n" +
-	"\x17user/user_service.proto\x12\x11fusion.proto.user\x1a\x1cgoogle/api/annotations.proto\x1a\x17google/api/client.proto\x1a\x1bgoogle/protobuf/empty.proto\x1a\x17user/user_message.proto2\xac\x14\n" +
+	"\x17user/user_service.proto\x12\x11fusion.proto.user\x1a\x1cgoogle/api/annotations.proto\x1a\x17google/api/client.proto\x1a\x1bgoogle/protobuf/empty.proto\x1a\x17user/user_message.proto2\xde\x17\n" +
 	"\vUserService\x12\x9f\x01\n" +
 	"\n" +
 	"CreateUser\x12$.fusion.proto.user.CreateUserRequest\x1a\".fusion.proto.user.GetUserResponse\"G\xdaA)name,email,nick_name,language,description\x82\xd3\xe4\x93\x02\x15:\x01*\"\x10/3rd-api/v1/user\x12n\n" +
@@ -45,7 +45,10 @@ const file_user_user_service_proto_rawDesc = "" +
 	"UpdateUser\x12$.fusion.proto.user.UpdateUserRequest\x1a\x16.google.protobuf.Empty\"O\xdaA,id,name,email,nick_name,language,description\x82\xd3\xe4\x93\x02\x1a:\x01*2\x15/3rd-api/v1/user/{id}\x12\xab\x01\n" +
 	"\x0fUpdateUserState\x12).fusion.proto.user.UpdateUserStateRequest\x1a\x16.google.protobuf.Empty\"U\xdaA,id,name,email,nick_name,language,description\x82\xd3\xe4\x93\x02 :\x01*2\x1b/3rd-api/v1/user/state/{id}\x12\xae\x01\n" +
 	"\x10UpdateUserExtend\x12*.fusion.proto.user.UpdateUserExtendRequest\x1a\x16.google.protobuf.Empty\"V\xdaA,id,name,email,nick_name,language,description\x82\xd3\xe4\x93\x02!:\x01*2\x1c/3rd-api/v1/user/extend/{id}\x12t\n" +
-	"\aGetUser\x12!.fusion.proto.user.GetUserRequest\x1a\".fusion.proto.user.GetUserResponse\"\"\xdaA\x02id\x82\xd3\xe4\x93\x02\x17\x12\x15/3rd-api/v1/user/{id}\x12t\n" +
+	"\aGetUser\x12!.fusion.proto.user.GetUserRequest\x1a\".fusion.proto.user.GetUserResponse\"\"\xdaA\x02id\x82\xd3\xe4\x93\x02\x17\x12\x15/3rd-api/v1/user/{id}\x12\x89\x01\n" +
+	"\rGetUserByName\x12'.fusion.proto.user.GetUserByNameRequest\x1a\".fusion.proto.user.GetUserResponse\"+\xdaA\x04name\x82\xd3\xe4\x93\x02\x1e\x12\x1c/3rd-api/v1/user_name/{name}\x12\x8e\x01\n" +
+	"\x0eGetUserByEmail\x12(.fusion.proto.user.GetUserByEmailRequest\x1a\".fusion.proto.user.GetUserResponse\".\xdaA\x05email\x82\xd3\xe4\x93\x02 \x12\x1e/3rd-api/v1/user_email/{email}\x12\x92\x01\n" +
+	"\x0fGetUserByMobile\x12).fusion.proto.user.GetUserByMobileRequest\x1a\".fusion.proto.user.GetUserResponse\"0\xdaA\x05moble\x82\xd3\xe4\x93\x02\"\x12 /3rd-api/v1/user_mobile/{mobile}\x12t\n" +
 	"\tListUsers\x12#.fusion.proto.user.ListUsersRequest\x1a$.fusion.proto.user.ListUsersResponse\"\x1c\xdaA\x00\x82\xd3\xe4\x93\x02\x13\x12\x11/3rd-api/v1/users\x12t\n" +
 	"\bAllUsers\x12\".fusion.proto.user.AllUsersRequest\x1a#.fusion.proto.user.AllUsersResponse\"\x1f\xdaA\x00\x82\xd3\xe4\x93\x02\x16\x12\x14/3rd-api/v1/user/all\x12\x86\x01\n" +
 	"\rResetPassword\x12'.fusion.proto.user.ResetPasswordRequest\x1a\x16.google.protobuf.Empty\"4\xdaA\x02id\x82\xd3\xe4\x93\x02):\x01*\"$/3rd-api/v1/user/{id}/reset_password\x12\xa3\x01\n" +
@@ -70,27 +73,30 @@ var file_user_user_service_proto_goTypes = []any{
 	(*UpdateUserStateRequest)(nil),  // 3: fusion.proto.user.UpdateUserStateRequest
 	(*UpdateUserExtendRequest)(nil), // 4: fusion.proto.user.UpdateUserExtendRequest
 	(*GetUserRequest)(nil),          // 5: fusion.proto.user.GetUserRequest
-	(*ListUsersRequest)(nil),        // 6: fusion.proto.user.ListUsersRequest
-	(*AllUsersRequest)(nil),         // 7: fusion.proto.user.AllUsersRequest
-	(*ResetPasswordRequest)(nil),    // 8: fusion.proto.user.ResetPasswordRequest
-	(*ChangePasswordRequest)(nil),   // 9: fusion.proto.user.ChangePasswordRequest
-	(*ValidatePasswordRequest)(nil), // 10: fusion.proto.user.ValidatePasswordRequest
-	(*CheckNameRequest)(nil),        // 11: fusion.proto.user.CheckNameRequest
-	(*CheckEmailRequest)(nil),       // 12: fusion.proto.user.CheckEmailRequest
-	(*CheckMobileRequest)(nil),      // 13: fusion.proto.user.CheckMobileRequest
-	(*ChangeAvatarRequest)(nil),     // 14: fusion.proto.user.ChangeAvatarRequest
-	(*GetByIDRequest)(nil),          // 15: fusion.proto.user.GetByIDRequest
-	(*GetByIDsRequest)(nil),         // 16: fusion.proto.user.GetByIDsRequest
-	(*GetByNameRequest)(nil),        // 17: fusion.proto.user.GetByNameRequest
-	(*GetByNamesRequest)(nil),       // 18: fusion.proto.user.GetByNamesRequest
-	(*GetUserResponse)(nil),         // 19: fusion.proto.user.GetUserResponse
-	(*emptypb.Empty)(nil),           // 20: google.protobuf.Empty
-	(*ListUsersResponse)(nil),       // 21: fusion.proto.user.ListUsersResponse
-	(*AllUsersResponse)(nil),        // 22: fusion.proto.user.AllUsersResponse
-	(*CheckUserResponse)(nil),       // 23: fusion.proto.user.CheckUserResponse
-	(*ChangeAvatarResponse)(nil),    // 24: fusion.proto.user.ChangeAvatarResponse
-	(*GetNameResponse)(nil),         // 25: fusion.proto.user.GetNameResponse
-	(*GetNamesResponse)(nil),        // 26: fusion.proto.user.GetNamesResponse
+	(*GetUserByNameRequest)(nil),    // 6: fusion.proto.user.GetUserByNameRequest
+	(*GetUserByEmailRequest)(nil),   // 7: fusion.proto.user.GetUserByEmailRequest
+	(*GetUserByMobileRequest)(nil),  // 8: fusion.proto.user.GetUserByMobileRequest
+	(*ListUsersRequest)(nil),        // 9: fusion.proto.user.ListUsersRequest
+	(*AllUsersRequest)(nil),         // 10: fusion.proto.user.AllUsersRequest
+	(*ResetPasswordRequest)(nil),    // 11: fusion.proto.user.ResetPasswordRequest
+	(*ChangePasswordRequest)(nil),   // 12: fusion.proto.user.ChangePasswordRequest
+	(*ValidatePasswordRequest)(nil), // 13: fusion.proto.user.ValidatePasswordRequest
+	(*CheckNameRequest)(nil),        // 14: fusion.proto.user.CheckNameRequest
+	(*CheckEmailRequest)(nil),       // 15: fusion.proto.user.CheckEmailRequest
+	(*CheckMobileRequest)(nil),      // 16: fusion.proto.user.CheckMobileRequest
+	(*ChangeAvatarRequest)(nil),     // 17: fusion.proto.user.ChangeAvatarRequest
+	(*GetByIDRequest)(nil),          // 18: fusion.proto.user.GetByIDRequest
+	(*GetByIDsRequest)(nil),         // 19: fusion.proto.user.GetByIDsRequest
+	(*GetByNameRequest)(nil),        // 20: fusion.proto.user.GetByNameRequest
+	(*GetByNamesRequest)(nil),       // 21: fusion.proto.user.GetByNamesRequest
+	(*GetUserResponse)(nil),         // 22: fusion.proto.user.GetUserResponse
+	(*emptypb.Empty)(nil),           // 23: google.protobuf.Empty
+	(*ListUsersResponse)(nil),       // 24: fusion.proto.user.ListUsersResponse
+	(*AllUsersResponse)(nil),        // 25: fusion.proto.user.AllUsersResponse
+	(*CheckUserResponse)(nil),       // 26: fusion.proto.user.CheckUserResponse
+	(*ChangeAvatarResponse)(nil),    // 27: fusion.proto.user.ChangeAvatarResponse
+	(*GetNameResponse)(nil),         // 28: fusion.proto.user.GetNameResponse
+	(*GetNamesResponse)(nil),        // 29: fusion.proto.user.GetNamesResponse
 }
 var file_user_user_service_proto_depIdxs = []int32{
 	0,  // 0: fusion.proto.user.UserService.CreateUser:input_type -> fusion.proto.user.CreateUserRequest
@@ -99,40 +105,46 @@ var file_user_user_service_proto_depIdxs = []int32{
 	3,  // 3: fusion.proto.user.UserService.UpdateUserState:input_type -> fusion.proto.user.UpdateUserStateRequest
 	4,  // 4: fusion.proto.user.UserService.UpdateUserExtend:input_type -> fusion.proto.user.UpdateUserExtendRequest
 	5,  // 5: fusion.proto.user.UserService.GetUser:input_type -> fusion.proto.user.GetUserRequest
-	6,  // 6: fusion.proto.user.UserService.ListUsers:input_type -> fusion.proto.user.ListUsersRequest
-	7,  // 7: fusion.proto.user.UserService.AllUsers:input_type -> fusion.proto.user.AllUsersRequest
-	8,  // 8: fusion.proto.user.UserService.ResetPassword:input_type -> fusion.proto.user.ResetPasswordRequest
-	9,  // 9: fusion.proto.user.UserService.ChangePassword:input_type -> fusion.proto.user.ChangePasswordRequest
-	10, // 10: fusion.proto.user.UserService.ValidatePassword:input_type -> fusion.proto.user.ValidatePasswordRequest
-	11, // 11: fusion.proto.user.UserService.CheckName:input_type -> fusion.proto.user.CheckNameRequest
-	12, // 12: fusion.proto.user.UserService.CheckEmail:input_type -> fusion.proto.user.CheckEmailRequest
-	13, // 13: fusion.proto.user.UserService.CheckMobile:input_type -> fusion.proto.user.CheckMobileRequest
-	14, // 14: fusion.proto.user.UserService.ChangeAvatar:input_type -> fusion.proto.user.ChangeAvatarRequest
-	15, // 15: fusion.proto.user.UserService.GetByID:input_type -> fusion.proto.user.GetByIDRequest
-	16, // 16: fusion.proto.user.UserService.GetByIDs:input_type -> fusion.proto.user.GetByIDsRequest
-	17, // 17: fusion.proto.user.UserService.GetByName:input_type -> fusion.proto.user.GetByNameRequest
-	18, // 18: fusion.proto.user.UserService.GetByNames:input_type -> fusion.proto.user.GetByNamesRequest
-	19, // 19: fusion.proto.user.UserService.CreateUser:output_type -> fusion.proto.user.GetUserResponse
-	20, // 20: fusion.proto.user.UserService.DeleteUser:output_type -> google.protobuf.Empty
-	20, // 21: fusion.proto.user.UserService.UpdateUser:output_type -> google.protobuf.Empty
-	20, // 22: fusion.proto.user.UserService.UpdateUserState:output_type -> google.protobuf.Empty
-	20, // 23: fusion.proto.user.UserService.UpdateUserExtend:output_type -> google.protobuf.Empty
-	19, // 24: fusion.proto.user.UserService.GetUser:output_type -> fusion.proto.user.GetUserResponse
-	21, // 25: fusion.proto.user.UserService.ListUsers:output_type -> fusion.proto.user.ListUsersResponse
-	22, // 26: fusion.proto.user.UserService.AllUsers:output_type -> fusion.proto.user.AllUsersResponse
-	20, // 27: fusion.proto.user.UserService.ResetPassword:output_type -> google.protobuf.Empty
-	20, // 28: fusion.proto.user.UserService.ChangePassword:output_type -> google.protobuf.Empty
-	20, // 29: fusion.proto.user.UserService.ValidatePassword:output_type -> google.protobuf.Empty
-	23, // 30: fusion.proto.user.UserService.CheckName:output_type -> fusion.proto.user.CheckUserResponse
-	23, // 31: fusion.proto.user.UserService.CheckEmail:output_type -> fusion.proto.user.CheckUserResponse
-	23, // 32: fusion.proto.user.UserService.CheckMobile:output_type -> fusion.proto.user.CheckUserResponse
-	24, // 33: fusion.proto.user.UserService.ChangeAvatar:output_type -> fusion.proto.user.ChangeAvatarResponse
-	25, // 34: fusion.proto.user.UserService.GetByID:output_type -> fusion.proto.user.GetNameResponse
-	26, // 35: fusion.proto.user.UserService.GetByIDs:output_type -> fusion.proto.user.GetNamesResponse
-	25, // 36: fusion.proto.user.UserService.GetByName:output_type -> fusion.proto.user.GetNameResponse
-	26, // 37: fusion.proto.user.UserService.GetByNames:output_type -> fusion.proto.user.GetNamesResponse
-	19, // [19:38] is the sub-list for method output_type
-	0,  // [0:19] is the sub-list for method input_type
+	6,  // 6: fusion.proto.user.UserService.GetUserByName:input_type -> fusion.proto.user.GetUserByNameRequest
+	7,  // 7: fusion.proto.user.UserService.GetUserByEmail:input_type -> fusion.proto.user.GetUserByEmailRequest
+	8,  // 8: fusion.proto.user.UserService.GetUserByMobile:input_type -> fusion.proto.user.GetUserByMobileRequest
+	9,  // 9: fusion.proto.user.UserService.ListUsers:input_type -> fusion.proto.user.ListUsersRequest
+	10, // 10: fusion.proto.user.UserService.AllUsers:input_type -> fusion.proto.user.AllUsersRequest
+	11, // 11: fusion.proto.user.UserService.ResetPassword:input_type -> fusion.proto.user.ResetPasswordRequest
+	12, // 12: fusion.proto.user.UserService.ChangePassword:input_type -> fusion.proto.user.ChangePasswordRequest
+	13, // 13: fusion.proto.user.UserService.ValidatePassword:input_type -> fusion.proto.user.ValidatePasswordRequest
+	14, // 14: fusion.proto.user.UserService.CheckName:input_type -> fusion.proto.user.CheckNameRequest
+	15, // 15: fusion.proto.user.UserService.CheckEmail:input_type -> fusion.proto.user.CheckEmailRequest
+	16, // 16: fusion.proto.user.UserService.CheckMobile:input_type -> fusion.proto.user.CheckMobileRequest
+	17, // 17: fusion.proto.user.UserService.ChangeAvatar:input_type -> fusion.proto.user.ChangeAvatarRequest
+	18, // 18: fusion.proto.user.UserService.GetByID:input_type -> fusion.proto.user.GetByIDRequest
+	19, // 19: fusion.proto.user.UserService.GetByIDs:input_type -> fusion.proto.user.GetByIDsRequest
+	20, // 20: fusion.proto.user.UserService.GetByName:input_type -> fusion.proto.user.GetByNameRequest
+	21, // 21: fusion.proto.user.UserService.GetByNames:input_type -> fusion.proto.user.GetByNamesRequest
+	22, // 22: fusion.proto.user.UserService.CreateUser:output_type -> fusion.proto.user.GetUserResponse
+	23, // 23: fusion.proto.user.UserService.DeleteUser:output_type -> google.protobuf.Empty
+	23, // 24: fusion.proto.user.UserService.UpdateUser:output_type -> google.protobuf.Empty
+	23, // 25: fusion.proto.user.UserService.UpdateUserState:output_type -> google.protobuf.Empty
+	23, // 26: fusion.proto.user.UserService.UpdateUserExtend:output_type -> google.protobuf.Empty
+	22, // 27: fusion.proto.user.UserService.GetUser:output_type -> fusion.proto.user.GetUserResponse
+	22, // 28: fusion.proto.user.UserService.GetUserByName:output_type -> fusion.proto.user.GetUserResponse
+	22, // 29: fusion.proto.user.UserService.GetUserByEmail:output_type -> fusion.proto.user.GetUserResponse
+	22, // 30: fusion.proto.user.UserService.GetUserByMobile:output_type -> fusion.proto.user.GetUserResponse
+	24, // 31: fusion.proto.user.UserService.ListUsers:output_type -> fusion.proto.user.ListUsersResponse
+	25, // 32: fusion.proto.user.UserService.AllUsers:output_type -> fusion.proto.user.AllUsersResponse
+	23, // 33: fusion.proto.user.UserService.ResetPassword:output_type -> google.protobuf.Empty
+	23, // 34: fusion.proto.user.UserService.ChangePassword:output_type -> google.protobuf.Empty
+	23, // 35: fusion.proto.user.UserService.ValidatePassword:output_type -> google.protobuf.Empty
+	26, // 36: fusion.proto.user.UserService.CheckName:output_type -> fusion.proto.user.CheckUserResponse
+	26, // 37: fusion.proto.user.UserService.CheckEmail:output_type -> fusion.proto.user.CheckUserResponse
+	26, // 38: fusion.proto.user.UserService.CheckMobile:output_type -> fusion.proto.user.CheckUserResponse
+	27, // 39: fusion.proto.user.UserService.ChangeAvatar:output_type -> fusion.proto.user.ChangeAvatarResponse
+	28, // 40: fusion.proto.user.UserService.GetByID:output_type -> fusion.proto.user.GetNameResponse
+	29, // 41: fusion.proto.user.UserService.GetByIDs:output_type -> fusion.proto.user.GetNamesResponse
+	28, // 42: fusion.proto.user.UserService.GetByName:output_type -> fusion.proto.user.GetNameResponse
+	29, // 43: fusion.proto.user.UserService.GetByNames:output_type -> fusion.proto.user.GetNamesResponse
+	22, // [22:44] is the sub-list for method output_type
+	0,  // [0:22] is the sub-list for method input_type
 	0,  // [0:0] is the sub-list for extension type_name
 	0,  // [0:0] is the sub-list for extension extendee
 	0,  // [0:0] is the sub-list for field type_name

@@ -35,6 +35,9 @@ const (
 	UserService_UpdateUserState_FullMethodName  = "/fusion.proto.user.UserService/UpdateUserState"
 	UserService_UpdateUserExtend_FullMethodName = "/fusion.proto.user.UserService/UpdateUserExtend"
 	UserService_GetUser_FullMethodName          = "/fusion.proto.user.UserService/GetUser"
+	UserService_GetUserByName_FullMethodName    = "/fusion.proto.user.UserService/GetUserByName"
+	UserService_GetUserByEmail_FullMethodName   = "/fusion.proto.user.UserService/GetUserByEmail"
+	UserService_GetUserByMobile_FullMethodName  = "/fusion.proto.user.UserService/GetUserByMobile"
 	UserService_ListUsers_FullMethodName        = "/fusion.proto.user.UserService/ListUsers"
 	UserService_AllUsers_FullMethodName         = "/fusion.proto.user.UserService/AllUsers"
 	UserService_ResetPassword_FullMethodName    = "/fusion.proto.user.UserService/ResetPassword"
@@ -66,8 +69,14 @@ type UserServiceClient interface {
 	UpdateUserState(ctx context.Context, in *UpdateUserStateRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// 修改用户邮箱、昵称、手机号码等信息
 	UpdateUserExtend(ctx context.Context, in *UpdateUserExtendRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
-	// 获取用户信息
+	// 获取用户信息(根据用户ID)
 	GetUser(ctx context.Context, in *GetUserRequest, opts ...grpc.CallOption) (*GetUserResponse, error)
+	// 获取用户信息(根据用户名)
+	GetUserByName(ctx context.Context, in *GetUserByNameRequest, opts ...grpc.CallOption) (*GetUserResponse, error)
+	// 获取用户信息(根据用户邮箱)
+	GetUserByEmail(ctx context.Context, in *GetUserByEmailRequest, opts ...grpc.CallOption) (*GetUserResponse, error)
+	// 获取用户信息(根据用户手机号码)
+	GetUserByMobile(ctx context.Context, in *GetUserByMobileRequest, opts ...grpc.CallOption) (*GetUserResponse, error)
 	// 列表用户信息
 	ListUsers(ctx context.Context, in *ListUsersRequest, opts ...grpc.CallOption) (*ListUsersResponse, error)
 	// 所有用户信息
@@ -158,6 +167,36 @@ func (c *userServiceClient) GetUser(ctx context.Context, in *GetUserRequest, opt
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(GetUserResponse)
 	err := c.cc.Invoke(ctx, UserService_GetUser_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *userServiceClient) GetUserByName(ctx context.Context, in *GetUserByNameRequest, opts ...grpc.CallOption) (*GetUserResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetUserResponse)
+	err := c.cc.Invoke(ctx, UserService_GetUserByName_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *userServiceClient) GetUserByEmail(ctx context.Context, in *GetUserByEmailRequest, opts ...grpc.CallOption) (*GetUserResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetUserResponse)
+	err := c.cc.Invoke(ctx, UserService_GetUserByEmail_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *userServiceClient) GetUserByMobile(ctx context.Context, in *GetUserByMobileRequest, opts ...grpc.CallOption) (*GetUserResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetUserResponse)
+	err := c.cc.Invoke(ctx, UserService_GetUserByMobile_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -313,8 +352,14 @@ type UserServiceServer interface {
 	UpdateUserState(context.Context, *UpdateUserStateRequest) (*emptypb.Empty, error)
 	// 修改用户邮箱、昵称、手机号码等信息
 	UpdateUserExtend(context.Context, *UpdateUserExtendRequest) (*emptypb.Empty, error)
-	// 获取用户信息
+	// 获取用户信息(根据用户ID)
 	GetUser(context.Context, *GetUserRequest) (*GetUserResponse, error)
+	// 获取用户信息(根据用户名)
+	GetUserByName(context.Context, *GetUserByNameRequest) (*GetUserResponse, error)
+	// 获取用户信息(根据用户邮箱)
+	GetUserByEmail(context.Context, *GetUserByEmailRequest) (*GetUserResponse, error)
+	// 获取用户信息(根据用户手机号码)
+	GetUserByMobile(context.Context, *GetUserByMobileRequest) (*GetUserResponse, error)
 	// 列表用户信息
 	ListUsers(context.Context, *ListUsersRequest) (*ListUsersResponse, error)
 	// 所有用户信息
@@ -368,6 +413,15 @@ func (UnimplementedUserServiceServer) UpdateUserExtend(context.Context, *UpdateU
 }
 func (UnimplementedUserServiceServer) GetUser(context.Context, *GetUserRequest) (*GetUserResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method GetUser not implemented")
+}
+func (UnimplementedUserServiceServer) GetUserByName(context.Context, *GetUserByNameRequest) (*GetUserResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method GetUserByName not implemented")
+}
+func (UnimplementedUserServiceServer) GetUserByEmail(context.Context, *GetUserByEmailRequest) (*GetUserResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method GetUserByEmail not implemented")
+}
+func (UnimplementedUserServiceServer) GetUserByMobile(context.Context, *GetUserByMobileRequest) (*GetUserResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method GetUserByMobile not implemented")
 }
 func (UnimplementedUserServiceServer) ListUsers(context.Context, *ListUsersRequest) (*ListUsersResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method ListUsers not implemented")
@@ -533,6 +587,60 @@ func _UserService_GetUser_Handler(srv interface{}, ctx context.Context, dec func
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(UserServiceServer).GetUser(ctx, req.(*GetUserRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _UserService_GetUserByName_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetUserByNameRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UserServiceServer).GetUserByName(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: UserService_GetUserByName_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UserServiceServer).GetUserByName(ctx, req.(*GetUserByNameRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _UserService_GetUserByEmail_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetUserByEmailRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UserServiceServer).GetUserByEmail(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: UserService_GetUserByEmail_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UserServiceServer).GetUserByEmail(ctx, req.(*GetUserByEmailRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _UserService_GetUserByMobile_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetUserByMobileRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UserServiceServer).GetUserByMobile(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: UserService_GetUserByMobile_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UserServiceServer).GetUserByMobile(ctx, req.(*GetUserByMobileRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -790,6 +898,18 @@ var UserService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetUser",
 			Handler:    _UserService_GetUser_Handler,
+		},
+		{
+			MethodName: "GetUserByName",
+			Handler:    _UserService_GetUserByName_Handler,
+		},
+		{
+			MethodName: "GetUserByEmail",
+			Handler:    _UserService_GetUserByEmail_Handler,
+		},
+		{
+			MethodName: "GetUserByMobile",
+			Handler:    _UserService_GetUserByMobile_Handler,
 		},
 		{
 			MethodName: "ListUsers",
