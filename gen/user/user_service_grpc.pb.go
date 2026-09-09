@@ -35,6 +35,7 @@ const (
 	UserService_UpdateUserExtend_FullMethodName = "/fusion.proto.user.UserService/UpdateUserExtend"
 	UserService_GetUser_FullMethodName          = "/fusion.proto.user.UserService/GetUser"
 	UserService_ListUsers_FullMethodName        = "/fusion.proto.user.UserService/ListUsers"
+	UserService_AllUsers_FullMethodName         = "/fusion.proto.user.UserService/AllUsers"
 	UserService_ResetPassword_FullMethodName    = "/fusion.proto.user.UserService/ResetPassword"
 	UserService_ChangePassword_FullMethodName   = "/fusion.proto.user.UserService/ChangePassword"
 	UserService_ValidatePassword_FullMethodName = "/fusion.proto.user.UserService/ValidatePassword"
@@ -66,6 +67,8 @@ type UserServiceClient interface {
 	GetUser(ctx context.Context, in *GetUserRequest, opts ...grpc.CallOption) (*GetUserResponse, error)
 	// 列表用户信息
 	ListUsers(ctx context.Context, in *ListUsersRequest, opts ...grpc.CallOption) (*ListUsersResponse, error)
+	// 所有用户信息
+	AllUsers(ctx context.Context, in *AllUsersRequest, opts ...grpc.CallOption) (*AllUsersResponse, error)
 	// 重置用户密码
 	ResetPassword(ctx context.Context, in *ResetPasswordRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// 修改用户密码
@@ -152,6 +155,16 @@ func (c *userServiceClient) ListUsers(ctx context.Context, in *ListUsersRequest,
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(ListUsersResponse)
 	err := c.cc.Invoke(ctx, UserService_ListUsers_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *userServiceClient) AllUsers(ctx context.Context, in *AllUsersRequest, opts ...grpc.CallOption) (*AllUsersResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(AllUsersResponse)
+	err := c.cc.Invoke(ctx, UserService_AllUsers_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -289,6 +302,8 @@ type UserServiceServer interface {
 	GetUser(context.Context, *GetUserRequest) (*GetUserResponse, error)
 	// 列表用户信息
 	ListUsers(context.Context, *ListUsersRequest) (*ListUsersResponse, error)
+	// 所有用户信息
+	AllUsers(context.Context, *AllUsersRequest) (*AllUsersResponse, error)
 	// 重置用户密码
 	ResetPassword(context.Context, *ResetPasswordRequest) (*emptypb.Empty, error)
 	// 修改用户密码
@@ -338,6 +353,9 @@ func (UnimplementedUserServiceServer) GetUser(context.Context, *GetUserRequest) 
 }
 func (UnimplementedUserServiceServer) ListUsers(context.Context, *ListUsersRequest) (*ListUsersResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method ListUsers not implemented")
+}
+func (UnimplementedUserServiceServer) AllUsers(context.Context, *AllUsersRequest) (*AllUsersResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method AllUsers not implemented")
 }
 func (UnimplementedUserServiceServer) ResetPassword(context.Context, *ResetPasswordRequest) (*emptypb.Empty, error) {
 	return nil, status.Error(codes.Unimplemented, "method ResetPassword not implemented")
@@ -497,6 +515,24 @@ func _UserService_ListUsers_Handler(srv interface{}, ctx context.Context, dec fu
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(UserServiceServer).ListUsers(ctx, req.(*ListUsersRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _UserService_AllUsers_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(AllUsersRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UserServiceServer).AllUsers(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: UserService_AllUsers_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UserServiceServer).AllUsers(ctx, req.(*AllUsersRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -718,6 +754,10 @@ var UserService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "ListUsers",
 			Handler:    _UserService_ListUsers_Handler,
+		},
+		{
+			MethodName: "AllUsers",
+			Handler:    _UserService_AllUsers_Handler,
 		},
 		{
 			MethodName: "ResetPassword",
