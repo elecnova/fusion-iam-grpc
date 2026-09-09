@@ -118,7 +118,11 @@ type RoleData struct {
 	// 创建时间
 	CreateAt *timestamppb.Timestamp `protobuf:"bytes,13,opt,name=create_at,proto3" json:"create_at,omitempty"`
 	// 更新时间
-	UpdateAt      *timestamppb.Timestamp `protobuf:"bytes,14,opt,name=update_at,proto3" json:"update_at,omitempty"`
+	UpdateAt *timestamppb.Timestamp `protobuf:"bytes,14,opt,name=update_at,proto3" json:"update_at,omitempty"`
+	// 创建人名称
+	CreateByName string `protobuf:"bytes,15,opt,name=create_by_name,proto3" json:"create_by_name,omitempty"`
+	// 更新人名称
+	UpdateByName  string `protobuf:"bytes,16,opt,name=update_by_name,proto3" json:"update_by_name,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -249,6 +253,20 @@ func (x *RoleData) GetUpdateAt() *timestamppb.Timestamp {
 		return x.UpdateAt
 	}
 	return nil
+}
+
+func (x *RoleData) GetCreateByName() string {
+	if x != nil {
+		return x.CreateByName
+	}
+	return ""
+}
+
+func (x *RoleData) GetUpdateByName() string {
+	if x != nil {
+		return x.UpdateByName
+	}
+	return ""
 }
 
 // Package message 创建角色请求消息定义
@@ -1521,7 +1539,7 @@ const file_role_role_message_proto_rawDesc = "" +
 	"\bRoleName\x12\x1d\n" +
 	"\x04lang\x18\x01 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18\n" +
 	"R\x04lang\x12#\n" +
-	"\acontent\x18\x02 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18dR\acontent\"\xcb\x03\n" +
+	"\acontent\x18\x02 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18dR\acontent\"\x9b\x04\n" +
 	"\bRoleData\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
 	"\x04code\x18\x02 \x01(\tR\x04code\x12\x12\n" +
@@ -1539,7 +1557,9 @@ const file_role_role_message_proto_rawDesc = "" +
 	"\tcreate_by\x18\v \x01(\tR\tcreate_by\x12\x1c\n" +
 	"\tupdate_by\x18\f \x01(\tR\tupdate_by\x128\n" +
 	"\tcreate_at\x18\r \x01(\v2\x1a.google.protobuf.TimestampR\tcreate_at\x128\n" +
-	"\tupdate_at\x18\x0e \x01(\v2\x1a.google.protobuf.TimestampR\tupdate_at\"\xe7\x01\n" +
+	"\tupdate_at\x18\x0e \x01(\v2\x1a.google.protobuf.TimestampR\tupdate_at\x12&\n" +
+	"\x0ecreate_by_name\x18\x0f \x01(\tR\x0ecreate_by_name\x12&\n" +
+	"\x0eupdate_by_name\x18\x10 \x01(\tR\x0eupdate_by_name\"\xe7\x01\n" +
 	"\x11CreateRoleRequest\x12;\n" +
 	"\x04name\x18\x01 \x03(\v2\x1b.fusion.proto.role.RoleNameB\n" +
 	"\xbaH\a\x92\x01\x04\b\x01\x102R\x04name\x12*\n" +

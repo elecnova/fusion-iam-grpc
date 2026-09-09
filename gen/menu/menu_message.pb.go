@@ -109,7 +109,15 @@ type MenuData struct {
 	// 菜单状态(1-正常 2-禁用 3-锁定)
 	State int32 `protobuf:"varint,9,opt,name=state,proto3" json:"state,omitempty"`
 	// 渠道(1-用户中心 2-业务平台 3-运维平台 4-渠道平台 5-门户后台)
-	Channel       int32 `protobuf:"varint,10,opt,name=channel,proto3" json:"channel,omitempty"`
+	Channel int32 `protobuf:"varint,10,opt,name=channel,proto3" json:"channel,omitempty"`
+	// 创建人ID
+	CreateBy string `protobuf:"bytes,11,opt,name=create_by,proto3" json:"create_by,omitempty"`
+	// 更新人ID
+	UpdateBy string `protobuf:"bytes,12,opt,name=update_by,proto3" json:"update_by,omitempty"`
+	// 创建人名称
+	CreateByName string `protobuf:"bytes,13,opt,name=create_by_name,proto3" json:"create_by_name,omitempty"`
+	// 更新人名称
+	UpdateByName  string `protobuf:"bytes,14,opt,name=update_by_name,proto3" json:"update_by_name,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -212,6 +220,34 @@ func (x *MenuData) GetChannel() int32 {
 		return x.Channel
 	}
 	return 0
+}
+
+func (x *MenuData) GetCreateBy() string {
+	if x != nil {
+		return x.CreateBy
+	}
+	return ""
+}
+
+func (x *MenuData) GetUpdateBy() string {
+	if x != nil {
+		return x.UpdateBy
+	}
+	return ""
+}
+
+func (x *MenuData) GetCreateByName() string {
+	if x != nil {
+		return x.CreateByName
+	}
+	return ""
+}
+
+func (x *MenuData) GetUpdateByName() string {
+	if x != nil {
+		return x.UpdateByName
+	}
+	return ""
 }
 
 // Package message 查询菜单详情请求消息定义
@@ -1071,7 +1107,7 @@ const file_menu_menu_message_proto_rawDesc = "" +
 	"\bMenuName\x12\x1d\n" +
 	"\x04lang\x18\x01 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18\n" +
 	"R\x04lang\x12#\n" +
-	"\acontent\x18\x02 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18dR\acontent\"\x99\x02\n" +
+	"\acontent\x18\x02 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18dR\acontent\"\xa5\x03\n" +
 	"\bMenuData\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
 	"\x04code\x18\x02 \x01(\tR\x04code\x12\x1c\n" +
@@ -1083,7 +1119,11 @@ const file_menu_menu_message_proto_rawDesc = "" +
 	"\x04type\x18\b \x01(\x05R\x04type\x12\x14\n" +
 	"\x05state\x18\t \x01(\x05R\x05state\x12\x18\n" +
 	"\achannel\x18\n" +
-	" \x01(\x05R\achannel\"P\n" +
+	" \x01(\x05R\achannel\x12\x1c\n" +
+	"\tcreate_by\x18\v \x01(\tR\tcreate_by\x12\x1c\n" +
+	"\tupdate_by\x18\f \x01(\tR\tupdate_by\x12&\n" +
+	"\x0ecreate_by_name\x18\r \x01(\tR\x0ecreate_by_name\x12&\n" +
+	"\x0eupdate_by_name\x18\x0e \x01(\tR\x0eupdate_by_name\"P\n" +
 	"\x0eGetMenuRequest\x12\x19\n" +
 	"\x02id\x18\x01 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18(R\x02id\x12#\n" +
 	"\blanguage\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x18\n" +
