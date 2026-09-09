@@ -433,7 +433,11 @@ type DomainResponse struct {
 	// 创建时间
 	CreateAt *timestamppb.Timestamp `protobuf:"bytes,10,opt,name=create_at,proto3" json:"create_at,omitempty"`
 	// 更新时间
-	UpdateAt      *timestamppb.Timestamp `protobuf:"bytes,11,opt,name=update_at,proto3" json:"update_at,omitempty"`
+	UpdateAt *timestamppb.Timestamp `protobuf:"bytes,11,opt,name=update_at,proto3" json:"update_at,omitempty"`
+	// 创建人名称
+	CreateByName string `protobuf:"bytes,12,opt,name=create_by_name,proto3" json:"create_by_name,omitempty"`
+	// 更新人名称
+	UpdateByName  string `protobuf:"bytes,13,opt,name=update_by_name,proto3" json:"update_by_name,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -543,6 +547,20 @@ func (x *DomainResponse) GetUpdateAt() *timestamppb.Timestamp {
 		return x.UpdateAt
 	}
 	return nil
+}
+
+func (x *DomainResponse) GetCreateByName() string {
+	if x != nil {
+		return x.CreateByName
+	}
+	return ""
+}
+
+func (x *DomainResponse) GetUpdateByName() string {
+	if x != nil {
+		return x.UpdateByName
+	}
+	return ""
 }
 
 // Package message 域名分页列表请求消息定义
@@ -723,7 +741,7 @@ const file_domain_domain_message_proto_rawDesc = "" +
 	"\x06domain\x18\x01 \x01(\tB\n" +
 	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\x06domain\x12#\n" +
 	"\blanguage\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x18\n" +
-	"R\blanguage\"\x98\x03\n" +
+	"R\blanguage\"\xe8\x03\n" +
 	"\x0eDomainResponse\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x16\n" +
 	"\x06domain\x18\x02 \x01(\tR\x06domain\x12\x12\n" +
@@ -736,7 +754,9 @@ const file_domain_domain_message_proto_rawDesc = "" +
 	"\tupdate_by\x18\t \x01(\tR\tupdate_by\x128\n" +
 	"\tcreate_at\x18\n" +
 	" \x01(\v2\x1a.google.protobuf.TimestampR\tcreate_at\x128\n" +
-	"\tupdate_at\x18\v \x01(\v2\x1a.google.protobuf.TimestampR\tupdate_at\"\xa5\x01\n" +
+	"\tupdate_at\x18\v \x01(\v2\x1a.google.protobuf.TimestampR\tupdate_at\x12&\n" +
+	"\x0ecreate_by_name\x18\f \x01(\tR\x0ecreate_by_name\x12&\n" +
+	"\x0eupdate_by_name\x18\r \x01(\tR\x0eupdate_by_name\"\xa5\x01\n" +
 	"\x12ListDomainsRequest\x12#\n" +
 	"\bkeywords\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x18dR\bkeywords\x12\x1b\n" +
 	"\x04page\x18\x02 \x01(\x05B\a\xbaH\x04\x1a\x02 \x00R\x04page\x12(\n" +
