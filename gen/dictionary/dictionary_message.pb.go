@@ -608,7 +608,15 @@ type DictData struct {
 	// 描述
 	Description string `protobuf:"bytes,4,opt,name=description,proto3" json:"description,omitempty"`
 	// 是否可删除 true 可删除 false 不可删除
-	Deletable     bool `protobuf:"varint,5,opt,name=deletable,proto3" json:"deletable,omitempty"`
+	Deletable bool `protobuf:"varint,5,opt,name=deletable,proto3" json:"deletable,omitempty"`
+	// 更新人ID
+	UpdateById string `protobuf:"bytes,6,opt,name=update_by_id,proto3" json:"update_by_id,omitempty"`
+	// 创建人ID
+	CreateById string `protobuf:"bytes,7,opt,name=create_by_id,proto3" json:"create_by_id,omitempty"`
+	// 更新人名称(昵称/用户名)
+	UpdateByName string `protobuf:"bytes,8,opt,name=update_by_name,proto3" json:"update_by_name,omitempty"`
+	// 创建人名称(昵称/用户名)
+	CreateByName  string `protobuf:"bytes,9,opt,name=create_by_name,proto3" json:"create_by_name,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -678,6 +686,34 @@ func (x *DictData) GetDeletable() bool {
 	return false
 }
 
+func (x *DictData) GetUpdateById() string {
+	if x != nil {
+		return x.UpdateById
+	}
+	return ""
+}
+
+func (x *DictData) GetCreateById() string {
+	if x != nil {
+		return x.CreateById
+	}
+	return ""
+}
+
+func (x *DictData) GetUpdateByName() string {
+	if x != nil {
+		return x.UpdateByName
+	}
+	return ""
+}
+
+func (x *DictData) GetCreateByName() string {
+	if x != nil {
+		return x.CreateByName
+	}
+	return ""
+}
+
 // Package message 详细字典信息
 type DictDetail struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
@@ -689,16 +725,20 @@ type DictDetail struct {
 	Value string `protobuf:"bytes,3,opt,name=value,proto3" json:"value,omitempty"`
 	// 描述
 	Description string `protobuf:"bytes,4,opt,name=description,proto3" json:"description,omitempty"`
-	// 更新人
-	UpdateBy string `protobuf:"bytes,5,opt,name=update_by,proto3" json:"update_by,omitempty"`
-	// 创建人
-	CreateBy string `protobuf:"bytes,6,opt,name=create_by,proto3" json:"create_by,omitempty"`
+	// 更新人ID
+	UpdateById string `protobuf:"bytes,5,opt,name=update_by_id,proto3" json:"update_by_id,omitempty"`
+	// 创建人ID
+	CreateById string `protobuf:"bytes,6,opt,name=create_by_id,proto3" json:"create_by_id,omitempty"`
 	// 更新时间
 	UpdateAt *timestamppb.Timestamp `protobuf:"bytes,7,opt,name=update_at,proto3" json:"update_at,omitempty"`
 	// 创建时间
 	CreateAt *timestamppb.Timestamp `protobuf:"bytes,8,opt,name=create_at,proto3" json:"create_at,omitempty"`
 	// 是否可删除 true 可删除 false 不可删除
-	Deletable     bool `protobuf:"varint,9,opt,name=deletable,proto3" json:"deletable,omitempty"`
+	Deletable bool `protobuf:"varint,9,opt,name=deletable,proto3" json:"deletable,omitempty"`
+	// 更新人名称(昵称/用户名)
+	UpdateByName string `protobuf:"bytes,10,opt,name=update_by_name,proto3" json:"update_by_name,omitempty"`
+	// 创建人名称(昵称/用户名)
+	CreateByName  string `protobuf:"bytes,11,opt,name=create_by_name,proto3" json:"create_by_name,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -761,16 +801,16 @@ func (x *DictDetail) GetDescription() string {
 	return ""
 }
 
-func (x *DictDetail) GetUpdateBy() string {
+func (x *DictDetail) GetUpdateById() string {
 	if x != nil {
-		return x.UpdateBy
+		return x.UpdateById
 	}
 	return ""
 }
 
-func (x *DictDetail) GetCreateBy() string {
+func (x *DictDetail) GetCreateById() string {
 	if x != nil {
-		return x.CreateBy
+		return x.CreateById
 	}
 	return ""
 }
@@ -794,6 +834,20 @@ func (x *DictDetail) GetDeletable() bool {
 		return x.Deletable
 	}
 	return false
+}
+
+func (x *DictDetail) GetUpdateByName() string {
+	if x != nil {
+		return x.UpdateByName
+	}
+	return ""
+}
+
+func (x *DictDetail) GetCreateByName() string {
+	if x != nil {
+		return x.CreateByName
+	}
+	return ""
 }
 
 var File_dictionary_dictionary_message_proto protoreflect.FileDescriptor
@@ -835,24 +889,31 @@ const file_dictionary_dictionary_message_proto_rawDesc = "" +
 	"\x05total\x18\x02 \x01(\x03R\x05total\x12\x12\n" +
 	"\x04page\x18\x03 \x01(\x03R\x04page\x12\x1c\n" +
 	"\tpage_size\x18\x04 \x01(\x03R\tpage_size\x12\x1a\n" +
-	"\bkeywords\x18\x05 \x01(\tR\bkeywords\"\x82\x01\n" +
+	"\bkeywords\x18\x05 \x01(\tR\bkeywords\"\x9a\x02\n" +
 	"\bDictData\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x10\n" +
 	"\x03key\x18\x02 \x01(\tR\x03key\x12\x14\n" +
 	"\x05value\x18\x03 \x01(\tR\x05value\x12 \n" +
 	"\vdescription\x18\x04 \x01(\tR\vdescription\x12\x1c\n" +
-	"\tdeletable\x18\x05 \x01(\bR\tdeletable\"\xb4\x02\n" +
+	"\tdeletable\x18\x05 \x01(\bR\tdeletable\x12\"\n" +
+	"\fupdate_by_id\x18\x06 \x01(\tR\fupdate_by_id\x12\"\n" +
+	"\fcreate_by_id\x18\a \x01(\tR\fcreate_by_id\x12&\n" +
+	"\x0eupdate_by_name\x18\b \x01(\tR\x0eupdate_by_name\x12&\n" +
+	"\x0ecreate_by_name\x18\t \x01(\tR\x0ecreate_by_name\"\x90\x03\n" +
 	"\n" +
 	"DictDetail\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x10\n" +
 	"\x03key\x18\x02 \x01(\tR\x03key\x12\x14\n" +
 	"\x05value\x18\x03 \x01(\tR\x05value\x12 \n" +
-	"\vdescription\x18\x04 \x01(\tR\vdescription\x12\x1c\n" +
-	"\tupdate_by\x18\x05 \x01(\tR\tupdate_by\x12\x1c\n" +
-	"\tcreate_by\x18\x06 \x01(\tR\tcreate_by\x128\n" +
+	"\vdescription\x18\x04 \x01(\tR\vdescription\x12\"\n" +
+	"\fupdate_by_id\x18\x05 \x01(\tR\fupdate_by_id\x12\"\n" +
+	"\fcreate_by_id\x18\x06 \x01(\tR\fcreate_by_id\x128\n" +
 	"\tupdate_at\x18\a \x01(\v2\x1a.google.protobuf.TimestampR\tupdate_at\x128\n" +
 	"\tcreate_at\x18\b \x01(\v2\x1a.google.protobuf.TimestampR\tcreate_at\x12\x1c\n" +
-	"\tdeletable\x18\t \x01(\bR\tdeletableB\xd7\x01\n" +
+	"\tdeletable\x18\t \x01(\bR\tdeletable\x12&\n" +
+	"\x0eupdate_by_name\x18\n" +
+	" \x01(\tR\x0eupdate_by_name\x12&\n" +
+	"\x0ecreate_by_name\x18\v \x01(\tR\x0ecreate_by_nameB\xd7\x01\n" +
 	"\x1bcom.fusion.proto.dictionaryB\x16DictionaryMessageProtoP\x01Z\"fusion.proto.dictionary;dictionary\xa2\x02\x03FPD\xaa\x02\x17Fusion.Proto.Dictionary\xca\x02\x17Fusion\\Proto\\Dictionary\xe2\x02#Fusion\\Proto\\Dictionary\\GPBMetadata\xea\x02\x19Fusion::Proto::Dictionaryb\x06proto3"
 
 var (
