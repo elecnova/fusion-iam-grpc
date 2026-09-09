@@ -30,11 +30,20 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	DictionaryService_GetDict_FullMethodName = "/fusion.proto.dictionary.DictionaryService/GetDict"
-	DictionaryService_Create_FullMethodName  = "/fusion.proto.dictionary.DictionaryService/Create"
-	DictionaryService_Delete_FullMethodName  = "/fusion.proto.dictionary.DictionaryService/Delete"
-	DictionaryService_Update_FullMethodName  = "/fusion.proto.dictionary.DictionaryService/Update"
-	DictionaryService_List_FullMethodName    = "/fusion.proto.dictionary.DictionaryService/List"
+	DictionaryService_GetDict_FullMethodName        = "/fusion.proto.dictionary.DictionaryService/GetDict"
+	DictionaryService_Create_FullMethodName         = "/fusion.proto.dictionary.DictionaryService/Create"
+	DictionaryService_Delete_FullMethodName         = "/fusion.proto.dictionary.DictionaryService/Delete"
+	DictionaryService_Update_FullMethodName         = "/fusion.proto.dictionary.DictionaryService/Update"
+	DictionaryService_List_FullMethodName           = "/fusion.proto.dictionary.DictionaryService/List"
+	DictionaryService_GetKVDict_FullMethodName      = "/fusion.proto.dictionary.DictionaryService/GetKVDict"
+	DictionaryService_GetSystemModel_FullMethodName = "/fusion.proto.dictionary.DictionaryService/GetSystemModel"
+	DictionaryService_GetGlobalCode_FullMethodName  = "/fusion.proto.dictionary.DictionaryService/GetGlobalCode"
+	DictionaryService_GetContact_FullMethodName     = "/fusion.proto.dictionary.DictionaryService/GetContact"
+	DictionaryService_UpdateContact_FullMethodName  = "/fusion.proto.dictionary.DictionaryService/UpdateContact"
+	DictionaryService_GetGWList_FullMethodName      = "/fusion.proto.dictionary.DictionaryService/GetGWList"
+	DictionaryService_EmsGateway_FullMethodName     = "/fusion.proto.dictionary.DictionaryService/EmsGateway"
+	DictionaryService_GetProModel_FullMethodName    = "/fusion.proto.dictionary.DictionaryService/GetProModel"
+	DictionaryService_CreateProModel_FullMethodName = "/fusion.proto.dictionary.DictionaryService/CreateProModel"
 )
 
 // DictionaryServiceClient is the client API for DictionaryService service.
@@ -53,6 +62,24 @@ type DictionaryServiceClient interface {
 	Update(ctx context.Context, in *UpdateDictRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// 数据字典分页列表查询
 	List(ctx context.Context, in *ListDictRequest, opts ...grpc.CallOption) (*ListDictResponse, error)
+	// 读取字典value数组并反序列化为键值对列表(不做语言处理，对应率费参数/储能站类型/设备型号等)
+	GetKVDict(ctx context.Context, in *GetKVDictRequest, opts ...grpc.CallOption) (*GetKVDictResponse, error)
+	// 获取系统类型列表(按语言取名称，缺失时回退默认语言)
+	GetSystemModel(ctx context.Context, in *GetSystemModelRequest, opts ...grpc.CallOption) (*GetSystemModelResponse, error)
+	// 获取所有地区电话区号
+	GetGlobalCode(ctx context.Context, in *GetGlobalCodeRequest, opts ...grpc.CallOption) (*GetGlobalCodeResponse, error)
+	// 获取客服咨询联系方式
+	GetContact(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*GetContactResponse, error)
+	// 修改客服咨询联系方式
+	UpdateContact(ctx context.Context, in *UpdateContactRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
+	// 获取平台产品(网关)列表
+	GetGWList(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*GetGWListResponse, error)
+	// 获取EMS网关型号列表
+	EmsGateway(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*EmsGatewayResponse, error)
+	// 获取模板型号列表(按模板类型与语言)
+	GetProModel(ctx context.Context, in *GetProModelRequest, opts ...grpc.CallOption) (*GetProModelResponse, error)
+	// 新增模板型号
+	CreateProModel(ctx context.Context, in *CreateProModelRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 }
 
 type dictionaryServiceClient struct {
@@ -113,6 +140,96 @@ func (c *dictionaryServiceClient) List(ctx context.Context, in *ListDictRequest,
 	return out, nil
 }
 
+func (c *dictionaryServiceClient) GetKVDict(ctx context.Context, in *GetKVDictRequest, opts ...grpc.CallOption) (*GetKVDictResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetKVDictResponse)
+	err := c.cc.Invoke(ctx, DictionaryService_GetKVDict_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *dictionaryServiceClient) GetSystemModel(ctx context.Context, in *GetSystemModelRequest, opts ...grpc.CallOption) (*GetSystemModelResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetSystemModelResponse)
+	err := c.cc.Invoke(ctx, DictionaryService_GetSystemModel_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *dictionaryServiceClient) GetGlobalCode(ctx context.Context, in *GetGlobalCodeRequest, opts ...grpc.CallOption) (*GetGlobalCodeResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetGlobalCodeResponse)
+	err := c.cc.Invoke(ctx, DictionaryService_GetGlobalCode_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *dictionaryServiceClient) GetContact(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*GetContactResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetContactResponse)
+	err := c.cc.Invoke(ctx, DictionaryService_GetContact_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *dictionaryServiceClient) UpdateContact(ctx context.Context, in *UpdateContactRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(emptypb.Empty)
+	err := c.cc.Invoke(ctx, DictionaryService_UpdateContact_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *dictionaryServiceClient) GetGWList(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*GetGWListResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetGWListResponse)
+	err := c.cc.Invoke(ctx, DictionaryService_GetGWList_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *dictionaryServiceClient) EmsGateway(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*EmsGatewayResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(EmsGatewayResponse)
+	err := c.cc.Invoke(ctx, DictionaryService_EmsGateway_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *dictionaryServiceClient) GetProModel(ctx context.Context, in *GetProModelRequest, opts ...grpc.CallOption) (*GetProModelResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetProModelResponse)
+	err := c.cc.Invoke(ctx, DictionaryService_GetProModel_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *dictionaryServiceClient) CreateProModel(ctx context.Context, in *CreateProModelRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(emptypb.Empty)
+	err := c.cc.Invoke(ctx, DictionaryService_CreateProModel_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // DictionaryServiceServer is the server API for DictionaryService service.
 // All implementations must embed UnimplementedDictionaryServiceServer
 // for forward compatibility.
@@ -129,6 +246,24 @@ type DictionaryServiceServer interface {
 	Update(context.Context, *UpdateDictRequest) (*emptypb.Empty, error)
 	// 数据字典分页列表查询
 	List(context.Context, *ListDictRequest) (*ListDictResponse, error)
+	// 读取字典value数组并反序列化为键值对列表(不做语言处理，对应率费参数/储能站类型/设备型号等)
+	GetKVDict(context.Context, *GetKVDictRequest) (*GetKVDictResponse, error)
+	// 获取系统类型列表(按语言取名称，缺失时回退默认语言)
+	GetSystemModel(context.Context, *GetSystemModelRequest) (*GetSystemModelResponse, error)
+	// 获取所有地区电话区号
+	GetGlobalCode(context.Context, *GetGlobalCodeRequest) (*GetGlobalCodeResponse, error)
+	// 获取客服咨询联系方式
+	GetContact(context.Context, *emptypb.Empty) (*GetContactResponse, error)
+	// 修改客服咨询联系方式
+	UpdateContact(context.Context, *UpdateContactRequest) (*emptypb.Empty, error)
+	// 获取平台产品(网关)列表
+	GetGWList(context.Context, *emptypb.Empty) (*GetGWListResponse, error)
+	// 获取EMS网关型号列表
+	EmsGateway(context.Context, *emptypb.Empty) (*EmsGatewayResponse, error)
+	// 获取模板型号列表(按模板类型与语言)
+	GetProModel(context.Context, *GetProModelRequest) (*GetProModelResponse, error)
+	// 新增模板型号
+	CreateProModel(context.Context, *CreateProModelRequest) (*emptypb.Empty, error)
 	mustEmbedUnimplementedDictionaryServiceServer()
 }
 
@@ -153,6 +288,33 @@ func (UnimplementedDictionaryServiceServer) Update(context.Context, *UpdateDictR
 }
 func (UnimplementedDictionaryServiceServer) List(context.Context, *ListDictRequest) (*ListDictResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method List not implemented")
+}
+func (UnimplementedDictionaryServiceServer) GetKVDict(context.Context, *GetKVDictRequest) (*GetKVDictResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method GetKVDict not implemented")
+}
+func (UnimplementedDictionaryServiceServer) GetSystemModel(context.Context, *GetSystemModelRequest) (*GetSystemModelResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method GetSystemModel not implemented")
+}
+func (UnimplementedDictionaryServiceServer) GetGlobalCode(context.Context, *GetGlobalCodeRequest) (*GetGlobalCodeResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method GetGlobalCode not implemented")
+}
+func (UnimplementedDictionaryServiceServer) GetContact(context.Context, *emptypb.Empty) (*GetContactResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method GetContact not implemented")
+}
+func (UnimplementedDictionaryServiceServer) UpdateContact(context.Context, *UpdateContactRequest) (*emptypb.Empty, error) {
+	return nil, status.Error(codes.Unimplemented, "method UpdateContact not implemented")
+}
+func (UnimplementedDictionaryServiceServer) GetGWList(context.Context, *emptypb.Empty) (*GetGWListResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method GetGWList not implemented")
+}
+func (UnimplementedDictionaryServiceServer) EmsGateway(context.Context, *emptypb.Empty) (*EmsGatewayResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method EmsGateway not implemented")
+}
+func (UnimplementedDictionaryServiceServer) GetProModel(context.Context, *GetProModelRequest) (*GetProModelResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method GetProModel not implemented")
+}
+func (UnimplementedDictionaryServiceServer) CreateProModel(context.Context, *CreateProModelRequest) (*emptypb.Empty, error) {
+	return nil, status.Error(codes.Unimplemented, "method CreateProModel not implemented")
 }
 func (UnimplementedDictionaryServiceServer) mustEmbedUnimplementedDictionaryServiceServer() {}
 func (UnimplementedDictionaryServiceServer) testEmbeddedByValue()                           {}
@@ -265,6 +427,168 @@ func _DictionaryService_List_Handler(srv interface{}, ctx context.Context, dec f
 	return interceptor(ctx, in, info, handler)
 }
 
+func _DictionaryService_GetKVDict_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetKVDictRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(DictionaryServiceServer).GetKVDict(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: DictionaryService_GetKVDict_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(DictionaryServiceServer).GetKVDict(ctx, req.(*GetKVDictRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _DictionaryService_GetSystemModel_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetSystemModelRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(DictionaryServiceServer).GetSystemModel(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: DictionaryService_GetSystemModel_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(DictionaryServiceServer).GetSystemModel(ctx, req.(*GetSystemModelRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _DictionaryService_GetGlobalCode_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetGlobalCodeRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(DictionaryServiceServer).GetGlobalCode(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: DictionaryService_GetGlobalCode_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(DictionaryServiceServer).GetGlobalCode(ctx, req.(*GetGlobalCodeRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _DictionaryService_GetContact_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(emptypb.Empty)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(DictionaryServiceServer).GetContact(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: DictionaryService_GetContact_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(DictionaryServiceServer).GetContact(ctx, req.(*emptypb.Empty))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _DictionaryService_UpdateContact_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateContactRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(DictionaryServiceServer).UpdateContact(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: DictionaryService_UpdateContact_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(DictionaryServiceServer).UpdateContact(ctx, req.(*UpdateContactRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _DictionaryService_GetGWList_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(emptypb.Empty)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(DictionaryServiceServer).GetGWList(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: DictionaryService_GetGWList_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(DictionaryServiceServer).GetGWList(ctx, req.(*emptypb.Empty))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _DictionaryService_EmsGateway_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(emptypb.Empty)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(DictionaryServiceServer).EmsGateway(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: DictionaryService_EmsGateway_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(DictionaryServiceServer).EmsGateway(ctx, req.(*emptypb.Empty))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _DictionaryService_GetProModel_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetProModelRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(DictionaryServiceServer).GetProModel(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: DictionaryService_GetProModel_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(DictionaryServiceServer).GetProModel(ctx, req.(*GetProModelRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _DictionaryService_CreateProModel_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateProModelRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(DictionaryServiceServer).CreateProModel(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: DictionaryService_CreateProModel_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(DictionaryServiceServer).CreateProModel(ctx, req.(*CreateProModelRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // DictionaryService_ServiceDesc is the grpc.ServiceDesc for DictionaryService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -291,6 +615,42 @@ var DictionaryService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "List",
 			Handler:    _DictionaryService_List_Handler,
+		},
+		{
+			MethodName: "GetKVDict",
+			Handler:    _DictionaryService_GetKVDict_Handler,
+		},
+		{
+			MethodName: "GetSystemModel",
+			Handler:    _DictionaryService_GetSystemModel_Handler,
+		},
+		{
+			MethodName: "GetGlobalCode",
+			Handler:    _DictionaryService_GetGlobalCode_Handler,
+		},
+		{
+			MethodName: "GetContact",
+			Handler:    _DictionaryService_GetContact_Handler,
+		},
+		{
+			MethodName: "UpdateContact",
+			Handler:    _DictionaryService_UpdateContact_Handler,
+		},
+		{
+			MethodName: "GetGWList",
+			Handler:    _DictionaryService_GetGWList_Handler,
+		},
+		{
+			MethodName: "EmsGateway",
+			Handler:    _DictionaryService_EmsGateway_Handler,
+		},
+		{
+			MethodName: "GetProModel",
+			Handler:    _DictionaryService_GetProModel_Handler,
+		},
+		{
+			MethodName: "CreateProModel",
+			Handler:    _DictionaryService_CreateProModel_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

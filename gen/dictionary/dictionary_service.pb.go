@@ -36,42 +36,84 @@ var File_dictionary_dictionary_service_proto protoreflect.FileDescriptor
 
 const file_dictionary_dictionary_service_proto_rawDesc = "" +
 	"\n" +
-	"#dictionary/dictionary_service.proto\x12\x17fusion.proto.dictionary\x1a\x1cgoogle/api/annotations.proto\x1a\x1bgoogle/protobuf/empty.proto\x1a\x17google/api/client.proto\x1a#dictionary/dictionary_message.proto2\x91\x05\n" +
+	"#dictionary/dictionary_service.proto\x12\x17fusion.proto.dictionary\x1a\x1cgoogle/api/annotations.proto\x1a\x1bgoogle/protobuf/empty.proto\x1a\x17google/api/client.proto\x1a#dictionary/dictionary_message.proto2\xcd\x0e\n" +
 	"\x11DictionaryService\x12v\n" +
 	"\aGetDict\x12'.fusion.proto.dictionary.GetDictRequest\x1a(.fusion.proto.dictionary.GetDictResponse\"\x18\x82\xd3\xe4\x93\x02\x12\x12\x10/3rd-api/v1/dict\x12\x8a\x01\n" +
 	"\x06Create\x12*.fusion.proto.dictionary.CreateDictRequest\x1a+.fusion.proto.dictionary.CreateDictResponse\"'\xdaA\tkey,value\x82\xd3\xe4\x93\x02\x15:\x01*\"\x10/3rd-api/v1/dict\x12p\n" +
 	"\x06Delete\x12*.fusion.proto.dictionary.DeleteDictRequest\x1a\x16.google.protobuf.Empty\"\"\xdaA\x02id\x82\xd3\xe4\x93\x02\x17*\x15/3rd-api/v1/dict/{id}\x12\x89\x01\n" +
 	"\x06Update\x12*.fusion.proto.dictionary.UpdateDictRequest\x1a\x16.google.protobuf.Empty\";\xdaA\x18id,key,description,value\x82\xd3\xe4\x93\x02\x1a:\x01*\x1a\x15/3rd-api/v1/dict/{id}\x12y\n" +
-	"\x04List\x12(.fusion.proto.dictionary.ListDictRequest\x1a).fusion.proto.dictionary.ListDictResponse\"\x1c\xdaA\x00\x82\xd3\xe4\x93\x02\x13\x12\x11/3rd-api/v1/dictsB\xd7\x01\n" +
+	"\x04List\x12(.fusion.proto.dictionary.ListDictRequest\x1a).fusion.proto.dictionary.ListDictResponse\"\x1c\xdaA\x00\x82\xd3\xe4\x93\x02\x13\x12\x11/3rd-api/v1/dicts\x12\x85\x01\n" +
+	"\tGetKVDict\x12).fusion.proto.dictionary.GetKVDictRequest\x1a*.fusion.proto.dictionary.GetKVDictResponse\"!\xdaA\x03key\x82\xd3\xe4\x93\x02\x15\x12\x13/3rd-api/v1/dict/kv\x12\x9b\x01\n" +
+	"\x0eGetSystemModel\x12..fusion.proto.dictionary.GetSystemModelRequest\x1a/.fusion.proto.dictionary.GetSystemModelResponse\"(\xdaA\x00\x82\xd3\xe4\x93\x02\x1f\x12\x1d/3rd-api/v1/dict/system_model\x12\x97\x01\n" +
+	"\rGetGlobalCode\x12-.fusion.proto.dictionary.GetGlobalCodeRequest\x1a..fusion.proto.dictionary.GetGlobalCodeResponse\"'\xdaA\x00\x82\xd3\xe4\x93\x02\x1e\x12\x1c/3rd-api/v1/dict/global_code\x12v\n" +
+	"\n" +
+	"GetContact\x12\x16.google.protobuf.Empty\x1a+.fusion.proto.dictionary.GetContactResponse\"#\xdaA\x00\x82\xd3\xe4\x93\x02\x1a\x12\x18/3rd-api/v1/dict/contact\x12~\n" +
+	"\rUpdateContact\x12-.fusion.proto.dictionary.UpdateContactRequest\x1a\x16.google.protobuf.Empty\"&\xdaA\x00\x82\xd3\xe4\x93\x02\x1d:\x01*\x1a\x18/3rd-api/v1/dict/contact\x12t\n" +
+	"\tGetGWList\x12\x16.google.protobuf.Empty\x1a*.fusion.proto.dictionary.GetGWListResponse\"#\xdaA\x00\x82\xd3\xe4\x93\x02\x1a\x12\x18/3rd-api/v1/dict/gw_list\x12u\n" +
+	"\n" +
+	"EmsGateway\x12\x16.google.protobuf.Empty\x1a+.fusion.proto.dictionary.EmsGatewayResponse\"\"\xdaA\x00\x82\xd3\xe4\x93\x02\x19\x12\x17/3rd-api/v1/dict/ems_gw\x12\x8f\x01\n" +
+	"\vGetProModel\x12+.fusion.proto.dictionary.GetProModelRequest\x1a,.fusion.proto.dictionary.GetProModelResponse\"%\xdaA\x00\x82\xd3\xe4\x93\x02\x1c\x12\x1a/3rd-api/v1/dict/pro_model\x12\x82\x01\n" +
+	"\x0eCreateProModel\x12..fusion.proto.dictionary.CreateProModelRequest\x1a\x16.google.protobuf.Empty\"(\xdaA\x00\x82\xd3\xe4\x93\x02\x1f:\x01*\"\x1a/3rd-api/v1/dict/pro_modelB\xd7\x01\n" +
 	"\x1bcom.fusion.proto.dictionaryB\x16DictionaryServiceProtoP\x01Z\"fusion.proto.dictionary;dictionary\xa2\x02\x03FPD\xaa\x02\x17Fusion.Proto.Dictionary\xca\x02\x17Fusion\\Proto\\Dictionary\xe2\x02#Fusion\\Proto\\Dictionary\\GPBMetadata\xea\x02\x19Fusion::Proto::Dictionaryb\x06proto3"
 
 var file_dictionary_dictionary_service_proto_goTypes = []any{
-	(*GetDictRequest)(nil),     // 0: fusion.proto.dictionary.GetDictRequest
-	(*CreateDictRequest)(nil),  // 1: fusion.proto.dictionary.CreateDictRequest
-	(*DeleteDictRequest)(nil),  // 2: fusion.proto.dictionary.DeleteDictRequest
-	(*UpdateDictRequest)(nil),  // 3: fusion.proto.dictionary.UpdateDictRequest
-	(*ListDictRequest)(nil),    // 4: fusion.proto.dictionary.ListDictRequest
-	(*GetDictResponse)(nil),    // 5: fusion.proto.dictionary.GetDictResponse
-	(*CreateDictResponse)(nil), // 6: fusion.proto.dictionary.CreateDictResponse
-	(*emptypb.Empty)(nil),      // 7: google.protobuf.Empty
-	(*ListDictResponse)(nil),   // 8: fusion.proto.dictionary.ListDictResponse
+	(*GetDictRequest)(nil),         // 0: fusion.proto.dictionary.GetDictRequest
+	(*CreateDictRequest)(nil),      // 1: fusion.proto.dictionary.CreateDictRequest
+	(*DeleteDictRequest)(nil),      // 2: fusion.proto.dictionary.DeleteDictRequest
+	(*UpdateDictRequest)(nil),      // 3: fusion.proto.dictionary.UpdateDictRequest
+	(*ListDictRequest)(nil),        // 4: fusion.proto.dictionary.ListDictRequest
+	(*GetKVDictRequest)(nil),       // 5: fusion.proto.dictionary.GetKVDictRequest
+	(*GetSystemModelRequest)(nil),  // 6: fusion.proto.dictionary.GetSystemModelRequest
+	(*GetGlobalCodeRequest)(nil),   // 7: fusion.proto.dictionary.GetGlobalCodeRequest
+	(*emptypb.Empty)(nil),          // 8: google.protobuf.Empty
+	(*UpdateContactRequest)(nil),   // 9: fusion.proto.dictionary.UpdateContactRequest
+	(*GetProModelRequest)(nil),     // 10: fusion.proto.dictionary.GetProModelRequest
+	(*CreateProModelRequest)(nil),  // 11: fusion.proto.dictionary.CreateProModelRequest
+	(*GetDictResponse)(nil),        // 12: fusion.proto.dictionary.GetDictResponse
+	(*CreateDictResponse)(nil),     // 13: fusion.proto.dictionary.CreateDictResponse
+	(*ListDictResponse)(nil),       // 14: fusion.proto.dictionary.ListDictResponse
+	(*GetKVDictResponse)(nil),      // 15: fusion.proto.dictionary.GetKVDictResponse
+	(*GetSystemModelResponse)(nil), // 16: fusion.proto.dictionary.GetSystemModelResponse
+	(*GetGlobalCodeResponse)(nil),  // 17: fusion.proto.dictionary.GetGlobalCodeResponse
+	(*GetContactResponse)(nil),     // 18: fusion.proto.dictionary.GetContactResponse
+	(*GetGWListResponse)(nil),      // 19: fusion.proto.dictionary.GetGWListResponse
+	(*EmsGatewayResponse)(nil),     // 20: fusion.proto.dictionary.EmsGatewayResponse
+	(*GetProModelResponse)(nil),    // 21: fusion.proto.dictionary.GetProModelResponse
 }
 var file_dictionary_dictionary_service_proto_depIdxs = []int32{
-	0, // 0: fusion.proto.dictionary.DictionaryService.GetDict:input_type -> fusion.proto.dictionary.GetDictRequest
-	1, // 1: fusion.proto.dictionary.DictionaryService.Create:input_type -> fusion.proto.dictionary.CreateDictRequest
-	2, // 2: fusion.proto.dictionary.DictionaryService.Delete:input_type -> fusion.proto.dictionary.DeleteDictRequest
-	3, // 3: fusion.proto.dictionary.DictionaryService.Update:input_type -> fusion.proto.dictionary.UpdateDictRequest
-	4, // 4: fusion.proto.dictionary.DictionaryService.List:input_type -> fusion.proto.dictionary.ListDictRequest
-	5, // 5: fusion.proto.dictionary.DictionaryService.GetDict:output_type -> fusion.proto.dictionary.GetDictResponse
-	6, // 6: fusion.proto.dictionary.DictionaryService.Create:output_type -> fusion.proto.dictionary.CreateDictResponse
-	7, // 7: fusion.proto.dictionary.DictionaryService.Delete:output_type -> google.protobuf.Empty
-	7, // 8: fusion.proto.dictionary.DictionaryService.Update:output_type -> google.protobuf.Empty
-	8, // 9: fusion.proto.dictionary.DictionaryService.List:output_type -> fusion.proto.dictionary.ListDictResponse
-	5, // [5:10] is the sub-list for method output_type
-	0, // [0:5] is the sub-list for method input_type
-	0, // [0:0] is the sub-list for extension type_name
-	0, // [0:0] is the sub-list for extension extendee
-	0, // [0:0] is the sub-list for field type_name
+	0,  // 0: fusion.proto.dictionary.DictionaryService.GetDict:input_type -> fusion.proto.dictionary.GetDictRequest
+	1,  // 1: fusion.proto.dictionary.DictionaryService.Create:input_type -> fusion.proto.dictionary.CreateDictRequest
+	2,  // 2: fusion.proto.dictionary.DictionaryService.Delete:input_type -> fusion.proto.dictionary.DeleteDictRequest
+	3,  // 3: fusion.proto.dictionary.DictionaryService.Update:input_type -> fusion.proto.dictionary.UpdateDictRequest
+	4,  // 4: fusion.proto.dictionary.DictionaryService.List:input_type -> fusion.proto.dictionary.ListDictRequest
+	5,  // 5: fusion.proto.dictionary.DictionaryService.GetKVDict:input_type -> fusion.proto.dictionary.GetKVDictRequest
+	6,  // 6: fusion.proto.dictionary.DictionaryService.GetSystemModel:input_type -> fusion.proto.dictionary.GetSystemModelRequest
+	7,  // 7: fusion.proto.dictionary.DictionaryService.GetGlobalCode:input_type -> fusion.proto.dictionary.GetGlobalCodeRequest
+	8,  // 8: fusion.proto.dictionary.DictionaryService.GetContact:input_type -> google.protobuf.Empty
+	9,  // 9: fusion.proto.dictionary.DictionaryService.UpdateContact:input_type -> fusion.proto.dictionary.UpdateContactRequest
+	8,  // 10: fusion.proto.dictionary.DictionaryService.GetGWList:input_type -> google.protobuf.Empty
+	8,  // 11: fusion.proto.dictionary.DictionaryService.EmsGateway:input_type -> google.protobuf.Empty
+	10, // 12: fusion.proto.dictionary.DictionaryService.GetProModel:input_type -> fusion.proto.dictionary.GetProModelRequest
+	11, // 13: fusion.proto.dictionary.DictionaryService.CreateProModel:input_type -> fusion.proto.dictionary.CreateProModelRequest
+	12, // 14: fusion.proto.dictionary.DictionaryService.GetDict:output_type -> fusion.proto.dictionary.GetDictResponse
+	13, // 15: fusion.proto.dictionary.DictionaryService.Create:output_type -> fusion.proto.dictionary.CreateDictResponse
+	8,  // 16: fusion.proto.dictionary.DictionaryService.Delete:output_type -> google.protobuf.Empty
+	8,  // 17: fusion.proto.dictionary.DictionaryService.Update:output_type -> google.protobuf.Empty
+	14, // 18: fusion.proto.dictionary.DictionaryService.List:output_type -> fusion.proto.dictionary.ListDictResponse
+	15, // 19: fusion.proto.dictionary.DictionaryService.GetKVDict:output_type -> fusion.proto.dictionary.GetKVDictResponse
+	16, // 20: fusion.proto.dictionary.DictionaryService.GetSystemModel:output_type -> fusion.proto.dictionary.GetSystemModelResponse
+	17, // 21: fusion.proto.dictionary.DictionaryService.GetGlobalCode:output_type -> fusion.proto.dictionary.GetGlobalCodeResponse
+	18, // 22: fusion.proto.dictionary.DictionaryService.GetContact:output_type -> fusion.proto.dictionary.GetContactResponse
+	8,  // 23: fusion.proto.dictionary.DictionaryService.UpdateContact:output_type -> google.protobuf.Empty
+	19, // 24: fusion.proto.dictionary.DictionaryService.GetGWList:output_type -> fusion.proto.dictionary.GetGWListResponse
+	20, // 25: fusion.proto.dictionary.DictionaryService.EmsGateway:output_type -> fusion.proto.dictionary.EmsGatewayResponse
+	21, // 26: fusion.proto.dictionary.DictionaryService.GetProModel:output_type -> fusion.proto.dictionary.GetProModelResponse
+	8,  // 27: fusion.proto.dictionary.DictionaryService.CreateProModel:output_type -> google.protobuf.Empty
+	14, // [14:28] is the sub-list for method output_type
+	0,  // [0:14] is the sub-list for method input_type
+	0,  // [0:0] is the sub-list for extension type_name
+	0,  // [0:0] is the sub-list for extension extendee
+	0,  // [0:0] is the sub-list for field type_name
 }
 
 func init() { file_dictionary_dictionary_service_proto_init() }
