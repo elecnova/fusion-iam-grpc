@@ -36,6 +36,12 @@ const (
 	ProjectService_GetProject_FullMethodName         = "/fusion.proto.project.ProjectService/GetProject"
 	ProjectService_ListProjects_FullMethodName       = "/fusion.proto.project.ProjectService/ListProjects"
 	ProjectService_AllProjects_FullMethodName        = "/fusion.proto.project.ProjectService/AllProjects"
+	ProjectService_GetProjectPsInfo_FullMethodName   = "/fusion.proto.project.ProjectService/GetProjectPsInfo"
+	ProjectService_GetProjectsByIDs_FullMethodName   = "/fusion.proto.project.ProjectService/GetProjectsByIDs"
+	ProjectService_SetUserProjects_FullMethodName    = "/fusion.proto.project.ProjectService/SetUserProjects"
+	ProjectService_GetUserProjects_FullMethodName    = "/fusion.proto.project.ProjectService/GetUserProjects"
+	ProjectService_GetProjectUsers_FullMethodName    = "/fusion.proto.project.ProjectService/GetProjectUsers"
+	ProjectService_UnbindProjectUser_FullMethodName  = "/fusion.proto.project.ProjectService/UnbindProjectUser"
 )
 
 // ProjectServiceClient is the client API for ProjectService service.
@@ -58,6 +64,18 @@ type ProjectServiceClient interface {
 	ListProjects(ctx context.Context, in *ListProjectsRequest, opts ...grpc.CallOption) (*ListProjectsResponse, error)
 	// 列表项目(不分页)
 	AllProjects(ctx context.Context, in *AllProjectsRequest, opts ...grpc.CallOption) (*AllProjectsResponse, error)
+	// 获取项目售后信息
+	GetProjectPsInfo(ctx context.Context, in *GetProjectPsInfoRequest, opts ...grpc.CallOption) (*ProjectPsInfoResponse, error)
+	// 批量获取有效项目
+	GetProjectsByIDs(ctx context.Context, in *GetProjectsByIDsRequest, opts ...grpc.CallOption) (*GetProjectsByIDsResponse, error)
+	// 设置用户项目绑定(全量替换)
+	SetUserProjects(ctx context.Context, in *SetUserProjectsRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
+	// 获取用户项目列表
+	GetUserProjects(ctx context.Context, in *GetUserProjectsRequest, opts ...grpc.CallOption) (*GetUserProjectsResponse, error)
+	// 获取项目用户列表
+	GetProjectUsers(ctx context.Context, in *GetProjectUsersRequest, opts ...grpc.CallOption) (*GetProjectUsersResponse, error)
+	// 解绑用户项目
+	UnbindProjectUser(ctx context.Context, in *UnbindProjectUserRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 }
 
 type projectServiceClient struct {
@@ -138,6 +156,66 @@ func (c *projectServiceClient) AllProjects(ctx context.Context, in *AllProjectsR
 	return out, nil
 }
 
+func (c *projectServiceClient) GetProjectPsInfo(ctx context.Context, in *GetProjectPsInfoRequest, opts ...grpc.CallOption) (*ProjectPsInfoResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ProjectPsInfoResponse)
+	err := c.cc.Invoke(ctx, ProjectService_GetProjectPsInfo_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *projectServiceClient) GetProjectsByIDs(ctx context.Context, in *GetProjectsByIDsRequest, opts ...grpc.CallOption) (*GetProjectsByIDsResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetProjectsByIDsResponse)
+	err := c.cc.Invoke(ctx, ProjectService_GetProjectsByIDs_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *projectServiceClient) SetUserProjects(ctx context.Context, in *SetUserProjectsRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(emptypb.Empty)
+	err := c.cc.Invoke(ctx, ProjectService_SetUserProjects_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *projectServiceClient) GetUserProjects(ctx context.Context, in *GetUserProjectsRequest, opts ...grpc.CallOption) (*GetUserProjectsResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetUserProjectsResponse)
+	err := c.cc.Invoke(ctx, ProjectService_GetUserProjects_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *projectServiceClient) GetProjectUsers(ctx context.Context, in *GetProjectUsersRequest, opts ...grpc.CallOption) (*GetProjectUsersResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetProjectUsersResponse)
+	err := c.cc.Invoke(ctx, ProjectService_GetProjectUsers_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *projectServiceClient) UnbindProjectUser(ctx context.Context, in *UnbindProjectUserRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(emptypb.Empty)
+	err := c.cc.Invoke(ctx, ProjectService_UnbindProjectUser_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // ProjectServiceServer is the server API for ProjectService service.
 // All implementations must embed UnimplementedProjectServiceServer
 // for forward compatibility.
@@ -158,6 +236,18 @@ type ProjectServiceServer interface {
 	ListProjects(context.Context, *ListProjectsRequest) (*ListProjectsResponse, error)
 	// 列表项目(不分页)
 	AllProjects(context.Context, *AllProjectsRequest) (*AllProjectsResponse, error)
+	// 获取项目售后信息
+	GetProjectPsInfo(context.Context, *GetProjectPsInfoRequest) (*ProjectPsInfoResponse, error)
+	// 批量获取有效项目
+	GetProjectsByIDs(context.Context, *GetProjectsByIDsRequest) (*GetProjectsByIDsResponse, error)
+	// 设置用户项目绑定(全量替换)
+	SetUserProjects(context.Context, *SetUserProjectsRequest) (*emptypb.Empty, error)
+	// 获取用户项目列表
+	GetUserProjects(context.Context, *GetUserProjectsRequest) (*GetUserProjectsResponse, error)
+	// 获取项目用户列表
+	GetProjectUsers(context.Context, *GetProjectUsersRequest) (*GetProjectUsersResponse, error)
+	// 解绑用户项目
+	UnbindProjectUser(context.Context, *UnbindProjectUserRequest) (*emptypb.Empty, error)
 	mustEmbedUnimplementedProjectServiceServer()
 }
 
@@ -188,6 +278,24 @@ func (UnimplementedProjectServiceServer) ListProjects(context.Context, *ListProj
 }
 func (UnimplementedProjectServiceServer) AllProjects(context.Context, *AllProjectsRequest) (*AllProjectsResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method AllProjects not implemented")
+}
+func (UnimplementedProjectServiceServer) GetProjectPsInfo(context.Context, *GetProjectPsInfoRequest) (*ProjectPsInfoResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method GetProjectPsInfo not implemented")
+}
+func (UnimplementedProjectServiceServer) GetProjectsByIDs(context.Context, *GetProjectsByIDsRequest) (*GetProjectsByIDsResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method GetProjectsByIDs not implemented")
+}
+func (UnimplementedProjectServiceServer) SetUserProjects(context.Context, *SetUserProjectsRequest) (*emptypb.Empty, error) {
+	return nil, status.Error(codes.Unimplemented, "method SetUserProjects not implemented")
+}
+func (UnimplementedProjectServiceServer) GetUserProjects(context.Context, *GetUserProjectsRequest) (*GetUserProjectsResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method GetUserProjects not implemented")
+}
+func (UnimplementedProjectServiceServer) GetProjectUsers(context.Context, *GetProjectUsersRequest) (*GetProjectUsersResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method GetProjectUsers not implemented")
+}
+func (UnimplementedProjectServiceServer) UnbindProjectUser(context.Context, *UnbindProjectUserRequest) (*emptypb.Empty, error) {
+	return nil, status.Error(codes.Unimplemented, "method UnbindProjectUser not implemented")
 }
 func (UnimplementedProjectServiceServer) mustEmbedUnimplementedProjectServiceServer() {}
 func (UnimplementedProjectServiceServer) testEmbeddedByValue()                        {}
@@ -336,6 +444,114 @@ func _ProjectService_AllProjects_Handler(srv interface{}, ctx context.Context, d
 	return interceptor(ctx, in, info, handler)
 }
 
+func _ProjectService_GetProjectPsInfo_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetProjectPsInfoRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ProjectServiceServer).GetProjectPsInfo(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ProjectService_GetProjectPsInfo_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ProjectServiceServer).GetProjectPsInfo(ctx, req.(*GetProjectPsInfoRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ProjectService_GetProjectsByIDs_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetProjectsByIDsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ProjectServiceServer).GetProjectsByIDs(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ProjectService_GetProjectsByIDs_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ProjectServiceServer).GetProjectsByIDs(ctx, req.(*GetProjectsByIDsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ProjectService_SetUserProjects_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SetUserProjectsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ProjectServiceServer).SetUserProjects(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ProjectService_SetUserProjects_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ProjectServiceServer).SetUserProjects(ctx, req.(*SetUserProjectsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ProjectService_GetUserProjects_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetUserProjectsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ProjectServiceServer).GetUserProjects(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ProjectService_GetUserProjects_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ProjectServiceServer).GetUserProjects(ctx, req.(*GetUserProjectsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ProjectService_GetProjectUsers_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetProjectUsersRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ProjectServiceServer).GetProjectUsers(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ProjectService_GetProjectUsers_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ProjectServiceServer).GetProjectUsers(ctx, req.(*GetProjectUsersRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ProjectService_UnbindProjectUser_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UnbindProjectUserRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ProjectServiceServer).UnbindProjectUser(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ProjectService_UnbindProjectUser_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ProjectServiceServer).UnbindProjectUser(ctx, req.(*UnbindProjectUserRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // ProjectService_ServiceDesc is the grpc.ServiceDesc for ProjectService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -370,6 +586,30 @@ var ProjectService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "AllProjects",
 			Handler:    _ProjectService_AllProjects_Handler,
+		},
+		{
+			MethodName: "GetProjectPsInfo",
+			Handler:    _ProjectService_GetProjectPsInfo_Handler,
+		},
+		{
+			MethodName: "GetProjectsByIDs",
+			Handler:    _ProjectService_GetProjectsByIDs_Handler,
+		},
+		{
+			MethodName: "SetUserProjects",
+			Handler:    _ProjectService_SetUserProjects_Handler,
+		},
+		{
+			MethodName: "GetUserProjects",
+			Handler:    _ProjectService_GetUserProjects_Handler,
+		},
+		{
+			MethodName: "GetProjectUsers",
+			Handler:    _ProjectService_GetProjectUsers_Handler,
+		},
+		{
+			MethodName: "UnbindProjectUser",
+			Handler:    _ProjectService_UnbindProjectUser_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

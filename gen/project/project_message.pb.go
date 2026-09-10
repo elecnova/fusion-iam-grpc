@@ -1050,6 +1050,811 @@ func (x *AllProjectsResponse) GetData() []*ProjectResponse {
 	return nil
 }
 
+// Package message 业务中心-获取项目售后信息请求消息定义
+type GetProjectPsInfoRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// 项目ID
+	Id            string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetProjectPsInfoRequest) Reset() {
+	*x = GetProjectPsInfoRequest{}
+	mi := &file_project_project_message_proto_msgTypes[10]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetProjectPsInfoRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetProjectPsInfoRequest) ProtoMessage() {}
+
+func (x *GetProjectPsInfoRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_project_project_message_proto_msgTypes[10]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetProjectPsInfoRequest.ProtoReflect.Descriptor instead.
+func (*GetProjectPsInfoRequest) Descriptor() ([]byte, []int) {
+	return file_project_project_message_proto_rawDescGZIP(), []int{10}
+}
+
+func (x *GetProjectPsInfoRequest) GetId() string {
+	if x != nil {
+		return x.Id
+	}
+	return ""
+}
+
+// Package message 业务中心-项目售后信息响应消息定义
+type ProjectPsInfoResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// 售后ID
+	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	// 名称
+	Name string `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
+	// 服务电话
+	Phone string `protobuf:"bytes,3,opt,name=phone,proto3" json:"phone,omitempty"`
+	// 服务邮箱
+	Email string `protobuf:"bytes,4,opt,name=email,proto3" json:"email,omitempty"`
+	// 备注
+	Description string `protobuf:"bytes,5,opt,name=description,proto3" json:"description,omitempty"`
+	// 自定义联系方式
+	Custom        []*ProjectPsInfoItem `protobuf:"bytes,6,rep,name=custom,proto3" json:"custom,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ProjectPsInfoResponse) Reset() {
+	*x = ProjectPsInfoResponse{}
+	mi := &file_project_project_message_proto_msgTypes[11]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ProjectPsInfoResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ProjectPsInfoResponse) ProtoMessage() {}
+
+func (x *ProjectPsInfoResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_project_project_message_proto_msgTypes[11]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ProjectPsInfoResponse.ProtoReflect.Descriptor instead.
+func (*ProjectPsInfoResponse) Descriptor() ([]byte, []int) {
+	return file_project_project_message_proto_rawDescGZIP(), []int{11}
+}
+
+func (x *ProjectPsInfoResponse) GetId() string {
+	if x != nil {
+		return x.Id
+	}
+	return ""
+}
+
+func (x *ProjectPsInfoResponse) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+func (x *ProjectPsInfoResponse) GetPhone() string {
+	if x != nil {
+		return x.Phone
+	}
+	return ""
+}
+
+func (x *ProjectPsInfoResponse) GetEmail() string {
+	if x != nil {
+		return x.Email
+	}
+	return ""
+}
+
+func (x *ProjectPsInfoResponse) GetDescription() string {
+	if x != nil {
+		return x.Description
+	}
+	return ""
+}
+
+func (x *ProjectPsInfoResponse) GetCustom() []*ProjectPsInfoItem {
+	if x != nil {
+		return x.Custom
+	}
+	return nil
+}
+
+// Package message 业务中心-项目售后自定义联系方式消息定义
+type ProjectPsInfoItem struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// 联系方式
+	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	// 联系内容
+	Contact       string `protobuf:"bytes,2,opt,name=contact,proto3" json:"contact,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ProjectPsInfoItem) Reset() {
+	*x = ProjectPsInfoItem{}
+	mi := &file_project_project_message_proto_msgTypes[12]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ProjectPsInfoItem) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ProjectPsInfoItem) ProtoMessage() {}
+
+func (x *ProjectPsInfoItem) ProtoReflect() protoreflect.Message {
+	mi := &file_project_project_message_proto_msgTypes[12]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ProjectPsInfoItem.ProtoReflect.Descriptor instead.
+func (*ProjectPsInfoItem) Descriptor() ([]byte, []int) {
+	return file_project_project_message_proto_rawDescGZIP(), []int{12}
+}
+
+func (x *ProjectPsInfoItem) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+func (x *ProjectPsInfoItem) GetContact() string {
+	if x != nil {
+		return x.Contact
+	}
+	return ""
+}
+
+// Package message 业务中心-批量获取项目请求消息定义
+type GetProjectsByIDsRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// 项目ID列表
+	Ids           []string `protobuf:"bytes,1,rep,name=ids,proto3" json:"ids,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetProjectsByIDsRequest) Reset() {
+	*x = GetProjectsByIDsRequest{}
+	mi := &file_project_project_message_proto_msgTypes[13]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetProjectsByIDsRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetProjectsByIDsRequest) ProtoMessage() {}
+
+func (x *GetProjectsByIDsRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_project_project_message_proto_msgTypes[13]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetProjectsByIDsRequest.ProtoReflect.Descriptor instead.
+func (*GetProjectsByIDsRequest) Descriptor() ([]byte, []int) {
+	return file_project_project_message_proto_rawDescGZIP(), []int{13}
+}
+
+func (x *GetProjectsByIDsRequest) GetIds() []string {
+	if x != nil {
+		return x.Ids
+	}
+	return nil
+}
+
+// Package message 业务中心-批量获取项目响应消息定义
+type GetProjectsByIDsResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// 项目列表
+	Data          []*ProjectResponse `protobuf:"bytes,1,rep,name=data,proto3" json:"data,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetProjectsByIDsResponse) Reset() {
+	*x = GetProjectsByIDsResponse{}
+	mi := &file_project_project_message_proto_msgTypes[14]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetProjectsByIDsResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetProjectsByIDsResponse) ProtoMessage() {}
+
+func (x *GetProjectsByIDsResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_project_project_message_proto_msgTypes[14]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetProjectsByIDsResponse.ProtoReflect.Descriptor instead.
+func (*GetProjectsByIDsResponse) Descriptor() ([]byte, []int) {
+	return file_project_project_message_proto_rawDescGZIP(), []int{14}
+}
+
+func (x *GetProjectsByIDsResponse) GetData() []*ProjectResponse {
+	if x != nil {
+		return x.Data
+	}
+	return nil
+}
+
+// Package message 业务中心-设置用户项目绑定请求消息定义
+type SetUserProjectsRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// 用户ID
+	UserId string `protobuf:"bytes,1,opt,name=user_id,proto3" json:"user_id,omitempty"`
+	// 项目ID列表
+	Projects      []string `protobuf:"bytes,2,rep,name=projects,proto3" json:"projects,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *SetUserProjectsRequest) Reset() {
+	*x = SetUserProjectsRequest{}
+	mi := &file_project_project_message_proto_msgTypes[15]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *SetUserProjectsRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SetUserProjectsRequest) ProtoMessage() {}
+
+func (x *SetUserProjectsRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_project_project_message_proto_msgTypes[15]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SetUserProjectsRequest.ProtoReflect.Descriptor instead.
+func (*SetUserProjectsRequest) Descriptor() ([]byte, []int) {
+	return file_project_project_message_proto_rawDescGZIP(), []int{15}
+}
+
+func (x *SetUserProjectsRequest) GetUserId() string {
+	if x != nil {
+		return x.UserId
+	}
+	return ""
+}
+
+func (x *SetUserProjectsRequest) GetProjects() []string {
+	if x != nil {
+		return x.Projects
+	}
+	return nil
+}
+
+// Package message 业务中心-获取用户项目列表请求消息定义
+type GetUserProjectsRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// 用户ID
+	UserId        string `protobuf:"bytes,1,opt,name=user_id,proto3" json:"user_id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetUserProjectsRequest) Reset() {
+	*x = GetUserProjectsRequest{}
+	mi := &file_project_project_message_proto_msgTypes[16]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetUserProjectsRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetUserProjectsRequest) ProtoMessage() {}
+
+func (x *GetUserProjectsRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_project_project_message_proto_msgTypes[16]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetUserProjectsRequest.ProtoReflect.Descriptor instead.
+func (*GetUserProjectsRequest) Descriptor() ([]byte, []int) {
+	return file_project_project_message_proto_rawDescGZIP(), []int{16}
+}
+
+func (x *GetUserProjectsRequest) GetUserId() string {
+	if x != nil {
+		return x.UserId
+	}
+	return ""
+}
+
+// Package message 业务中心-用户项目信息消息定义
+type UserProjectInfo struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// 项目ID
+	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	// 项目名称
+	Name string `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
+	// 项目编码
+	Code string `protobuf:"bytes,3,opt,name=code,proto3" json:"code,omitempty"`
+	// 项目所在区域ID
+	RegionId string `protobuf:"bytes,4,opt,name=region_id,proto3" json:"region_id,omitempty"`
+	// 投运时间
+	BeginAt *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=begin_at,proto3" json:"begin_at,omitempty"`
+	// 到期时间
+	ExpireAt *timestamppb.Timestamp `protobuf:"bytes,6,opt,name=expire_at,proto3" json:"expire_at,omitempty"`
+	// 项目联系人
+	Contact string `protobuf:"bytes,7,opt,name=contact,proto3" json:"contact,omitempty"`
+	// 联系方式
+	Phone string `protobuf:"bytes,8,opt,name=phone,proto3" json:"phone,omitempty"`
+	// 项目时区名称
+	ZoneName string `protobuf:"bytes,9,opt,name=zone_name,proto3" json:"zone_name,omitempty"`
+	// 项目UTC时区
+	ZoneUtc string `protobuf:"bytes,10,opt,name=zone_utc,proto3" json:"zone_utc,omitempty"`
+	// 项目时区偏移量
+	ZoneOffset int32 `protobuf:"varint,11,opt,name=zone_offset,proto3" json:"zone_offset,omitempty"`
+	// 类型(1-普通项目 2-预置项目 3-渠道项目)
+	Type int32 `protobuf:"varint,12,opt,name=type,proto3" json:"type,omitempty"`
+	// 创建时间
+	CreateAt      *timestamppb.Timestamp `protobuf:"bytes,13,opt,name=create_at,proto3" json:"create_at,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UserProjectInfo) Reset() {
+	*x = UserProjectInfo{}
+	mi := &file_project_project_message_proto_msgTypes[17]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UserProjectInfo) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UserProjectInfo) ProtoMessage() {}
+
+func (x *UserProjectInfo) ProtoReflect() protoreflect.Message {
+	mi := &file_project_project_message_proto_msgTypes[17]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UserProjectInfo.ProtoReflect.Descriptor instead.
+func (*UserProjectInfo) Descriptor() ([]byte, []int) {
+	return file_project_project_message_proto_rawDescGZIP(), []int{17}
+}
+
+func (x *UserProjectInfo) GetId() string {
+	if x != nil {
+		return x.Id
+	}
+	return ""
+}
+
+func (x *UserProjectInfo) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+func (x *UserProjectInfo) GetCode() string {
+	if x != nil {
+		return x.Code
+	}
+	return ""
+}
+
+func (x *UserProjectInfo) GetRegionId() string {
+	if x != nil {
+		return x.RegionId
+	}
+	return ""
+}
+
+func (x *UserProjectInfo) GetBeginAt() *timestamppb.Timestamp {
+	if x != nil {
+		return x.BeginAt
+	}
+	return nil
+}
+
+func (x *UserProjectInfo) GetExpireAt() *timestamppb.Timestamp {
+	if x != nil {
+		return x.ExpireAt
+	}
+	return nil
+}
+
+func (x *UserProjectInfo) GetContact() string {
+	if x != nil {
+		return x.Contact
+	}
+	return ""
+}
+
+func (x *UserProjectInfo) GetPhone() string {
+	if x != nil {
+		return x.Phone
+	}
+	return ""
+}
+
+func (x *UserProjectInfo) GetZoneName() string {
+	if x != nil {
+		return x.ZoneName
+	}
+	return ""
+}
+
+func (x *UserProjectInfo) GetZoneUtc() string {
+	if x != nil {
+		return x.ZoneUtc
+	}
+	return ""
+}
+
+func (x *UserProjectInfo) GetZoneOffset() int32 {
+	if x != nil {
+		return x.ZoneOffset
+	}
+	return 0
+}
+
+func (x *UserProjectInfo) GetType() int32 {
+	if x != nil {
+		return x.Type
+	}
+	return 0
+}
+
+func (x *UserProjectInfo) GetCreateAt() *timestamppb.Timestamp {
+	if x != nil {
+		return x.CreateAt
+	}
+	return nil
+}
+
+// Package message 业务中心-获取用户项目列表响应消息定义
+type GetUserProjectsResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// 项目列表
+	Data          []*UserProjectInfo `protobuf:"bytes,1,rep,name=data,proto3" json:"data,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetUserProjectsResponse) Reset() {
+	*x = GetUserProjectsResponse{}
+	mi := &file_project_project_message_proto_msgTypes[18]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetUserProjectsResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetUserProjectsResponse) ProtoMessage() {}
+
+func (x *GetUserProjectsResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_project_project_message_proto_msgTypes[18]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetUserProjectsResponse.ProtoReflect.Descriptor instead.
+func (*GetUserProjectsResponse) Descriptor() ([]byte, []int) {
+	return file_project_project_message_proto_rawDescGZIP(), []int{18}
+}
+
+func (x *GetUserProjectsResponse) GetData() []*UserProjectInfo {
+	if x != nil {
+		return x.Data
+	}
+	return nil
+}
+
+// Package message 业务中心-获取项目用户列表请求消息定义
+type GetProjectUsersRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// 项目ID
+	Id            string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetProjectUsersRequest) Reset() {
+	*x = GetProjectUsersRequest{}
+	mi := &file_project_project_message_proto_msgTypes[19]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetProjectUsersRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetProjectUsersRequest) ProtoMessage() {}
+
+func (x *GetProjectUsersRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_project_project_message_proto_msgTypes[19]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetProjectUsersRequest.ProtoReflect.Descriptor instead.
+func (*GetProjectUsersRequest) Descriptor() ([]byte, []int) {
+	return file_project_project_message_proto_rawDescGZIP(), []int{19}
+}
+
+func (x *GetProjectUsersRequest) GetId() string {
+	if x != nil {
+		return x.Id
+	}
+	return ""
+}
+
+// Package message 业务中心-项目用户信息消息定义
+type ProjectUserItem struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// 项目ID
+	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	// 项目名称
+	Name string `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
+	// 项目编码
+	Code string `protobuf:"bytes,3,opt,name=code,proto3" json:"code,omitempty"`
+	// 用户ID
+	UserId        string `protobuf:"bytes,4,opt,name=user_id,proto3" json:"user_id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ProjectUserItem) Reset() {
+	*x = ProjectUserItem{}
+	mi := &file_project_project_message_proto_msgTypes[20]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ProjectUserItem) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ProjectUserItem) ProtoMessage() {}
+
+func (x *ProjectUserItem) ProtoReflect() protoreflect.Message {
+	mi := &file_project_project_message_proto_msgTypes[20]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ProjectUserItem.ProtoReflect.Descriptor instead.
+func (*ProjectUserItem) Descriptor() ([]byte, []int) {
+	return file_project_project_message_proto_rawDescGZIP(), []int{20}
+}
+
+func (x *ProjectUserItem) GetId() string {
+	if x != nil {
+		return x.Id
+	}
+	return ""
+}
+
+func (x *ProjectUserItem) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+func (x *ProjectUserItem) GetCode() string {
+	if x != nil {
+		return x.Code
+	}
+	return ""
+}
+
+func (x *ProjectUserItem) GetUserId() string {
+	if x != nil {
+		return x.UserId
+	}
+	return ""
+}
+
+// Package message 业务中心-获取项目用户列表响应消息定义
+type GetProjectUsersResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// 用户列表
+	Data          []*ProjectUserItem `protobuf:"bytes,1,rep,name=data,proto3" json:"data,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetProjectUsersResponse) Reset() {
+	*x = GetProjectUsersResponse{}
+	mi := &file_project_project_message_proto_msgTypes[21]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetProjectUsersResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetProjectUsersResponse) ProtoMessage() {}
+
+func (x *GetProjectUsersResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_project_project_message_proto_msgTypes[21]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetProjectUsersResponse.ProtoReflect.Descriptor instead.
+func (*GetProjectUsersResponse) Descriptor() ([]byte, []int) {
+	return file_project_project_message_proto_rawDescGZIP(), []int{21}
+}
+
+func (x *GetProjectUsersResponse) GetData() []*ProjectUserItem {
+	if x != nil {
+		return x.Data
+	}
+	return nil
+}
+
+// Package message 业务中心-解绑用户项目请求消息定义
+type UnbindProjectUserRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// 项目ID
+	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	// 用户ID
+	UserId        string `protobuf:"bytes,2,opt,name=user_id,proto3" json:"user_id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UnbindProjectUserRequest) Reset() {
+	*x = UnbindProjectUserRequest{}
+	mi := &file_project_project_message_proto_msgTypes[22]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UnbindProjectUserRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UnbindProjectUserRequest) ProtoMessage() {}
+
+func (x *UnbindProjectUserRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_project_project_message_proto_msgTypes[22]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UnbindProjectUserRequest.ProtoReflect.Descriptor instead.
+func (*UnbindProjectUserRequest) Descriptor() ([]byte, []int) {
+	return file_project_project_message_proto_rawDescGZIP(), []int{22}
+}
+
+func (x *UnbindProjectUserRequest) GetId() string {
+	if x != nil {
+		return x.Id
+	}
+	return ""
+}
+
+func (x *UnbindProjectUserRequest) GetUserId() string {
+	if x != nil {
+		return x.UserId
+	}
+	return ""
+}
+
 var File_project_project_message_proto protoreflect.FileDescriptor
 
 const file_project_project_message_proto_rawDesc = "" +
@@ -1147,7 +1952,58 @@ const file_project_project_message_proto_rawDesc = "" +
 	"\x05state\x18\x02 \x01(\x05B\t\xbaH\x06\x1a\x04\x18\x02(\x01H\x00R\x05state\x88\x01\x01B\b\n" +
 	"\x06_state\"P\n" +
 	"\x13AllProjectsResponse\x129\n" +
-	"\x04data\x18\x01 \x03(\v2%.fusion.proto.project.ProjectResponseR\x04dataB\xbf\x01\n" +
+	"\x04data\x18\x01 \x03(\v2%.fusion.proto.project.ProjectResponseR\x04data\"4\n" +
+	"\x17GetProjectPsInfoRequest\x12\x19\n" +
+	"\x02id\x18\x01 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18(R\x02id\"\xca\x01\n" +
+	"\x15ProjectPsInfoResponse\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
+	"\x04name\x18\x02 \x01(\tR\x04name\x12\x14\n" +
+	"\x05phone\x18\x03 \x01(\tR\x05phone\x12\x14\n" +
+	"\x05email\x18\x04 \x01(\tR\x05email\x12 \n" +
+	"\vdescription\x18\x05 \x01(\tR\vdescription\x12?\n" +
+	"\x06custom\x18\x06 \x03(\v2'.fusion.proto.project.ProjectPsInfoItemR\x06custom\"A\n" +
+	"\x11ProjectPsInfoItem\x12\x12\n" +
+	"\x04name\x18\x01 \x01(\tR\x04name\x12\x18\n" +
+	"\acontact\x18\x02 \x01(\tR\acontact\"7\n" +
+	"\x17GetProjectsByIDsRequest\x12\x1c\n" +
+	"\x03ids\x18\x01 \x03(\tB\n" +
+	"\xbaH\a\x92\x01\x04\b\x01\x10dR\x03ids\"U\n" +
+	"\x18GetProjectsByIDsResponse\x129\n" +
+	"\x04data\x18\x01 \x03(\v2%.fusion.proto.project.ProjectResponseR\x04data\"d\n" +
+	"\x16SetUserProjectsRequest\x12#\n" +
+	"\auser_id\x18\x01 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18(R\auser_id\x12%\n" +
+	"\bprojects\x18\x02 \x03(\tB\t\xbaH\x06\x92\x01\x03\x10\xac\x02R\bprojects\"=\n" +
+	"\x16GetUserProjectsRequest\x12#\n" +
+	"\auser_id\x18\x01 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18(R\auser_id\"\xb3\x03\n" +
+	"\x0fUserProjectInfo\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
+	"\x04name\x18\x02 \x01(\tR\x04name\x12\x12\n" +
+	"\x04code\x18\x03 \x01(\tR\x04code\x12\x1c\n" +
+	"\tregion_id\x18\x04 \x01(\tR\tregion_id\x126\n" +
+	"\bbegin_at\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\bbegin_at\x128\n" +
+	"\texpire_at\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampR\texpire_at\x12\x18\n" +
+	"\acontact\x18\a \x01(\tR\acontact\x12\x14\n" +
+	"\x05phone\x18\b \x01(\tR\x05phone\x12\x1c\n" +
+	"\tzone_name\x18\t \x01(\tR\tzone_name\x12\x1a\n" +
+	"\bzone_utc\x18\n" +
+	" \x01(\tR\bzone_utc\x12 \n" +
+	"\vzone_offset\x18\v \x01(\x05R\vzone_offset\x12\x12\n" +
+	"\x04type\x18\f \x01(\x05R\x04type\x128\n" +
+	"\tcreate_at\x18\r \x01(\v2\x1a.google.protobuf.TimestampR\tcreate_at\"T\n" +
+	"\x17GetUserProjectsResponse\x129\n" +
+	"\x04data\x18\x01 \x03(\v2%.fusion.proto.project.UserProjectInfoR\x04data\"3\n" +
+	"\x16GetProjectUsersRequest\x12\x19\n" +
+	"\x02id\x18\x01 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18(R\x02id\"c\n" +
+	"\x0fProjectUserItem\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
+	"\x04name\x18\x02 \x01(\tR\x04name\x12\x12\n" +
+	"\x04code\x18\x03 \x01(\tR\x04code\x12\x18\n" +
+	"\auser_id\x18\x04 \x01(\tR\auser_id\"T\n" +
+	"\x17GetProjectUsersResponse\x129\n" +
+	"\x04data\x18\x01 \x03(\v2%.fusion.proto.project.ProjectUserItemR\x04data\"Z\n" +
+	"\x18UnbindProjectUserRequest\x12\x19\n" +
+	"\x02id\x18\x01 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18(R\x02id\x12#\n" +
+	"\auser_id\x18\x02 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18(R\auser_idB\xbf\x01\n" +
 	"\x18com.fusion.proto.projectB\x13ProjectMessageProtoP\x01Z\x1cfusion.proto.project;project\xa2\x02\x03FPP\xaa\x02\x14Fusion.Proto.Project\xca\x02\x14Fusion\\Proto\\Project\xe2\x02 Fusion\\Proto\\Project\\GPBMetadata\xea\x02\x16Fusion::Proto::Projectb\x06proto3"
 
 var (
@@ -1162,7 +2018,7 @@ func file_project_project_message_proto_rawDescGZIP() []byte {
 	return file_project_project_message_proto_rawDescData
 }
 
-var file_project_project_message_proto_msgTypes = make([]protoimpl.MessageInfo, 10)
+var file_project_project_message_proto_msgTypes = make([]protoimpl.MessageInfo, 23)
 var file_project_project_message_proto_goTypes = []any{
 	(*CreateProjectRequest)(nil),      // 0: fusion.proto.project.CreateProjectRequest
 	(*UpdateProjectRequest)(nil),      // 1: fusion.proto.project.UpdateProjectRequest
@@ -1174,24 +2030,44 @@ var file_project_project_message_proto_goTypes = []any{
 	(*ListProjectsResponse)(nil),      // 7: fusion.proto.project.ListProjectsResponse
 	(*AllProjectsRequest)(nil),        // 8: fusion.proto.project.AllProjectsRequest
 	(*AllProjectsResponse)(nil),       // 9: fusion.proto.project.AllProjectsResponse
-	(*timestamppb.Timestamp)(nil),     // 10: google.protobuf.Timestamp
+	(*GetProjectPsInfoRequest)(nil),   // 10: fusion.proto.project.GetProjectPsInfoRequest
+	(*ProjectPsInfoResponse)(nil),     // 11: fusion.proto.project.ProjectPsInfoResponse
+	(*ProjectPsInfoItem)(nil),         // 12: fusion.proto.project.ProjectPsInfoItem
+	(*GetProjectsByIDsRequest)(nil),   // 13: fusion.proto.project.GetProjectsByIDsRequest
+	(*GetProjectsByIDsResponse)(nil),  // 14: fusion.proto.project.GetProjectsByIDsResponse
+	(*SetUserProjectsRequest)(nil),    // 15: fusion.proto.project.SetUserProjectsRequest
+	(*GetUserProjectsRequest)(nil),    // 16: fusion.proto.project.GetUserProjectsRequest
+	(*UserProjectInfo)(nil),           // 17: fusion.proto.project.UserProjectInfo
+	(*GetUserProjectsResponse)(nil),   // 18: fusion.proto.project.GetUserProjectsResponse
+	(*GetProjectUsersRequest)(nil),    // 19: fusion.proto.project.GetProjectUsersRequest
+	(*ProjectUserItem)(nil),           // 20: fusion.proto.project.ProjectUserItem
+	(*GetProjectUsersResponse)(nil),   // 21: fusion.proto.project.GetProjectUsersResponse
+	(*UnbindProjectUserRequest)(nil),  // 22: fusion.proto.project.UnbindProjectUserRequest
+	(*timestamppb.Timestamp)(nil),     // 23: google.protobuf.Timestamp
 }
 var file_project_project_message_proto_depIdxs = []int32{
-	10, // 0: fusion.proto.project.CreateProjectRequest.begin_at:type_name -> google.protobuf.Timestamp
-	10, // 1: fusion.proto.project.CreateProjectRequest.expire_at:type_name -> google.protobuf.Timestamp
-	10, // 2: fusion.proto.project.UpdateProjectRequest.begin_at:type_name -> google.protobuf.Timestamp
-	10, // 3: fusion.proto.project.UpdateProjectRequest.expire_at:type_name -> google.protobuf.Timestamp
-	10, // 4: fusion.proto.project.ProjectResponse.begin_at:type_name -> google.protobuf.Timestamp
-	10, // 5: fusion.proto.project.ProjectResponse.expire_at:type_name -> google.protobuf.Timestamp
-	10, // 6: fusion.proto.project.ProjectResponse.create_at:type_name -> google.protobuf.Timestamp
-	10, // 7: fusion.proto.project.ProjectResponse.update_at:type_name -> google.protobuf.Timestamp
+	23, // 0: fusion.proto.project.CreateProjectRequest.begin_at:type_name -> google.protobuf.Timestamp
+	23, // 1: fusion.proto.project.CreateProjectRequest.expire_at:type_name -> google.protobuf.Timestamp
+	23, // 2: fusion.proto.project.UpdateProjectRequest.begin_at:type_name -> google.protobuf.Timestamp
+	23, // 3: fusion.proto.project.UpdateProjectRequest.expire_at:type_name -> google.protobuf.Timestamp
+	23, // 4: fusion.proto.project.ProjectResponse.begin_at:type_name -> google.protobuf.Timestamp
+	23, // 5: fusion.proto.project.ProjectResponse.expire_at:type_name -> google.protobuf.Timestamp
+	23, // 6: fusion.proto.project.ProjectResponse.create_at:type_name -> google.protobuf.Timestamp
+	23, // 7: fusion.proto.project.ProjectResponse.update_at:type_name -> google.protobuf.Timestamp
 	5,  // 8: fusion.proto.project.ListProjectsResponse.data:type_name -> fusion.proto.project.ProjectResponse
 	5,  // 9: fusion.proto.project.AllProjectsResponse.data:type_name -> fusion.proto.project.ProjectResponse
-	10, // [10:10] is the sub-list for method output_type
-	10, // [10:10] is the sub-list for method input_type
-	10, // [10:10] is the sub-list for extension type_name
-	10, // [10:10] is the sub-list for extension extendee
-	0,  // [0:10] is the sub-list for field type_name
+	12, // 10: fusion.proto.project.ProjectPsInfoResponse.custom:type_name -> fusion.proto.project.ProjectPsInfoItem
+	5,  // 11: fusion.proto.project.GetProjectsByIDsResponse.data:type_name -> fusion.proto.project.ProjectResponse
+	23, // 12: fusion.proto.project.UserProjectInfo.begin_at:type_name -> google.protobuf.Timestamp
+	23, // 13: fusion.proto.project.UserProjectInfo.expire_at:type_name -> google.protobuf.Timestamp
+	23, // 14: fusion.proto.project.UserProjectInfo.create_at:type_name -> google.protobuf.Timestamp
+	17, // 15: fusion.proto.project.GetUserProjectsResponse.data:type_name -> fusion.proto.project.UserProjectInfo
+	20, // 16: fusion.proto.project.GetProjectUsersResponse.data:type_name -> fusion.proto.project.ProjectUserItem
+	17, // [17:17] is the sub-list for method output_type
+	17, // [17:17] is the sub-list for method input_type
+	17, // [17:17] is the sub-list for extension type_name
+	17, // [17:17] is the sub-list for extension extendee
+	0,  // [0:17] is the sub-list for field type_name
 }
 
 func init() { file_project_project_message_proto_init() }
@@ -1209,7 +2085,7 @@ func file_project_project_message_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_project_project_message_proto_rawDesc), len(file_project_project_message_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   10,
+			NumMessages:   23,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
