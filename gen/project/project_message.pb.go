@@ -579,7 +579,9 @@ type ProjectResponse struct {
 	// 邮件模板名称
 	EmailName string `protobuf:"bytes,26,opt,name=email_name,proto3" json:"email_name,omitempty"`
 	// 售后服务名称
-	PsName        string `protobuf:"bytes,27,opt,name=ps_name,proto3" json:"ps_name,omitempty"`
+	PsName string `protobuf:"bytes,27,opt,name=ps_name,proto3" json:"ps_name,omitempty"`
+	// 更新人用户名
+	UpdateName    string `protobuf:"bytes,28,opt,name=update_name,proto3" json:"update_name,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -799,6 +801,13 @@ func (x *ProjectResponse) GetEmailName() string {
 func (x *ProjectResponse) GetPsName() string {
 	if x != nil {
 		return x.PsName
+	}
+	return ""
+}
+
+func (x *ProjectResponse) GetUpdateName() string {
+	if x != nil {
+		return x.UpdateName
 	}
 	return ""
 }
@@ -1903,7 +1912,7 @@ const file_project_project_message_proto_rawDesc = "" +
 	"\x19ForceDeleteProjectRequest\x12\x19\n" +
 	"\x02id\x18\x01 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18(R\x02id\".\n" +
 	"\x11GetProjectRequest\x12\x19\n" +
-	"\x02id\x18\x01 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18(R\x02id\"\xc7\x06\n" +
+	"\x02id\x18\x01 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18(R\x02id\"\xe9\x06\n" +
 	"\x0fProjectResponse\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x12\n" +
@@ -1934,7 +1943,8 @@ const file_project_project_message_proto_rawDesc = "" +
 	"\n" +
 	"email_name\x18\x1a \x01(\tR\n" +
 	"email_name\x12\x18\n" +
-	"\aps_name\x18\x1b \x01(\tR\aps_name\"\xaf\x01\n" +
+	"\aps_name\x18\x1b \x01(\tR\aps_name\x12 \n" +
+	"\vupdate_name\x18\x1c \x01(\tR\vupdate_name\"\xaf\x01\n" +
 	"\x13ListProjectsRequest\x12!\n" +
 	"\akeyword\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x18<R\akeyword\x12$\n" +
 	"\x05state\x18\x02 \x01(\x05B\t\xbaH\x06\x1a\x04\x18\x02(\x01H\x00R\x05state\x88\x01\x01\x12\x1b\n" +
