@@ -761,9 +761,9 @@ type UserRoles struct {
 	// 角色名称
 	Name string `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`
 	// 角色所属项目ID
-	ProjectId *string `protobuf:"bytes,5,opt,name=project_id,json=projectId,proto3,oneof" json:"project_id,omitempty"`
+	ProjectId *string `protobuf:"bytes,4,opt,name=project_id,json=projectId,proto3,oneof" json:"project_id,omitempty"`
 	// 渠道（1-通用角色 2-业务角色 3-运维角色 4-渠道角色）
-	Channel       int32 `protobuf:"varint,4,opt,name=channel,proto3" json:"channel,omitempty"`
+	Channel       int32 `protobuf:"varint,5,opt,name=channel,proto3" json:"channel,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1159,8 +1159,8 @@ const file_auth_auth_message_proto_rawDesc = "" +
 	"\x04code\x18\x02 \x01(\tR\x04code\x12\x12\n" +
 	"\x04name\x18\x03 \x01(\tR\x04name\x12\"\n" +
 	"\n" +
-	"project_id\x18\x05 \x01(\tH\x00R\tprojectId\x88\x01\x01\x12\x18\n" +
-	"\achannel\x18\x04 \x01(\x05R\achannelB\r\n" +
+	"project_id\x18\x04 \x01(\tH\x00R\tprojectId\x88\x01\x01\x12\x18\n" +
+	"\achannel\x18\x05 \x01(\x05R\achannelB\r\n" +
 	"\v_project_id\"4\n" +
 	"\x11CheckEmailRequest\x12\x1f\n" +
 	"\x05email\x18\x01 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18dR\x05email\"7\n" +
