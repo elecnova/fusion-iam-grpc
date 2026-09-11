@@ -28,8 +28,10 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	ObjectService_UploadObject_FullMethodName   = "/fusion.proto.object.ObjectService/UploadObject"
-	ObjectService_DownloadObject_FullMethodName = "/fusion.proto.object.ObjectService/DownloadObject"
+	ObjectService_UploadObject_FullMethodName        = "/fusion.proto.object.ObjectService/UploadObject"
+	ObjectService_DownloadObject_FullMethodName      = "/fusion.proto.object.ObjectService/DownloadObject"
+	ObjectService_UploadSmallObject_FullMethodName   = "/fusion.proto.object.ObjectService/UploadSmallObject"
+	ObjectService_DownloadSmallObject_FullMethodName = "/fusion.proto.object.ObjectService/DownloadSmallObject"
 )
 
 // ObjectServiceClient is the client API for ObjectService service.
@@ -38,10 +40,14 @@ const (
 //
 // Package object_service 对象存储服务接口定义
 type ObjectServiceClient interface {
-	// 上传对象（client streaming）
+	// 上传大文件对象（client streaming，分块传输）
 	UploadObject(ctx context.Context, opts ...grpc.CallOption) (grpc.ClientStreamingClient[UploadObjectRequest, UploadObjectResponse], error)
-	// 下载对象（server streaming）
+	// 下载大文件对象（server streaming，分块传输）
 	DownloadObject(ctx context.Context, in *DownloadObjectRequest, opts ...grpc.CallOption) (grpc.ServerStreamingClient[DownloadObjectResponse], error)
+	// 上传小文件对象（unary，整体字节数组，<=4MB）
+	UploadSmallObject(ctx context.Context, in *UploadSmallObjectRequest, opts ...grpc.CallOption) (*UploadSmallObjectResponse, error)
+	// 下载小文件对象（unary，整体字节数组，<=4MB）
+	DownloadSmallObject(ctx context.Context, in *DownloadSmallObjectRequest, opts ...grpc.CallOption) (*DownloadSmallObjectResponse, error)
 }
 
 type objectServiceClient struct {
@@ -84,16 +90,40 @@ func (c *objectServiceClient) DownloadObject(ctx context.Context, in *DownloadOb
 // This type alias is provided for backwards compatibility with existing code that references the prior non-generic stream type by name.
 type ObjectService_DownloadObjectClient = grpc.ServerStreamingClient[DownloadObjectResponse]
 
+func (c *objectServiceClient) UploadSmallObject(ctx context.Context, in *UploadSmallObjectRequest, opts ...grpc.CallOption) (*UploadSmallObjectResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(UploadSmallObjectResponse)
+	err := c.cc.Invoke(ctx, ObjectService_UploadSmallObject_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *objectServiceClient) DownloadSmallObject(ctx context.Context, in *DownloadSmallObjectRequest, opts ...grpc.CallOption) (*DownloadSmallObjectResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(DownloadSmallObjectResponse)
+	err := c.cc.Invoke(ctx, ObjectService_DownloadSmallObject_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // ObjectServiceServer is the server API for ObjectService service.
 // All implementations must embed UnimplementedObjectServiceServer
 // for forward compatibility.
 //
 // Package object_service 对象存储服务接口定义
 type ObjectServiceServer interface {
-	// 上传对象（client streaming）
+	// 上传大文件对象（client streaming，分块传输）
 	UploadObject(grpc.ClientStreamingServer[UploadObjectRequest, UploadObjectResponse]) error
-	// 下载对象（server streaming）
+	// 下载大文件对象（server streaming，分块传输）
 	DownloadObject(*DownloadObjectRequest, grpc.ServerStreamingServer[DownloadObjectResponse]) error
+	// 上传小文件对象（unary，整体字节数组，<=4MB）
+	UploadSmallObject(context.Context, *UploadSmallObjectRequest) (*UploadSmallObjectResponse, error)
+	// 下载小文件对象（unary，整体字节数组，<=4MB）
+	DownloadSmallObject(context.Context, *DownloadSmallObjectRequest) (*DownloadSmallObjectResponse, error)
 	mustEmbedUnimplementedObjectServiceServer()
 }
 
@@ -109,6 +139,12 @@ func (UnimplementedObjectServiceServer) UploadObject(grpc.ClientStreamingServer[
 }
 func (UnimplementedObjectServiceServer) DownloadObject(*DownloadObjectRequest, grpc.ServerStreamingServer[DownloadObjectResponse]) error {
 	return status.Error(codes.Unimplemented, "method DownloadObject not implemented")
+}
+func (UnimplementedObjectServiceServer) UploadSmallObject(context.Context, *UploadSmallObjectRequest) (*UploadSmallObjectResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method UploadSmallObject not implemented")
+}
+func (UnimplementedObjectServiceServer) DownloadSmallObject(context.Context, *DownloadSmallObjectRequest) (*DownloadSmallObjectResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method DownloadSmallObject not implemented")
 }
 func (UnimplementedObjectServiceServer) mustEmbedUnimplementedObjectServiceServer() {}
 func (UnimplementedObjectServiceServer) testEmbeddedByValue()                       {}
@@ -149,13 +185,58 @@ func _ObjectService_DownloadObject_Handler(srv interface{}, stream grpc.ServerSt
 // This type alias is provided for backwards compatibility with existing code that references the prior non-generic stream type by name.
 type ObjectService_DownloadObjectServer = grpc.ServerStreamingServer[DownloadObjectResponse]
 
+func _ObjectService_UploadSmallObject_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UploadSmallObjectRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ObjectServiceServer).UploadSmallObject(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ObjectService_UploadSmallObject_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ObjectServiceServer).UploadSmallObject(ctx, req.(*UploadSmallObjectRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ObjectService_DownloadSmallObject_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DownloadSmallObjectRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ObjectServiceServer).DownloadSmallObject(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ObjectService_DownloadSmallObject_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ObjectServiceServer).DownloadSmallObject(ctx, req.(*DownloadSmallObjectRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // ObjectService_ServiceDesc is the grpc.ServiceDesc for ObjectService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var ObjectService_ServiceDesc = grpc.ServiceDesc{
 	ServiceName: "fusion.proto.object.ObjectService",
 	HandlerType: (*ObjectServiceServer)(nil),
-	Methods:     []grpc.MethodDesc{},
+	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "UploadSmallObject",
+			Handler:    _ObjectService_UploadSmallObject_Handler,
+		},
+		{
+			MethodName: "DownloadSmallObject",
+			Handler:    _ObjectService_DownloadSmallObject_Handler,
+		},
+	},
 	Streams: []grpc.StreamDesc{
 		{
 			StreamName:    "UploadObject",

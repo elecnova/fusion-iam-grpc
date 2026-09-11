@@ -33,25 +33,35 @@ var File_object_object_service_proto protoreflect.FileDescriptor
 
 const file_object_object_service_proto_rawDesc = "" +
 	"\n" +
-	"\x1bobject/object_service.proto\x12\x13fusion.proto.object\x1a\x1bobject/object_message.proto2\xe3\x01\n" +
+	"\x1bobject/object_service.proto\x12\x13fusion.proto.object\x1a\x1bobject/object_message.proto2\xd1\x03\n" +
 	"\rObjectService\x12e\n" +
 	"\fUploadObject\x12(.fusion.proto.object.UploadObjectRequest\x1a).fusion.proto.object.UploadObjectResponse(\x01\x12k\n" +
-	"\x0eDownloadObject\x12*.fusion.proto.object.DownloadObjectRequest\x1a+.fusion.proto.object.DownloadObjectResponse0\x01B\xb7\x01\n" +
+	"\x0eDownloadObject\x12*.fusion.proto.object.DownloadObjectRequest\x1a+.fusion.proto.object.DownloadObjectResponse0\x01\x12r\n" +
+	"\x11UploadSmallObject\x12-.fusion.proto.object.UploadSmallObjectRequest\x1a..fusion.proto.object.UploadSmallObjectResponse\x12x\n" +
+	"\x13DownloadSmallObject\x12/.fusion.proto.object.DownloadSmallObjectRequest\x1a0.fusion.proto.object.DownloadSmallObjectResponseB\xb7\x01\n" +
 	"\x17com.fusion.proto.objectB\x12ObjectServiceProtoP\x01Z\x1afusion.proto.object;object\xa2\x02\x03FPO\xaa\x02\x13Fusion.Proto.Object\xca\x02\x13Fusion\\Proto\\Object\xe2\x02\x1fFusion\\Proto\\Object\\GPBMetadata\xea\x02\x15Fusion::Proto::Objectb\x06proto3"
 
 var file_object_object_service_proto_goTypes = []any{
-	(*UploadObjectRequest)(nil),    // 0: fusion.proto.object.UploadObjectRequest
-	(*DownloadObjectRequest)(nil),  // 1: fusion.proto.object.DownloadObjectRequest
-	(*UploadObjectResponse)(nil),   // 2: fusion.proto.object.UploadObjectResponse
-	(*DownloadObjectResponse)(nil), // 3: fusion.proto.object.DownloadObjectResponse
+	(*UploadObjectRequest)(nil),         // 0: fusion.proto.object.UploadObjectRequest
+	(*DownloadObjectRequest)(nil),       // 1: fusion.proto.object.DownloadObjectRequest
+	(*UploadSmallObjectRequest)(nil),    // 2: fusion.proto.object.UploadSmallObjectRequest
+	(*DownloadSmallObjectRequest)(nil),  // 3: fusion.proto.object.DownloadSmallObjectRequest
+	(*UploadObjectResponse)(nil),        // 4: fusion.proto.object.UploadObjectResponse
+	(*DownloadObjectResponse)(nil),      // 5: fusion.proto.object.DownloadObjectResponse
+	(*UploadSmallObjectResponse)(nil),   // 6: fusion.proto.object.UploadSmallObjectResponse
+	(*DownloadSmallObjectResponse)(nil), // 7: fusion.proto.object.DownloadSmallObjectResponse
 }
 var file_object_object_service_proto_depIdxs = []int32{
 	0, // 0: fusion.proto.object.ObjectService.UploadObject:input_type -> fusion.proto.object.UploadObjectRequest
 	1, // 1: fusion.proto.object.ObjectService.DownloadObject:input_type -> fusion.proto.object.DownloadObjectRequest
-	2, // 2: fusion.proto.object.ObjectService.UploadObject:output_type -> fusion.proto.object.UploadObjectResponse
-	3, // 3: fusion.proto.object.ObjectService.DownloadObject:output_type -> fusion.proto.object.DownloadObjectResponse
-	2, // [2:4] is the sub-list for method output_type
-	0, // [0:2] is the sub-list for method input_type
+	2, // 2: fusion.proto.object.ObjectService.UploadSmallObject:input_type -> fusion.proto.object.UploadSmallObjectRequest
+	3, // 3: fusion.proto.object.ObjectService.DownloadSmallObject:input_type -> fusion.proto.object.DownloadSmallObjectRequest
+	4, // 4: fusion.proto.object.ObjectService.UploadObject:output_type -> fusion.proto.object.UploadObjectResponse
+	5, // 5: fusion.proto.object.ObjectService.DownloadObject:output_type -> fusion.proto.object.DownloadObjectResponse
+	6, // 6: fusion.proto.object.ObjectService.UploadSmallObject:output_type -> fusion.proto.object.UploadSmallObjectResponse
+	7, // 7: fusion.proto.object.ObjectService.DownloadSmallObject:output_type -> fusion.proto.object.DownloadSmallObjectResponse
+	4, // [4:8] is the sub-list for method output_type
+	0, // [0:4] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name
 	0, // [0:0] is the sub-list for extension extendee
 	0, // [0:0] is the sub-list for field type_name

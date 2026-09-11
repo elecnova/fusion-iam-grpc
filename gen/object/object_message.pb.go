@@ -399,6 +399,208 @@ func (x *DownloadObjectMeta) GetFilename() string {
 	return ""
 }
 
+// Package message 小文件上传请求消息定义（unary，整体字节数组，大小需不超过 smallObjectMaxSize=4MB；超过请改用流式 UploadObject）
+type UploadSmallObjectRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// 文件名
+	Filename string `protobuf:"bytes,1,opt,name=filename,proto3" json:"filename,omitempty"`
+	// 文件内容（单次整体传输，上限 4MB）
+	Content       []byte `protobuf:"bytes,2,opt,name=content,proto3" json:"content,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UploadSmallObjectRequest) Reset() {
+	*x = UploadSmallObjectRequest{}
+	mi := &file_object_object_message_proto_msgTypes[6]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UploadSmallObjectRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UploadSmallObjectRequest) ProtoMessage() {}
+
+func (x *UploadSmallObjectRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_object_object_message_proto_msgTypes[6]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UploadSmallObjectRequest.ProtoReflect.Descriptor instead.
+func (*UploadSmallObjectRequest) Descriptor() ([]byte, []int) {
+	return file_object_object_message_proto_rawDescGZIP(), []int{6}
+}
+
+func (x *UploadSmallObjectRequest) GetFilename() string {
+	if x != nil {
+		return x.Filename
+	}
+	return ""
+}
+
+func (x *UploadSmallObjectRequest) GetContent() []byte {
+	if x != nil {
+		return x.Content
+	}
+	return nil
+}
+
+// Package message 小文件上传响应消息定义
+type UploadSmallObjectResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// 对象ID
+	Id            string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UploadSmallObjectResponse) Reset() {
+	*x = UploadSmallObjectResponse{}
+	mi := &file_object_object_message_proto_msgTypes[7]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UploadSmallObjectResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UploadSmallObjectResponse) ProtoMessage() {}
+
+func (x *UploadSmallObjectResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_object_object_message_proto_msgTypes[7]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UploadSmallObjectResponse.ProtoReflect.Descriptor instead.
+func (*UploadSmallObjectResponse) Descriptor() ([]byte, []int) {
+	return file_object_object_message_proto_rawDescGZIP(), []int{7}
+}
+
+func (x *UploadSmallObjectResponse) GetId() string {
+	if x != nil {
+		return x.Id
+	}
+	return ""
+}
+
+// Package message 小文件下载请求消息定义
+type DownloadSmallObjectRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// 对象ID
+	Id            string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DownloadSmallObjectRequest) Reset() {
+	*x = DownloadSmallObjectRequest{}
+	mi := &file_object_object_message_proto_msgTypes[8]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DownloadSmallObjectRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DownloadSmallObjectRequest) ProtoMessage() {}
+
+func (x *DownloadSmallObjectRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_object_object_message_proto_msgTypes[8]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DownloadSmallObjectRequest.ProtoReflect.Descriptor instead.
+func (*DownloadSmallObjectRequest) Descriptor() ([]byte, []int) {
+	return file_object_object_message_proto_rawDescGZIP(), []int{8}
+}
+
+func (x *DownloadSmallObjectRequest) GetId() string {
+	if x != nil {
+		return x.Id
+	}
+	return ""
+}
+
+// Package message 小文件下载响应消息定义（整体字节数组，上限 4MB）
+type DownloadSmallObjectResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// 文件名
+	Filename string `protobuf:"bytes,1,opt,name=filename,proto3" json:"filename,omitempty"`
+	// 文件内容
+	Content       []byte `protobuf:"bytes,2,opt,name=content,proto3" json:"content,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DownloadSmallObjectResponse) Reset() {
+	*x = DownloadSmallObjectResponse{}
+	mi := &file_object_object_message_proto_msgTypes[9]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DownloadSmallObjectResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DownloadSmallObjectResponse) ProtoMessage() {}
+
+func (x *DownloadSmallObjectResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_object_object_message_proto_msgTypes[9]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DownloadSmallObjectResponse.ProtoReflect.Descriptor instead.
+func (*DownloadSmallObjectResponse) Descriptor() ([]byte, []int) {
+	return file_object_object_message_proto_rawDescGZIP(), []int{9}
+}
+
+func (x *DownloadSmallObjectResponse) GetFilename() string {
+	if x != nil {
+		return x.Filename
+	}
+	return ""
+}
+
+func (x *DownloadSmallObjectResponse) GetContent() []byte {
+	if x != nil {
+		return x.Content
+	}
+	return nil
+}
+
 var File_object_object_message_proto protoreflect.FileDescriptor
 
 const file_object_object_message_proto_rawDesc = "" +
@@ -421,7 +623,19 @@ const file_object_object_message_proto_rawDesc = "" +
 	"\x05chunk\x18\x02 \x01(\fH\x00R\x05chunkB\x06\n" +
 	"\x04data\"0\n" +
 	"\x12DownloadObjectMeta\x12\x1a\n" +
-	"\bfilename\x18\x01 \x01(\tR\bfilenameB\xb7\x01\n" +
+	"\bfilename\x18\x01 \x01(\tR\bfilename\"h\n" +
+	"\x18UploadSmallObjectRequest\x12&\n" +
+	"\bfilename\x18\x01 \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\bfilename\x12$\n" +
+	"\acontent\x18\x02 \x01(\fB\n" +
+	"\xbaH\az\x05\x18\x80\x80\x80\x02R\acontent\"+\n" +
+	"\x19UploadSmallObjectResponse\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\"7\n" +
+	"\x1aDownloadSmallObjectRequest\x12\x19\n" +
+	"\x02id\x18\x01 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18(R\x02id\"S\n" +
+	"\x1bDownloadSmallObjectResponse\x12\x1a\n" +
+	"\bfilename\x18\x01 \x01(\tR\bfilename\x12\x18\n" +
+	"\acontent\x18\x02 \x01(\fR\acontentB\xb7\x01\n" +
 	"\x17com.fusion.proto.objectB\x12ObjectMessageProtoP\x01Z\x1afusion.proto.object;object\xa2\x02\x03FPO\xaa\x02\x13Fusion.Proto.Object\xca\x02\x13Fusion\\Proto\\Object\xe2\x02\x1fFusion\\Proto\\Object\\GPBMetadata\xea\x02\x15Fusion::Proto::Objectb\x06proto3"
 
 var (
@@ -436,14 +650,18 @@ func file_object_object_message_proto_rawDescGZIP() []byte {
 	return file_object_object_message_proto_rawDescData
 }
 
-var file_object_object_message_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
+var file_object_object_message_proto_msgTypes = make([]protoimpl.MessageInfo, 10)
 var file_object_object_message_proto_goTypes = []any{
-	(*UploadObjectRequest)(nil),    // 0: fusion.proto.object.UploadObjectRequest
-	(*UploadObjectMeta)(nil),       // 1: fusion.proto.object.UploadObjectMeta
-	(*UploadObjectResponse)(nil),   // 2: fusion.proto.object.UploadObjectResponse
-	(*DownloadObjectRequest)(nil),  // 3: fusion.proto.object.DownloadObjectRequest
-	(*DownloadObjectResponse)(nil), // 4: fusion.proto.object.DownloadObjectResponse
-	(*DownloadObjectMeta)(nil),     // 5: fusion.proto.object.DownloadObjectMeta
+	(*UploadObjectRequest)(nil),         // 0: fusion.proto.object.UploadObjectRequest
+	(*UploadObjectMeta)(nil),            // 1: fusion.proto.object.UploadObjectMeta
+	(*UploadObjectResponse)(nil),        // 2: fusion.proto.object.UploadObjectResponse
+	(*DownloadObjectRequest)(nil),       // 3: fusion.proto.object.DownloadObjectRequest
+	(*DownloadObjectResponse)(nil),      // 4: fusion.proto.object.DownloadObjectResponse
+	(*DownloadObjectMeta)(nil),          // 5: fusion.proto.object.DownloadObjectMeta
+	(*UploadSmallObjectRequest)(nil),    // 6: fusion.proto.object.UploadSmallObjectRequest
+	(*UploadSmallObjectResponse)(nil),   // 7: fusion.proto.object.UploadSmallObjectResponse
+	(*DownloadSmallObjectRequest)(nil),  // 8: fusion.proto.object.DownloadSmallObjectRequest
+	(*DownloadSmallObjectResponse)(nil), // 9: fusion.proto.object.DownloadSmallObjectResponse
 }
 var file_object_object_message_proto_depIdxs = []int32{
 	1, // 0: fusion.proto.object.UploadObjectRequest.meta:type_name -> fusion.proto.object.UploadObjectMeta
@@ -474,7 +692,7 @@ func file_object_object_message_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_object_object_message_proto_rawDesc), len(file_object_object_message_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   6,
+			NumMessages:   10,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
