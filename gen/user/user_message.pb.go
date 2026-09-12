@@ -646,7 +646,9 @@ type GetUserRequest struct {
 	// 是否获取头像(默认不响应头像)
 	IsAvator bool `protobuf:"varint,2,opt,name=is_avator,proto3" json:"is_avator,omitempty"`
 	// 是否获取角色列表(默认不获取)
-	IsRole        bool `protobuf:"varint,3,opt,name=is_role,proto3" json:"is_role,omitempty"`
+	IsRole bool `protobuf:"varint,3,opt,name=is_role,proto3" json:"is_role,omitempty"`
+	// 当前用户语种
+	Language      string `protobuf:"bytes,4,opt,name=language,proto3" json:"language,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -700,6 +702,13 @@ func (x *GetUserRequest) GetIsRole() bool {
 		return x.IsRole
 	}
 	return false
+}
+
+func (x *GetUserRequest) GetLanguage() string {
+	if x != nil {
+		return x.Language
+	}
+	return ""
 }
 
 // Package message 用户中心-获取用户(根据用户名)消息定义
@@ -2425,11 +2434,13 @@ const file_user_user_message_proto_rawDesc = "" +
 	"\vemail_state\x18\x03 \x01(\x05B\a\xbaH\x04\x1a\x02\x18\x03H\x00R\vemail_state\x88\x01\x01\x12 \n" +
 	"\x04type\x18\x04 \x01(\x05B\a\xbaH\x04\x1a\x02\x18\x03H\x01R\x04type\x88\x01\x01B\x0e\n" +
 	"\f_email_stateB\a\n" +
-	"\x05_type\"c\n" +
+	"\x05_type\"\x88\x01\n" +
 	"\x0eGetUserRequest\x12\x19\n" +
 	"\x02id\x18\x01 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18(R\x02id\x12\x1c\n" +
 	"\tis_avator\x18\x02 \x01(\bR\tis_avator\x12\x18\n" +
-	"\ais_role\x18\x03 \x01(\bR\ais_role\"5\n" +
+	"\ais_role\x18\x03 \x01(\bR\ais_role\x12#\n" +
+	"\blanguage\x18\x04 \x01(\tB\a\xbaH\x04r\x02\x18\n" +
+	"R\blanguage\"5\n" +
 	"\x14GetUserByNameRequest\x12\x1d\n" +
 	"\x04name\x18\x01 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18(R\x04name\"8\n" +
 	"\x15GetUserByEmailRequest\x12\x1f\n" +
