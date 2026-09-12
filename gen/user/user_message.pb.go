@@ -644,7 +644,9 @@ type GetUserRequest struct {
 	// 用户ID
 	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	// 是否获取头像(默认不响应头像)
-	IsAvator      bool `protobuf:"varint,2,opt,name=is_avator,proto3" json:"is_avator,omitempty"`
+	IsAvator bool `protobuf:"varint,2,opt,name=is_avator,proto3" json:"is_avator,omitempty"`
+	// 是否获取角色列表(默认不获取)
+	IsRole        bool `protobuf:"varint,3,opt,name=is_role,proto3" json:"is_role,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -689,6 +691,13 @@ func (x *GetUserRequest) GetId() string {
 func (x *GetUserRequest) GetIsAvator() bool {
 	if x != nil {
 		return x.IsAvator
+	}
+	return false
+}
+
+func (x *GetUserRequest) GetIsRole() bool {
+	if x != nil {
+		return x.IsRole
 	}
 	return false
 }
@@ -2416,10 +2425,11 @@ const file_user_user_message_proto_rawDesc = "" +
 	"\vemail_state\x18\x03 \x01(\x05B\a\xbaH\x04\x1a\x02\x18\x03H\x00R\vemail_state\x88\x01\x01\x12 \n" +
 	"\x04type\x18\x04 \x01(\x05B\a\xbaH\x04\x1a\x02\x18\x03H\x01R\x04type\x88\x01\x01B\x0e\n" +
 	"\f_email_stateB\a\n" +
-	"\x05_type\"I\n" +
+	"\x05_type\"c\n" +
 	"\x0eGetUserRequest\x12\x19\n" +
 	"\x02id\x18\x01 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18(R\x02id\x12\x1c\n" +
-	"\tis_avator\x18\x02 \x01(\bR\tis_avator\"5\n" +
+	"\tis_avator\x18\x02 \x01(\bR\tis_avator\x12\x18\n" +
+	"\ais_role\x18\x03 \x01(\bR\ais_role\"5\n" +
 	"\x14GetUserByNameRequest\x12\x1d\n" +
 	"\x04name\x18\x01 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18(R\x04name\"8\n" +
 	"\x15GetUserByEmailRequest\x12\x1f\n" +
