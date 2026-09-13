@@ -1235,7 +1235,9 @@ type ListUsersRequest struct {
 	// 页码
 	Page int32 `protobuf:"varint,6,opt,name=page,proto3" json:"page,omitempty"`
 	// 分页大小
-	PageSize      int32 `protobuf:"varint,7,opt,name=page_size,proto3" json:"page_size,omitempty"`
+	PageSize int32 `protobuf:"varint,7,opt,name=page_size,proto3" json:"page_size,omitempty"`
+	// 语种偏好
+	Language      string `protobuf:"bytes,8,opt,name=language,proto3" json:"language,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1317,6 +1319,13 @@ func (x *ListUsersRequest) GetPageSize() int32 {
 		return x.PageSize
 	}
 	return 0
+}
+
+func (x *ListUsersRequest) GetLanguage() string {
+	if x != nil {
+		return x.Language
+	}
+	return ""
 }
 
 type ListUsersResponse struct {
@@ -1403,7 +1412,9 @@ type AllUsersRequest struct {
 	// 角色ID
 	RoleId *string `protobuf:"bytes,4,opt,name=role_id,proto3,oneof" json:"role_id,omitempty"`
 	// 用户状态(1-正常 2-禁用 3-锁定)
-	State         *int32 `protobuf:"varint,5,opt,name=state,proto3,oneof" json:"state,omitempty"`
+	State *int32 `protobuf:"varint,5,opt,name=state,proto3,oneof" json:"state,omitempty"`
+	// 语种偏好
+	Language      string `protobuf:"bytes,6,opt,name=language,proto3" json:"language,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1471,6 +1482,13 @@ func (x *AllUsersRequest) GetState() int32 {
 		return *x.State
 	}
 	return 0
+}
+
+func (x *AllUsersRequest) GetLanguage() string {
+	if x != nil {
+		return x.Language
+	}
+	return ""
 }
 
 type AllUsersResponse struct {
@@ -2607,7 +2625,7 @@ const file_user_user_message_proto_rawDesc = "" +
 	"\v_project_id\">\n" +
 	"\fUserRoleName\x12\x12\n" +
 	"\x04name\x18\x01 \x01(\tR\x04name\x12\x1a\n" +
-	"\blanguage\x18\x02 \x01(\tR\blanguage\"\xd4\x02\n" +
+	"\blanguage\x18\x02 \x01(\tR\blanguage\"\xf9\x02\n" +
 	"\x10ListUsersRequest\x12!\n" +
 	"\akeyword\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x18<R\akeyword\x12,\n" +
 	"\n" +
@@ -2618,7 +2636,9 @@ const file_user_user_message_proto_rawDesc = "" +
 	"\x05state\x18\x05 \x01(\x05B\t\xbaH\x06\x1a\x04\x18\x03(\x01H\x03R\x05state\x88\x01\x01\x12\x1b\n" +
 	"\x04page\x18\x06 \x01(\x05B\a\xbaH\x04\x1a\x02 \x00R\x04page\x12(\n" +
 	"\tpage_size\x18\a \x01(\x05B\n" +
-	"\xbaH\a\x1a\x05\x18\xac\x02 \x00R\tpage_sizeB\r\n" +
+	"\xbaH\a\x1a\x05\x18\xac\x02 \x00R\tpage_size\x12#\n" +
+	"\blanguage\x18\b \x01(\tB\a\xbaH\x04r\x02\x18\n" +
+	"R\blanguageB\r\n" +
 	"\v_project_idB\v\n" +
 	"\t_agent_idB\n" +
 	"\n" +
@@ -2628,7 +2648,7 @@ const file_user_user_message_proto_rawDesc = "" +
 	"\x04data\x18\x01 \x03(\v2\".fusion.proto.user.GetUserResponseR\x04data\x12\x12\n" +
 	"\x04page\x18\x02 \x01(\x05R\x04page\x12\x1c\n" +
 	"\tpage_size\x18\x03 \x01(\x05R\tpage_size\x12\x14\n" +
-	"\x05total\x18\x04 \x01(\x03R\x05total\"\x8c\x02\n" +
+	"\x05total\x18\x04 \x01(\x03R\x05total\"\xb1\x02\n" +
 	"\x0fAllUsersRequest\x12!\n" +
 	"\akeyword\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x18<R\akeyword\x12,\n" +
 	"\n" +
@@ -2636,7 +2656,9 @@ const file_user_user_message_proto_rawDesc = "" +
 	"project_id\x88\x01\x01\x12(\n" +
 	"\bagent_id\x18\x03 \x01(\tB\a\xbaH\x04r\x02\x18(H\x01R\bagent_id\x88\x01\x01\x12&\n" +
 	"\arole_id\x18\x04 \x01(\tB\a\xbaH\x04r\x02\x18(H\x02R\arole_id\x88\x01\x01\x12$\n" +
-	"\x05state\x18\x05 \x01(\x05B\t\xbaH\x06\x1a\x04\x18\x03(\x01H\x03R\x05state\x88\x01\x01B\r\n" +
+	"\x05state\x18\x05 \x01(\x05B\t\xbaH\x06\x1a\x04\x18\x03(\x01H\x03R\x05state\x88\x01\x01\x12#\n" +
+	"\blanguage\x18\x06 \x01(\tB\a\xbaH\x04r\x02\x18\n" +
+	"R\blanguageB\r\n" +
 	"\v_project_idB\v\n" +
 	"\t_agent_idB\n" +
 	"\n" +
