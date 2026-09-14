@@ -109,7 +109,7 @@ type RoleData struct {
 	State int32 `protobuf:"varint,8,opt,name=state,proto3" json:"state,omitempty"`
 	// 角色类型(1-普通角色 2-预定义普通角色 3-预定义管理角色)
 	Type int32 `protobuf:"varint,9,opt,name=type,proto3" json:"type,omitempty"`
-	// 渠道(1-通用角色 2-业务角色 3-运维角色 4-渠道角色)
+	// 渠道(1-用户中心 2-业务平台 3-运维平台 4-渠道平台 5-开放平台 6-集控平台)
 	Channel int32 `protobuf:"varint,10,opt,name=channel,proto3" json:"channel,omitempty"`
 	// 创建人ID
 	CreateBy string `protobuf:"bytes,11,opt,name=create_by,proto3" json:"create_by,omitempty"`
@@ -280,7 +280,7 @@ type CreateRoleRequest struct {
 	MenuIds []string `protobuf:"bytes,3,rep,name=menu_ids,proto3" json:"menu_ids,omitempty"`
 	// 角色序号
 	Sort int32 `protobuf:"varint,4,opt,name=sort,proto3" json:"sort,omitempty"`
-	// 渠道(1-通用角色 2-业务角色 3-运维角色 4-渠道角色)
+	// 渠道(1-用户中心 2-业务平台 3-运维平台 4-渠道平台 5-开放平台 6-集控平台)
 	Channel       int32 `protobuf:"varint,5,opt,name=channel,proto3" json:"channel,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -483,7 +483,7 @@ type UpdateRoleRequest struct {
 	MenuIds []string `protobuf:"bytes,4,rep,name=menu_ids,proto3" json:"menu_ids,omitempty"`
 	// 角色序号
 	Sort int32 `protobuf:"varint,5,opt,name=sort,proto3" json:"sort,omitempty"`
-	// 渠道(1-通用角色 2-业务角色 3-运维角色 4-渠道角色)
+	// 渠道(1-用户中心 2-业务平台 3-运维平台 4-渠道平台 5-开放平台 6-集控平台)
 	Channel       int32 `protobuf:"varint,6,opt,name=channel,proto3" json:"channel,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -1414,7 +1414,7 @@ type UserRole struct {
 	Name string `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`
 	// 角色类型(1-普通角色 2-预定义普通角色 3-预定义管理角色)
 	Type int32 `protobuf:"varint,4,opt,name=type,proto3" json:"type,omitempty"`
-	// 渠道(1-通用角色 2-业务角色 3-运维角色 4-渠道角色)
+	// 渠道(1-用户中心 2-业务平台 3-运维平台 4-渠道平台 5-开放平台 6-集控平台)
 	Channel       int32 `protobuf:"varint,5,opt,name=channel,proto3" json:"channel,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache

@@ -46,7 +46,7 @@ type ClientInfo struct {
 	Extend string `protobuf:"bytes,4,opt,name=extend,proto3" json:"extend,omitempty"`
 	// 访问令牌有效时间(h)
 	AccessExp int64 `protobuf:"varint,5,opt,name=access_exp,proto3" json:"access_exp,omitempty"`
-	// 类型(1-grpc客户端 2-邮件客户端 3-短信客户端 4-开放平台客户端 5-用户中心客户端)
+	// 类型(1-用户中心 2-业务平台 3-运维平台 4-渠道平台 5-开放平台 6-集控平台)
 	Type int32 `protobuf:"varint,6,opt,name=type,proto3" json:"type,omitempty"`
 	// 状态(1-启用 2-禁用)
 	State int32 `protobuf:"varint,7,opt,name=state,proto3" json:"state,omitempty"`

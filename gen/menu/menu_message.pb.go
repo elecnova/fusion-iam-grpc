@@ -108,7 +108,7 @@ type MenuData struct {
 	Type int32 `protobuf:"varint,8,opt,name=type,proto3" json:"type,omitempty"`
 	// 菜单状态(1-正常 2-禁用 3-锁定)
 	State int32 `protobuf:"varint,9,opt,name=state,proto3" json:"state,omitempty"`
-	// 渠道(1-用户中心 2-业务平台 3-运维平台 4-渠道平台 5-门户后台)
+	// 渠道(1-用户中心 2-业务平台 3-运维平台 4-渠道平台 5-开放平台 6-集控平台)
 	Channel int32 `protobuf:"varint,10,opt,name=channel,proto3" json:"channel,omitempty"`
 	// 创建人ID
 	CreateBy string `protobuf:"bytes,11,opt,name=create_by,proto3" json:"create_by,omitempty"`
@@ -370,7 +370,7 @@ type UpsertMenuRequest struct {
 	Type int32 `protobuf:"varint,7,opt,name=type,proto3" json:"type,omitempty"`
 	// 菜单状态(1-正常 2-禁用 3-锁定)
 	State int32 `protobuf:"varint,8,opt,name=state,proto3" json:"state,omitempty"`
-	// 渠道(1-用户中心 2-业务平台 3-运维平台 4-渠道平台 5-门户后台)
+	// 渠道(1-用户中心 2-业务平台 3-运维平台 4-渠道平台 5-开放平台 6-集控平台)
 	Channel       int32 `protobuf:"varint,9,opt,name=channel,proto3" json:"channel,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -572,7 +572,7 @@ type ListMenusRequest struct {
 	Type *int32 `protobuf:"varint,3,opt,name=type,proto3,oneof" json:"type,omitempty"`
 	// 菜单状态(1-正常 2-禁用 3-锁定)，不传则不过滤
 	State *int32 `protobuf:"varint,4,opt,name=state,proto3,oneof" json:"state,omitempty"`
-	// 渠道(1-用户中心 2-业务平台 3-运维平台 4-渠道平台 5-门户后台)
+	// 渠道(1-用户中心 2-业务平台 3-运维平台 4-渠道平台 5-开放平台 6-集控平台)
 	Channel int32 `protobuf:"varint,5,opt,name=channel,proto3" json:"channel,omitempty"`
 	// 页码
 	Page int32 `protobuf:"varint,6,opt,name=page,proto3" json:"page,omitempty"`
@@ -746,7 +746,7 @@ func (x *ListMenusResponse) GetPageSize() int32 {
 // Package message 全局菜单树请求消息定义
 type TreeMenuRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// 渠道(1-用户中心 2-业务平台 3-运维平台 4-渠道平台 5-门户后台)
+	// 渠道(1-用户中心 2-业务平台 3-运维平台 4-渠道平台 5-开放平台 6-集控平台)
 	Channel int32 `protobuf:"varint,1,opt,name=channel,proto3" json:"channel,omitempty"`
 	// 系统角色ID，传入时仅返回该角色拥有权限的菜单
 	RoleId string `protobuf:"bytes,2,opt,name=role_id,proto3" json:"role_id,omitempty"`
@@ -828,7 +828,7 @@ type MenuTreeNode struct {
 	Type int32 `protobuf:"varint,8,opt,name=type,proto3" json:"type,omitempty"`
 	// 菜单状态(1-正常 2-禁用 3-锁定)
 	State int32 `protobuf:"varint,9,opt,name=state,proto3" json:"state,omitempty"`
-	// 渠道(1-用户中心 2-业务平台 3-运维平台 4-渠道平台 5-门户后台)
+	// 渠道(1-用户中心 2-业务平台 3-运维平台 4-渠道平台 5-开放平台 6-集控平台)
 	Channel int32 `protobuf:"varint,10,opt,name=channel,proto3" json:"channel,omitempty"`
 	// 子级菜单
 	Children      []*MenuTreeNode `protobuf:"bytes,11,rep,name=children,proto3" json:"children,omitempty"`
