@@ -1094,7 +1094,7 @@ type UserRoles struct {
 	Name []*UserRoleName `protobuf:"bytes,3,rep,name=name,proto3" json:"name,omitempty"`
 	// 角色所属项目ID
 	ProjectId *string `protobuf:"bytes,4,opt,name=project_id,json=projectId,proto3,oneof" json:"project_id,omitempty"`
-	// 渠道（1-通用角色 2-业务角色 3-运维角色 4-渠道角色）
+	// 渠道(1-用户中心 2-业务平台 3-运维平台 4-渠道平台 5-开放平台 6-集控平台)
 	Channel       int32 `protobuf:"varint,5,opt,name=channel,proto3" json:"channel,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache

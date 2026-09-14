@@ -676,12 +676,12 @@ type CheckTokenResponse struct {
 	UserId string `protobuf:"bytes,1,opt,name=user_id,proto3" json:"user_id,omitempty"`
 	// 用户名
 	UserName string `protobuf:"bytes,2,opt,name=user_name,proto3" json:"user_name,omitempty"`
+	// 角色ID
+	RoleId string `protobuf:"bytes,5,opt,name=role_id,proto3" json:"role_id,omitempty"`
 	// 用户类型(1-普通用户 2-预定义用户 3-体验用户)
 	Type int32 `protobuf:"varint,3,opt,name=type,proto3" json:"type,omitempty"`
 	// 用户状态(1-正常 2-禁用 3-锁定)
-	State int32 `protobuf:"varint,4,opt,name=state,proto3" json:"state,omitempty"`
-	// 用户角色列表
-	Roles         []*UserRoles `protobuf:"bytes,5,rep,name=roles,proto3" json:"roles,omitempty"`
+	State         int32 `protobuf:"varint,4,opt,name=state,proto3" json:"state,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -730,6 +730,13 @@ func (x *CheckTokenResponse) GetUserName() string {
 	return ""
 }
 
+func (x *CheckTokenResponse) GetRoleId() string {
+	if x != nil {
+		return x.RoleId
+	}
+	return ""
+}
+
 func (x *CheckTokenResponse) GetType() int32 {
 	if x != nil {
 		return x.Type
@@ -740,67 +747,6 @@ func (x *CheckTokenResponse) GetType() int32 {
 func (x *CheckTokenResponse) GetState() int32 {
 	if x != nil {
 		return x.State
-	}
-	return 0
-}
-
-func (x *CheckTokenResponse) GetRoles() []*UserRoles {
-	if x != nil {
-		return x.Roles
-	}
-	return nil
-}
-
-type UserRoles struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// 角色ID
-	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	// 渠道（1-通用角色 2-业务角色 3-运维角色 4-渠道角色）
-	Channel       int32 `protobuf:"varint,5,opt,name=channel,proto3" json:"channel,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *UserRoles) Reset() {
-	*x = UserRoles{}
-	mi := &file_auth_auth_message_proto_msgTypes[12]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *UserRoles) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*UserRoles) ProtoMessage() {}
-
-func (x *UserRoles) ProtoReflect() protoreflect.Message {
-	mi := &file_auth_auth_message_proto_msgTypes[12]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use UserRoles.ProtoReflect.Descriptor instead.
-func (*UserRoles) Descriptor() ([]byte, []int) {
-	return file_auth_auth_message_proto_rawDescGZIP(), []int{12}
-}
-
-func (x *UserRoles) GetId() string {
-	if x != nil {
-		return x.Id
-	}
-	return ""
-}
-
-func (x *UserRoles) GetChannel() int32 {
-	if x != nil {
-		return x.Channel
 	}
 	return 0
 }
@@ -816,7 +762,7 @@ type CheckEmailRequest struct {
 
 func (x *CheckEmailRequest) Reset() {
 	*x = CheckEmailRequest{}
-	mi := &file_auth_auth_message_proto_msgTypes[13]
+	mi := &file_auth_auth_message_proto_msgTypes[12]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -828,7 +774,7 @@ func (x *CheckEmailRequest) String() string {
 func (*CheckEmailRequest) ProtoMessage() {}
 
 func (x *CheckEmailRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_auth_auth_message_proto_msgTypes[13]
+	mi := &file_auth_auth_message_proto_msgTypes[12]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -841,7 +787,7 @@ func (x *CheckEmailRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CheckEmailRequest.ProtoReflect.Descriptor instead.
 func (*CheckEmailRequest) Descriptor() ([]byte, []int) {
-	return file_auth_auth_message_proto_rawDescGZIP(), []int{13}
+	return file_auth_auth_message_proto_rawDescGZIP(), []int{12}
 }
 
 func (x *CheckEmailRequest) GetEmail() string {
@@ -862,7 +808,7 @@ type CheckMobileRequest struct {
 
 func (x *CheckMobileRequest) Reset() {
 	*x = CheckMobileRequest{}
-	mi := &file_auth_auth_message_proto_msgTypes[14]
+	mi := &file_auth_auth_message_proto_msgTypes[13]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -874,7 +820,7 @@ func (x *CheckMobileRequest) String() string {
 func (*CheckMobileRequest) ProtoMessage() {}
 
 func (x *CheckMobileRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_auth_auth_message_proto_msgTypes[14]
+	mi := &file_auth_auth_message_proto_msgTypes[13]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -887,7 +833,7 @@ func (x *CheckMobileRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CheckMobileRequest.ProtoReflect.Descriptor instead.
 func (*CheckMobileRequest) Descriptor() ([]byte, []int) {
-	return file_auth_auth_message_proto_rawDescGZIP(), []int{14}
+	return file_auth_auth_message_proto_rawDescGZIP(), []int{13}
 }
 
 func (x *CheckMobileRequest) GetMobile() string {
@@ -910,7 +856,7 @@ type CheckUserResponse struct {
 
 func (x *CheckUserResponse) Reset() {
 	*x = CheckUserResponse{}
-	mi := &file_auth_auth_message_proto_msgTypes[15]
+	mi := &file_auth_auth_message_proto_msgTypes[14]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -922,7 +868,7 @@ func (x *CheckUserResponse) String() string {
 func (*CheckUserResponse) ProtoMessage() {}
 
 func (x *CheckUserResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_auth_auth_message_proto_msgTypes[15]
+	mi := &file_auth_auth_message_proto_msgTypes[14]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -935,7 +881,7 @@ func (x *CheckUserResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CheckUserResponse.ProtoReflect.Descriptor instead.
 func (*CheckUserResponse) Descriptor() ([]byte, []int) {
-	return file_auth_auth_message_proto_rawDescGZIP(), []int{15}
+	return file_auth_auth_message_proto_rawDescGZIP(), []int{14}
 }
 
 func (x *CheckUserResponse) GetExist() bool {
@@ -967,7 +913,7 @@ type ResetPasswordRequest struct {
 
 func (x *ResetPasswordRequest) Reset() {
 	*x = ResetPasswordRequest{}
-	mi := &file_auth_auth_message_proto_msgTypes[16]
+	mi := &file_auth_auth_message_proto_msgTypes[15]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -979,7 +925,7 @@ func (x *ResetPasswordRequest) String() string {
 func (*ResetPasswordRequest) ProtoMessage() {}
 
 func (x *ResetPasswordRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_auth_auth_message_proto_msgTypes[16]
+	mi := &file_auth_auth_message_proto_msgTypes[15]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -992,7 +938,7 @@ func (x *ResetPasswordRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ResetPasswordRequest.ProtoReflect.Descriptor instead.
 func (*ResetPasswordRequest) Descriptor() ([]byte, []int) {
-	return file_auth_auth_message_proto_rawDescGZIP(), []int{16}
+	return file_auth_auth_message_proto_rawDescGZIP(), []int{15}
 }
 
 func (x *ResetPasswordRequest) GetPassword() string {
@@ -1027,7 +973,7 @@ type ActiveUserRequest struct {
 
 func (x *ActiveUserRequest) Reset() {
 	*x = ActiveUserRequest{}
-	mi := &file_auth_auth_message_proto_msgTypes[17]
+	mi := &file_auth_auth_message_proto_msgTypes[16]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1039,7 +985,7 @@ func (x *ActiveUserRequest) String() string {
 func (*ActiveUserRequest) ProtoMessage() {}
 
 func (x *ActiveUserRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_auth_auth_message_proto_msgTypes[17]
+	mi := &file_auth_auth_message_proto_msgTypes[16]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1052,7 +998,7 @@ func (x *ActiveUserRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ActiveUserRequest.ProtoReflect.Descriptor instead.
 func (*ActiveUserRequest) Descriptor() ([]byte, []int) {
-	return file_auth_auth_message_proto_rawDescGZIP(), []int{17}
+	return file_auth_auth_message_proto_rawDescGZIP(), []int{16}
 }
 
 func (x *ActiveUserRequest) GetId() string {
@@ -1118,16 +1064,13 @@ const file_auth_auth_message_proto_rawDesc = "" +
 	"\x11CheckTokenRequest\x12.\n" +
 	"\faccess_token\x18\x01 \x01(\tB\n" +
 	"\xbaH\ar\x05\x10\x01\x18\xf4\x03R\faccess_token\x12'\n" +
-	"\tclient_id\x18\x02 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18(R\tclient_id\"\xb5\x01\n" +
+	"\tclient_id\x18\x02 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18(R\tclient_id\"\x90\x01\n" +
 	"\x12CheckTokenResponse\x12\x18\n" +
-	"\auser_id\x18\x01 \x01(\tR\auser_id\x12'\n" +
-	"\tuser_name\x18\x02 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18<R\tuser_name\x12\x12\n" +
+	"\auser_id\x18\x01 \x01(\tR\auser_id\x12\x1c\n" +
+	"\tuser_name\x18\x02 \x01(\tR\tuser_name\x12\x18\n" +
+	"\arole_id\x18\x05 \x01(\tR\arole_id\x12\x12\n" +
 	"\x04type\x18\x03 \x01(\x05R\x04type\x12\x14\n" +
-	"\x05state\x18\x04 \x01(\x05R\x05state\x122\n" +
-	"\x05roles\x18\x05 \x03(\v2\x1c.fusion.proto.auth.UserRolesR\x05roles\"5\n" +
-	"\tUserRoles\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\tR\x02id\x12\x18\n" +
-	"\achannel\x18\x05 \x01(\x05R\achannel\"4\n" +
+	"\x05state\x18\x04 \x01(\x05R\x05state\"4\n" +
 	"\x11CheckEmailRequest\x12\x1f\n" +
 	"\x05email\x18\x01 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18dR\x05email\"7\n" +
 	"\x12CheckMobileRequest\x12!\n" +
@@ -1156,7 +1099,7 @@ func file_auth_auth_message_proto_rawDescGZIP() []byte {
 	return file_auth_auth_message_proto_rawDescData
 }
 
-var file_auth_auth_message_proto_msgTypes = make([]protoimpl.MessageInfo, 18)
+var file_auth_auth_message_proto_msgTypes = make([]protoimpl.MessageInfo, 17)
 var file_auth_auth_message_proto_goTypes = []any{
 	(*AuthorizeRequest)(nil),      // 0: fusion.proto.auth.AuthorizeRequest
 	(*AuthorizeResponse)(nil),     // 1: fusion.proto.auth.AuthorizeResponse
@@ -1170,20 +1113,18 @@ var file_auth_auth_message_proto_goTypes = []any{
 	(*ValidateTokenResponse)(nil), // 9: fusion.proto.auth.ValidateTokenResponse
 	(*CheckTokenRequest)(nil),     // 10: fusion.proto.auth.CheckTokenRequest
 	(*CheckTokenResponse)(nil),    // 11: fusion.proto.auth.CheckTokenResponse
-	(*UserRoles)(nil),             // 12: fusion.proto.auth.UserRoles
-	(*CheckEmailRequest)(nil),     // 13: fusion.proto.auth.CheckEmailRequest
-	(*CheckMobileRequest)(nil),    // 14: fusion.proto.auth.CheckMobileRequest
-	(*CheckUserResponse)(nil),     // 15: fusion.proto.auth.CheckUserResponse
-	(*ResetPasswordRequest)(nil),  // 16: fusion.proto.auth.ResetPasswordRequest
-	(*ActiveUserRequest)(nil),     // 17: fusion.proto.auth.ActiveUserRequest
+	(*CheckEmailRequest)(nil),     // 12: fusion.proto.auth.CheckEmailRequest
+	(*CheckMobileRequest)(nil),    // 13: fusion.proto.auth.CheckMobileRequest
+	(*CheckUserResponse)(nil),     // 14: fusion.proto.auth.CheckUserResponse
+	(*ResetPasswordRequest)(nil),  // 15: fusion.proto.auth.ResetPasswordRequest
+	(*ActiveUserRequest)(nil),     // 16: fusion.proto.auth.ActiveUserRequest
 }
 var file_auth_auth_message_proto_depIdxs = []int32{
-	12, // 0: fusion.proto.auth.CheckTokenResponse.roles:type_name -> fusion.proto.auth.UserRoles
-	1,  // [1:1] is the sub-list for method output_type
-	1,  // [1:1] is the sub-list for method input_type
-	1,  // [1:1] is the sub-list for extension type_name
-	1,  // [1:1] is the sub-list for extension extendee
-	0,  // [0:1] is the sub-list for field type_name
+	0, // [0:0] is the sub-list for method output_type
+	0, // [0:0] is the sub-list for method input_type
+	0, // [0:0] is the sub-list for extension type_name
+	0, // [0:0] is the sub-list for extension extendee
+	0, // [0:0] is the sub-list for field type_name
 }
 
 func init() { file_auth_auth_message_proto_init() }
@@ -1197,7 +1138,7 @@ func file_auth_auth_message_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_auth_auth_message_proto_rawDesc), len(file_auth_auth_message_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   18,
+			NumMessages:   17,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
