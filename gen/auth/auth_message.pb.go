@@ -670,7 +670,9 @@ type CheckTokenResponse struct {
 	// 用户类型(1-普通用户 2-预定义用户 3-体验用户)
 	Type int32 `protobuf:"varint,3,opt,name=type,proto3" json:"type,omitempty"`
 	// 用户状态(1-正常 2-禁用 3-锁定)
-	State         int32 `protobuf:"varint,4,opt,name=state,proto3" json:"state,omitempty"`
+	State int32 `protobuf:"varint,4,opt,name=state,proto3" json:"state,omitempty"`
+	// 用户角色列表
+	Roles         []*UserRoles `protobuf:"bytes,5,rep,name=roles,proto3" json:"roles,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -731,6 +733,13 @@ func (x *CheckTokenResponse) GetState() int32 {
 		return x.State
 	}
 	return 0
+}
+
+func (x *CheckTokenResponse) GetRoles() []*UserRoles {
+	if x != nil {
+		return x.Roles
+	}
+	return nil
 }
 
 type UserRoles struct {
@@ -1099,12 +1108,13 @@ const file_auth_auth_message_proto_rawDesc = "" +
 	"expires_in\"C\n" +
 	"\x11CheckTokenRequest\x12.\n" +
 	"\faccess_token\x18\x01 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x01\x18\xf4\x03R\faccess_token\"\x81\x01\n" +
+	"\xbaH\ar\x05\x10\x01\x18\xf4\x03R\faccess_token\"\xb5\x01\n" +
 	"\x12CheckTokenResponse\x12\x18\n" +
 	"\auser_id\x18\x01 \x01(\tR\auser_id\x12'\n" +
 	"\tuser_name\x18\x02 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18<R\tuser_name\x12\x12\n" +
 	"\x04type\x18\x03 \x01(\x05R\x04type\x12\x14\n" +
-	"\x05state\x18\x04 \x01(\x05R\x05state\"5\n" +
+	"\x05state\x18\x04 \x01(\x05R\x05state\x122\n" +
+	"\x05roles\x18\x05 \x03(\v2\x1c.fusion.proto.auth.UserRolesR\x05roles\"5\n" +
 	"\tUserRoles\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x18\n" +
 	"\achannel\x18\x05 \x01(\x05R\achannel\"4\n" +
@@ -1158,11 +1168,12 @@ var file_auth_auth_message_proto_goTypes = []any{
 	(*ActiveUserRequest)(nil),     // 17: fusion.proto.auth.ActiveUserRequest
 }
 var file_auth_auth_message_proto_depIdxs = []int32{
-	0, // [0:0] is the sub-list for method output_type
-	0, // [0:0] is the sub-list for method input_type
-	0, // [0:0] is the sub-list for extension type_name
-	0, // [0:0] is the sub-list for extension extendee
-	0, // [0:0] is the sub-list for field type_name
+	12, // 0: fusion.proto.auth.CheckTokenResponse.roles:type_name -> fusion.proto.auth.UserRoles
+	1,  // [1:1] is the sub-list for method output_type
+	1,  // [1:1] is the sub-list for method input_type
+	1,  // [1:1] is the sub-list for extension type_name
+	1,  // [1:1] is the sub-list for extension extendee
+	0,  // [0:1] is the sub-list for field type_name
 }
 
 func init() { file_auth_auth_message_proto_init() }
