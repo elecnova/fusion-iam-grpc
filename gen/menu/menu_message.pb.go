@@ -579,7 +579,9 @@ type ListMenusRequest struct {
 	// 分页大小
 	PageSize int32 `protobuf:"varint,7,opt,name=page_size,proto3" json:"page_size,omitempty"`
 	// 语种信息 eg:(zh,en)
-	Language      string `protobuf:"bytes,8,opt,name=language,proto3" json:"language,omitempty"`
+	Language string `protobuf:"bytes,8,opt,name=language,proto3" json:"language,omitempty"`
+	// 是否需要返回全语种名称(默认false，仅返回当前语种名称)
+	NeedDetail    bool `protobuf:"varint,9,opt,name=need_detail,proto3" json:"need_detail,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -670,6 +672,13 @@ func (x *ListMenusRequest) GetLanguage() string {
 	return ""
 }
 
+func (x *ListMenusRequest) GetNeedDetail() bool {
+	if x != nil {
+		return x.NeedDetail
+	}
+	return false
+}
+
 // Package message 菜单分页列表响应消息定义
 type ListMenusResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
@@ -751,7 +760,9 @@ type TreeMenuRequest struct {
 	// 系统角色ID，传入时仅返回该角色拥有权限的菜单
 	RoleId string `protobuf:"bytes,2,opt,name=role_id,proto3" json:"role_id,omitempty"`
 	// 语种信息
-	Language      string `protobuf:"bytes,3,opt,name=language,proto3" json:"language,omitempty"`
+	Language string `protobuf:"bytes,3,opt,name=language,proto3" json:"language,omitempty"`
+	// 是否需要返回全语种名称(默认false，仅返回当前语种名称)
+	NeedDetail    bool `protobuf:"varint,4,opt,name=need_detail,proto3" json:"need_detail,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -805,6 +816,13 @@ func (x *TreeMenuRequest) GetLanguage() string {
 		return x.Language
 	}
 	return ""
+}
+
+func (x *TreeMenuRequest) GetNeedDetail() bool {
+	if x != nil {
+		return x.NeedDetail
+	}
+	return false
 }
 
 // Package message 菜单树节点
@@ -1144,7 +1162,7 @@ const file_menu_menu_message_proto_rawDesc = "" +
 	"\x12UpsertMenuResponse\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\".\n" +
 	"\x11DeleteMenuRequest\x12\x19\n" +
-	"\x02id\x18\x01 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18(R\x02id\"\xc2\x02\n" +
+	"\x02id\x18\x01 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18(R\x02id\"\xe4\x02\n" +
 	"\x10ListMenusRequest\x12#\n" +
 	"\bkeywords\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x18dR\bkeywords\x12\x1b\n" +
 	"\x04name\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x18dR\x04name\x12\"\n" +
@@ -1155,19 +1173,21 @@ const file_menu_menu_message_proto_rawDesc = "" +
 	"\tpage_size\x18\a \x01(\x05B\n" +
 	"\xbaH\a\x1a\x05\x18\xac\x02 \x00R\tpage_size\x12#\n" +
 	"\blanguage\x18\b \x01(\tB\a\xbaH\x04r\x02\x18\n" +
-	"R\blanguageB\a\n" +
+	"R\blanguage\x12 \n" +
+	"\vneed_detail\x18\t \x01(\bR\vneed_detailB\a\n" +
 	"\x05_typeB\b\n" +
 	"\x06_state\"\x8c\x01\n" +
 	"\x11ListMenusResponse\x12/\n" +
 	"\x04data\x18\x01 \x03(\v2\x1b.fusion.proto.menu.MenuDataR\x04data\x12\x14\n" +
 	"\x05total\x18\x02 \x01(\x03R\x05total\x12\x12\n" +
 	"\x04page\x18\x03 \x01(\x05R\x04page\x12\x1c\n" +
-	"\tpage_size\x18\x04 \x01(\x05R\tpage_size\"~\n" +
+	"\tpage_size\x18\x04 \x01(\x05R\tpage_size\"\xa0\x01\n" +
 	"\x0fTreeMenuRequest\x12#\n" +
 	"\achannel\x18\x01 \x01(\x05B\t\xbaH\x06\x1a\x04\x18\x06(\x01R\achannel\x12!\n" +
 	"\arole_id\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x18(R\arole_id\x12#\n" +
 	"\blanguage\x18\x03 \x01(\tB\a\xbaH\x04r\x02\x18\n" +
-	"R\blanguage\"\xda\x02\n" +
+	"R\blanguage\x12 \n" +
+	"\vneed_detail\x18\x04 \x01(\bR\vneed_detail\"\xda\x02\n" +
 	"\fMenuTreeNode\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
 	"\x04code\x18\x02 \x01(\tR\x04code\x12\x1c\n" +
