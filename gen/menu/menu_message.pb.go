@@ -1015,7 +1015,9 @@ type GetMenuRolesRequest struct {
 	// 用户ID（当project_id非空时用于解析用户在该项目的角色）
 	UserId string `protobuf:"bytes,2,opt,name=user_id,proto3" json:"user_id,omitempty"`
 	// 项目ID，非空时优先以用户在该项目的角色为准
-	ProjectId     string `protobuf:"bytes,3,opt,name=project_id,proto3" json:"project_id,omitempty"`
+	ProjectId string `protobuf:"bytes,3,opt,name=project_id,proto3" json:"project_id,omitempty"`
+	// 菜单状态(1-正常 2-禁用 3-锁定)，用于过滤角色菜单ID列表
+	MenuState     int32 `protobuf:"varint,4,opt,name=menu_state,proto3" json:"menu_state,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1069,6 +1071,13 @@ func (x *GetMenuRolesRequest) GetProjectId() string {
 		return x.ProjectId
 	}
 	return ""
+}
+
+func (x *GetMenuRolesRequest) GetMenuState() int32 {
+	if x != nil {
+		return x.MenuState
+	}
+	return 0
 }
 
 // Package message 获取角色菜单ID列表响应消息定义
@@ -1202,13 +1211,16 @@ const file_menu_menu_message_proto_rawDesc = "" +
 	" \x01(\x05R\achannel\x12;\n" +
 	"\bchildren\x18\v \x03(\v2\x1f.fusion.proto.menu.MenuTreeNodeR\bchildren\"G\n" +
 	"\x10TreeMenuResponse\x123\n" +
-	"\x04data\x18\x01 \x03(\v2\x1f.fusion.proto.menu.MenuTreeNodeR\x04data\"\x84\x01\n" +
+	"\x04data\x18\x01 \x03(\v2\x1f.fusion.proto.menu.MenuTreeNodeR\x04data\"\xaf\x01\n" +
 	"\x13GetMenuRolesRequest\x12!\n" +
 	"\arole_id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x18(R\arole_id\x12!\n" +
 	"\auser_id\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x18(R\auser_id\x12'\n" +
 	"\n" +
 	"project_id\x18\x03 \x01(\tB\a\xbaH\x04r\x02\x18(R\n" +
-	"project_id\"2\n" +
+	"project_id\x12)\n" +
+	"\n" +
+	"menu_state\x18\x04 \x01(\x05B\t\xbaH\x06\x1a\x04\x18\x03(\x01R\n" +
+	"menu_state\"2\n" +
 	"\x14GetMenuRolesResponse\x12\x1a\n" +
 	"\bmenu_ids\x18\x01 \x03(\tR\bmenu_idsB\xa7\x01\n" +
 	"\x15com.fusion.proto.menuB\x10MenuMessageProtoP\x01Z\x16fusion.proto.menu;menu\xa2\x02\x03FPM\xaa\x02\x11Fusion.Proto.Menu\xca\x02\x11Fusion\\Proto\\Menu\xe2\x02\x1dFusion\\Proto\\Menu\\GPBMetadata\xea\x02\x13Fusion::Proto::Menub\x06proto3"
