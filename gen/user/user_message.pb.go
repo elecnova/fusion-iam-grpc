@@ -1123,7 +1123,7 @@ func (x *GetUserResponse) GetRoleSys() []*UserRoleSystem {
 type UserRoleSystem struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// 系统ID
-	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	Id int32 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
 	// 系统名称
 	Name []*UserRoleName `protobuf:"bytes,2,rep,name=name,proto3" json:"name,omitempty"`
 	// 系统序号
@@ -1162,11 +1162,11 @@ func (*UserRoleSystem) Descriptor() ([]byte, []int) {
 	return file_user_user_message_proto_rawDescGZIP(), []int{10}
 }
 
-func (x *UserRoleSystem) GetId() string {
+func (x *UserRoleSystem) GetId() int32 {
 	if x != nil {
 		return x.Id
 	}
-	return ""
+	return 0
 }
 
 func (x *UserRoleSystem) GetName() []*UserRoleName {
@@ -2645,7 +2645,7 @@ const file_user_user_message_proto_rawDesc = "" +
 	"_role_codeB\r\n" +
 	"\v_project_id\"i\n" +
 	"\x0eUserRoleSystem\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\tR\x02id\x123\n" +
+	"\x02id\x18\x01 \x01(\x05R\x02id\x123\n" +
 	"\x04name\x18\x02 \x03(\v2\x1f.fusion.proto.user.UserRoleNameR\x04name\x12\x12\n" +
 	"\x04sort\x18\x03 \x01(\x05R\x04sort\">\n" +
 	"\fUserRoleName\x12\x12\n" +
