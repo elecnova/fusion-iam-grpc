@@ -908,8 +908,16 @@ type GetUserResponse struct {
 	Type int32 `protobuf:"varint,18,opt,name=type,proto3" json:"type,omitempty"`
 	// 是否已删除(0-未删除)
 	Deleted int64 `protobuf:"varint,19,opt,name=deleted,proto3" json:"deleted,omitempty"`
+	// 角色ID
+	RoleId *string `protobuf:"bytes,20,opt,name=role_id,proto3,oneof" json:"role_id,omitempty"`
+	// 角色编码
+	RoleCode *string `protobuf:"bytes,21,opt,name=role_code,proto3,oneof" json:"role_code,omitempty"`
+	// 角色名称
+	RoleName []string `protobuf:"bytes,22,rep,name=role_name,proto3" json:"role_name,omitempty"`
+	// 角色所属项目ID
+	ProjectId *string `protobuf:"bytes,23,opt,name=project_id,proto3,oneof" json:"project_id,omitempty"`
 	// 用户角色列表
-	Roles         []*UserRoles `protobuf:"bytes,20,rep,name=roles,proto3" json:"roles,omitempty"`
+	RoleSys       []*UserRoleSystem `protobuf:"bytes,24,rep,name=role_sys,proto3" json:"role_sys,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1077,43 +1085,67 @@ func (x *GetUserResponse) GetDeleted() int64 {
 	return 0
 }
 
-func (x *GetUserResponse) GetRoles() []*UserRoles {
+func (x *GetUserResponse) GetRoleId() string {
+	if x != nil && x.RoleId != nil {
+		return *x.RoleId
+	}
+	return ""
+}
+
+func (x *GetUserResponse) GetRoleCode() string {
+	if x != nil && x.RoleCode != nil {
+		return *x.RoleCode
+	}
+	return ""
+}
+
+func (x *GetUserResponse) GetRoleName() []string {
 	if x != nil {
-		return x.Roles
+		return x.RoleName
 	}
 	return nil
 }
 
-type UserRoles struct {
+func (x *GetUserResponse) GetProjectId() string {
+	if x != nil && x.ProjectId != nil {
+		return *x.ProjectId
+	}
+	return ""
+}
+
+func (x *GetUserResponse) GetRoleSys() []*UserRoleSystem {
+	if x != nil {
+		return x.RoleSys
+	}
+	return nil
+}
+
+type UserRoleSystem struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// 角色ID
+	// 系统ID
 	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	// 角色编码
-	Code string `protobuf:"bytes,2,opt,name=code,proto3" json:"code,omitempty"`
-	// 角色名称
-	Name []*UserRoleName `protobuf:"bytes,3,rep,name=name,proto3" json:"name,omitempty"`
-	// 角色所属项目ID
-	ProjectId *string `protobuf:"bytes,4,opt,name=project_id,json=projectId,proto3,oneof" json:"project_id,omitempty"`
-	// 渠道(1-用户中心 2-业务平台 3-运维平台 4-渠道平台 5-开放平台 6-集控平台)
-	Channel       int32 `protobuf:"varint,5,opt,name=channel,proto3" json:"channel,omitempty"`
+	// 系统名称
+	Name []*UserRoleName `protobuf:"bytes,2,rep,name=name,proto3" json:"name,omitempty"`
+	// 系统序号
+	Sort          int32 `protobuf:"varint,3,opt,name=sort,proto3" json:"sort,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *UserRoles) Reset() {
-	*x = UserRoles{}
+func (x *UserRoleSystem) Reset() {
+	*x = UserRoleSystem{}
 	mi := &file_user_user_message_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *UserRoles) String() string {
+func (x *UserRoleSystem) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*UserRoles) ProtoMessage() {}
+func (*UserRoleSystem) ProtoMessage() {}
 
-func (x *UserRoles) ProtoReflect() protoreflect.Message {
+func (x *UserRoleSystem) ProtoReflect() protoreflect.Message {
 	mi := &file_user_user_message_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -1125,42 +1157,28 @@ func (x *UserRoles) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use UserRoles.ProtoReflect.Descriptor instead.
-func (*UserRoles) Descriptor() ([]byte, []int) {
+// Deprecated: Use UserRoleSystem.ProtoReflect.Descriptor instead.
+func (*UserRoleSystem) Descriptor() ([]byte, []int) {
 	return file_user_user_message_proto_rawDescGZIP(), []int{10}
 }
 
-func (x *UserRoles) GetId() string {
+func (x *UserRoleSystem) GetId() string {
 	if x != nil {
 		return x.Id
 	}
 	return ""
 }
 
-func (x *UserRoles) GetCode() string {
-	if x != nil {
-		return x.Code
-	}
-	return ""
-}
-
-func (x *UserRoles) GetName() []*UserRoleName {
+func (x *UserRoleSystem) GetName() []*UserRoleName {
 	if x != nil {
 		return x.Name
 	}
 	return nil
 }
 
-func (x *UserRoles) GetProjectId() string {
-	if x != nil && x.ProjectId != nil {
-		return *x.ProjectId
-	}
-	return ""
-}
-
-func (x *UserRoles) GetChannel() int32 {
+func (x *UserRoleSystem) GetSort() int32 {
 	if x != nil {
-		return x.Channel
+		return x.Sort
 	}
 	return 0
 }
@@ -2592,7 +2610,7 @@ const file_user_user_message_proto_rawDesc = "" +
 	"\x15GetUserByEmailRequest\x12\x1f\n" +
 	"\x05email\x18\x01 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18<R\x05email\";\n" +
 	"\x16GetUserByMobileRequest\x12!\n" +
-	"\x06mobile\x18\x01 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18\x14R\x06mobile\"\x9f\x05\n" +
+	"\x06mobile\x18\x01 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18\x14R\x06mobile\"\xd8\x06\n" +
 	"\x0fGetUserResponse\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x1c\n" +
@@ -2613,16 +2631,23 @@ const file_user_user_message_proto_rawDesc = "" +
 	"\texpire_at\x18\x10 \x01(\v2\x1a.google.protobuf.TimestampR\texpire_at\x12\x16\n" +
 	"\x06avator\x18\x11 \x01(\tR\x06avator\x12\x12\n" +
 	"\x04type\x18\x12 \x01(\x05R\x04type\x12\x18\n" +
-	"\adeleted\x18\x13 \x01(\x03R\adeleted\x122\n" +
-	"\x05roles\x18\x14 \x03(\v2\x1c.fusion.proto.user.UserRolesR\x05roles\"\xb1\x01\n" +
-	"\tUserRoles\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
-	"\x04code\x18\x02 \x01(\tR\x04code\x123\n" +
-	"\x04name\x18\x03 \x03(\v2\x1f.fusion.proto.user.UserRoleNameR\x04name\x12\"\n" +
+	"\adeleted\x18\x13 \x01(\x03R\adeleted\x12\x1d\n" +
+	"\arole_id\x18\x14 \x01(\tH\x00R\arole_id\x88\x01\x01\x12!\n" +
+	"\trole_code\x18\x15 \x01(\tH\x01R\trole_code\x88\x01\x01\x12\x1c\n" +
+	"\trole_name\x18\x16 \x03(\tR\trole_name\x12#\n" +
 	"\n" +
-	"project_id\x18\x04 \x01(\tH\x00R\tprojectId\x88\x01\x01\x12\x18\n" +
-	"\achannel\x18\x05 \x01(\x05R\achannelB\r\n" +
-	"\v_project_id\">\n" +
+	"project_id\x18\x17 \x01(\tH\x02R\n" +
+	"project_id\x88\x01\x01\x12=\n" +
+	"\brole_sys\x18\x18 \x03(\v2!.fusion.proto.user.UserRoleSystemR\brole_sysB\n" +
+	"\n" +
+	"\b_role_idB\f\n" +
+	"\n" +
+	"_role_codeB\r\n" +
+	"\v_project_id\"i\n" +
+	"\x0eUserRoleSystem\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\x123\n" +
+	"\x04name\x18\x02 \x03(\v2\x1f.fusion.proto.user.UserRoleNameR\x04name\x12\x12\n" +
+	"\x04sort\x18\x03 \x01(\x05R\x04sort\">\n" +
 	"\fUserRoleName\x12\x12\n" +
 	"\x04name\x18\x01 \x01(\tR\x04name\x12\x1a\n" +
 	"\blanguage\x18\x02 \x01(\tR\blanguage\"\xf9\x02\n" +
@@ -2767,7 +2792,7 @@ var file_user_user_message_proto_goTypes = []any{
 	(*GetUserByEmailRequest)(nil),         // 9: fusion.proto.user.GetUserByEmailRequest
 	(*GetUserByMobileRequest)(nil),        // 10: fusion.proto.user.GetUserByMobileRequest
 	(*GetUserResponse)(nil),               // 11: fusion.proto.user.GetUserResponse
-	(*UserRoles)(nil),                     // 12: fusion.proto.user.UserRoles
+	(*UserRoleSystem)(nil),                // 12: fusion.proto.user.UserRoleSystem
 	(*UserRoleName)(nil),                  // 13: fusion.proto.user.UserRoleName
 	(*ListUsersRequest)(nil),              // 14: fusion.proto.user.ListUsersRequest
 	(*ListUsersResponse)(nil),             // 15: fusion.proto.user.ListUsersResponse
@@ -2798,8 +2823,8 @@ var file_user_user_message_proto_depIdxs = []int32{
 	35, // 2: fusion.proto.user.GetUserResponse.create_at:type_name -> google.protobuf.Timestamp
 	35, // 3: fusion.proto.user.GetUserResponse.update_at:type_name -> google.protobuf.Timestamp
 	35, // 4: fusion.proto.user.GetUserResponse.expire_at:type_name -> google.protobuf.Timestamp
-	12, // 5: fusion.proto.user.GetUserResponse.roles:type_name -> fusion.proto.user.UserRoles
-	13, // 6: fusion.proto.user.UserRoles.name:type_name -> fusion.proto.user.UserRoleName
+	12, // 5: fusion.proto.user.GetUserResponse.role_sys:type_name -> fusion.proto.user.UserRoleSystem
+	13, // 6: fusion.proto.user.UserRoleSystem.name:type_name -> fusion.proto.user.UserRoleName
 	11, // 7: fusion.proto.user.ListUsersResponse.data:type_name -> fusion.proto.user.GetUserResponse
 	11, // 8: fusion.proto.user.AllUsersResponse.data:type_name -> fusion.proto.user.GetUserResponse
 	26, // 9: fusion.proto.user.ChangeAvatarRequest.meta:type_name -> fusion.proto.user.ChangeAvatarMeta
@@ -2822,7 +2847,7 @@ func file_user_user_message_proto_init() {
 	file_user_user_message_proto_msgTypes[2].OneofWrappers = []any{}
 	file_user_user_message_proto_msgTypes[3].OneofWrappers = []any{}
 	file_user_user_message_proto_msgTypes[4].OneofWrappers = []any{}
-	file_user_user_message_proto_msgTypes[10].OneofWrappers = []any{}
+	file_user_user_message_proto_msgTypes[9].OneofWrappers = []any{}
 	file_user_user_message_proto_msgTypes[12].OneofWrappers = []any{}
 	file_user_user_message_proto_msgTypes[14].OneofWrappers = []any{}
 	file_user_user_message_proto_msgTypes[23].OneofWrappers = []any{
