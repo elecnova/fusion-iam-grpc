@@ -915,7 +915,7 @@ type GetUserResponse struct {
 	// 角色名称
 	RoleName *string `protobuf:"bytes,22,opt,name=role_name,proto3,oneof" json:"role_name,omitempty"`
 	// 角色类型
-	RoleType *string `protobuf:"bytes,23,opt,name=role_type,proto3,oneof" json:"role_type,omitempty"`
+	RoleType *int32 `protobuf:"varint,23,opt,name=role_type,proto3,oneof" json:"role_type,omitempty"`
 	// 角色所属项目ID
 	ProjectId *string `protobuf:"bytes,24,opt,name=project_id,proto3,oneof" json:"project_id,omitempty"`
 	// 用户角色列表
@@ -1108,11 +1108,11 @@ func (x *GetUserResponse) GetRoleName() string {
 	return ""
 }
 
-func (x *GetUserResponse) GetRoleType() string {
+func (x *GetUserResponse) GetRoleType() int32 {
 	if x != nil && x.RoleType != nil {
 		return *x.RoleType
 	}
-	return ""
+	return 0
 }
 
 func (x *GetUserResponse) GetProjectId() string {
@@ -2590,7 +2590,7 @@ const file_user_user_message_proto_rawDesc = "" +
 	"\arole_id\x18\x14 \x01(\tH\x00R\arole_id\x88\x01\x01\x12!\n" +
 	"\trole_code\x18\x15 \x01(\tH\x01R\trole_code\x88\x01\x01\x12!\n" +
 	"\trole_name\x18\x16 \x01(\tH\x02R\trole_name\x88\x01\x01\x12!\n" +
-	"\trole_type\x18\x17 \x01(\tH\x03R\trole_type\x88\x01\x01\x12#\n" +
+	"\trole_type\x18\x17 \x01(\x05H\x03R\trole_type\x88\x01\x01\x12#\n" +
 	"\n" +
 	"project_id\x18\x18 \x01(\tH\x04R\n" +
 	"project_id\x88\x01\x01\x12=\n" +
