@@ -914,10 +914,12 @@ type GetUserResponse struct {
 	RoleCode *string `protobuf:"bytes,21,opt,name=role_code,proto3,oneof" json:"role_code,omitempty"`
 	// 角色名称
 	RoleName *string `protobuf:"bytes,22,opt,name=role_name,proto3,oneof" json:"role_name,omitempty"`
+	// 角色类型
+	RoleType *string `protobuf:"bytes,23,opt,name=role_type,proto3,oneof" json:"role_type,omitempty"`
 	// 角色所属项目ID
-	ProjectId *string `protobuf:"bytes,23,opt,name=project_id,proto3,oneof" json:"project_id,omitempty"`
+	ProjectId *string `protobuf:"bytes,24,opt,name=project_id,proto3,oneof" json:"project_id,omitempty"`
 	// 用户角色列表
-	RoleSys       []*UserRoleSystem `protobuf:"bytes,24,rep,name=role_sys,proto3" json:"role_sys,omitempty"`
+	RoleSys       []*UserRoleSystem `protobuf:"bytes,25,rep,name=role_sys,proto3" json:"role_sys,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1102,6 +1104,13 @@ func (x *GetUserResponse) GetRoleCode() string {
 func (x *GetUserResponse) GetRoleName() string {
 	if x != nil && x.RoleName != nil {
 		return *x.RoleName
+	}
+	return ""
+}
+
+func (x *GetUserResponse) GetRoleType() string {
+	if x != nil && x.RoleType != nil {
+		return *x.RoleType
 	}
 	return ""
 }
@@ -2556,7 +2565,7 @@ const file_user_user_message_proto_rawDesc = "" +
 	"\x15GetUserByEmailRequest\x12\x1f\n" +
 	"\x05email\x18\x01 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18<R\x05email\";\n" +
 	"\x16GetUserByMobileRequest\x12!\n" +
-	"\x06mobile\x18\x01 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18\x14R\x06mobile\"\xeb\x06\n" +
+	"\x06mobile\x18\x01 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18\x14R\x06mobile\"\x9c\a\n" +
 	"\x0fGetUserResponse\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x1c\n" +
@@ -2580,17 +2589,20 @@ const file_user_user_message_proto_rawDesc = "" +
 	"\adeleted\x18\x13 \x01(\x03R\adeleted\x12\x1d\n" +
 	"\arole_id\x18\x14 \x01(\tH\x00R\arole_id\x88\x01\x01\x12!\n" +
 	"\trole_code\x18\x15 \x01(\tH\x01R\trole_code\x88\x01\x01\x12!\n" +
-	"\trole_name\x18\x16 \x01(\tH\x02R\trole_name\x88\x01\x01\x12#\n" +
+	"\trole_name\x18\x16 \x01(\tH\x02R\trole_name\x88\x01\x01\x12!\n" +
+	"\trole_type\x18\x17 \x01(\tH\x03R\trole_type\x88\x01\x01\x12#\n" +
 	"\n" +
-	"project_id\x18\x17 \x01(\tH\x03R\n" +
+	"project_id\x18\x18 \x01(\tH\x04R\n" +
 	"project_id\x88\x01\x01\x12=\n" +
-	"\brole_sys\x18\x18 \x03(\v2!.fusion.proto.user.UserRoleSystemR\brole_sysB\n" +
+	"\brole_sys\x18\x19 \x03(\v2!.fusion.proto.user.UserRoleSystemR\brole_sysB\n" +
 	"\n" +
 	"\b_role_idB\f\n" +
 	"\n" +
 	"_role_codeB\f\n" +
 	"\n" +
-	"_role_nameB\r\n" +
+	"_role_nameB\f\n" +
+	"\n" +
+	"_role_typeB\r\n" +
 	"\v_project_id\"H\n" +
 	"\x0eUserRoleSystem\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x05R\x02id\x12\x12\n" +
