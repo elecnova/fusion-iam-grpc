@@ -988,12 +988,13 @@ var File_system_system_message_proto protoreflect.FileDescriptor
 
 const file_system_system_message_proto_rawDesc = "" +
 	"\n" +
-	"\x1bsystem/system_message.proto\x12\x13fusion.proto.system\x1a\x1bbuf/validate/validate.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"P\n" +
+	"\x1bsystem/system_message.proto\x12\x13fusion.proto.system\x1a\x1bbuf/validate/validate.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"Q\n" +
 	"\n" +
 	"SystemName\x12\x1d\n" +
 	"\x04lang\x18\x01 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18\n" +
-	"R\x04lang\x12#\n" +
-	"\acontent\x18\x02 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18dR\acontent\"\xbf\x03\n" +
+	"R\x04lang\x12$\n" +
+	"\acontent\x18\x02 \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x01\x18\x80\x04R\acontent\"\xbf\x03\n" +
 	"\n" +
 	"SystemData\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x05R\x02id\x12\x12\n" +

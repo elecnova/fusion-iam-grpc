@@ -1535,11 +1535,12 @@ var File_role_role_message_proto protoreflect.FileDescriptor
 
 const file_role_role_message_proto_rawDesc = "" +
 	"\n" +
-	"\x17role/role_message.proto\x12\x11fusion.proto.role\x1a\x1bbuf/validate/validate.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"N\n" +
+	"\x17role/role_message.proto\x12\x11fusion.proto.role\x1a\x1bbuf/validate/validate.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"O\n" +
 	"\bRoleName\x12\x1d\n" +
 	"\x04lang\x18\x01 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18\n" +
-	"R\x04lang\x12#\n" +
-	"\acontent\x18\x02 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18dR\acontent\"\x9b\x04\n" +
+	"R\x04lang\x12$\n" +
+	"\acontent\x18\x02 \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x01\x18\x80\x04R\acontent\"\x9b\x04\n" +
 	"\bRoleData\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
 	"\x04code\x18\x02 \x01(\tR\x04code\x12\x12\n" +

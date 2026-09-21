@@ -1270,11 +1270,12 @@ const file_country_country_message_proto_rawDesc = "" +
 	"\f_location_idB\x0e\n" +
 	"\f_zone_offset\"O\n" +
 	"\x0fDescriptionList\x12<\n" +
-	"\vdescription\x18\x01 \x03(\v2!.fusion.proto.country.DescriptionR\x04desc\"Q\n" +
+	"\vdescription\x18\x01 \x03(\v2!.fusion.proto.country.DescriptionR\x04desc\"R\n" +
 	"\vDescription\x12\x1d\n" +
 	"\x04lang\x18\x01 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18\n" +
-	"R\x04lang\x12#\n" +
-	"\acontent\x18\x02 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18dR\acontentB\xbf\x01\n" +
+	"R\x04lang\x12$\n" +
+	"\acontent\x18\x02 \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x01\x18\x80\x04R\acontentB\xbf\x01\n" +
 	"\x18com.fusion.proto.countryB\x13CountryMessageProtoP\x01Z\x1cfusion.proto.country;country\xa2\x02\x03FPC\xaa\x02\x14Fusion.Proto.Country\xca\x02\x14Fusion\\Proto\\Country\xe2\x02 Fusion\\Proto\\Country\\GPBMetadata\xea\x02\x16Fusion::Proto::Countryb\x06proto3"
 
 var (
