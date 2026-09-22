@@ -35,7 +35,7 @@ var File_project_project_service_proto protoreflect.FileDescriptor
 
 const file_project_project_service_proto_rawDesc = "" +
 	"\n" +
-	"\x1dproject/project_service.proto\x12\x14fusion.proto.project\x1a\x1cgoogle/api/annotations.proto\x1a\x17google/api/client.proto\x1a\x1bgoogle/protobuf/empty.proto\x1a\x1dproject/project_message.proto2\xea\x10\n" +
+	"\x1dproject/project_service.proto\x12\x14fusion.proto.project\x1a\x1cgoogle/api/annotations.proto\x1a\x17google/api/client.proto\x1a\x1bgoogle/protobuf/empty.proto\x1a\x1dproject/project_message.proto2\xda\v\n" +
 	"\x0eProjectService\x12\xf7\x01\n" +
 	"\rCreateProject\x12*.fusion.proto.project.CreateProjectRequest\x1a%.fusion.proto.project.ProjectResponse\"\x92\x01\xdaAqname,code,contact,phone,begin_at,expire_at,addr,region_id,zone_name,zone_utc,sms,email,ps_id,capacity,zone_offset\x82\xd3\xe4\x93\x02\x18:\x01*\"\x13/3rd-api/v1/project\x12z\n" +
 	"\rDeleteProject\x12*.fusion.proto.project.DeleteProjectRequest\x1a\x16.google.protobuf.Empty\"%\xdaA\x02id\x82\xd3\xe4\x93\x02\x1a*\x18/3rd-api/v1/project/{id}\x12\x8a\x01\n" +
@@ -46,12 +46,7 @@ const file_project_project_service_proto_rawDesc = "" +
 	"\fListProjects\x12).fusion.proto.project.ListProjectsRequest\x1a*.fusion.proto.project.ListProjectsResponse\"\x1f\xdaA\x00\x82\xd3\xe4\x93\x02\x16\x12\x14/3rd-api/v1/projects\x12\x86\x01\n" +
 	"\vAllProjects\x12(.fusion.proto.project.AllProjectsRequest\x1a).fusion.proto.project.AllProjectsResponse\"\"\xdaA\x00\x82\xd3\xe4\x93\x02\x19\x12\x17/3rd-api/v1/project/all\x12\x98\x01\n" +
 	"\x10GetProjectPsInfo\x12-.fusion.proto.project.GetProjectPsInfoRequest\x1a+.fusion.proto.project.ProjectPsInfoResponse\"(\xdaA\x02id\x82\xd3\xe4\x93\x02\x1d\x12\x1b/3rd-api/v1/project/ps/{id}\x12\x9e\x01\n" +
-	"\x10GetProjectsByIDs\x12-.fusion.proto.project.GetProjectsByIDsRequest\x1a..fusion.proto.project.GetProjectsByIDsResponse\"+\xdaA\x03ids\x82\xd3\xe4\x93\x02\x1f:\x01*\"\x1a/3rd-api/v1/projects/batch\x12\xa2\x01\n" +
-	"\x0fSetUserProjects\x12,.fusion.proto.project.SetUserProjectsRequest\x1a\x16.google.protobuf.Empty\"I\xdaA\x10user_id,projects\x82\xd3\xe4\x93\x020:\x01*\x1a+/3rd-api/v1/project/user/projects/{user_id}\x12\xad\x01\n" +
-	"\x0fGetUserProjects\x12,.fusion.proto.project.GetUserProjectsRequest\x1a-.fusion.proto.project.GetUserProjectsResponse\"=\xdaA\auser_id\x82\xd3\xe4\x93\x02-\x12+/3rd-api/v1/project/user/projects/{user_id}\x12\x9b\x01\n" +
-	"\x0fGetProjectUsers\x12,.fusion.proto.project.GetProjectUsersRequest\x1a-.fusion.proto.project.GetProjectUsersResponse\"+\xdaA\x02id\x82\xd3\xe4\x93\x02 \x12\x1e/3rd-api/v1/project/{id}/users\x12\x9a\x01\n" +
-	"\x11UnbindProjectUser\x12..fusion.proto.project.UnbindProjectUserRequest\x1a\x16.google.protobuf.Empty\"=\xdaA\n" +
-	"id,user_id\x82\xd3\xe4\x93\x02**(/3rd-api/v1/project/{id}/users/{user_id}B\xbf\x01\n" +
+	"\x10GetProjectsByIDs\x12-.fusion.proto.project.GetProjectsByIDsRequest\x1a..fusion.proto.project.GetProjectsByIDsResponse\"+\xdaA\x03ids\x82\xd3\xe4\x93\x02\x1f:\x01*\"\x1a/3rd-api/v1/projects/batchB\xbf\x01\n" +
 	"\x18com.fusion.proto.projectB\x13ProjectServiceProtoP\x01Z\x1cfusion.proto.project;project\xa2\x02\x03FPP\xaa\x02\x14Fusion.Proto.Project\xca\x02\x14Fusion\\Proto\\Project\xe2\x02 Fusion\\Proto\\Project\\GPBMetadata\xea\x02\x16Fusion::Proto::Projectb\x06proto3"
 
 var file_project_project_service_proto_goTypes = []any{
@@ -64,18 +59,12 @@ var file_project_project_service_proto_goTypes = []any{
 	(*AllProjectsRequest)(nil),        // 6: fusion.proto.project.AllProjectsRequest
 	(*GetProjectPsInfoRequest)(nil),   // 7: fusion.proto.project.GetProjectPsInfoRequest
 	(*GetProjectsByIDsRequest)(nil),   // 8: fusion.proto.project.GetProjectsByIDsRequest
-	(*SetUserProjectsRequest)(nil),    // 9: fusion.proto.project.SetUserProjectsRequest
-	(*GetUserProjectsRequest)(nil),    // 10: fusion.proto.project.GetUserProjectsRequest
-	(*GetProjectUsersRequest)(nil),    // 11: fusion.proto.project.GetProjectUsersRequest
-	(*UnbindProjectUserRequest)(nil),  // 12: fusion.proto.project.UnbindProjectUserRequest
-	(*ProjectResponse)(nil),           // 13: fusion.proto.project.ProjectResponse
-	(*emptypb.Empty)(nil),             // 14: google.protobuf.Empty
-	(*ListProjectsResponse)(nil),      // 15: fusion.proto.project.ListProjectsResponse
-	(*AllProjectsResponse)(nil),       // 16: fusion.proto.project.AllProjectsResponse
-	(*ProjectPsInfoResponse)(nil),     // 17: fusion.proto.project.ProjectPsInfoResponse
-	(*GetProjectsByIDsResponse)(nil),  // 18: fusion.proto.project.GetProjectsByIDsResponse
-	(*GetUserProjectsResponse)(nil),   // 19: fusion.proto.project.GetUserProjectsResponse
-	(*GetProjectUsersResponse)(nil),   // 20: fusion.proto.project.GetProjectUsersResponse
+	(*ProjectResponse)(nil),           // 9: fusion.proto.project.ProjectResponse
+	(*emptypb.Empty)(nil),             // 10: google.protobuf.Empty
+	(*ListProjectsResponse)(nil),      // 11: fusion.proto.project.ListProjectsResponse
+	(*AllProjectsResponse)(nil),       // 12: fusion.proto.project.AllProjectsResponse
+	(*ProjectPsInfoResponse)(nil),     // 13: fusion.proto.project.ProjectPsInfoResponse
+	(*GetProjectsByIDsResponse)(nil),  // 14: fusion.proto.project.GetProjectsByIDsResponse
 }
 var file_project_project_service_proto_depIdxs = []int32{
 	0,  // 0: fusion.proto.project.ProjectService.CreateProject:input_type -> fusion.proto.project.CreateProjectRequest
@@ -87,25 +76,17 @@ var file_project_project_service_proto_depIdxs = []int32{
 	6,  // 6: fusion.proto.project.ProjectService.AllProjects:input_type -> fusion.proto.project.AllProjectsRequest
 	7,  // 7: fusion.proto.project.ProjectService.GetProjectPsInfo:input_type -> fusion.proto.project.GetProjectPsInfoRequest
 	8,  // 8: fusion.proto.project.ProjectService.GetProjectsByIDs:input_type -> fusion.proto.project.GetProjectsByIDsRequest
-	9,  // 9: fusion.proto.project.ProjectService.SetUserProjects:input_type -> fusion.proto.project.SetUserProjectsRequest
-	10, // 10: fusion.proto.project.ProjectService.GetUserProjects:input_type -> fusion.proto.project.GetUserProjectsRequest
-	11, // 11: fusion.proto.project.ProjectService.GetProjectUsers:input_type -> fusion.proto.project.GetProjectUsersRequest
-	12, // 12: fusion.proto.project.ProjectService.UnbindProjectUser:input_type -> fusion.proto.project.UnbindProjectUserRequest
-	13, // 13: fusion.proto.project.ProjectService.CreateProject:output_type -> fusion.proto.project.ProjectResponse
-	14, // 14: fusion.proto.project.ProjectService.DeleteProject:output_type -> google.protobuf.Empty
-	14, // 15: fusion.proto.project.ProjectService.ForceDeleteProject:output_type -> google.protobuf.Empty
-	14, // 16: fusion.proto.project.ProjectService.UpdateProject:output_type -> google.protobuf.Empty
-	13, // 17: fusion.proto.project.ProjectService.GetProject:output_type -> fusion.proto.project.ProjectResponse
-	15, // 18: fusion.proto.project.ProjectService.ListProjects:output_type -> fusion.proto.project.ListProjectsResponse
-	16, // 19: fusion.proto.project.ProjectService.AllProjects:output_type -> fusion.proto.project.AllProjectsResponse
-	17, // 20: fusion.proto.project.ProjectService.GetProjectPsInfo:output_type -> fusion.proto.project.ProjectPsInfoResponse
-	18, // 21: fusion.proto.project.ProjectService.GetProjectsByIDs:output_type -> fusion.proto.project.GetProjectsByIDsResponse
-	14, // 22: fusion.proto.project.ProjectService.SetUserProjects:output_type -> google.protobuf.Empty
-	19, // 23: fusion.proto.project.ProjectService.GetUserProjects:output_type -> fusion.proto.project.GetUserProjectsResponse
-	20, // 24: fusion.proto.project.ProjectService.GetProjectUsers:output_type -> fusion.proto.project.GetProjectUsersResponse
-	14, // 25: fusion.proto.project.ProjectService.UnbindProjectUser:output_type -> google.protobuf.Empty
-	13, // [13:26] is the sub-list for method output_type
-	0,  // [0:13] is the sub-list for method input_type
+	9,  // 9: fusion.proto.project.ProjectService.CreateProject:output_type -> fusion.proto.project.ProjectResponse
+	10, // 10: fusion.proto.project.ProjectService.DeleteProject:output_type -> google.protobuf.Empty
+	10, // 11: fusion.proto.project.ProjectService.ForceDeleteProject:output_type -> google.protobuf.Empty
+	10, // 12: fusion.proto.project.ProjectService.UpdateProject:output_type -> google.protobuf.Empty
+	9,  // 13: fusion.proto.project.ProjectService.GetProject:output_type -> fusion.proto.project.ProjectResponse
+	11, // 14: fusion.proto.project.ProjectService.ListProjects:output_type -> fusion.proto.project.ListProjectsResponse
+	12, // 15: fusion.proto.project.ProjectService.AllProjects:output_type -> fusion.proto.project.AllProjectsResponse
+	13, // 16: fusion.proto.project.ProjectService.GetProjectPsInfo:output_type -> fusion.proto.project.ProjectPsInfoResponse
+	14, // 17: fusion.proto.project.ProjectService.GetProjectsByIDs:output_type -> fusion.proto.project.GetProjectsByIDsResponse
+	9,  // [9:18] is the sub-list for method output_type
+	0,  // [0:9] is the sub-list for method input_type
 	0,  // [0:0] is the sub-list for extension type_name
 	0,  // [0:0] is the sub-list for extension extendee
 	0,  // [0:0] is the sub-list for field type_name
