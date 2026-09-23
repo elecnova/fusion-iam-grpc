@@ -117,7 +117,9 @@ type MenuData struct {
 	// 创建人名称
 	CreateByName string `protobuf:"bytes,13,opt,name=create_by_name,proto3" json:"create_by_name,omitempty"`
 	// 更新人名称
-	UpdateByName  string `protobuf:"bytes,14,opt,name=update_by_name,proto3" json:"update_by_name,omitempty"`
+	UpdateByName string `protobuf:"bytes,14,opt,name=update_by_name,proto3" json:"update_by_name,omitempty"`
+	// 上级菜单名称（按语种解析后的名称）
+	ParentName    string `protobuf:"bytes,15,opt,name=parent_name,proto3" json:"parent_name,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -246,6 +248,13 @@ func (x *MenuData) GetCreateByName() string {
 func (x *MenuData) GetUpdateByName() string {
 	if x != nil {
 		return x.UpdateByName
+	}
+	return ""
+}
+
+func (x *MenuData) GetParentName() string {
+	if x != nil {
+		return x.ParentName
 	}
 	return ""
 }
@@ -849,7 +858,9 @@ type MenuTreeNode struct {
 	// 渠道(1-用户中心 2-业务平台 3-运维平台 4-渠道平台 5-开放平台 6-集控平台)
 	Channel int32 `protobuf:"varint,10,opt,name=channel,proto3" json:"channel,omitempty"`
 	// 子级菜单
-	Children      []*MenuTreeNode `protobuf:"bytes,11,rep,name=children,proto3" json:"children,omitempty"`
+	Children []*MenuTreeNode `protobuf:"bytes,11,rep,name=children,proto3" json:"children,omitempty"`
+	// 上级菜单名称（按语种解析后的名称）
+	ParentName    string `protobuf:"bytes,12,opt,name=parent_name,proto3" json:"parent_name,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -959,6 +970,13 @@ func (x *MenuTreeNode) GetChildren() []*MenuTreeNode {
 		return x.Children
 	}
 	return nil
+}
+
+func (x *MenuTreeNode) GetParentName() string {
+	if x != nil {
+		return x.ParentName
+	}
+	return ""
 }
 
 // Package message 全局菜单树响应消息定义
@@ -1226,7 +1244,7 @@ const file_menu_menu_message_proto_rawDesc = "" +
 	"\x04lang\x18\x01 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18\n" +
 	"R\x04lang\x12$\n" +
 	"\acontent\x18\x02 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x01\x18\x80\x04R\acontent\"\xa5\x03\n" +
+	"\xbaH\ar\x05\x10\x01\x18\x80\x04R\acontent\"\xc7\x03\n" +
 	"\bMenuData\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
 	"\x04code\x18\x02 \x01(\tR\x04code\x12\x1c\n" +
@@ -1242,7 +1260,8 @@ const file_menu_menu_message_proto_rawDesc = "" +
 	"\tcreate_by\x18\v \x01(\tR\tcreate_by\x12\x1c\n" +
 	"\tupdate_by\x18\f \x01(\tR\tupdate_by\x12&\n" +
 	"\x0ecreate_by_name\x18\r \x01(\tR\x0ecreate_by_name\x12&\n" +
-	"\x0eupdate_by_name\x18\x0e \x01(\tR\x0eupdate_by_name\"P\n" +
+	"\x0eupdate_by_name\x18\x0e \x01(\tR\x0eupdate_by_name\x12 \n" +
+	"\vparent_name\x18\x0f \x01(\tR\vparent_name\"P\n" +
 	"\x0eGetMenuRequest\x12\x19\n" +
 	"\x02id\x18\x01 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18(R\x02id\x12#\n" +
 	"\blanguage\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x18\n" +
@@ -1288,7 +1307,7 @@ const file_menu_menu_message_proto_rawDesc = "" +
 	"\arole_id\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x18(R\arole_id\x12#\n" +
 	"\blanguage\x18\x03 \x01(\tB\a\xbaH\x04r\x02\x18\n" +
 	"R\blanguage\x12 \n" +
-	"\vneed_detail\x18\x04 \x01(\bR\vneed_detail\"\xda\x02\n" +
+	"\vneed_detail\x18\x04 \x01(\bR\vneed_detail\"\xfc\x02\n" +
 	"\fMenuTreeNode\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
 	"\x04code\x18\x02 \x01(\tR\x04code\x12\x1c\n" +
@@ -1301,7 +1320,8 @@ const file_menu_menu_message_proto_rawDesc = "" +
 	"\x05state\x18\t \x01(\x05R\x05state\x12\x18\n" +
 	"\achannel\x18\n" +
 	" \x01(\x05R\achannel\x12;\n" +
-	"\bchildren\x18\v \x03(\v2\x1f.fusion.proto.menu.MenuTreeNodeR\bchildren\"G\n" +
+	"\bchildren\x18\v \x03(\v2\x1f.fusion.proto.menu.MenuTreeNodeR\bchildren\x12 \n" +
+	"\vparent_name\x18\f \x01(\tR\vparent_name\"G\n" +
 	"\x10TreeMenuResponse\x123\n" +
 	"\x04data\x18\x01 \x03(\v2\x1f.fusion.proto.menu.MenuTreeNodeR\x04data\"\x97\x01\n" +
 	"\fRoleMenuTree\x12\x0e\n" +
