@@ -1016,8 +1016,10 @@ type RoleMenuTree struct {
 	Name string `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
 	// 排序
 	Sort int32 `protobuf:"varint,3,opt,name=sort,proto3" json:"sort,omitempty"`
+	// 菜单类型(1:一级菜单, 2:二级菜单, 3:操作按钮)
+	Type int32 `protobuf:"varint,4,opt,name=type,proto3" json:"type,omitempty"`
 	// 子级菜单
-	Children      []*RoleMenuTree `protobuf:"bytes,4,rep,name=children,proto3" json:"children,omitempty"`
+	Children      []*RoleMenuTree `protobuf:"bytes,5,rep,name=children,proto3" json:"children,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1069,6 +1071,13 @@ func (x *RoleMenuTree) GetName() string {
 func (x *RoleMenuTree) GetSort() int32 {
 	if x != nil {
 		return x.Sort
+	}
+	return 0
+}
+
+func (x *RoleMenuTree) GetType() int32 {
+	if x != nil {
+		return x.Type
 	}
 	return 0
 }
@@ -1294,12 +1303,13 @@ const file_menu_menu_message_proto_rawDesc = "" +
 	" \x01(\x05R\achannel\x12;\n" +
 	"\bchildren\x18\v \x03(\v2\x1f.fusion.proto.menu.MenuTreeNodeR\bchildren\"G\n" +
 	"\x10TreeMenuResponse\x123\n" +
-	"\x04data\x18\x01 \x03(\v2\x1f.fusion.proto.menu.MenuTreeNodeR\x04data\"\x83\x01\n" +
+	"\x04data\x18\x01 \x03(\v2\x1f.fusion.proto.menu.MenuTreeNodeR\x04data\"\x97\x01\n" +
 	"\fRoleMenuTree\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x12\n" +
-	"\x04sort\x18\x03 \x01(\x05R\x04sort\x12;\n" +
-	"\bchildren\x18\x04 \x03(\v2\x1f.fusion.proto.menu.RoleMenuTreeR\bchildren\"\xd4\x01\n" +
+	"\x04sort\x18\x03 \x01(\x05R\x04sort\x12\x12\n" +
+	"\x04type\x18\x04 \x01(\x05R\x04type\x12;\n" +
+	"\bchildren\x18\x05 \x03(\v2\x1f.fusion.proto.menu.RoleMenuTreeR\bchildren\"\xd4\x01\n" +
 	"\x13GetMenuRolesRequest\x12!\n" +
 	"\arole_id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x18(R\arole_id\x12!\n" +
 	"\auser_id\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x18(R\auser_id\x12'\n" +
