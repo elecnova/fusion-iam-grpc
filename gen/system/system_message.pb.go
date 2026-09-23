@@ -236,16 +236,14 @@ func (x *SystemData) GetUpdateAt() *timestamppb.Timestamp {
 // Package message 新增系统请求消息定义
 type CreateSystemRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// 系统ID
-	Id int32 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
 	// 系统名称(多语种) eg:[{"lang": "zh", "content": "运维平台"}, {"lang": "en", "content": "Ops"}]
-	Name []*SystemName `protobuf:"bytes,2,rep,name=name,proto3" json:"name,omitempty"`
+	Name []*SystemName `protobuf:"bytes,1,rep,name=name,proto3" json:"name,omitempty"`
 	// 系统描述
-	Description string `protobuf:"bytes,3,opt,name=description,proto3" json:"description,omitempty"`
+	Description string `protobuf:"bytes,2,opt,name=description,proto3" json:"description,omitempty"`
 	// 排序
-	Sort int64 `protobuf:"varint,4,opt,name=sort,proto3" json:"sort,omitempty"`
+	Sort int64 `protobuf:"varint,3,opt,name=sort,proto3" json:"sort,omitempty"`
 	// 系统状态(1-正常 2-禁用 3-锁定)
-	State         int32 `protobuf:"varint,5,opt,name=state,proto3" json:"state,omitempty"`
+	State         int32 `protobuf:"varint,4,opt,name=state,proto3" json:"state,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -278,13 +276,6 @@ func (x *CreateSystemRequest) ProtoReflect() protoreflect.Message {
 // Deprecated: Use CreateSystemRequest.ProtoReflect.Descriptor instead.
 func (*CreateSystemRequest) Descriptor() ([]byte, []int) {
 	return file_system_system_message_proto_rawDescGZIP(), []int{2}
-}
-
-func (x *CreateSystemRequest) GetId() int32 {
-	if x != nil {
-		return x.Id
-	}
-	return 0
 }
 
 func (x *CreateSystemRequest) GetName() []*SystemName {
@@ -1091,14 +1082,13 @@ const file_system_system_message_proto_rawDesc = "" +
 	"\x0eupdate_by_name\x18\n" +
 	" \x01(\tR\x0eupdate_by_name\x128\n" +
 	"\tcreate_at\x18\v \x01(\v2\x1a.google.protobuf.TimestampR\tcreate_at\x128\n" +
-	"\tupdate_at\x18\f \x01(\v2\x1a.google.protobuf.TimestampR\tupdate_at\"\xd0\x01\n" +
-	"\x13CreateSystemRequest\x12\x17\n" +
-	"\x02id\x18\x01 \x01(\x05B\a\xbaH\x04\x1a\x02 \x00R\x02id\x12?\n" +
-	"\x04name\x18\x02 \x03(\v2\x1f.fusion.proto.system.SystemNameB\n" +
+	"\tupdate_at\x18\f \x01(\v2\x1a.google.protobuf.TimestampR\tupdate_at\"\xb7\x01\n" +
+	"\x13CreateSystemRequest\x12?\n" +
+	"\x04name\x18\x01 \x03(\v2\x1f.fusion.proto.system.SystemNameB\n" +
 	"\xbaH\a\x92\x01\x04\b\x01\x102R\x04name\x12*\n" +
-	"\vdescription\x18\x03 \x01(\tB\b\xbaH\x05r\x03\x18\xff\x01R\vdescription\x12\x12\n" +
-	"\x04sort\x18\x04 \x01(\x03R\x04sort\x12\x1f\n" +
-	"\x05state\x18\x05 \x01(\x05B\t\xbaH\x06\x1a\x04\x18\x03(\x01R\x05state\"&\n" +
+	"\vdescription\x18\x02 \x01(\tB\b\xbaH\x05r\x03\x18\xff\x01R\vdescription\x12\x12\n" +
+	"\x04sort\x18\x03 \x01(\x03R\x04sort\x12\x1f\n" +
+	"\x05state\x18\x04 \x01(\x05B\t\xbaH\x06\x1a\x04\x18\x03(\x01R\x05state\"&\n" +
 	"\x14CreateSystemResponse\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x05R\x02id\"\xd0\x01\n" +
 	"\x13UpdateSystemRequest\x12\x17\n" +

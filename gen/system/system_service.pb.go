@@ -36,9 +36,9 @@ var File_system_system_service_proto protoreflect.FileDescriptor
 
 const file_system_system_service_proto_rawDesc = "" +
 	"\n" +
-	"\x1bsystem/system_service.proto\x12\x13fusion.proto.system\x1a\x1cgoogle/api/annotations.proto\x1a\x17google/api/client.proto\x1a\x1bgoogle/protobuf/empty.proto\x1a\x1bsystem/system_message.proto2\xc5\t\n" +
-	"\rSystemService\x12\xa3\x01\n" +
-	"\fCreateSystem\x12(.fusion.proto.system.CreateSystemRequest\x1a).fusion.proto.system.CreateSystemResponse\">\xdaA\x1eid,name,description,sort,state\x82\xd3\xe4\x93\x02\x17:\x01*\"\x12/3rd-api/v2/system\x12\x95\x01\n" +
+	"\x1bsystem/system_service.proto\x12\x13fusion.proto.system\x1a\x1cgoogle/api/annotations.proto\x1a\x17google/api/client.proto\x1a\x1bgoogle/protobuf/empty.proto\x1a\x1bsystem/system_message.proto2\xc2\t\n" +
+	"\rSystemService\x12\xa0\x01\n" +
+	"\fCreateSystem\x12(.fusion.proto.system.CreateSystemRequest\x1a).fusion.proto.system.CreateSystemResponse\";\xdaA\x1bname,description,sort,state\x82\xd3\xe4\x93\x02\x17:\x01*\"\x12/3rd-api/v2/system\x12\x95\x01\n" +
 	"\fUpdateSystem\x12(.fusion.proto.system.UpdateSystemRequest\x1a\x16.google.protobuf.Empty\"C\xdaA\x1eid,name,description,sort,state\x82\xd3\xe4\x93\x02\x1c:\x01*\x1a\x17/3rd-api/v2/system/{id}\x12v\n" +
 	"\fDeleteSystem\x12(.fusion.proto.system.DeleteSystemRequest\x1a\x16.google.protobuf.Empty\"$\xdaA\x02id\x82\xd3\xe4\x93\x02\x19*\x17/3rd-api/v2/system/{id}\x12\x89\x01\n" +
 	"\tGetSystem\x12%.fusion.proto.system.GetSystemRequest\x1a&.fusion.proto.system.GetSystemResponse\"-\xdaA\vid,language\x82\xd3\xe4\x93\x02\x19\x12\x17/3rd-api/v2/system/{id}\x12\xa0\x01\n" +
