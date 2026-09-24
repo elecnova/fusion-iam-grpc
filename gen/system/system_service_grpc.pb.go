@@ -36,7 +36,6 @@ const (
 	SystemService_GetSystem_FullMethodName      = "/fusion.proto.system.SystemService/GetSystem"
 	SystemService_ListSystems_FullMethodName    = "/fusion.proto.system.SystemService/ListSystems"
 	SystemService_AllSystems_FullMethodName     = "/fusion.proto.system.SystemService/AllSystems"
-	SystemService_SetRoleSystems_FullMethodName = "/fusion.proto.system.SystemService/SetRoleSystems"
 	SystemService_GetRoleSystems_FullMethodName = "/fusion.proto.system.SystemService/GetRoleSystems"
 )
 
@@ -58,8 +57,6 @@ type SystemServiceClient interface {
 	ListSystems(ctx context.Context, in *ListSystemsRequest, opts ...grpc.CallOption) (*ListSystemsResponse, error)
 	// 查询所有系统(不分页)
 	AllSystems(ctx context.Context, in *AllSystemsRequest, opts ...grpc.CallOption) (*AllSystemsResponse, error)
-	// 设置角色系统绑定
-	SetRoleSystems(ctx context.Context, in *SetRoleSystemsRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// 获取角色已绑定系统
 	GetRoleSystems(ctx context.Context, in *GetRoleSystemsRequest, opts ...grpc.CallOption) (*GetRoleSystemsResponse, error)
 }
@@ -132,16 +129,6 @@ func (c *systemServiceClient) AllSystems(ctx context.Context, in *AllSystemsRequ
 	return out, nil
 }
 
-func (c *systemServiceClient) SetRoleSystems(ctx context.Context, in *SetRoleSystemsRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(emptypb.Empty)
-	err := c.cc.Invoke(ctx, SystemService_SetRoleSystems_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
 func (c *systemServiceClient) GetRoleSystems(ctx context.Context, in *GetRoleSystemsRequest, opts ...grpc.CallOption) (*GetRoleSystemsResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(GetRoleSystemsResponse)
@@ -170,8 +157,6 @@ type SystemServiceServer interface {
 	ListSystems(context.Context, *ListSystemsRequest) (*ListSystemsResponse, error)
 	// 查询所有系统(不分页)
 	AllSystems(context.Context, *AllSystemsRequest) (*AllSystemsResponse, error)
-	// 设置角色系统绑定
-	SetRoleSystems(context.Context, *SetRoleSystemsRequest) (*emptypb.Empty, error)
 	// 获取角色已绑定系统
 	GetRoleSystems(context.Context, *GetRoleSystemsRequest) (*GetRoleSystemsResponse, error)
 	mustEmbedUnimplementedSystemServiceServer()
@@ -201,9 +186,6 @@ func (UnimplementedSystemServiceServer) ListSystems(context.Context, *ListSystem
 }
 func (UnimplementedSystemServiceServer) AllSystems(context.Context, *AllSystemsRequest) (*AllSystemsResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method AllSystems not implemented")
-}
-func (UnimplementedSystemServiceServer) SetRoleSystems(context.Context, *SetRoleSystemsRequest) (*emptypb.Empty, error) {
-	return nil, status.Error(codes.Unimplemented, "method SetRoleSystems not implemented")
 }
 func (UnimplementedSystemServiceServer) GetRoleSystems(context.Context, *GetRoleSystemsRequest) (*GetRoleSystemsResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method GetRoleSystems not implemented")
@@ -337,24 +319,6 @@ func _SystemService_AllSystems_Handler(srv interface{}, ctx context.Context, dec
 	return interceptor(ctx, in, info, handler)
 }
 
-func _SystemService_SetRoleSystems_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(SetRoleSystemsRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(SystemServiceServer).SetRoleSystems(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: SystemService_SetRoleSystems_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SystemServiceServer).SetRoleSystems(ctx, req.(*SetRoleSystemsRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 func _SystemService_GetRoleSystems_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GetRoleSystemsRequest)
 	if err := dec(in); err != nil {
@@ -403,10 +367,6 @@ var SystemService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "AllSystems",
 			Handler:    _SystemService_AllSystems_Handler,
-		},
-		{
-			MethodName: "SetRoleSystems",
-			Handler:    _SystemService_SetRoleSystems_Handler,
 		},
 		{
 			MethodName: "GetRoleSystems",

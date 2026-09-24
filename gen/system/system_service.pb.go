@@ -36,7 +36,7 @@ var File_system_system_service_proto protoreflect.FileDescriptor
 
 const file_system_system_service_proto_rawDesc = "" +
 	"\n" +
-	"\x1bsystem/system_service.proto\x12\x13fusion.proto.system\x1a\x1cgoogle/api/annotations.proto\x1a\x17google/api/client.proto\x1a\x1bgoogle/protobuf/empty.proto\x1a\x1bsystem/system_message.proto2\xc2\t\n" +
+	"\x1bsystem/system_service.proto\x12\x13fusion.proto.system\x1a\x1cgoogle/api/annotations.proto\x1a\x17google/api/client.proto\x1a\x1bgoogle/protobuf/empty.proto\x1a\x1bsystem/system_message.proto2\xa7\b\n" +
 	"\rSystemService\x12\xa0\x01\n" +
 	"\fCreateSystem\x12(.fusion.proto.system.CreateSystemRequest\x1a).fusion.proto.system.CreateSystemResponse\";\xdaA\x1bname,description,sort,state\x82\xd3\xe4\x93\x02\x17:\x01*\"\x12/3rd-api/v2/system\x12\x95\x01\n" +
 	"\fUpdateSystem\x12(.fusion.proto.system.UpdateSystemRequest\x1a\x16.google.protobuf.Empty\"C\xdaA\x1eid,name,description,sort,state\x82\xd3\xe4\x93\x02\x1c:\x01*\x1a\x17/3rd-api/v2/system/{id}\x12v\n" +
@@ -44,8 +44,7 @@ const file_system_system_service_proto_rawDesc = "" +
 	"\tGetSystem\x12%.fusion.proto.system.GetSystemRequest\x1a&.fusion.proto.system.GetSystemResponse\"-\xdaA\vid,language\x82\xd3\xe4\x93\x02\x19\x12\x17/3rd-api/v2/system/{id}\x12\xa0\x01\n" +
 	"\vListSystems\x12'.fusion.proto.system.ListSystemsRequest\x1a(.fusion.proto.system.ListSystemsResponse\">\xdaA keywords,language,page,page_size\x82\xd3\xe4\x93\x02\x15\x12\x13/3rd-api/v2/systems\x12\x88\x01\n" +
 	"\n" +
-	"AllSystems\x12&.fusion.proto.system.AllSystemsRequest\x1a'.fusion.proto.system.AllSystemsResponse\")\xdaA\blanguage\x82\xd3\xe4\x93\x02\x18\x12\x16/3rd-api/v2/system/all\x12\x98\x01\n" +
-	"\x0eSetRoleSystems\x12*.fusion.proto.system.SetRoleSystemsRequest\x1a\x16.google.protobuf.Empty\"B\xdaA\x12role_id,system_ids\x82\xd3\xe4\x93\x02':\x01*\x1a\"/3rd-api/v2/role/systems/{role_id}\x12\xa8\x01\n" +
+	"AllSystems\x12&.fusion.proto.system.AllSystemsRequest\x1a'.fusion.proto.system.AllSystemsResponse\")\xdaA\blanguage\x82\xd3\xe4\x93\x02\x18\x12\x16/3rd-api/v2/system/all\x12\xa8\x01\n" +
 	"\x0eGetRoleSystems\x12*.fusion.proto.system.GetRoleSystemsRequest\x1a+.fusion.proto.system.GetRoleSystemsResponse\"=\xdaA\x10role_id,language\x82\xd3\xe4\x93\x02$\x12\"/3rd-api/v2/role/systems/{role_id}B\xb7\x01\n" +
 	"\x17com.fusion.proto.systemB\x12SystemServiceProtoP\x01Z\x1afusion.proto.system;system\xa2\x02\x03FPS\xaa\x02\x13Fusion.Proto.System\xca\x02\x13Fusion\\Proto\\System\xe2\x02\x1fFusion\\Proto\\System\\GPBMetadata\xea\x02\x15Fusion::Proto::Systemb\x06proto3"
 
@@ -56,14 +55,13 @@ var file_system_system_service_proto_goTypes = []any{
 	(*GetSystemRequest)(nil),       // 3: fusion.proto.system.GetSystemRequest
 	(*ListSystemsRequest)(nil),     // 4: fusion.proto.system.ListSystemsRequest
 	(*AllSystemsRequest)(nil),      // 5: fusion.proto.system.AllSystemsRequest
-	(*SetRoleSystemsRequest)(nil),  // 6: fusion.proto.system.SetRoleSystemsRequest
-	(*GetRoleSystemsRequest)(nil),  // 7: fusion.proto.system.GetRoleSystemsRequest
-	(*CreateSystemResponse)(nil),   // 8: fusion.proto.system.CreateSystemResponse
-	(*emptypb.Empty)(nil),          // 9: google.protobuf.Empty
-	(*GetSystemResponse)(nil),      // 10: fusion.proto.system.GetSystemResponse
-	(*ListSystemsResponse)(nil),    // 11: fusion.proto.system.ListSystemsResponse
-	(*AllSystemsResponse)(nil),     // 12: fusion.proto.system.AllSystemsResponse
-	(*GetRoleSystemsResponse)(nil), // 13: fusion.proto.system.GetRoleSystemsResponse
+	(*GetRoleSystemsRequest)(nil),  // 6: fusion.proto.system.GetRoleSystemsRequest
+	(*CreateSystemResponse)(nil),   // 7: fusion.proto.system.CreateSystemResponse
+	(*emptypb.Empty)(nil),          // 8: google.protobuf.Empty
+	(*GetSystemResponse)(nil),      // 9: fusion.proto.system.GetSystemResponse
+	(*ListSystemsResponse)(nil),    // 10: fusion.proto.system.ListSystemsResponse
+	(*AllSystemsResponse)(nil),     // 11: fusion.proto.system.AllSystemsResponse
+	(*GetRoleSystemsResponse)(nil), // 12: fusion.proto.system.GetRoleSystemsResponse
 }
 var file_system_system_service_proto_depIdxs = []int32{
 	0,  // 0: fusion.proto.system.SystemService.CreateSystem:input_type -> fusion.proto.system.CreateSystemRequest
@@ -72,18 +70,16 @@ var file_system_system_service_proto_depIdxs = []int32{
 	3,  // 3: fusion.proto.system.SystemService.GetSystem:input_type -> fusion.proto.system.GetSystemRequest
 	4,  // 4: fusion.proto.system.SystemService.ListSystems:input_type -> fusion.proto.system.ListSystemsRequest
 	5,  // 5: fusion.proto.system.SystemService.AllSystems:input_type -> fusion.proto.system.AllSystemsRequest
-	6,  // 6: fusion.proto.system.SystemService.SetRoleSystems:input_type -> fusion.proto.system.SetRoleSystemsRequest
-	7,  // 7: fusion.proto.system.SystemService.GetRoleSystems:input_type -> fusion.proto.system.GetRoleSystemsRequest
-	8,  // 8: fusion.proto.system.SystemService.CreateSystem:output_type -> fusion.proto.system.CreateSystemResponse
-	9,  // 9: fusion.proto.system.SystemService.UpdateSystem:output_type -> google.protobuf.Empty
-	9,  // 10: fusion.proto.system.SystemService.DeleteSystem:output_type -> google.protobuf.Empty
-	10, // 11: fusion.proto.system.SystemService.GetSystem:output_type -> fusion.proto.system.GetSystemResponse
-	11, // 12: fusion.proto.system.SystemService.ListSystems:output_type -> fusion.proto.system.ListSystemsResponse
-	12, // 13: fusion.proto.system.SystemService.AllSystems:output_type -> fusion.proto.system.AllSystemsResponse
-	9,  // 14: fusion.proto.system.SystemService.SetRoleSystems:output_type -> google.protobuf.Empty
-	13, // 15: fusion.proto.system.SystemService.GetRoleSystems:output_type -> fusion.proto.system.GetRoleSystemsResponse
-	8,  // [8:16] is the sub-list for method output_type
-	0,  // [0:8] is the sub-list for method input_type
+	6,  // 6: fusion.proto.system.SystemService.GetRoleSystems:input_type -> fusion.proto.system.GetRoleSystemsRequest
+	7,  // 7: fusion.proto.system.SystemService.CreateSystem:output_type -> fusion.proto.system.CreateSystemResponse
+	8,  // 8: fusion.proto.system.SystemService.UpdateSystem:output_type -> google.protobuf.Empty
+	8,  // 9: fusion.proto.system.SystemService.DeleteSystem:output_type -> google.protobuf.Empty
+	9,  // 10: fusion.proto.system.SystemService.GetSystem:output_type -> fusion.proto.system.GetSystemResponse
+	10, // 11: fusion.proto.system.SystemService.ListSystems:output_type -> fusion.proto.system.ListSystemsResponse
+	11, // 12: fusion.proto.system.SystemService.AllSystems:output_type -> fusion.proto.system.AllSystemsResponse
+	12, // 13: fusion.proto.system.SystemService.GetRoleSystems:output_type -> fusion.proto.system.GetRoleSystemsResponse
+	7,  // [7:14] is the sub-list for method output_type
+	0,  // [0:7] is the sub-list for method input_type
 	0,  // [0:0] is the sub-list for extension type_name
 	0,  // [0:0] is the sub-list for extension extendee
 	0,  // [0:0] is the sub-list for field type_name

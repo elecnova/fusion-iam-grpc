@@ -901,61 +901,6 @@ func (x *AllSystemsResponse) GetData() []*SystemListItem {
 	return nil
 }
 
-// Package message 设置角色系统绑定请求消息定义
-type SetRoleSystemsRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// 角色ID
-	RoleId string `protobuf:"bytes,1,opt,name=role_id,proto3" json:"role_id,omitempty"`
-	// 系统ID列表(全量设置)
-	SystemIds     []int32 `protobuf:"varint,2,rep,packed,name=system_ids,proto3" json:"system_ids,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *SetRoleSystemsRequest) Reset() {
-	*x = SetRoleSystemsRequest{}
-	mi := &file_system_system_message_proto_msgTypes[13]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *SetRoleSystemsRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*SetRoleSystemsRequest) ProtoMessage() {}
-
-func (x *SetRoleSystemsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_system_system_message_proto_msgTypes[13]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use SetRoleSystemsRequest.ProtoReflect.Descriptor instead.
-func (*SetRoleSystemsRequest) Descriptor() ([]byte, []int) {
-	return file_system_system_message_proto_rawDescGZIP(), []int{13}
-}
-
-func (x *SetRoleSystemsRequest) GetRoleId() string {
-	if x != nil {
-		return x.RoleId
-	}
-	return ""
-}
-
-func (x *SetRoleSystemsRequest) GetSystemIds() []int32 {
-	if x != nil {
-		return x.SystemIds
-	}
-	return nil
-}
-
 // Package message 获取角色已绑定系统请求消息定义
 type GetRoleSystemsRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
@@ -969,7 +914,7 @@ type GetRoleSystemsRequest struct {
 
 func (x *GetRoleSystemsRequest) Reset() {
 	*x = GetRoleSystemsRequest{}
-	mi := &file_system_system_message_proto_msgTypes[14]
+	mi := &file_system_system_message_proto_msgTypes[13]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -981,7 +926,7 @@ func (x *GetRoleSystemsRequest) String() string {
 func (*GetRoleSystemsRequest) ProtoMessage() {}
 
 func (x *GetRoleSystemsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_system_system_message_proto_msgTypes[14]
+	mi := &file_system_system_message_proto_msgTypes[13]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -994,7 +939,7 @@ func (x *GetRoleSystemsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetRoleSystemsRequest.ProtoReflect.Descriptor instead.
 func (*GetRoleSystemsRequest) Descriptor() ([]byte, []int) {
-	return file_system_system_message_proto_rawDescGZIP(), []int{14}
+	return file_system_system_message_proto_rawDescGZIP(), []int{13}
 }
 
 func (x *GetRoleSystemsRequest) GetRoleId() string {
@@ -1022,7 +967,7 @@ type GetRoleSystemsResponse struct {
 
 func (x *GetRoleSystemsResponse) Reset() {
 	*x = GetRoleSystemsResponse{}
-	mi := &file_system_system_message_proto_msgTypes[15]
+	mi := &file_system_system_message_proto_msgTypes[14]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1034,7 +979,7 @@ func (x *GetRoleSystemsResponse) String() string {
 func (*GetRoleSystemsResponse) ProtoMessage() {}
 
 func (x *GetRoleSystemsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_system_system_message_proto_msgTypes[15]
+	mi := &file_system_system_message_proto_msgTypes[14]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1047,7 +992,7 @@ func (x *GetRoleSystemsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetRoleSystemsResponse.ProtoReflect.Descriptor instead.
 func (*GetRoleSystemsResponse) Descriptor() ([]byte, []int) {
-	return file_system_system_message_proto_rawDescGZIP(), []int{15}
+	return file_system_system_message_proto_rawDescGZIP(), []int{14}
 }
 
 func (x *GetRoleSystemsResponse) GetData() []*SystemData {
@@ -1128,12 +1073,7 @@ const file_system_system_message_proto_rawDesc = "" +
 	"\x02id\x18\x04 \x01(\x05R\x02id\x12\x14\n" +
 	"\x05state\x18\x05 \x01(\x05R\x05state\"M\n" +
 	"\x12AllSystemsResponse\x127\n" +
-	"\x04data\x18\x01 \x03(\v2#.fusion.proto.system.SystemListItemR\x04data\"\\\n" +
-	"\x15SetRoleSystemsRequest\x12#\n" +
-	"\arole_id\x18\x01 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18(R\arole_id\x12\x1e\n" +
-	"\n" +
-	"system_ids\x18\x02 \x03(\x05R\n" +
-	"system_ids\"a\n" +
+	"\x04data\x18\x01 \x03(\v2#.fusion.proto.system.SystemListItemR\x04data\"a\n" +
 	"\x15GetRoleSystemsRequest\x12#\n" +
 	"\arole_id\x18\x01 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18(R\arole_id\x12#\n" +
 	"\blanguage\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x18\n" +
@@ -1154,7 +1094,7 @@ func file_system_system_message_proto_rawDescGZIP() []byte {
 	return file_system_system_message_proto_rawDescData
 }
 
-var file_system_system_message_proto_msgTypes = make([]protoimpl.MessageInfo, 16)
+var file_system_system_message_proto_msgTypes = make([]protoimpl.MessageInfo, 15)
 var file_system_system_message_proto_goTypes = []any{
 	(*SystemName)(nil),             // 0: fusion.proto.system.SystemName
 	(*SystemData)(nil),             // 1: fusion.proto.system.SystemData
@@ -1169,15 +1109,14 @@ var file_system_system_message_proto_goTypes = []any{
 	(*AllSystemsRequest)(nil),      // 10: fusion.proto.system.AllSystemsRequest
 	(*SystemListItem)(nil),         // 11: fusion.proto.system.SystemListItem
 	(*AllSystemsResponse)(nil),     // 12: fusion.proto.system.AllSystemsResponse
-	(*SetRoleSystemsRequest)(nil),  // 13: fusion.proto.system.SetRoleSystemsRequest
-	(*GetRoleSystemsRequest)(nil),  // 14: fusion.proto.system.GetRoleSystemsRequest
-	(*GetRoleSystemsResponse)(nil), // 15: fusion.proto.system.GetRoleSystemsResponse
-	(*timestamppb.Timestamp)(nil),  // 16: google.protobuf.Timestamp
+	(*GetRoleSystemsRequest)(nil),  // 13: fusion.proto.system.GetRoleSystemsRequest
+	(*GetRoleSystemsResponse)(nil), // 14: fusion.proto.system.GetRoleSystemsResponse
+	(*timestamppb.Timestamp)(nil),  // 15: google.protobuf.Timestamp
 }
 var file_system_system_message_proto_depIdxs = []int32{
 	0,  // 0: fusion.proto.system.SystemData.name_detail:type_name -> fusion.proto.system.SystemName
-	16, // 1: fusion.proto.system.SystemData.create_at:type_name -> google.protobuf.Timestamp
-	16, // 2: fusion.proto.system.SystemData.update_at:type_name -> google.protobuf.Timestamp
+	15, // 1: fusion.proto.system.SystemData.create_at:type_name -> google.protobuf.Timestamp
+	15, // 2: fusion.proto.system.SystemData.update_at:type_name -> google.protobuf.Timestamp
 	0,  // 3: fusion.proto.system.CreateSystemRequest.name:type_name -> fusion.proto.system.SystemName
 	0,  // 4: fusion.proto.system.UpdateSystemRequest.name:type_name -> fusion.proto.system.SystemName
 	1,  // 5: fusion.proto.system.GetSystemResponse.data:type_name -> fusion.proto.system.SystemData
@@ -1202,7 +1141,7 @@ func file_system_system_message_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_system_system_message_proto_rawDesc), len(file_system_system_message_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   16,
+			NumMessages:   15,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
