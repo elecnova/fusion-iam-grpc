@@ -46,7 +46,9 @@ type CreateDomainRequest struct {
 	// 系统名称 eg: {"languageList":[{"name":"开发环境","language":"zh"},{"name":"dev_env","language":"en"}]}
 	Name *structpb.Struct `protobuf:"bytes,4,opt,name=name,proto3" json:"name,omitempty"`
 	// 扩展配置 eg:{"ios": "", "android": "", "description": "", "recordNumber": "1", "document_center": ""}
-	Extend        *structpb.Struct `protobuf:"bytes,5,opt,name=extend,proto3" json:"extend,omitempty"`
+	Extend *structpb.Struct `protobuf:"bytes,5,opt,name=extend,proto3" json:"extend,omitempty"`
+	// 域名描述
+	Description   string `protobuf:"bytes,6,opt,name=description,proto3" json:"description,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -116,6 +118,13 @@ func (x *CreateDomainRequest) GetExtend() *structpb.Struct {
 	return nil
 }
 
+func (x *CreateDomainRequest) GetDescription() string {
+	if x != nil {
+		return x.Description
+	}
+	return ""
+}
+
 // Package message 创建域名响应消息定义
 type CreateDomainResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
@@ -176,7 +185,9 @@ type UpdateDomainRequest struct {
 	// 系统名称 eg: {"languageList":[{"name":"开发环境","language":"zh"},{"name":"dev_env","language":"en"}]}
 	Name *structpb.Struct `protobuf:"bytes,5,opt,name=name,proto3" json:"name,omitempty"`
 	// 扩展配置 eg:{"ios": "", "android": "", "description": "", "recordNumber": "1", "document_center": ""}
-	Extend        *structpb.Struct `protobuf:"bytes,6,opt,name=extend,proto3" json:"extend,omitempty"`
+	Extend *structpb.Struct `protobuf:"bytes,6,opt,name=extend,proto3" json:"extend,omitempty"`
+	// 域名描述
+	Description   string `protobuf:"bytes,7,opt,name=description,proto3" json:"description,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -251,6 +262,13 @@ func (x *UpdateDomainRequest) GetExtend() *structpb.Struct {
 		return x.Extend
 	}
 	return nil
+}
+
+func (x *UpdateDomainRequest) GetDescription() string {
+	if x != nil {
+		return x.Description
+	}
+	return ""
 }
 
 // Package message 删除域名请求消息定义
@@ -437,7 +455,9 @@ type DomainResponse struct {
 	// 创建人名称
 	CreateByName string `protobuf:"bytes,12,opt,name=create_by_name,proto3" json:"create_by_name,omitempty"`
 	// 更新人名称
-	UpdateByName  string `protobuf:"bytes,13,opt,name=update_by_name,proto3" json:"update_by_name,omitempty"`
+	UpdateByName string `protobuf:"bytes,13,opt,name=update_by_name,proto3" json:"update_by_name,omitempty"`
+	// 域名描述
+	Description   string `protobuf:"bytes,14,opt,name=description,proto3" json:"description,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -559,6 +579,13 @@ func (x *DomainResponse) GetCreateByName() string {
 func (x *DomainResponse) GetUpdateByName() string {
 	if x != nil {
 		return x.UpdateByName
+	}
+	return ""
+}
+
+func (x *DomainResponse) GetDescription() string {
+	if x != nil {
+		return x.Description
 	}
 	return ""
 }
@@ -713,16 +740,17 @@ var File_domain_domain_message_proto protoreflect.FileDescriptor
 
 const file_domain_domain_message_proto_rawDesc = "" +
 	"\n" +
-	"\x1bdomain/domain_message.proto\x12\x13fusion.proto.domain\x1a\x1bbuf/validate/validate.proto\x1a\x1cgoogle/protobuf/struct.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xe1\x01\n" +
+	"\x1bdomain/domain_message.proto\x12\x13fusion.proto.domain\x1a\x1bbuf/validate/validate.proto\x1a\x1cgoogle/protobuf/struct.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\x8d\x02\n" +
 	"\x13CreateDomainRequest\x12\"\n" +
 	"\x06domain\x18\x01 \x01(\tB\n" +
 	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\x06domain\x12\x1b\n" +
 	"\x04icon\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x18(R\x04icon\x12\x1b\n" +
 	"\x04logo\x18\x03 \x01(\tB\a\xbaH\x04r\x02\x18(R\x04logo\x123\n" +
 	"\x04name\x18\x04 \x01(\v2\x17.google.protobuf.StructB\x06\xbaH\x03\xc8\x01\x01R\x04name\x127\n" +
-	"\x06extend\x18\x05 \x01(\v2\x17.google.protobuf.StructB\x06\xbaH\x03\xc8\x01\x01R\x06extend\"&\n" +
+	"\x06extend\x18\x05 \x01(\v2\x17.google.protobuf.StructB\x06\xbaH\x03\xc8\x01\x01R\x06extend\x12*\n" +
+	"\vdescription\x18\x06 \x01(\tB\b\xbaH\x05r\x03\x18\xff\x01R\vdescription\"&\n" +
 	"\x14CreateDomainResponse\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\tR\x02id\"\xfc\x01\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\"\xa8\x02\n" +
 	"\x13UpdateDomainRequest\x12\x19\n" +
 	"\x02id\x18\x01 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18(R\x02id\x12\"\n" +
 	"\x06domain\x18\x02 \x01(\tB\n" +
@@ -730,7 +758,8 @@ const file_domain_domain_message_proto_rawDesc = "" +
 	"\x04icon\x18\x03 \x01(\tB\a\xbaH\x04r\x02\x18(R\x04icon\x12\x1b\n" +
 	"\x04logo\x18\x04 \x01(\tB\a\xbaH\x04r\x02\x18(R\x04logo\x123\n" +
 	"\x04name\x18\x05 \x01(\v2\x17.google.protobuf.StructB\x06\xbaH\x03\xc8\x01\x01R\x04name\x127\n" +
-	"\x06extend\x18\x06 \x01(\v2\x17.google.protobuf.StructB\x06\xbaH\x03\xc8\x01\x01R\x06extend\"0\n" +
+	"\x06extend\x18\x06 \x01(\v2\x17.google.protobuf.StructB\x06\xbaH\x03\xc8\x01\x01R\x06extend\x12*\n" +
+	"\vdescription\x18\a \x01(\tB\b\xbaH\x05r\x03\x18\xff\x01R\vdescription\"0\n" +
 	"\x13DeleteDomainRequest\x12\x19\n" +
 	"\x02id\x18\x01 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18(R\x02id\"R\n" +
 	"\x10GetDomainRequest\x12\x19\n" +
@@ -741,7 +770,7 @@ const file_domain_domain_message_proto_rawDesc = "" +
 	"\x06domain\x18\x01 \x01(\tB\n" +
 	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\x06domain\x12#\n" +
 	"\blanguage\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x18\n" +
-	"R\blanguage\"\xe8\x03\n" +
+	"R\blanguage\"\x8a\x04\n" +
 	"\x0eDomainResponse\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x16\n" +
 	"\x06domain\x18\x02 \x01(\tR\x06domain\x12\x12\n" +
@@ -756,7 +785,8 @@ const file_domain_domain_message_proto_rawDesc = "" +
 	" \x01(\v2\x1a.google.protobuf.TimestampR\tcreate_at\x128\n" +
 	"\tupdate_at\x18\v \x01(\v2\x1a.google.protobuf.TimestampR\tupdate_at\x12&\n" +
 	"\x0ecreate_by_name\x18\f \x01(\tR\x0ecreate_by_name\x12&\n" +
-	"\x0eupdate_by_name\x18\r \x01(\tR\x0eupdate_by_name\"\xa5\x01\n" +
+	"\x0eupdate_by_name\x18\r \x01(\tR\x0eupdate_by_name\x12 \n" +
+	"\vdescription\x18\x0e \x01(\tR\vdescription\"\xa5\x01\n" +
 	"\x12ListDomainsRequest\x12#\n" +
 	"\bkeywords\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x18dR\bkeywords\x12\x1b\n" +
 	"\x04page\x18\x02 \x01(\x05B\a\xbaH\x04\x1a\x02 \x00R\x04page\x12(\n" +
