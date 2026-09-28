@@ -36,7 +36,7 @@ var File_menu_menu_service_proto protoreflect.FileDescriptor
 
 const file_menu_menu_service_proto_rawDesc = "" +
 	"\n" +
-	"\x17menu/menu_service.proto\x12\x11fusion.proto.menu\x1a\x1cgoogle/api/annotations.proto\x1a\x17google/api/client.proto\x1a\x1bgoogle/protobuf/empty.proto\x1a\x17menu/menu_message.proto2\x8f\b\n" +
+	"\x17menu/menu_service.proto\x12\x11fusion.proto.menu\x1a\x1cgoogle/api/annotations.proto\x1a\x17google/api/client.proto\x1a\x1bgoogle/protobuf/empty.proto\x1a\x17menu/menu_message.proto2\xb5\t\n" +
 	"\vMenuService\x12t\n" +
 	"\aGetMenu\x12!.fusion.proto.menu.GetMenuRequest\x1a\".fusion.proto.menu.GetMenuResponse\"\"\xdaA\x02id\x82\xd3\xe4\x93\x02\x17\x12\x15/3rd-api/v2/menu/{id}\x12\x93\x01\n" +
 	"\n" +
@@ -46,24 +46,27 @@ const file_menu_menu_service_proto_rawDesc = "" +
 	"\tListMenus\x12#.fusion.proto.menu.ListMenusRequest\x1a$.fusion.proto.menu.ListMenusResponse\"K\xdaA/keywords,name,type,state,channel,page,page_size\x82\xd3\xe4\x93\x02\x13\x12\x11/3rd-api/v2/menus\x12\x84\x01\n" +
 	"\bTreeMenu\x12\".fusion.proto.menu.TreeMenuRequest\x1a#.fusion.proto.menu.TreeMenuResponse\"/\xdaA\x0fchannel,role_id\x82\xd3\xe4\x93\x02\x17\x12\x15/3rd-api/v2/menu/tree\x12\xab\x01\n" +
 	"\fGetMenuRoles\x12&.fusion.proto.menu.GetMenuRolesRequest\x1a'.fusion.proto.menu.GetMenuRolesResponse\"J\xdaA\x1arole_id,user_id,project_id\x82\xd3\xe4\x93\x02'\x12%/3rd-api/v2/menu/role-menus/{role_id}\x12\xa8\x01\n" +
-	"\rSelfRoleMenus\x12'.fusion.proto.menu.SelfRoleMenusRequest\x1a(.fusion.proto.menu.SelfRoleMenusResponse\"D\xdaA\achannel\x82\xd3\xe4\x93\x024\x122/3rd-api/v2/menu/role-menus/self/channel/{channel}B\xa7\x01\n" +
+	"\rSelfRoleMenus\x12'.fusion.proto.menu.SelfRoleMenusRequest\x1a(.fusion.proto.menu.SelfRoleMenusResponse\"D\xdaA\achannel\x82\xd3\xe4\x93\x024\x122/3rd-api/v2/menu/role-menus/self/channel/{channel}\x12\xa3\x01\n" +
+	"\x0fChannelMenuTree\x12).fusion.proto.menu.ChannelMenuTreeRequest\x1a*.fusion.proto.menu.ChannelMenuTreeResponse\"9\xdaA\achannel\x82\xd3\xe4\x93\x02)\x12'/3rd-api/v2/menu/channel/tree/{channel}B\xa7\x01\n" +
 	"\x15com.fusion.proto.menuB\x10MenuServiceProtoP\x01Z\x16fusion.proto.menu;menu\xa2\x02\x03FPM\xaa\x02\x11Fusion.Proto.Menu\xca\x02\x11Fusion\\Proto\\Menu\xe2\x02\x1dFusion\\Proto\\Menu\\GPBMetadata\xea\x02\x13Fusion::Proto::Menub\x06proto3"
 
 var file_menu_menu_service_proto_goTypes = []any{
-	(*GetMenuRequest)(nil),        // 0: fusion.proto.menu.GetMenuRequest
-	(*UpsertMenuRequest)(nil),     // 1: fusion.proto.menu.UpsertMenuRequest
-	(*DeleteMenuRequest)(nil),     // 2: fusion.proto.menu.DeleteMenuRequest
-	(*ListMenusRequest)(nil),      // 3: fusion.proto.menu.ListMenusRequest
-	(*TreeMenuRequest)(nil),       // 4: fusion.proto.menu.TreeMenuRequest
-	(*GetMenuRolesRequest)(nil),   // 5: fusion.proto.menu.GetMenuRolesRequest
-	(*SelfRoleMenusRequest)(nil),  // 6: fusion.proto.menu.SelfRoleMenusRequest
-	(*GetMenuResponse)(nil),       // 7: fusion.proto.menu.GetMenuResponse
-	(*UpsertMenuResponse)(nil),    // 8: fusion.proto.menu.UpsertMenuResponse
-	(*emptypb.Empty)(nil),         // 9: google.protobuf.Empty
-	(*ListMenusResponse)(nil),     // 10: fusion.proto.menu.ListMenusResponse
-	(*TreeMenuResponse)(nil),      // 11: fusion.proto.menu.TreeMenuResponse
-	(*GetMenuRolesResponse)(nil),  // 12: fusion.proto.menu.GetMenuRolesResponse
-	(*SelfRoleMenusResponse)(nil), // 13: fusion.proto.menu.SelfRoleMenusResponse
+	(*GetMenuRequest)(nil),          // 0: fusion.proto.menu.GetMenuRequest
+	(*UpsertMenuRequest)(nil),       // 1: fusion.proto.menu.UpsertMenuRequest
+	(*DeleteMenuRequest)(nil),       // 2: fusion.proto.menu.DeleteMenuRequest
+	(*ListMenusRequest)(nil),        // 3: fusion.proto.menu.ListMenusRequest
+	(*TreeMenuRequest)(nil),         // 4: fusion.proto.menu.TreeMenuRequest
+	(*GetMenuRolesRequest)(nil),     // 5: fusion.proto.menu.GetMenuRolesRequest
+	(*SelfRoleMenusRequest)(nil),    // 6: fusion.proto.menu.SelfRoleMenusRequest
+	(*ChannelMenuTreeRequest)(nil),  // 7: fusion.proto.menu.ChannelMenuTreeRequest
+	(*GetMenuResponse)(nil),         // 8: fusion.proto.menu.GetMenuResponse
+	(*UpsertMenuResponse)(nil),      // 9: fusion.proto.menu.UpsertMenuResponse
+	(*emptypb.Empty)(nil),           // 10: google.protobuf.Empty
+	(*ListMenusResponse)(nil),       // 11: fusion.proto.menu.ListMenusResponse
+	(*TreeMenuResponse)(nil),        // 12: fusion.proto.menu.TreeMenuResponse
+	(*GetMenuRolesResponse)(nil),    // 13: fusion.proto.menu.GetMenuRolesResponse
+	(*SelfRoleMenusResponse)(nil),   // 14: fusion.proto.menu.SelfRoleMenusResponse
+	(*ChannelMenuTreeResponse)(nil), // 15: fusion.proto.menu.ChannelMenuTreeResponse
 }
 var file_menu_menu_service_proto_depIdxs = []int32{
 	0,  // 0: fusion.proto.menu.MenuService.GetMenu:input_type -> fusion.proto.menu.GetMenuRequest
@@ -73,15 +76,17 @@ var file_menu_menu_service_proto_depIdxs = []int32{
 	4,  // 4: fusion.proto.menu.MenuService.TreeMenu:input_type -> fusion.proto.menu.TreeMenuRequest
 	5,  // 5: fusion.proto.menu.MenuService.GetMenuRoles:input_type -> fusion.proto.menu.GetMenuRolesRequest
 	6,  // 6: fusion.proto.menu.MenuService.SelfRoleMenus:input_type -> fusion.proto.menu.SelfRoleMenusRequest
-	7,  // 7: fusion.proto.menu.MenuService.GetMenu:output_type -> fusion.proto.menu.GetMenuResponse
-	8,  // 8: fusion.proto.menu.MenuService.UpsertMenu:output_type -> fusion.proto.menu.UpsertMenuResponse
-	9,  // 9: fusion.proto.menu.MenuService.DeleteMenu:output_type -> google.protobuf.Empty
-	10, // 10: fusion.proto.menu.MenuService.ListMenus:output_type -> fusion.proto.menu.ListMenusResponse
-	11, // 11: fusion.proto.menu.MenuService.TreeMenu:output_type -> fusion.proto.menu.TreeMenuResponse
-	12, // 12: fusion.proto.menu.MenuService.GetMenuRoles:output_type -> fusion.proto.menu.GetMenuRolesResponse
-	13, // 13: fusion.proto.menu.MenuService.SelfRoleMenus:output_type -> fusion.proto.menu.SelfRoleMenusResponse
-	7,  // [7:14] is the sub-list for method output_type
-	0,  // [0:7] is the sub-list for method input_type
+	7,  // 7: fusion.proto.menu.MenuService.ChannelMenuTree:input_type -> fusion.proto.menu.ChannelMenuTreeRequest
+	8,  // 8: fusion.proto.menu.MenuService.GetMenu:output_type -> fusion.proto.menu.GetMenuResponse
+	9,  // 9: fusion.proto.menu.MenuService.UpsertMenu:output_type -> fusion.proto.menu.UpsertMenuResponse
+	10, // 10: fusion.proto.menu.MenuService.DeleteMenu:output_type -> google.protobuf.Empty
+	11, // 11: fusion.proto.menu.MenuService.ListMenus:output_type -> fusion.proto.menu.ListMenusResponse
+	12, // 12: fusion.proto.menu.MenuService.TreeMenu:output_type -> fusion.proto.menu.TreeMenuResponse
+	13, // 13: fusion.proto.menu.MenuService.GetMenuRoles:output_type -> fusion.proto.menu.GetMenuRolesResponse
+	14, // 14: fusion.proto.menu.MenuService.SelfRoleMenus:output_type -> fusion.proto.menu.SelfRoleMenusResponse
+	15, // 15: fusion.proto.menu.MenuService.ChannelMenuTree:output_type -> fusion.proto.menu.ChannelMenuTreeResponse
+	8,  // [8:16] is the sub-list for method output_type
+	0,  // [0:8] is the sub-list for method input_type
 	0,  // [0:0] is the sub-list for extension type_name
 	0,  // [0:0] is the sub-list for extension extendee
 	0,  // [0:0] is the sub-list for field type_name
