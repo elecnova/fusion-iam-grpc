@@ -30,12 +30,13 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	MenuService_GetMenu_FullMethodName      = "/fusion.proto.menu.MenuService/GetMenu"
-	MenuService_UpsertMenu_FullMethodName   = "/fusion.proto.menu.MenuService/UpsertMenu"
-	MenuService_DeleteMenu_FullMethodName   = "/fusion.proto.menu.MenuService/DeleteMenu"
-	MenuService_ListMenus_FullMethodName    = "/fusion.proto.menu.MenuService/ListMenus"
-	MenuService_TreeMenu_FullMethodName     = "/fusion.proto.menu.MenuService/TreeMenu"
-	MenuService_GetMenuRoles_FullMethodName = "/fusion.proto.menu.MenuService/GetMenuRoles"
+	MenuService_GetMenu_FullMethodName       = "/fusion.proto.menu.MenuService/GetMenu"
+	MenuService_UpsertMenu_FullMethodName    = "/fusion.proto.menu.MenuService/UpsertMenu"
+	MenuService_DeleteMenu_FullMethodName    = "/fusion.proto.menu.MenuService/DeleteMenu"
+	MenuService_ListMenus_FullMethodName     = "/fusion.proto.menu.MenuService/ListMenus"
+	MenuService_TreeMenu_FullMethodName      = "/fusion.proto.menu.MenuService/TreeMenu"
+	MenuService_GetMenuRoles_FullMethodName  = "/fusion.proto.menu.MenuService/GetMenuRoles"
+	MenuService_SelfRoleMenus_FullMethodName = "/fusion.proto.menu.MenuService/SelfRoleMenus"
 )
 
 // MenuServiceClient is the client API for MenuService service.
@@ -56,6 +57,8 @@ type MenuServiceClient interface {
 	TreeMenu(ctx context.Context, in *TreeMenuRequest, opts ...grpc.CallOption) (*TreeMenuResponse, error)
 	// 获取指定角色的菜单ID列表
 	GetMenuRoles(ctx context.Context, in *GetMenuRolesRequest, opts ...grpc.CallOption) (*GetMenuRolesResponse, error)
+	// 获取当前用户指定渠道的角色菜单树
+	SelfRoleMenus(ctx context.Context, in *SelfRoleMenusRequest, opts ...grpc.CallOption) (*SelfRoleMenusResponse, error)
 }
 
 type menuServiceClient struct {
@@ -126,6 +129,16 @@ func (c *menuServiceClient) GetMenuRoles(ctx context.Context, in *GetMenuRolesRe
 	return out, nil
 }
 
+func (c *menuServiceClient) SelfRoleMenus(ctx context.Context, in *SelfRoleMenusRequest, opts ...grpc.CallOption) (*SelfRoleMenusResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(SelfRoleMenusResponse)
+	err := c.cc.Invoke(ctx, MenuService_SelfRoleMenus_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // MenuServiceServer is the server API for MenuService service.
 // All implementations must embed UnimplementedMenuServiceServer
 // for forward compatibility.
@@ -144,6 +157,8 @@ type MenuServiceServer interface {
 	TreeMenu(context.Context, *TreeMenuRequest) (*TreeMenuResponse, error)
 	// 获取指定角色的菜单ID列表
 	GetMenuRoles(context.Context, *GetMenuRolesRequest) (*GetMenuRolesResponse, error)
+	// 获取当前用户指定渠道的角色菜单树
+	SelfRoleMenus(context.Context, *SelfRoleMenusRequest) (*SelfRoleMenusResponse, error)
 	mustEmbedUnimplementedMenuServiceServer()
 }
 
@@ -171,6 +186,9 @@ func (UnimplementedMenuServiceServer) TreeMenu(context.Context, *TreeMenuRequest
 }
 func (UnimplementedMenuServiceServer) GetMenuRoles(context.Context, *GetMenuRolesRequest) (*GetMenuRolesResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method GetMenuRoles not implemented")
+}
+func (UnimplementedMenuServiceServer) SelfRoleMenus(context.Context, *SelfRoleMenusRequest) (*SelfRoleMenusResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method SelfRoleMenus not implemented")
 }
 func (UnimplementedMenuServiceServer) mustEmbedUnimplementedMenuServiceServer() {}
 func (UnimplementedMenuServiceServer) testEmbeddedByValue()                     {}
@@ -301,6 +319,24 @@ func _MenuService_GetMenuRoles_Handler(srv interface{}, ctx context.Context, dec
 	return interceptor(ctx, in, info, handler)
 }
 
+func _MenuService_SelfRoleMenus_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SelfRoleMenusRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MenuServiceServer).SelfRoleMenus(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: MenuService_SelfRoleMenus_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MenuServiceServer).SelfRoleMenus(ctx, req.(*SelfRoleMenusRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // MenuService_ServiceDesc is the grpc.ServiceDesc for MenuService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -331,6 +367,10 @@ var MenuService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetMenuRoles",
 			Handler:    _MenuService_GetMenuRoles_Handler,
+		},
+		{
+			MethodName: "SelfRoleMenus",
+			Handler:    _MenuService_SelfRoleMenus_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
