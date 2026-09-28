@@ -1238,12 +1238,10 @@ func (x *GetMenuRolesResponse) GetData() []*RoleMenuTree {
 // Package message 获取当前用户指定渠道角色菜单树请求消息定义
 type SelfRoleMenusRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// 用户ID（为空时由服务端从调用上下文解析）
-	UserId string `protobuf:"bytes,1,opt,name=user_id,proto3" json:"user_id,omitempty"`
 	// 渠道(1-用户中心 2-业务平台 3-运维平台 4-开放平台 5-集控平台 6-DPP平台)
-	Channel int32 `protobuf:"varint,2,opt,name=channel,proto3" json:"channel,omitempty"`
+	Channel int32 `protobuf:"varint,1,opt,name=channel,proto3" json:"channel,omitempty"`
 	// 语种信息 eg:(zh,en)
-	Language      string `protobuf:"bytes,3,opt,name=language,proto3" json:"language,omitempty"`
+	Language      string `protobuf:"bytes,2,opt,name=language,proto3" json:"language,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1276,13 +1274,6 @@ func (x *SelfRoleMenusRequest) ProtoReflect() protoreflect.Message {
 // Deprecated: Use SelfRoleMenusRequest.ProtoReflect.Descriptor instead.
 func (*SelfRoleMenusRequest) Descriptor() ([]byte, []int) {
 	return file_menu_menu_message_proto_rawDescGZIP(), []int{15}
-}
-
-func (x *SelfRoleMenusRequest) GetUserId() string {
-	if x != nil {
-		return x.UserId
-	}
-	return ""
 }
 
 func (x *SelfRoleMenusRequest) GetChannel() int32 {
@@ -1452,11 +1443,10 @@ const file_menu_menu_message_proto_rawDesc = "" +
 	"\blanguage\x18\x05 \x01(\tB\a\xbaH\x04r\x02\x18\n" +
 	"R\blanguage\"K\n" +
 	"\x14GetMenuRolesResponse\x123\n" +
-	"\x04data\x18\x01 \x03(\v2\x1f.fusion.proto.menu.RoleMenuTreeR\x04data\"\x83\x01\n" +
-	"\x14SelfRoleMenusRequest\x12!\n" +
-	"\auser_id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x18(R\auser_id\x12#\n" +
-	"\achannel\x18\x02 \x01(\x05B\t\xbaH\x06\x1a\x04\x18\x06(\x01R\achannel\x12#\n" +
-	"\blanguage\x18\x03 \x01(\tB\a\xbaH\x04r\x02\x18\n" +
+	"\x04data\x18\x01 \x03(\v2\x1f.fusion.proto.menu.RoleMenuTreeR\x04data\"`\n" +
+	"\x14SelfRoleMenusRequest\x12#\n" +
+	"\achannel\x18\x01 \x01(\x05B\t\xbaH\x06\x1a\x04\x18\x06(\x01R\achannel\x12#\n" +
+	"\blanguage\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x18\n" +
 	"R\blanguage\"L\n" +
 	"\x15SelfRoleMenusResponse\x123\n" +
 	"\x04data\x18\x01 \x03(\v2\x1f.fusion.proto.menu.RoleMenuTreeR\x04dataB\xa7\x01\n" +
