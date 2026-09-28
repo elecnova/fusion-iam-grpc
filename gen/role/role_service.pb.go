@@ -36,7 +36,7 @@ var File_role_role_service_proto protoreflect.FileDescriptor
 
 const file_role_role_service_proto_rawDesc = "" +
 	"\n" +
-	"\x17role/role_service.proto\x12\x11fusion.proto.role\x1a\x1cgoogle/api/annotations.proto\x1a\x17google/api/client.proto\x1a\x1bgoogle/protobuf/empty.proto\x1a\x17role/role_message.proto2\xfd\r\n" +
+	"\x17role/role_service.proto\x12\x11fusion.proto.role\x1a\x1cgoogle/api/annotations.proto\x1a\x17google/api/client.proto\x1a\x1bgoogle/protobuf/empty.proto\x1a\x17role/role_message.proto2\xc4\r\n" +
 	"\vRoleService\x12\x9f\x01\n" +
 	"\n" +
 	"CreateRole\x12$.fusion.proto.role.CreateRoleRequest\x1a%.fusion.proto.role.CreateRoleResponse\"D\xdaA&name,description,menu_ids,sort,channel\x82\xd3\xe4\x93\x02\x15:\x01*\"\x10/3rd-api/v1/role\x12\x9d\x01\n" +
@@ -44,15 +44,15 @@ const file_role_role_service_proto_rawDesc = "" +
 	"\n" +
 	"UpdateRole\x12$.fusion.proto.role.UpdateRoleRequest\x1a\x16.google.protobuf.Empty\"L\xdaA)id,name,description,menu_ids,sort,channel\x82\xd3\xe4\x93\x02\x1a:\x01*\x1a\x15/3rd-api/v1/role/{id}\x12n\n" +
 	"\n" +
-	"DeleteRole\x12$.fusion.proto.role.DeleteRoleRequest\x1a\x16.google.protobuf.Empty\"\"\xdaA\x02id\x82\xd3\xe4\x93\x02\x17*\x15/3rd-api/v1/role/{id}\x12}\n" +
-	"\aGetRole\x12!.fusion.proto.role.GetRoleRequest\x1a\".fusion.proto.role.GetRoleResponse\"+\xdaA\vid,language\x82\xd3\xe4\x93\x02\x17\x12\x15/3rd-api/v1/role/{id}\x12\x92\x01\n" +
-	"\fGetRolePerms\x12&.fusion.proto.role.GetRolePermsRequest\x1a'.fusion.proto.role.GetRolePermsResponse\"1\xdaA\vid,language\x82\xd3\xe4\x93\x02\x1d\x12\x1b/3rd-api/v1/role/{id}/perms\x12\xa0\x01\n" +
-	"\tListRoles\x12#.fusion.proto.role.ListRolesRequest\x1a$.fusion.proto.role.ListRolesResponse\"H\xdaA,name,project_id,type,page,page_size,language\x82\xd3\xe4\x93\x02\x13\x12\x11/3rd-api/v1/roles\x12\x91\x01\n" +
-	"\bAllRoles\x12\".fusion.proto.role.AllRolesRequest\x1a#.fusion.proto.role.AllRolesResponse\"<\xdaA\x1dname,project_id,type,language\x82\xd3\xe4\x93\x02\x16\x12\x14/3rd-api/v1/role/all\x12\x80\x01\n" +
-	"\bSysRoles\x12\".fusion.proto.role.AllRolesRequest\x1a#.fusion.proto.role.AllRolesResponse\"+\xdaA\blanguage\x82\xd3\xe4\x93\x02\x1a\x12\x18/3rd-api/v1/role/all/sys\x12\xa0\x01\n" +
+	"DeleteRole\x12$.fusion.proto.role.DeleteRoleRequest\x1a\x16.google.protobuf.Empty\"\"\xdaA\x02id\x82\xd3\xe4\x93\x02\x17*\x15/3rd-api/v1/role/{id}\x12t\n" +
+	"\aGetRole\x12!.fusion.proto.role.GetRoleRequest\x1a\".fusion.proto.role.GetRoleResponse\"\"\xdaA\x02id\x82\xd3\xe4\x93\x02\x17\x12\x15/3rd-api/v1/role/{id}\x12\x89\x01\n" +
+	"\fGetRolePerms\x12&.fusion.proto.role.GetRolePermsRequest\x1a'.fusion.proto.role.GetRolePermsResponse\"(\xdaA\x02id\x82\xd3\xe4\x93\x02\x1d\x12\x1b/3rd-api/v1/role/{id}/perms\x12\x97\x01\n" +
+	"\tListRoles\x12#.fusion.proto.role.ListRolesRequest\x1a$.fusion.proto.role.ListRolesResponse\"?\xdaA#name,project_id,type,page,page_size\x82\xd3\xe4\x93\x02\x13\x12\x11/3rd-api/v1/roles\x12\x88\x01\n" +
+	"\bAllRoles\x12\".fusion.proto.role.AllRolesRequest\x1a#.fusion.proto.role.AllRolesResponse\"3\xdaA\x14name,project_id,type\x82\xd3\xe4\x93\x02\x16\x12\x14/3rd-api/v1/role/all\x12u\n" +
+	"\bSysRoles\x12\".fusion.proto.role.AllRolesRequest\x1a#.fusion.proto.role.AllRolesResponse\" \x82\xd3\xe4\x93\x02\x1a\x12\x18/3rd-api/v1/role/all/sys\x12\xa0\x01\n" +
 	"\x13CheckRolePermission\x12-.fusion.proto.role.CheckRolePermissionRequest\x1a\x16.google.protobuf.Empty\"B\xdaA\x13role_id,path,method\x82\xd3\xe4\x93\x02&:\x01*\"!/3rd-api/v1/role/permission/check\x12\x90\x01\n" +
-	"\vProjectRole\x12%.fusion.proto.role.ProjectRoleRequest\x1a&.fusion.proto.role.ProjectRoleResponse\"2\xdaA\x0fuser_id,site_id\x82\xd3\xe4\x93\x02\x1a\x12\x18/3rd-api/v1/role/project\x12\x9c\x01\n" +
-	"\fGetUserRoles\x12&.fusion.proto.role.GetUserRolesRequest\x1a'.fusion.proto.role.GetUserRolesResponse\";\xdaA\x10user_id,language\x82\xd3\xe4\x93\x02\"\x12 /3rd-api/v1/user/{user_id}/rolesB\xa7\x01\n" +
+	"\vProjectRole\x12%.fusion.proto.role.ProjectRoleRequest\x1a&.fusion.proto.role.ProjectRoleResponse\"2\xdaA\x0fuser_id,site_id\x82\xd3\xe4\x93\x02\x1a\x12\x18/3rd-api/v1/role/project\x12\x93\x01\n" +
+	"\fGetUserRoles\x12&.fusion.proto.role.GetUserRolesRequest\x1a'.fusion.proto.role.GetUserRolesResponse\"2\xdaA\auser_id\x82\xd3\xe4\x93\x02\"\x12 /3rd-api/v1/user/{user_id}/rolesB\xa7\x01\n" +
 	"\x15com.fusion.proto.roleB\x10RoleServiceProtoP\x01Z\x16fusion.proto.role;role\xa2\x02\x03FPR\xaa\x02\x11Fusion.Proto.Role\xca\x02\x11Fusion\\Proto\\Role\xe2\x02\x1dFusion\\Proto\\Role\\GPBMetadata\xea\x02\x13Fusion::Proto::Roleb\x06proto3"
 
 var file_role_role_service_proto_goTypes = []any{

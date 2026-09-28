@@ -484,9 +484,7 @@ func (x *DeleteSystemRequest) GetId() int32 {
 type GetSystemRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// 系统ID
-	Id int32 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	// 语种信息 eg:(zh,en)
-	Language      string `protobuf:"bytes,2,opt,name=language,proto3" json:"language,omitempty"`
+	Id            int32 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -526,13 +524,6 @@ func (x *GetSystemRequest) GetId() int32 {
 		return x.Id
 	}
 	return 0
-}
-
-func (x *GetSystemRequest) GetLanguage() string {
-	if x != nil {
-		return x.Language
-	}
-	return ""
 }
 
 // Package message 查询系统详情响应消息定义
@@ -586,12 +577,10 @@ type ListSystemsRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// 模糊搜索关键字，可搜索系统名称
 	Keywords string `protobuf:"bytes,1,opt,name=keywords,proto3" json:"keywords,omitempty"`
-	// 语种信息 eg:(zh,en)
-	Language string `protobuf:"bytes,2,opt,name=language,proto3" json:"language,omitempty"`
 	// 页码
-	Page int32 `protobuf:"varint,3,opt,name=page,proto3" json:"page,omitempty"`
+	Page int32 `protobuf:"varint,2,opt,name=page,proto3" json:"page,omitempty"`
 	// 分页大小
-	PageSize      int32 `protobuf:"varint,4,opt,name=page_size,proto3" json:"page_size,omitempty"`
+	PageSize      int32 `protobuf:"varint,3,opt,name=page_size,proto3" json:"page_size,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -629,13 +618,6 @@ func (*ListSystemsRequest) Descriptor() ([]byte, []int) {
 func (x *ListSystemsRequest) GetKeywords() string {
 	if x != nil {
 		return x.Keywords
-	}
-	return ""
-}
-
-func (x *ListSystemsRequest) GetLanguage() string {
-	if x != nil {
-		return x.Language
 	}
 	return ""
 }
@@ -729,9 +711,7 @@ func (x *ListSystemsResponse) GetPageSize() int32 {
 
 // Package message 查询所有系统请求消息定义
 type AllSystemsRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// 语种信息 eg:(zh,en)
-	Language      string `protobuf:"bytes,1,opt,name=language,proto3" json:"language,omitempty"`
+	state         protoimpl.MessageState `protogen:"open.v1"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -764,13 +744,6 @@ func (x *AllSystemsRequest) ProtoReflect() protoreflect.Message {
 // Deprecated: Use AllSystemsRequest.ProtoReflect.Descriptor instead.
 func (*AllSystemsRequest) Descriptor() ([]byte, []int) {
 	return file_system_system_message_proto_rawDescGZIP(), []int{10}
-}
-
-func (x *AllSystemsRequest) GetLanguage() string {
-	if x != nil {
-		return x.Language
-	}
-	return ""
 }
 
 // Package message 系统列表项（轻量字段，供角色绑定勾选使用）
@@ -905,9 +878,7 @@ func (x *AllSystemsResponse) GetData() []*SystemListItem {
 type GetRoleSystemsRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// 角色ID
-	RoleId string `protobuf:"bytes,1,opt,name=role_id,proto3" json:"role_id,omitempty"`
-	// 语种信息 eg:(zh,en)
-	Language      string `protobuf:"bytes,2,opt,name=language,proto3" json:"language,omitempty"`
+	RoleId        string `protobuf:"bytes,1,opt,name=role_id,proto3" json:"role_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -945,13 +916,6 @@ func (*GetRoleSystemsRequest) Descriptor() ([]byte, []int) {
 func (x *GetRoleSystemsRequest) GetRoleId() string {
 	if x != nil {
 		return x.RoleId
-	}
-	return ""
-}
-
-func (x *GetRoleSystemsRequest) GetLanguage() string {
-	if x != nil {
-		return x.Language
 	}
 	return ""
 }
@@ -1044,28 +1008,22 @@ const file_system_system_message_proto_rawDesc = "" +
 	"\x04sort\x18\x04 \x01(\x03R\x04sort\x12\x1f\n" +
 	"\x05state\x18\x05 \x01(\x05B\t\xbaH\x06\x1a\x04\x18\x03(\x01R\x05state\".\n" +
 	"\x13DeleteSystemRequest\x12\x17\n" +
-	"\x02id\x18\x01 \x01(\x05B\a\xbaH\x04\x1a\x02 \x00R\x02id\"P\n" +
+	"\x02id\x18\x01 \x01(\x05B\a\xbaH\x04\x1a\x02 \x00R\x02id\"+\n" +
 	"\x10GetSystemRequest\x12\x17\n" +
-	"\x02id\x18\x01 \x01(\x05B\a\xbaH\x04\x1a\x02 \x00R\x02id\x12#\n" +
-	"\blanguage\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x18\n" +
-	"R\blanguage\"H\n" +
+	"\x02id\x18\x01 \x01(\x05B\a\xbaH\x04\x1a\x02 \x00R\x02id\"H\n" +
 	"\x11GetSystemResponse\x123\n" +
-	"\x04data\x18\x01 \x01(\v2\x1f.fusion.proto.system.SystemDataR\x04data\"\xa5\x01\n" +
+	"\x04data\x18\x01 \x01(\v2\x1f.fusion.proto.system.SystemDataR\x04data\"\x80\x01\n" +
 	"\x12ListSystemsRequest\x12#\n" +
-	"\bkeywords\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x18dR\bkeywords\x12#\n" +
-	"\blanguage\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x18\n" +
-	"R\blanguage\x12\x1b\n" +
-	"\x04page\x18\x03 \x01(\x05B\a\xbaH\x04\x1a\x02 \x00R\x04page\x12(\n" +
-	"\tpage_size\x18\x04 \x01(\x05B\n" +
+	"\bkeywords\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x18dR\bkeywords\x12\x1b\n" +
+	"\x04page\x18\x02 \x01(\x05B\a\xbaH\x04\x1a\x02 \x00R\x04page\x12(\n" +
+	"\tpage_size\x18\x03 \x01(\x05B\n" +
 	"\xbaH\a\x1a\x05\x18\xac\x02 \x00R\tpage_size\"\x92\x01\n" +
 	"\x13ListSystemsResponse\x123\n" +
 	"\x04data\x18\x01 \x03(\v2\x1f.fusion.proto.system.SystemDataR\x04data\x12\x14\n" +
 	"\x05total\x18\x02 \x01(\x03R\x05total\x12\x12\n" +
 	"\x04page\x18\x03 \x01(\x05R\x04page\x12\x1c\n" +
-	"\tpage_size\x18\x04 \x01(\x05R\tpage_size\"8\n" +
-	"\x11AllSystemsRequest\x12#\n" +
-	"\blanguage\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x18\n" +
-	"R\blanguage\"\x80\x01\n" +
+	"\tpage_size\x18\x04 \x01(\x05R\tpage_size\"\x13\n" +
+	"\x11AllSystemsRequest\"\x80\x01\n" +
 	"\x0eSystemListItem\x12\x12\n" +
 	"\x04name\x18\x01 \x01(\tR\x04name\x12 \n" +
 	"\vdescription\x18\x02 \x01(\tR\vdescription\x12\x12\n" +
@@ -1073,11 +1031,9 @@ const file_system_system_message_proto_rawDesc = "" +
 	"\x02id\x18\x04 \x01(\x05R\x02id\x12\x14\n" +
 	"\x05state\x18\x05 \x01(\x05R\x05state\"M\n" +
 	"\x12AllSystemsResponse\x127\n" +
-	"\x04data\x18\x01 \x03(\v2#.fusion.proto.system.SystemListItemR\x04data\"a\n" +
+	"\x04data\x18\x01 \x03(\v2#.fusion.proto.system.SystemListItemR\x04data\"<\n" +
 	"\x15GetRoleSystemsRequest\x12#\n" +
-	"\arole_id\x18\x01 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18(R\arole_id\x12#\n" +
-	"\blanguage\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x18\n" +
-	"R\blanguage\"M\n" +
+	"\arole_id\x18\x01 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18(R\arole_id\"M\n" +
 	"\x16GetRoleSystemsResponse\x123\n" +
 	"\x04data\x18\x01 \x03(\v2\x1f.fusion.proto.system.SystemDataR\x04dataB\xb7\x01\n" +
 	"\x17com.fusion.proto.systemB\x12SystemMessageProtoP\x01Z\x1afusion.proto.system;system\xa2\x02\x03FPS\xaa\x02\x13Fusion.Proto.System\xca\x02\x13Fusion\\Proto\\System\xe2\x02\x1fFusion\\Proto\\System\\GPBMetadata\xea\x02\x15Fusion::Proto::Systemb\x06proto3"

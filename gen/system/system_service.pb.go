@@ -36,16 +36,16 @@ var File_system_system_service_proto protoreflect.FileDescriptor
 
 const file_system_system_service_proto_rawDesc = "" +
 	"\n" +
-	"\x1bsystem/system_service.proto\x12\x13fusion.proto.system\x1a\x1cgoogle/api/annotations.proto\x1a\x17google/api/client.proto\x1a\x1bgoogle/protobuf/empty.proto\x1a\x1bsystem/system_message.proto2\xa7\b\n" +
+	"\x1bsystem/system_service.proto\x12\x13fusion.proto.system\x1a\x1cgoogle/api/annotations.proto\x1a\x17google/api/client.proto\x1a\x1bgoogle/protobuf/empty.proto\x1a\x1bsystem/system_message.proto2\x80\b\n" +
 	"\rSystemService\x12\xa0\x01\n" +
 	"\fCreateSystem\x12(.fusion.proto.system.CreateSystemRequest\x1a).fusion.proto.system.CreateSystemResponse\";\xdaA\x1bname,description,sort,state\x82\xd3\xe4\x93\x02\x17:\x01*\"\x12/3rd-api/v2/system\x12\x95\x01\n" +
 	"\fUpdateSystem\x12(.fusion.proto.system.UpdateSystemRequest\x1a\x16.google.protobuf.Empty\"C\xdaA\x1eid,name,description,sort,state\x82\xd3\xe4\x93\x02\x1c:\x01*\x1a\x17/3rd-api/v2/system/{id}\x12v\n" +
-	"\fDeleteSystem\x12(.fusion.proto.system.DeleteSystemRequest\x1a\x16.google.protobuf.Empty\"$\xdaA\x02id\x82\xd3\xe4\x93\x02\x19*\x17/3rd-api/v2/system/{id}\x12\x89\x01\n" +
-	"\tGetSystem\x12%.fusion.proto.system.GetSystemRequest\x1a&.fusion.proto.system.GetSystemResponse\"-\xdaA\vid,language\x82\xd3\xe4\x93\x02\x19\x12\x17/3rd-api/v2/system/{id}\x12\xa0\x01\n" +
-	"\vListSystems\x12'.fusion.proto.system.ListSystemsRequest\x1a(.fusion.proto.system.ListSystemsResponse\">\xdaA keywords,language,page,page_size\x82\xd3\xe4\x93\x02\x15\x12\x13/3rd-api/v2/systems\x12\x88\x01\n" +
+	"\fDeleteSystem\x12(.fusion.proto.system.DeleteSystemRequest\x1a\x16.google.protobuf.Empty\"$\xdaA\x02id\x82\xd3\xe4\x93\x02\x19*\x17/3rd-api/v2/system/{id}\x12\x80\x01\n" +
+	"\tGetSystem\x12%.fusion.proto.system.GetSystemRequest\x1a&.fusion.proto.system.GetSystemResponse\"$\xdaA\x02id\x82\xd3\xe4\x93\x02\x19\x12\x17/3rd-api/v2/system/{id}\x12\x97\x01\n" +
+	"\vListSystems\x12'.fusion.proto.system.ListSystemsRequest\x1a(.fusion.proto.system.ListSystemsResponse\"5\xdaA\x17keywords,page,page_size\x82\xd3\xe4\x93\x02\x15\x12\x13/3rd-api/v2/systems\x12}\n" +
 	"\n" +
-	"AllSystems\x12&.fusion.proto.system.AllSystemsRequest\x1a'.fusion.proto.system.AllSystemsResponse\")\xdaA\blanguage\x82\xd3\xe4\x93\x02\x18\x12\x16/3rd-api/v2/system/all\x12\xa8\x01\n" +
-	"\x0eGetRoleSystems\x12*.fusion.proto.system.GetRoleSystemsRequest\x1a+.fusion.proto.system.GetRoleSystemsResponse\"=\xdaA\x10role_id,language\x82\xd3\xe4\x93\x02$\x12\"/3rd-api/v2/role/systems/{role_id}B\xb7\x01\n" +
+	"AllSystems\x12&.fusion.proto.system.AllSystemsRequest\x1a'.fusion.proto.system.AllSystemsResponse\"\x1e\x82\xd3\xe4\x93\x02\x18\x12\x16/3rd-api/v2/system/all\x12\x9f\x01\n" +
+	"\x0eGetRoleSystems\x12*.fusion.proto.system.GetRoleSystemsRequest\x1a+.fusion.proto.system.GetRoleSystemsResponse\"4\xdaA\arole_id\x82\xd3\xe4\x93\x02$\x12\"/3rd-api/v2/role/systems/{role_id}B\xb7\x01\n" +
 	"\x17com.fusion.proto.systemB\x12SystemServiceProtoP\x01Z\x1afusion.proto.system;system\xa2\x02\x03FPS\xaa\x02\x13Fusion.Proto.System\xca\x02\x13Fusion\\Proto\\System\xe2\x02\x1fFusion\\Proto\\System\\GPBMetadata\xea\x02\x15Fusion::Proto::Systemb\x06proto3"
 
 var file_system_system_service_proto_goTypes = []any{

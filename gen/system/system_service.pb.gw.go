@@ -146,8 +146,6 @@ func local_request_SystemService_DeleteSystem_0(ctx context.Context, marshaler r
 	return msg, metadata, err
 }
 
-var filter_SystemService_GetSystem_0 = &utilities.DoubleArray{Encoding: map[string]int{"id": 0}, Base: []int{1, 1, 0}, Check: []int{0, 1, 2}}
-
 func request_SystemService_GetSystem_0(ctx context.Context, marshaler runtime.Marshaler, client SystemServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var (
 		protoReq GetSystemRequest
@@ -161,12 +159,6 @@ func request_SystemService_GetSystem_0(ctx context.Context, marshaler runtime.Ma
 	protoReq.Id, err = runtime.Int32(val)
 	if err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "id", err)
-	}
-	if err := req.ParseForm(); err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
-	}
-	if err := runtime.PopulateQueryParameters(&protoReq, req.Form, filter_SystemService_GetSystem_0); err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
 	if req.Body != nil {
 		_, _ = io.Copy(io.Discard, req.Body)
@@ -188,12 +180,6 @@ func local_request_SystemService_GetSystem_0(ctx context.Context, marshaler runt
 	protoReq.Id, err = runtime.Int32(val)
 	if err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "id", err)
-	}
-	if err := req.ParseForm(); err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
-	}
-	if err := runtime.PopulateQueryParameters(&protoReq, req.Form, filter_SystemService_GetSystem_0); err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
 	msg, err := server.GetSystem(ctx, &protoReq)
 	return msg, metadata, err
@@ -234,19 +220,11 @@ func local_request_SystemService_ListSystems_0(ctx context.Context, marshaler ru
 	return msg, metadata, err
 }
 
-var filter_SystemService_AllSystems_0 = &utilities.DoubleArray{Encoding: map[string]int{}, Base: []int(nil), Check: []int(nil)}
-
 func request_SystemService_AllSystems_0(ctx context.Context, marshaler runtime.Marshaler, client SystemServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var (
 		protoReq AllSystemsRequest
 		metadata runtime.ServerMetadata
 	)
-	if err := req.ParseForm(); err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
-	}
-	if err := runtime.PopulateQueryParameters(&protoReq, req.Form, filter_SystemService_AllSystems_0); err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
-	}
 	if req.Body != nil {
 		_, _ = io.Copy(io.Discard, req.Body)
 	}
@@ -259,17 +237,9 @@ func local_request_SystemService_AllSystems_0(ctx context.Context, marshaler run
 		protoReq AllSystemsRequest
 		metadata runtime.ServerMetadata
 	)
-	if err := req.ParseForm(); err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
-	}
-	if err := runtime.PopulateQueryParameters(&protoReq, req.Form, filter_SystemService_AllSystems_0); err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
-	}
 	msg, err := server.AllSystems(ctx, &protoReq)
 	return msg, metadata, err
 }
-
-var filter_SystemService_GetRoleSystems_0 = &utilities.DoubleArray{Encoding: map[string]int{"role_id": 0}, Base: []int{1, 1, 0}, Check: []int{0, 1, 2}}
 
 func request_SystemService_GetRoleSystems_0(ctx context.Context, marshaler runtime.Marshaler, client SystemServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var (
@@ -284,12 +254,6 @@ func request_SystemService_GetRoleSystems_0(ctx context.Context, marshaler runti
 	protoReq.RoleId, err = runtime.String(val)
 	if err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "role_id", err)
-	}
-	if err := req.ParseForm(); err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
-	}
-	if err := runtime.PopulateQueryParameters(&protoReq, req.Form, filter_SystemService_GetRoleSystems_0); err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
 	if req.Body != nil {
 		_, _ = io.Copy(io.Discard, req.Body)
@@ -311,12 +275,6 @@ func local_request_SystemService_GetRoleSystems_0(ctx context.Context, marshaler
 	protoReq.RoleId, err = runtime.String(val)
 	if err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "role_id", err)
-	}
-	if err := req.ParseForm(); err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
-	}
-	if err := runtime.PopulateQueryParameters(&protoReq, req.Form, filter_SystemService_GetRoleSystems_0); err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
 	msg, err := server.GetRoleSystems(ctx, &protoReq)
 	return msg, metadata, err

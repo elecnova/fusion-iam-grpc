@@ -269,19 +269,11 @@ func local_request_CountryService_AllCountries_0(ctx context.Context, marshaler 
 	return msg, metadata, err
 }
 
-var filter_CountryService_TreeCountries_0 = &utilities.DoubleArray{Encoding: map[string]int{}, Base: []int(nil), Check: []int(nil)}
-
 func request_CountryService_TreeCountries_0(ctx context.Context, marshaler runtime.Marshaler, client CountryServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var (
 		protoReq TreeCountriesRequest
 		metadata runtime.ServerMetadata
 	)
-	if err := req.ParseForm(); err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
-	}
-	if err := runtime.PopulateQueryParameters(&protoReq, req.Form, filter_CountryService_TreeCountries_0); err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
-	}
 	if req.Body != nil {
 		_, _ = io.Copy(io.Discard, req.Body)
 	}
@@ -294,12 +286,6 @@ func local_request_CountryService_TreeCountries_0(ctx context.Context, marshaler
 		protoReq TreeCountriesRequest
 		metadata runtime.ServerMetadata
 	)
-	if err := req.ParseForm(); err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
-	}
-	if err := runtime.PopulateQueryParameters(&protoReq, req.Form, filter_CountryService_TreeCountries_0); err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
-	}
 	msg, err := server.TreeCountries(ctx, &protoReq)
 	return msg, metadata, err
 }

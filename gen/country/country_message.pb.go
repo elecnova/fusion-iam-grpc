@@ -311,10 +311,8 @@ type GetCountryRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// 国家地区ID
 	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	// 语种信息
-	Language string `protobuf:"bytes,2,opt,name=language,proto3" json:"language,omitempty"`
 	// 是否需要全字段信息
-	All           bool `protobuf:"varint,3,opt,name=all,proto3" json:"all,omitempty"`
+	All           bool `protobuf:"varint,2,opt,name=all,proto3" json:"all,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -352,13 +350,6 @@ func (*GetCountryRequest) Descriptor() ([]byte, []int) {
 func (x *GetCountryRequest) GetId() string {
 	if x != nil {
 		return x.Id
-	}
-	return ""
-}
-
-func (x *GetCountryRequest) GetLanguage() string {
-	if x != nil {
-		return x.Language
 	}
 	return ""
 }
@@ -567,14 +558,12 @@ type ListCountriesRequest struct {
 	Keyword string `protobuf:"bytes,1,opt,name=keyword,proto3" json:"keyword,omitempty"`
 	// 上级菜单ID
 	ParentId string `protobuf:"bytes,2,opt,name=parent_id,proto3" json:"parent_id,omitempty"`
-	// 语种信息
-	Language string `protobuf:"bytes,3,opt,name=language,proto3" json:"language,omitempty"`
 	// 是否需要全字段信息
-	All bool `protobuf:"varint,4,opt,name=all,proto3" json:"all,omitempty"`
+	All bool `protobuf:"varint,3,opt,name=all,proto3" json:"all,omitempty"`
 	// 页码
-	Page int32 `protobuf:"varint,5,opt,name=page,proto3" json:"page,omitempty"`
+	Page int32 `protobuf:"varint,4,opt,name=page,proto3" json:"page,omitempty"`
 	// 分页大小
-	PageSize      int32 `protobuf:"varint,6,opt,name=page_size,proto3" json:"page_size,omitempty"`
+	PageSize      int32 `protobuf:"varint,5,opt,name=page_size,proto3" json:"page_size,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -619,13 +608,6 @@ func (x *ListCountriesRequest) GetKeyword() string {
 func (x *ListCountriesRequest) GetParentId() string {
 	if x != nil {
 		return x.ParentId
-	}
-	return ""
-}
-
-func (x *ListCountriesRequest) GetLanguage() string {
-	if x != nil {
-		return x.Language
 	}
 	return ""
 }
@@ -731,10 +713,8 @@ type AllCountriesRequest struct {
 	Keyword string `protobuf:"bytes,1,opt,name=keyword,proto3" json:"keyword,omitempty"`
 	// 上级菜单ID
 	ParentId string `protobuf:"bytes,2,opt,name=parent_id,proto3" json:"parent_id,omitempty"`
-	// 语种信息
-	Language string `protobuf:"bytes,3,opt,name=language,proto3" json:"language,omitempty"`
 	// 是否需要全字段信息
-	All           bool `protobuf:"varint,4,opt,name=all,proto3" json:"all,omitempty"`
+	All           bool `protobuf:"varint,3,opt,name=all,proto3" json:"all,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -779,13 +759,6 @@ func (x *AllCountriesRequest) GetKeyword() string {
 func (x *AllCountriesRequest) GetParentId() string {
 	if x != nil {
 		return x.ParentId
-	}
-	return ""
-}
-
-func (x *AllCountriesRequest) GetLanguage() string {
-	if x != nil {
-		return x.Language
 	}
 	return ""
 }
@@ -845,9 +818,7 @@ func (x *AllCountriesResponse) GetData() []*GetCountryResponse {
 
 // Package message 国家地区树请求消息定义
 type TreeCountriesRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// 语种信息
-	Language      string `protobuf:"bytes,1,opt,name=language,proto3" json:"language,omitempty"`
+	state         protoimpl.MessageState `protogen:"open.v1"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -880,13 +851,6 @@ func (x *TreeCountriesRequest) ProtoReflect() protoreflect.Message {
 // Deprecated: Use TreeCountriesRequest.ProtoReflect.Descriptor instead.
 func (*TreeCountriesRequest) Descriptor() ([]byte, []int) {
 	return file_country_country_message_proto_rawDescGZIP(), []int{10}
-}
-
-func (x *TreeCountriesRequest) GetLanguage() string {
-	if x != nil {
-		return x.Language
-	}
-	return ""
 }
 
 // Package message 国家地区树响应消息定义
@@ -1194,12 +1158,10 @@ const file_country_country_message_proto_rawDesc = "" +
 	"\x04sort\x18\x06 \x01(\x05B\a\xbaH\x04\x1a\x02(\x00R\x04sortB\x0e\n" +
 	"\f_zone_offset\"1\n" +
 	"\x14DeleteCountryRequest\x12\x19\n" +
-	"\x02id\x18\x01 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18(R\x02id\"e\n" +
+	"\x02id\x18\x01 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18(R\x02id\"@\n" +
 	"\x11GetCountryRequest\x12\x19\n" +
-	"\x02id\x18\x01 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18(R\x02id\x12#\n" +
-	"\blanguage\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x18\n" +
-	"R\blanguage\x12\x10\n" +
-	"\x03all\x18\x03 \x01(\bR\x03all\"\xb7\x05\n" +
+	"\x02id\x18\x01 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18(R\x02id\x12\x10\n" +
+	"\x03all\x18\x02 \x01(\bR\x03all\"\xb7\x05\n" +
 	"\x12GetCountryResponse\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x1c\n" +
@@ -1224,32 +1186,26 @@ const file_country_country_message_proto_rawDesc = "" +
 	"\f_descriptionB\x0e\n" +
 	"\f_location_idB\x0e\n" +
 	"\f_region_codeB\x0e\n" +
-	"\f_zone_offset\"\xdf\x01\n" +
+	"\f_zone_offset\"\xba\x01\n" +
 	"\x14ListCountriesRequest\x12\"\n" +
 	"\akeyword\x18\x01 \x01(\tB\b\xbaH\x05r\x03\x18\xc8\x01R\akeyword\x12%\n" +
-	"\tparent_id\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x18(R\tparent_id\x12#\n" +
-	"\blanguage\x18\x03 \x01(\tB\a\xbaH\x04r\x02\x18\n" +
-	"R\blanguage\x12\x10\n" +
-	"\x03all\x18\x04 \x01(\bR\x03all\x12\x1b\n" +
-	"\x04page\x18\x05 \x01(\x05B\a\xbaH\x04\x1a\x02 \x00R\x04page\x12(\n" +
-	"\tpage_size\x18\x06 \x01(\x05B\n" +
+	"\tparent_id\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x18(R\tparent_id\x12\x10\n" +
+	"\x03all\x18\x03 \x01(\bR\x03all\x12\x1b\n" +
+	"\x04page\x18\x04 \x01(\x05B\a\xbaH\x04\x1a\x02 \x00R\x04page\x12(\n" +
+	"\tpage_size\x18\x05 \x01(\x05B\n" +
 	"\xbaH\a\x1a\x05\x18\xac\x02 \x00R\tpage_size\"\x9d\x01\n" +
 	"\x15ListCountriesResponse\x12<\n" +
 	"\x04data\x18\x01 \x03(\v2(.fusion.proto.country.GetCountryResponseR\x04data\x12\x12\n" +
 	"\x04page\x18\x02 \x01(\x05R\x04page\x12\x1c\n" +
 	"\tpage_size\x18\x03 \x01(\x05R\tpage_size\x12\x14\n" +
-	"\x05total\x18\x04 \x01(\x03R\x05total\"\x97\x01\n" +
+	"\x05total\x18\x04 \x01(\x03R\x05total\"r\n" +
 	"\x13AllCountriesRequest\x12\"\n" +
 	"\akeyword\x18\x01 \x01(\tB\b\xbaH\x05r\x03\x18\xc8\x01R\akeyword\x12%\n" +
-	"\tparent_id\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x18(R\tparent_id\x12#\n" +
-	"\blanguage\x18\x03 \x01(\tB\a\xbaH\x04r\x02\x18\n" +
-	"R\blanguage\x12\x10\n" +
-	"\x03all\x18\x04 \x01(\bR\x03all\"T\n" +
+	"\tparent_id\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x18(R\tparent_id\x12\x10\n" +
+	"\x03all\x18\x03 \x01(\bR\x03all\"T\n" +
 	"\x14AllCountriesResponse\x12<\n" +
-	"\x04data\x18\x01 \x03(\v2(.fusion.proto.country.GetCountryResponseR\x04data\";\n" +
-	"\x14TreeCountriesRequest\x12#\n" +
-	"\blanguage\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x18\n" +
-	"R\blanguage\"R\n" +
+	"\x04data\x18\x01 \x03(\v2(.fusion.proto.country.GetCountryResponseR\x04data\"\x16\n" +
+	"\x14TreeCountriesRequest\"R\n" +
 	"\x15TreeCountriesResponse\x129\n" +
 	"\x04data\x18\x01 \x03(\v2%.fusion.proto.country.CountryTreeNodeR\x04data\"\x83\x03\n" +
 	"\x0fCountryTreeNode\x12\x0e\n" +

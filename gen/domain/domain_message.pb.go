@@ -321,9 +321,7 @@ func (x *DeleteDomainRequest) GetId() string {
 type GetDomainRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// 域名ID
-	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	// 语种信息 eg:(zh,en)
-	Language      string `protobuf:"bytes,2,opt,name=language,proto3" json:"language,omitempty"`
+	Id            string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -365,20 +363,11 @@ func (x *GetDomainRequest) GetId() string {
 	return ""
 }
 
-func (x *GetDomainRequest) GetLanguage() string {
-	if x != nil {
-		return x.Language
-	}
-	return ""
-}
-
 // Package message 根据域名查询详情请求消息定义
 type GetDomainByDomainRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// 域名
-	Domain string `protobuf:"bytes,1,opt,name=domain,proto3" json:"domain,omitempty"`
-	// 语种信息 eg:(zh,en)
-	Language      string `protobuf:"bytes,2,opt,name=language,proto3" json:"language,omitempty"`
+	Domain        string `protobuf:"bytes,1,opt,name=domain,proto3" json:"domain,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -416,13 +405,6 @@ func (*GetDomainByDomainRequest) Descriptor() ([]byte, []int) {
 func (x *GetDomainByDomainRequest) GetDomain() string {
 	if x != nil {
 		return x.Domain
-	}
-	return ""
-}
-
-func (x *GetDomainByDomainRequest) GetLanguage() string {
-	if x != nil {
-		return x.Language
 	}
 	return ""
 }
@@ -598,9 +580,7 @@ type ListDomainsRequest struct {
 	// 页码
 	Page int32 `protobuf:"varint,2,opt,name=page,proto3" json:"page,omitempty"`
 	// 分页大小
-	PageSize int32 `protobuf:"varint,3,opt,name=page_size,proto3" json:"page_size,omitempty"`
-	// 语种信息 eg:(zh,en)
-	Language      string `protobuf:"bytes,4,opt,name=language,proto3" json:"language,omitempty"`
+	PageSize      int32 `protobuf:"varint,3,opt,name=page_size,proto3" json:"page_size,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -654,13 +634,6 @@ func (x *ListDomainsRequest) GetPageSize() int32 {
 		return x.PageSize
 	}
 	return 0
-}
-
-func (x *ListDomainsRequest) GetLanguage() string {
-	if x != nil {
-		return x.Language
-	}
-	return ""
 }
 
 // Package message 域名分页列表响应消息定义
@@ -761,16 +734,12 @@ const file_domain_domain_message_proto_rawDesc = "" +
 	"\x06extend\x18\x06 \x01(\v2\x17.google.protobuf.StructB\x06\xbaH\x03\xc8\x01\x01R\x06extend\x12*\n" +
 	"\vdescription\x18\a \x01(\tB\b\xbaH\x05r\x03\x18\xff\x01R\vdescription\"0\n" +
 	"\x13DeleteDomainRequest\x12\x19\n" +
-	"\x02id\x18\x01 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18(R\x02id\"R\n" +
+	"\x02id\x18\x01 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18(R\x02id\"-\n" +
 	"\x10GetDomainRequest\x12\x19\n" +
-	"\x02id\x18\x01 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18(R\x02id\x12#\n" +
-	"\blanguage\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x18\n" +
-	"R\blanguage\"c\n" +
+	"\x02id\x18\x01 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18(R\x02id\">\n" +
 	"\x18GetDomainByDomainRequest\x12\"\n" +
 	"\x06domain\x18\x01 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\x06domain\x12#\n" +
-	"\blanguage\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x18\n" +
-	"R\blanguage\"\x8a\x04\n" +
+	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\x06domain\"\x8a\x04\n" +
 	"\x0eDomainResponse\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x16\n" +
 	"\x06domain\x18\x02 \x01(\tR\x06domain\x12\x12\n" +
@@ -786,14 +755,12 @@ const file_domain_domain_message_proto_rawDesc = "" +
 	"\tupdate_at\x18\v \x01(\v2\x1a.google.protobuf.TimestampR\tupdate_at\x12&\n" +
 	"\x0ecreate_by_name\x18\f \x01(\tR\x0ecreate_by_name\x12&\n" +
 	"\x0eupdate_by_name\x18\r \x01(\tR\x0eupdate_by_name\x12 \n" +
-	"\vdescription\x18\x0e \x01(\tR\vdescription\"\xa5\x01\n" +
+	"\vdescription\x18\x0e \x01(\tR\vdescription\"\x80\x01\n" +
 	"\x12ListDomainsRequest\x12#\n" +
 	"\bkeywords\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x18dR\bkeywords\x12\x1b\n" +
 	"\x04page\x18\x02 \x01(\x05B\a\xbaH\x04\x1a\x02 \x00R\x04page\x12(\n" +
 	"\tpage_size\x18\x03 \x01(\x05B\n" +
-	"\xbaH\a\x1a\x05\x18\xac\x02 \x00R\tpage_size\x12#\n" +
-	"\blanguage\x18\x04 \x01(\tB\a\xbaH\x04r\x02\x18\n" +
-	"R\blanguage\"\x96\x01\n" +
+	"\xbaH\a\x1a\x05\x18\xac\x02 \x00R\tpage_size\"\x96\x01\n" +
 	"\x13ListDomainsResponse\x127\n" +
 	"\x04data\x18\x01 \x03(\v2#.fusion.proto.domain.DomainResponseR\x04data\x12\x12\n" +
 	"\x04page\x18\x02 \x01(\x05R\x04page\x12\x1c\n" +

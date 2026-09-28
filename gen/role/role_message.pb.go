@@ -611,9 +611,7 @@ func (x *DeleteRoleRequest) GetId() string {
 type GetRoleRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// 角色ID
-	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	// 语种信息 eg:(zh,en)
-	Language      string `protobuf:"bytes,2,opt,name=language,proto3" json:"language,omitempty"`
+	Id            string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -651,13 +649,6 @@ func (*GetRoleRequest) Descriptor() ([]byte, []int) {
 func (x *GetRoleRequest) GetId() string {
 	if x != nil {
 		return x.Id
-	}
-	return ""
-}
-
-func (x *GetRoleRequest) GetLanguage() string {
-	if x != nil {
-		return x.Language
 	}
 	return ""
 }
@@ -712,9 +703,7 @@ func (x *GetRoleResponse) GetData() *RoleData {
 type GetRolePermsRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// 角色ID
-	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	// 语种信息 eg:(zh,en)
-	Language      string `protobuf:"bytes,2,opt,name=language,proto3" json:"language,omitempty"`
+	Id            string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -752,13 +741,6 @@ func (*GetRolePermsRequest) Descriptor() ([]byte, []int) {
 func (x *GetRolePermsRequest) GetId() string {
 	if x != nil {
 		return x.Id
-	}
-	return ""
-}
-
-func (x *GetRolePermsRequest) GetLanguage() string {
-	if x != nil {
-		return x.Language
 	}
 	return ""
 }
@@ -912,9 +894,7 @@ type ListRolesRequest struct {
 	// 页码
 	Page int32 `protobuf:"varint,4,opt,name=page,proto3" json:"page,omitempty"`
 	// 分页大小
-	PageSize int32 `protobuf:"varint,5,opt,name=page_size,proto3" json:"page_size,omitempty"`
-	// 语种信息 eg:(zh,en)
-	Language      string `protobuf:"bytes,6,opt,name=language,proto3" json:"language,omitempty"`
+	PageSize      int32 `protobuf:"varint,5,opt,name=page_size,proto3" json:"page_size,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -982,13 +962,6 @@ func (x *ListRolesRequest) GetPageSize() int32 {
 		return x.PageSize
 	}
 	return 0
-}
-
-func (x *ListRolesRequest) GetLanguage() string {
-	if x != nil {
-		return x.Language
-	}
-	return ""
 }
 
 // Package message 角色分页列表响应消息定义
@@ -1072,9 +1045,7 @@ type AllRolesRequest struct {
 	// 项目ID
 	ProjectId string `protobuf:"bytes,2,opt,name=project_id,proto3" json:"project_id,omitempty"`
 	// 角色类型(1-普通角色 2-预定义普通角色 3-预定义管理角色)
-	Type *int32 `protobuf:"varint,3,opt,name=type,proto3,oneof" json:"type,omitempty"`
-	// 语种信息 eg:(zh,en)
-	Language      string `protobuf:"bytes,4,opt,name=language,proto3" json:"language,omitempty"`
+	Type          *int32 `protobuf:"varint,3,opt,name=type,proto3,oneof" json:"type,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1128,13 +1099,6 @@ func (x *AllRolesRequest) GetType() int32 {
 		return *x.Type
 	}
 	return 0
-}
-
-func (x *AllRolesRequest) GetLanguage() string {
-	if x != nil {
-		return x.Language
-	}
-	return ""
 }
 
 // Package message 角色列表(不分页)响应消息定义
@@ -1352,9 +1316,7 @@ func (x *ProjectRoleResponse) GetRoleId() string {
 type GetUserRolesRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// 用户ID
-	UserId string `protobuf:"bytes,1,opt,name=user_id,proto3" json:"user_id,omitempty"`
-	// 语种信息 eg:(zh,en)
-	Language      string `protobuf:"bytes,2,opt,name=language,proto3" json:"language,omitempty"`
+	UserId        string `protobuf:"bytes,1,opt,name=user_id,proto3" json:"user_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1392,13 +1354,6 @@ func (*GetUserRolesRequest) Descriptor() ([]byte, []int) {
 func (x *GetUserRolesRequest) GetUserId() string {
 	if x != nil {
 		return x.UserId
-	}
-	return ""
-}
-
-func (x *GetUserRolesRequest) GetLanguage() string {
-	if x != nil {
-		return x.Language
 	}
 	return ""
 }
@@ -1588,17 +1543,13 @@ const file_role_role_message_proto_rawDesc = "" +
 	"\x04sort\x18\x05 \x01(\x05B\a\xbaH\x04\x1a\x02(\x00R\x04sort\x12#\n" +
 	"\achannel\x18\x06 \x01(\x05B\t\xbaH\x06\x1a\x04\x18\x06(\x01R\achannel\".\n" +
 	"\x11DeleteRoleRequest\x12\x19\n" +
-	"\x02id\x18\x01 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18(R\x02id\"P\n" +
+	"\x02id\x18\x01 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18(R\x02id\"+\n" +
 	"\x0eGetRoleRequest\x12\x19\n" +
-	"\x02id\x18\x01 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18(R\x02id\x12#\n" +
-	"\blanguage\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x18\n" +
-	"R\blanguage\"B\n" +
+	"\x02id\x18\x01 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18(R\x02id\"B\n" +
 	"\x0fGetRoleResponse\x12/\n" +
-	"\x04data\x18\x01 \x01(\v2\x1b.fusion.proto.role.RoleDataR\x04data\"U\n" +
+	"\x04data\x18\x01 \x01(\v2\x1b.fusion.proto.role.RoleDataR\x04data\"0\n" +
 	"\x13GetRolePermsRequest\x12\x19\n" +
-	"\x02id\x18\x01 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18(R\x02id\x12#\n" +
-	"\blanguage\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x18\n" +
-	"R\blanguage\"\x96\x01\n" +
+	"\x02id\x18\x01 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18(R\x02id\"\x96\x01\n" +
 	"\bRolePerm\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
 	"\x04code\x18\x02 \x01(\tR\x04code\x12\x1c\n" +
@@ -1607,7 +1558,7 @@ const file_role_role_message_proto_rawDesc = "" +
 	"\x04name\x18\x05 \x01(\tR\x04name\x12\x12\n" +
 	"\x04sort\x18\x06 \x01(\x05R\x04sort\"G\n" +
 	"\x14GetRolePermsResponse\x12/\n" +
-	"\x04data\x18\x01 \x03(\v2\x1b.fusion.proto.role.RolePermR\x04data\"\xf1\x01\n" +
+	"\x04data\x18\x01 \x03(\v2\x1b.fusion.proto.role.RolePermR\x04data\"\xcc\x01\n" +
 	"\x10ListRolesRequest\x12\x1b\n" +
 	"\x04name\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x18dR\x04name\x12'\n" +
 	"\n" +
@@ -1616,23 +1567,19 @@ const file_role_role_message_proto_rawDesc = "" +
 	"\x04type\x18\x03 \x01(\x05B\t\xbaH\x06\x1a\x04\x18\x03(\x01H\x00R\x04type\x88\x01\x01\x12\x1b\n" +
 	"\x04page\x18\x04 \x01(\x05B\a\xbaH\x04\x1a\x02 \x00R\x04page\x12(\n" +
 	"\tpage_size\x18\x05 \x01(\x05B\n" +
-	"\xbaH\a\x1a\x05\x18\xac\x02 \x00R\tpage_size\x12#\n" +
-	"\blanguage\x18\x06 \x01(\tB\a\xbaH\x04r\x02\x18\n" +
-	"R\blanguageB\a\n" +
+	"\xbaH\a\x1a\x05\x18\xac\x02 \x00R\tpage_sizeB\a\n" +
 	"\x05_type\"\x8c\x01\n" +
 	"\x11ListRolesResponse\x12/\n" +
 	"\x04data\x18\x01 \x03(\v2\x1b.fusion.proto.role.RoleDataR\x04data\x12\x14\n" +
 	"\x05total\x18\x02 \x01(\x03R\x05total\x12\x12\n" +
 	"\x04page\x18\x03 \x01(\x05R\x04page\x12\x1c\n" +
-	"\tpage_size\x18\x04 \x01(\x05R\tpage_size\"\xa9\x01\n" +
+	"\tpage_size\x18\x04 \x01(\x05R\tpage_size\"\x84\x01\n" +
 	"\x0fAllRolesRequest\x12\x1b\n" +
 	"\x04name\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x18dR\x04name\x12'\n" +
 	"\n" +
 	"project_id\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x18(R\n" +
 	"project_id\x12\"\n" +
-	"\x04type\x18\x03 \x01(\x05B\t\xbaH\x06\x1a\x04\x18\x03(\x01H\x00R\x04type\x88\x01\x01\x12#\n" +
-	"\blanguage\x18\x04 \x01(\tB\a\xbaH\x04r\x02\x18\n" +
-	"R\blanguageB\a\n" +
+	"\x04type\x18\x03 \x01(\x05B\t\xbaH\x06\x1a\x04\x18\x03(\x01H\x00R\x04type\x88\x01\x01B\a\n" +
 	"\x05_type\"C\n" +
 	"\x10AllRolesResponse\x12/\n" +
 	"\x04data\x18\x01 \x03(\v2\x1b.fusion.proto.role.RoleDataR\x04data\"\x80\x01\n" +
@@ -1645,11 +1592,9 @@ const file_role_role_message_proto_rawDesc = "" +
 	"\auser_id\x18\x01 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18(R\auser_id\x12#\n" +
 	"\asite_id\x18\x02 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18(R\asite_id\"/\n" +
 	"\x13ProjectRoleResponse\x12\x18\n" +
-	"\arole_id\x18\x01 \x01(\tR\arole_id\"_\n" +
+	"\arole_id\x18\x01 \x01(\tR\arole_id\":\n" +
 	"\x13GetUserRolesRequest\x12#\n" +
-	"\auser_id\x18\x01 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18(R\auser_id\x12#\n" +
-	"\blanguage\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x18\n" +
-	"R\blanguage\"p\n" +
+	"\auser_id\x18\x01 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18(R\auser_id\"p\n" +
 	"\bUserRole\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
 	"\x04code\x18\x02 \x01(\tR\x04code\x12\x12\n" +

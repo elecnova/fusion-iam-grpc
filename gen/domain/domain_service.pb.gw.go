@@ -146,8 +146,6 @@ func local_request_DomainService_DeleteDomain_0(ctx context.Context, marshaler r
 	return msg, metadata, err
 }
 
-var filter_DomainService_GetDomain_0 = &utilities.DoubleArray{Encoding: map[string]int{"id": 0}, Base: []int{1, 1, 0}, Check: []int{0, 1, 2}}
-
 func request_DomainService_GetDomain_0(ctx context.Context, marshaler runtime.Marshaler, client DomainServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var (
 		protoReq GetDomainRequest
@@ -161,12 +159,6 @@ func request_DomainService_GetDomain_0(ctx context.Context, marshaler runtime.Ma
 	protoReq.Id, err = runtime.String(val)
 	if err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "id", err)
-	}
-	if err := req.ParseForm(); err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
-	}
-	if err := runtime.PopulateQueryParameters(&protoReq, req.Form, filter_DomainService_GetDomain_0); err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
 	if req.Body != nil {
 		_, _ = io.Copy(io.Discard, req.Body)
@@ -189,17 +181,9 @@ func local_request_DomainService_GetDomain_0(ctx context.Context, marshaler runt
 	if err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "id", err)
 	}
-	if err := req.ParseForm(); err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
-	}
-	if err := runtime.PopulateQueryParameters(&protoReq, req.Form, filter_DomainService_GetDomain_0); err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
-	}
 	msg, err := server.GetDomain(ctx, &protoReq)
 	return msg, metadata, err
 }
-
-var filter_DomainService_GetDomainByDomain_0 = &utilities.DoubleArray{Encoding: map[string]int{"domain": 0}, Base: []int{1, 1, 0}, Check: []int{0, 1, 2}}
 
 func request_DomainService_GetDomainByDomain_0(ctx context.Context, marshaler runtime.Marshaler, client DomainServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var (
@@ -214,12 +198,6 @@ func request_DomainService_GetDomainByDomain_0(ctx context.Context, marshaler ru
 	protoReq.Domain, err = runtime.String(val)
 	if err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "domain", err)
-	}
-	if err := req.ParseForm(); err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
-	}
-	if err := runtime.PopulateQueryParameters(&protoReq, req.Form, filter_DomainService_GetDomainByDomain_0); err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
 	if req.Body != nil {
 		_, _ = io.Copy(io.Discard, req.Body)
@@ -241,12 +219,6 @@ func local_request_DomainService_GetDomainByDomain_0(ctx context.Context, marsha
 	protoReq.Domain, err = runtime.String(val)
 	if err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "domain", err)
-	}
-	if err := req.ParseForm(); err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
-	}
-	if err := runtime.PopulateQueryParameters(&protoReq, req.Form, filter_DomainService_GetDomainByDomain_0); err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
 	msg, err := server.GetDomainByDomain(ctx, &protoReq)
 	return msg, metadata, err

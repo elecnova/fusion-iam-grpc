@@ -263,9 +263,7 @@ func (x *MenuData) GetParentName() string {
 type GetMenuRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// 菜单ID
-	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	// 语种信息 eg:(zh,en)
-	Language      string `protobuf:"bytes,2,opt,name=language,proto3" json:"language,omitempty"`
+	Id            string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -303,13 +301,6 @@ func (*GetMenuRequest) Descriptor() ([]byte, []int) {
 func (x *GetMenuRequest) GetId() string {
 	if x != nil {
 		return x.Id
-	}
-	return ""
-}
-
-func (x *GetMenuRequest) GetLanguage() string {
-	if x != nil {
-		return x.Language
 	}
 	return ""
 }
@@ -587,10 +578,8 @@ type ListMenusRequest struct {
 	Page int32 `protobuf:"varint,6,opt,name=page,proto3" json:"page,omitempty"`
 	// 分页大小
 	PageSize int32 `protobuf:"varint,7,opt,name=page_size,proto3" json:"page_size,omitempty"`
-	// 语种信息 eg:(zh,en)
-	Language string `protobuf:"bytes,8,opt,name=language,proto3" json:"language,omitempty"`
 	// 是否需要返回全语种名称(默认false，仅返回当前语种名称)
-	NeedDetail    bool `protobuf:"varint,9,opt,name=need_detail,proto3" json:"need_detail,omitempty"`
+	NeedDetail    bool `protobuf:"varint,8,opt,name=need_detail,proto3" json:"need_detail,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -672,13 +661,6 @@ func (x *ListMenusRequest) GetPageSize() int32 {
 		return x.PageSize
 	}
 	return 0
-}
-
-func (x *ListMenusRequest) GetLanguage() string {
-	if x != nil {
-		return x.Language
-	}
-	return ""
 }
 
 func (x *ListMenusRequest) GetNeedDetail() bool {
@@ -768,10 +750,8 @@ type TreeMenuRequest struct {
 	Channel int32 `protobuf:"varint,1,opt,name=channel,proto3" json:"channel,omitempty"`
 	// 系统角色ID，传入时仅返回该角色拥有权限的菜单
 	RoleId string `protobuf:"bytes,2,opt,name=role_id,proto3" json:"role_id,omitempty"`
-	// 语种信息
-	Language string `protobuf:"bytes,3,opt,name=language,proto3" json:"language,omitempty"`
 	// 是否需要返回全语种名称(默认false，仅返回当前语种名称)
-	NeedDetail    bool `protobuf:"varint,4,opt,name=need_detail,proto3" json:"need_detail,omitempty"`
+	NeedDetail    bool `protobuf:"varint,3,opt,name=need_detail,proto3" json:"need_detail,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -816,13 +796,6 @@ func (x *TreeMenuRequest) GetChannel() int32 {
 func (x *TreeMenuRequest) GetRoleId() string {
 	if x != nil {
 		return x.RoleId
-	}
-	return ""
-}
-
-func (x *TreeMenuRequest) GetLanguage() string {
-	if x != nil {
-		return x.Language
 	}
 	return ""
 }
@@ -1117,9 +1090,7 @@ type GetMenuRolesRequest struct {
 	// 项目ID，非空时优先以用户在该项目的角色为准
 	ProjectId string `protobuf:"bytes,3,opt,name=project_id,proto3" json:"project_id,omitempty"`
 	// 菜单状态(1-正常 2-禁用 3-锁定)，用于过滤角色菜单列表
-	MenuState int32 `protobuf:"varint,4,opt,name=menu_state,proto3" json:"menu_state,omitempty"`
-	// 语种信息 eg:(zh,en)
-	Language      string `protobuf:"bytes,5,opt,name=language,proto3" json:"language,omitempty"`
+	MenuState     int32 `protobuf:"varint,4,opt,name=menu_state,proto3" json:"menu_state,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1182,13 +1153,6 @@ func (x *GetMenuRolesRequest) GetMenuState() int32 {
 	return 0
 }
 
-func (x *GetMenuRolesRequest) GetLanguage() string {
-	if x != nil {
-		return x.Language
-	}
-	return ""
-}
-
 // Package message 获取角色菜单树响应消息定义
 type GetMenuRolesResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
@@ -1239,9 +1203,7 @@ func (x *GetMenuRolesResponse) GetData() []*RoleMenuTree {
 type SelfRoleMenusRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// 渠道(1-用户中心 2-业务平台 3-运维平台 4-开放平台 5-集控平台 6-DPP平台)
-	Channel int32 `protobuf:"varint,1,opt,name=channel,proto3" json:"channel,omitempty"`
-	// 语种信息 eg:(zh,en)
-	Language      string `protobuf:"bytes,2,opt,name=language,proto3" json:"language,omitempty"`
+	Channel       int32 `protobuf:"varint,1,opt,name=channel,proto3" json:"channel,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1281,13 +1243,6 @@ func (x *SelfRoleMenusRequest) GetChannel() int32 {
 		return x.Channel
 	}
 	return 0
-}
-
-func (x *SelfRoleMenusRequest) GetLanguage() string {
-	if x != nil {
-		return x.Language
-	}
-	return ""
 }
 
 // Package message 获取当前用户指定渠道角色菜单树响应消息定义
@@ -1362,11 +1317,9 @@ const file_menu_menu_message_proto_rawDesc = "" +
 	"\tupdate_by\x18\f \x01(\tR\tupdate_by\x12&\n" +
 	"\x0ecreate_by_name\x18\r \x01(\tR\x0ecreate_by_name\x12&\n" +
 	"\x0eupdate_by_name\x18\x0e \x01(\tR\x0eupdate_by_name\x12 \n" +
-	"\vparent_name\x18\x0f \x01(\tR\vparent_name\"P\n" +
+	"\vparent_name\x18\x0f \x01(\tR\vparent_name\"+\n" +
 	"\x0eGetMenuRequest\x12\x19\n" +
-	"\x02id\x18\x01 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18(R\x02id\x12#\n" +
-	"\blanguage\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x18\n" +
-	"R\blanguage\"B\n" +
+	"\x02id\x18\x01 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18(R\x02id\"B\n" +
 	"\x0fGetMenuResponse\x12/\n" +
 	"\x04data\x18\x01 \x01(\v2\x1b.fusion.proto.menu.MenuDataR\x04data\"\xdd\x02\n" +
 	"\x11UpsertMenuRequest\x12\x19\n" +
@@ -1383,7 +1336,7 @@ const file_menu_menu_message_proto_rawDesc = "" +
 	"\x12UpsertMenuResponse\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\".\n" +
 	"\x11DeleteMenuRequest\x12\x19\n" +
-	"\x02id\x18\x01 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18(R\x02id\"\xe4\x02\n" +
+	"\x02id\x18\x01 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18(R\x02id\"\xbf\x02\n" +
 	"\x10ListMenusRequest\x12#\n" +
 	"\bkeywords\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x18dR\bkeywords\x12\x1b\n" +
 	"\x04name\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x18dR\x04name\x12\"\n" +
@@ -1392,23 +1345,19 @@ const file_menu_menu_message_proto_rawDesc = "" +
 	"\achannel\x18\x05 \x01(\x05B\t\xbaH\x06\x1a\x04\x18\x06(\x01R\achannel\x12\x1b\n" +
 	"\x04page\x18\x06 \x01(\x05B\a\xbaH\x04\x1a\x02 \x00R\x04page\x12(\n" +
 	"\tpage_size\x18\a \x01(\x05B\n" +
-	"\xbaH\a\x1a\x05\x18\xac\x02 \x00R\tpage_size\x12#\n" +
-	"\blanguage\x18\b \x01(\tB\a\xbaH\x04r\x02\x18\n" +
-	"R\blanguage\x12 \n" +
-	"\vneed_detail\x18\t \x01(\bR\vneed_detailB\a\n" +
+	"\xbaH\a\x1a\x05\x18\xac\x02 \x00R\tpage_size\x12 \n" +
+	"\vneed_detail\x18\b \x01(\bR\vneed_detailB\a\n" +
 	"\x05_typeB\b\n" +
 	"\x06_state\"\x8c\x01\n" +
 	"\x11ListMenusResponse\x12/\n" +
 	"\x04data\x18\x01 \x03(\v2\x1b.fusion.proto.menu.MenuDataR\x04data\x12\x14\n" +
 	"\x05total\x18\x02 \x01(\x03R\x05total\x12\x12\n" +
 	"\x04page\x18\x03 \x01(\x05R\x04page\x12\x1c\n" +
-	"\tpage_size\x18\x04 \x01(\x05R\tpage_size\"\xa0\x01\n" +
+	"\tpage_size\x18\x04 \x01(\x05R\tpage_size\"{\n" +
 	"\x0fTreeMenuRequest\x12#\n" +
 	"\achannel\x18\x01 \x01(\x05B\t\xbaH\x06\x1a\x04\x18\x06(\x01R\achannel\x12!\n" +
-	"\arole_id\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x18(R\arole_id\x12#\n" +
-	"\blanguage\x18\x03 \x01(\tB\a\xbaH\x04r\x02\x18\n" +
-	"R\blanguage\x12 \n" +
-	"\vneed_detail\x18\x04 \x01(\bR\vneed_detail\"\xfc\x02\n" +
+	"\arole_id\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x18(R\arole_id\x12 \n" +
+	"\vneed_detail\x18\x03 \x01(\bR\vneed_detail\"\xfc\x02\n" +
 	"\fMenuTreeNode\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
 	"\x04code\x18\x02 \x01(\tR\x04code\x12\x1c\n" +
@@ -1430,7 +1379,7 @@ const file_menu_menu_message_proto_rawDesc = "" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x12\n" +
 	"\x04sort\x18\x03 \x01(\x05R\x04sort\x12\x12\n" +
 	"\x04type\x18\x04 \x01(\x05R\x04type\x12;\n" +
-	"\bchildren\x18\x05 \x03(\v2\x1f.fusion.proto.menu.RoleMenuTreeR\bchildren\"\xd4\x01\n" +
+	"\bchildren\x18\x05 \x03(\v2\x1f.fusion.proto.menu.RoleMenuTreeR\bchildren\"\xaf\x01\n" +
 	"\x13GetMenuRolesRequest\x12!\n" +
 	"\arole_id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x18(R\arole_id\x12!\n" +
 	"\auser_id\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x18(R\auser_id\x12'\n" +
@@ -1439,15 +1388,11 @@ const file_menu_menu_message_proto_rawDesc = "" +
 	"project_id\x12)\n" +
 	"\n" +
 	"menu_state\x18\x04 \x01(\x05B\t\xbaH\x06\x1a\x04\x18\x03(\x01R\n" +
-	"menu_state\x12#\n" +
-	"\blanguage\x18\x05 \x01(\tB\a\xbaH\x04r\x02\x18\n" +
-	"R\blanguage\"K\n" +
+	"menu_state\"K\n" +
 	"\x14GetMenuRolesResponse\x123\n" +
-	"\x04data\x18\x01 \x03(\v2\x1f.fusion.proto.menu.RoleMenuTreeR\x04data\"`\n" +
+	"\x04data\x18\x01 \x03(\v2\x1f.fusion.proto.menu.RoleMenuTreeR\x04data\";\n" +
 	"\x14SelfRoleMenusRequest\x12#\n" +
-	"\achannel\x18\x01 \x01(\x05B\t\xbaH\x06\x1a\x04\x18\x06(\x01R\achannel\x12#\n" +
-	"\blanguage\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x18\n" +
-	"R\blanguage\"L\n" +
+	"\achannel\x18\x01 \x01(\x05B\t\xbaH\x06\x1a\x04\x18\x06(\x01R\achannel\"L\n" +
 	"\x15SelfRoleMenusResponse\x123\n" +
 	"\x04data\x18\x01 \x03(\v2\x1f.fusion.proto.menu.RoleMenuTreeR\x04dataB\xa7\x01\n" +
 	"\x15com.fusion.proto.menuB\x10MenuMessageProtoP\x01Z\x16fusion.proto.menu;menu\xa2\x02\x03FPM\xaa\x02\x11Fusion.Proto.Menu\xca\x02\x11Fusion\\Proto\\Menu\xe2\x02\x1dFusion\\Proto\\Menu\\GPBMetadata\xea\x02\x13Fusion::Proto::Menub\x06proto3"

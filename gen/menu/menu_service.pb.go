@@ -36,17 +36,17 @@ var File_menu_menu_service_proto protoreflect.FileDescriptor
 
 const file_menu_menu_service_proto_rawDesc = "" +
 	"\n" +
-	"\x17menu/menu_service.proto\x12\x11fusion.proto.menu\x1a\x1cgoogle/api/annotations.proto\x1a\x17google/api/client.proto\x1a\x1bgoogle/protobuf/empty.proto\x1a\x17menu/menu_message.proto2\xb3\b\n" +
-	"\vMenuService\x12}\n" +
-	"\aGetMenu\x12!.fusion.proto.menu.GetMenuRequest\x1a\".fusion.proto.menu.GetMenuResponse\"+\xdaA\vid,language\x82\xd3\xe4\x93\x02\x17\x12\x15/3rd-api/v2/menu/{id}\x12\x93\x01\n" +
+	"\x17menu/menu_service.proto\x12\x11fusion.proto.menu\x1a\x1cgoogle/api/annotations.proto\x1a\x17google/api/client.proto\x1a\x1bgoogle/protobuf/empty.proto\x1a\x17menu/menu_message.proto2\x8f\b\n" +
+	"\vMenuService\x12t\n" +
+	"\aGetMenu\x12!.fusion.proto.menu.GetMenuRequest\x1a\".fusion.proto.menu.GetMenuResponse\"\"\xdaA\x02id\x82\xd3\xe4\x93\x02\x17\x12\x15/3rd-api/v2/menu/{id}\x12\x93\x01\n" +
 	"\n" +
 	"UpsertMenu\x12$.fusion.proto.menu.UpsertMenuRequest\x1a%.fusion.proto.menu.UpsertMenuResponse\"8\xdaA\x1aid,name,type,state,channel\x82\xd3\xe4\x93\x02\x15:\x01*\"\x10/3rd-api/v2/menu\x12n\n" +
 	"\n" +
-	"DeleteMenu\x12$.fusion.proto.menu.DeleteMenuRequest\x1a\x16.google.protobuf.Empty\"\"\xdaA\x02id\x82\xd3\xe4\x93\x02\x17*\x15/3rd-api/v2/menu/{id}\x12\xac\x01\n" +
-	"\tListMenus\x12#.fusion.proto.menu.ListMenusRequest\x1a$.fusion.proto.menu.ListMenusResponse\"T\xdaA8keywords,name,type,state,channel,page,page_size,language\x82\xd3\xe4\x93\x02\x13\x12\x11/3rd-api/v2/menus\x12\x8d\x01\n" +
-	"\bTreeMenu\x12\".fusion.proto.menu.TreeMenuRequest\x1a#.fusion.proto.menu.TreeMenuResponse\"8\xdaA\x18channel,role_id,language\x82\xd3\xe4\x93\x02\x17\x12\x15/3rd-api/v2/menu/tree\x12\xab\x01\n" +
-	"\fGetMenuRoles\x12&.fusion.proto.menu.GetMenuRolesRequest\x1a'.fusion.proto.menu.GetMenuRolesResponse\"J\xdaA\x1arole_id,user_id,project_id\x82\xd3\xe4\x93\x02'\x12%/3rd-api/v2/menu/role-menus/{role_id}\x12\xb1\x01\n" +
-	"\rSelfRoleMenus\x12'.fusion.proto.menu.SelfRoleMenusRequest\x1a(.fusion.proto.menu.SelfRoleMenusResponse\"M\xdaA\x10channel,language\x82\xd3\xe4\x93\x024\x122/3rd-api/v2/menu/role-menus/self/channel/{channel}B\xa7\x01\n" +
+	"DeleteMenu\x12$.fusion.proto.menu.DeleteMenuRequest\x1a\x16.google.protobuf.Empty\"\"\xdaA\x02id\x82\xd3\xe4\x93\x02\x17*\x15/3rd-api/v2/menu/{id}\x12\xa3\x01\n" +
+	"\tListMenus\x12#.fusion.proto.menu.ListMenusRequest\x1a$.fusion.proto.menu.ListMenusResponse\"K\xdaA/keywords,name,type,state,channel,page,page_size\x82\xd3\xe4\x93\x02\x13\x12\x11/3rd-api/v2/menus\x12\x84\x01\n" +
+	"\bTreeMenu\x12\".fusion.proto.menu.TreeMenuRequest\x1a#.fusion.proto.menu.TreeMenuResponse\"/\xdaA\x0fchannel,role_id\x82\xd3\xe4\x93\x02\x17\x12\x15/3rd-api/v2/menu/tree\x12\xab\x01\n" +
+	"\fGetMenuRoles\x12&.fusion.proto.menu.GetMenuRolesRequest\x1a'.fusion.proto.menu.GetMenuRolesResponse\"J\xdaA\x1arole_id,user_id,project_id\x82\xd3\xe4\x93\x02'\x12%/3rd-api/v2/menu/role-menus/{role_id}\x12\xa8\x01\n" +
+	"\rSelfRoleMenus\x12'.fusion.proto.menu.SelfRoleMenusRequest\x1a(.fusion.proto.menu.SelfRoleMenusResponse\"D\xdaA\achannel\x82\xd3\xe4\x93\x024\x122/3rd-api/v2/menu/role-menus/self/channel/{channel}B\xa7\x01\n" +
 	"\x15com.fusion.proto.menuB\x10MenuServiceProtoP\x01Z\x16fusion.proto.menu;menu\xa2\x02\x03FPM\xaa\x02\x11Fusion.Proto.Menu\xca\x02\x11Fusion\\Proto\\Menu\xe2\x02\x1dFusion\\Proto\\Menu\\GPBMetadata\xea\x02\x13Fusion::Proto::Menub\x06proto3"
 
 var file_menu_menu_service_proto_goTypes = []any{
