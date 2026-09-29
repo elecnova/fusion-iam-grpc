@@ -30,12 +30,13 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	DictionaryService_GetDictByID_FullMethodName  = "/fusion.proto.dictionary.DictionaryService/GetDictByID"
-	DictionaryService_GetDictByKey_FullMethodName = "/fusion.proto.dictionary.DictionaryService/GetDictByKey"
-	DictionaryService_Create_FullMethodName       = "/fusion.proto.dictionary.DictionaryService/Create"
-	DictionaryService_Delete_FullMethodName       = "/fusion.proto.dictionary.DictionaryService/Delete"
-	DictionaryService_Update_FullMethodName       = "/fusion.proto.dictionary.DictionaryService/Update"
-	DictionaryService_List_FullMethodName         = "/fusion.proto.dictionary.DictionaryService/List"
+	DictionaryService_GetDictByID_FullMethodName     = "/fusion.proto.dictionary.DictionaryService/GetDictByID"
+	DictionaryService_GetDictByKey_FullMethodName    = "/fusion.proto.dictionary.DictionaryService/GetDictByKey"
+	DictionaryService_GetArrDictByKey_FullMethodName = "/fusion.proto.dictionary.DictionaryService/GetArrDictByKey"
+	DictionaryService_Create_FullMethodName          = "/fusion.proto.dictionary.DictionaryService/Create"
+	DictionaryService_Delete_FullMethodName          = "/fusion.proto.dictionary.DictionaryService/Delete"
+	DictionaryService_Update_FullMethodName          = "/fusion.proto.dictionary.DictionaryService/Update"
+	DictionaryService_List_FullMethodName            = "/fusion.proto.dictionary.DictionaryService/List"
 )
 
 // DictionaryServiceClient is the client API for DictionaryService service.
@@ -48,6 +49,8 @@ type DictionaryServiceClient interface {
 	GetDictByID(ctx context.Context, in *GetDictByIDRequest, opts ...grpc.CallOption) (*GetDictResponse, error)
 	// 根据key获取字典详细信息
 	GetDictByKey(ctx context.Context, in *GetDictByKeyRequest, opts ...grpc.CallOption) (*GetDictResponse, error)
+	// 根据key获取字典数组指定配置信息
+	GetArrDictByKey(ctx context.Context, in *GetArrDictByKeyRequest, opts ...grpc.CallOption) (*GetArrDictByKeyResponse, error)
 	// 新增数据字典
 	Create(ctx context.Context, in *CreateDictRequest, opts ...grpc.CallOption) (*CreateDictResponse, error)
 	// 删除数据字典
@@ -80,6 +83,16 @@ func (c *dictionaryServiceClient) GetDictByKey(ctx context.Context, in *GetDictB
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(GetDictResponse)
 	err := c.cc.Invoke(ctx, DictionaryService_GetDictByKey_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *dictionaryServiceClient) GetArrDictByKey(ctx context.Context, in *GetArrDictByKeyRequest, opts ...grpc.CallOption) (*GetArrDictByKeyResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetArrDictByKeyResponse)
+	err := c.cc.Invoke(ctx, DictionaryService_GetArrDictByKey_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -136,6 +149,8 @@ type DictionaryServiceServer interface {
 	GetDictByID(context.Context, *GetDictByIDRequest) (*GetDictResponse, error)
 	// 根据key获取字典详细信息
 	GetDictByKey(context.Context, *GetDictByKeyRequest) (*GetDictResponse, error)
+	// 根据key获取字典数组指定配置信息
+	GetArrDictByKey(context.Context, *GetArrDictByKeyRequest) (*GetArrDictByKeyResponse, error)
 	// 新增数据字典
 	Create(context.Context, *CreateDictRequest) (*CreateDictResponse, error)
 	// 删除数据字典
@@ -159,6 +174,9 @@ func (UnimplementedDictionaryServiceServer) GetDictByID(context.Context, *GetDic
 }
 func (UnimplementedDictionaryServiceServer) GetDictByKey(context.Context, *GetDictByKeyRequest) (*GetDictResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method GetDictByKey not implemented")
+}
+func (UnimplementedDictionaryServiceServer) GetArrDictByKey(context.Context, *GetArrDictByKeyRequest) (*GetArrDictByKeyResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method GetArrDictByKey not implemented")
 }
 func (UnimplementedDictionaryServiceServer) Create(context.Context, *CreateDictRequest) (*CreateDictResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method Create not implemented")
@@ -225,6 +243,24 @@ func _DictionaryService_GetDictByKey_Handler(srv interface{}, ctx context.Contex
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(DictionaryServiceServer).GetDictByKey(ctx, req.(*GetDictByKeyRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _DictionaryService_GetArrDictByKey_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetArrDictByKeyRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(DictionaryServiceServer).GetArrDictByKey(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: DictionaryService_GetArrDictByKey_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(DictionaryServiceServer).GetArrDictByKey(ctx, req.(*GetArrDictByKeyRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -315,6 +351,10 @@ var DictionaryService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetDictByKey",
 			Handler:    _DictionaryService_GetDictByKey_Handler,
+		},
+		{
+			MethodName: "GetArrDictByKey",
+			Handler:    _DictionaryService_GetArrDictByKey_Handler,
 		},
 		{
 			MethodName: "Create",

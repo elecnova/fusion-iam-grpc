@@ -36,10 +36,11 @@ var File_dictionary_dictionary_service_proto protoreflect.FileDescriptor
 
 const file_dictionary_dictionary_service_proto_rawDesc = "" +
 	"\n" +
-	"#dictionary/dictionary_service.proto\x12\x17fusion.proto.dictionary\x1a\x1cgoogle/api/annotations.proto\x1a\x1bgoogle/protobuf/empty.proto\x1a\x17google/api/client.proto\x1a#dictionary/dictionary_message.proto2\xc4\x06\n" +
+	"#dictionary/dictionary_service.proto\x12\x17fusion.proto.dictionary\x1a#dictionary/dictionary_message.proto\x1a\x1cgoogle/api/annotations.proto\x1a\x17google/api/client.proto\x1a\x1bgoogle/protobuf/empty.proto2\xee\a\n" +
 	"\x11DictionaryService\x12\x90\x01\n" +
 	"\vGetDictByID\x12+.fusion.proto.dictionary.GetDictByIDRequest\x1a(.fusion.proto.dictionary.GetDictResponse\"*\xdaA\aid,flag\x82\xd3\xe4\x93\x02\x1a\x12\x18/3rd-api/v1/dict/id/{id}\x12\x95\x01\n" +
-	"\fGetDictByKey\x12,.fusion.proto.dictionary.GetDictByKeyRequest\x1a(.fusion.proto.dictionary.GetDictResponse\"-\xdaA\bkey,flag\x82\xd3\xe4\x93\x02\x1c\x12\x1a/3rd-api/v1/dict/key/{key}\x12\x8a\x01\n" +
+	"\fGetDictByKey\x12,.fusion.proto.dictionary.GetDictByKeyRequest\x1a(.fusion.proto.dictionary.GetDictResponse\"-\xdaA\bkey,flag\x82\xd3\xe4\x93\x02\x1c\x12\x1a/3rd-api/v1/dict/key/{key}\x12\xa7\x01\n" +
+	"\x0fGetArrDictByKey\x12/.fusion.proto.dictionary.GetArrDictByKeyRequest\x1a0.fusion.proto.dictionary.GetArrDictByKeyResponse\"1\xdaA\bkey,flag\x82\xd3\xe4\x93\x02 \x12\x1e/3rd-api/v1/dict/arr/key/{key}\x12\x8a\x01\n" +
 	"\x06Create\x12*.fusion.proto.dictionary.CreateDictRequest\x1a+.fusion.proto.dictionary.CreateDictResponse\"'\xdaA\tkey,value\x82\xd3\xe4\x93\x02\x15:\x01*\"\x10/3rd-api/v1/dict\x12p\n" +
 	"\x06Delete\x12*.fusion.proto.dictionary.DeleteDictRequest\x1a\x16.google.protobuf.Empty\"\"\xdaA\x02id\x82\xd3\xe4\x93\x02\x17*\x15/3rd-api/v1/dict/{id}\x12\x89\x01\n" +
 	"\x06Update\x12*.fusion.proto.dictionary.UpdateDictRequest\x1a\x16.google.protobuf.Empty\";\xdaA\x18id,key,description,value\x82\xd3\xe4\x93\x02\x1a:\x01*\x1a\x15/3rd-api/v1/dict/{id}\x12y\n" +
@@ -47,35 +48,39 @@ const file_dictionary_dictionary_service_proto_rawDesc = "" +
 	"\x1bcom.fusion.proto.dictionaryB\x16DictionaryServiceProtoP\x01Z\"fusion.proto.dictionary;dictionary\xa2\x02\x03FPD\xaa\x02\x17Fusion.Proto.Dictionary\xca\x02\x17Fusion\\Proto\\Dictionary\xe2\x02#Fusion\\Proto\\Dictionary\\GPBMetadata\xea\x02\x19Fusion::Proto::Dictionaryb\x06proto3"
 
 var file_dictionary_dictionary_service_proto_goTypes = []any{
-	(*GetDictByIDRequest)(nil),  // 0: fusion.proto.dictionary.GetDictByIDRequest
-	(*GetDictByKeyRequest)(nil), // 1: fusion.proto.dictionary.GetDictByKeyRequest
-	(*CreateDictRequest)(nil),   // 2: fusion.proto.dictionary.CreateDictRequest
-	(*DeleteDictRequest)(nil),   // 3: fusion.proto.dictionary.DeleteDictRequest
-	(*UpdateDictRequest)(nil),   // 4: fusion.proto.dictionary.UpdateDictRequest
-	(*ListDictRequest)(nil),     // 5: fusion.proto.dictionary.ListDictRequest
-	(*GetDictResponse)(nil),     // 6: fusion.proto.dictionary.GetDictResponse
-	(*CreateDictResponse)(nil),  // 7: fusion.proto.dictionary.CreateDictResponse
-	(*emptypb.Empty)(nil),       // 8: google.protobuf.Empty
-	(*ListDictResponse)(nil),    // 9: fusion.proto.dictionary.ListDictResponse
+	(*GetDictByIDRequest)(nil),      // 0: fusion.proto.dictionary.GetDictByIDRequest
+	(*GetDictByKeyRequest)(nil),     // 1: fusion.proto.dictionary.GetDictByKeyRequest
+	(*GetArrDictByKeyRequest)(nil),  // 2: fusion.proto.dictionary.GetArrDictByKeyRequest
+	(*CreateDictRequest)(nil),       // 3: fusion.proto.dictionary.CreateDictRequest
+	(*DeleteDictRequest)(nil),       // 4: fusion.proto.dictionary.DeleteDictRequest
+	(*UpdateDictRequest)(nil),       // 5: fusion.proto.dictionary.UpdateDictRequest
+	(*ListDictRequest)(nil),         // 6: fusion.proto.dictionary.ListDictRequest
+	(*GetDictResponse)(nil),         // 7: fusion.proto.dictionary.GetDictResponse
+	(*GetArrDictByKeyResponse)(nil), // 8: fusion.proto.dictionary.GetArrDictByKeyResponse
+	(*CreateDictResponse)(nil),      // 9: fusion.proto.dictionary.CreateDictResponse
+	(*emptypb.Empty)(nil),           // 10: google.protobuf.Empty
+	(*ListDictResponse)(nil),        // 11: fusion.proto.dictionary.ListDictResponse
 }
 var file_dictionary_dictionary_service_proto_depIdxs = []int32{
-	0, // 0: fusion.proto.dictionary.DictionaryService.GetDictByID:input_type -> fusion.proto.dictionary.GetDictByIDRequest
-	1, // 1: fusion.proto.dictionary.DictionaryService.GetDictByKey:input_type -> fusion.proto.dictionary.GetDictByKeyRequest
-	2, // 2: fusion.proto.dictionary.DictionaryService.Create:input_type -> fusion.proto.dictionary.CreateDictRequest
-	3, // 3: fusion.proto.dictionary.DictionaryService.Delete:input_type -> fusion.proto.dictionary.DeleteDictRequest
-	4, // 4: fusion.proto.dictionary.DictionaryService.Update:input_type -> fusion.proto.dictionary.UpdateDictRequest
-	5, // 5: fusion.proto.dictionary.DictionaryService.List:input_type -> fusion.proto.dictionary.ListDictRequest
-	6, // 6: fusion.proto.dictionary.DictionaryService.GetDictByID:output_type -> fusion.proto.dictionary.GetDictResponse
-	6, // 7: fusion.proto.dictionary.DictionaryService.GetDictByKey:output_type -> fusion.proto.dictionary.GetDictResponse
-	7, // 8: fusion.proto.dictionary.DictionaryService.Create:output_type -> fusion.proto.dictionary.CreateDictResponse
-	8, // 9: fusion.proto.dictionary.DictionaryService.Delete:output_type -> google.protobuf.Empty
-	8, // 10: fusion.proto.dictionary.DictionaryService.Update:output_type -> google.protobuf.Empty
-	9, // 11: fusion.proto.dictionary.DictionaryService.List:output_type -> fusion.proto.dictionary.ListDictResponse
-	6, // [6:12] is the sub-list for method output_type
-	0, // [0:6] is the sub-list for method input_type
-	0, // [0:0] is the sub-list for extension type_name
-	0, // [0:0] is the sub-list for extension extendee
-	0, // [0:0] is the sub-list for field type_name
+	0,  // 0: fusion.proto.dictionary.DictionaryService.GetDictByID:input_type -> fusion.proto.dictionary.GetDictByIDRequest
+	1,  // 1: fusion.proto.dictionary.DictionaryService.GetDictByKey:input_type -> fusion.proto.dictionary.GetDictByKeyRequest
+	2,  // 2: fusion.proto.dictionary.DictionaryService.GetArrDictByKey:input_type -> fusion.proto.dictionary.GetArrDictByKeyRequest
+	3,  // 3: fusion.proto.dictionary.DictionaryService.Create:input_type -> fusion.proto.dictionary.CreateDictRequest
+	4,  // 4: fusion.proto.dictionary.DictionaryService.Delete:input_type -> fusion.proto.dictionary.DeleteDictRequest
+	5,  // 5: fusion.proto.dictionary.DictionaryService.Update:input_type -> fusion.proto.dictionary.UpdateDictRequest
+	6,  // 6: fusion.proto.dictionary.DictionaryService.List:input_type -> fusion.proto.dictionary.ListDictRequest
+	7,  // 7: fusion.proto.dictionary.DictionaryService.GetDictByID:output_type -> fusion.proto.dictionary.GetDictResponse
+	7,  // 8: fusion.proto.dictionary.DictionaryService.GetDictByKey:output_type -> fusion.proto.dictionary.GetDictResponse
+	8,  // 9: fusion.proto.dictionary.DictionaryService.GetArrDictByKey:output_type -> fusion.proto.dictionary.GetArrDictByKeyResponse
+	9,  // 10: fusion.proto.dictionary.DictionaryService.Create:output_type -> fusion.proto.dictionary.CreateDictResponse
+	10, // 11: fusion.proto.dictionary.DictionaryService.Delete:output_type -> google.protobuf.Empty
+	10, // 12: fusion.proto.dictionary.DictionaryService.Update:output_type -> google.protobuf.Empty
+	11, // 13: fusion.proto.dictionary.DictionaryService.List:output_type -> fusion.proto.dictionary.ListDictResponse
+	7,  // [7:14] is the sub-list for method output_type
+	0,  // [0:7] is the sub-list for method input_type
+	0,  // [0:0] is the sub-list for extension type_name
+	0,  // [0:0] is the sub-list for extension extendee
+	0,  // [0:0] is the sub-list for field type_name
 }
 
 func init() { file_dictionary_dictionary_service_proto_init() }

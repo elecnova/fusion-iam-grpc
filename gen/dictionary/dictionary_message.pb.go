@@ -237,6 +237,116 @@ func (*GetDictResponse_Data) isGetDictResponse_Result() {}
 
 func (*GetDictResponse_Value) isGetDictResponse_Result() {}
 
+// Package message 根据key获取字典数组指定配置信息消息请求定义
+type GetArrDictByKeyRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// 数据字典键
+	Key string `protobuf:"bytes,1,opt,name=key,proto3" json:"key,omitempty"`
+	// 语种信息
+	Language string `protobuf:"bytes,2,opt,name=language,proto3" json:"language,omitempty"`
+	// 指定的数组key
+	Code          int32 `protobuf:"varint,3,opt,name=code,proto3" json:"code,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetArrDictByKeyRequest) Reset() {
+	*x = GetArrDictByKeyRequest{}
+	mi := &file_dictionary_dictionary_message_proto_msgTypes[3]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetArrDictByKeyRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetArrDictByKeyRequest) ProtoMessage() {}
+
+func (x *GetArrDictByKeyRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_dictionary_dictionary_message_proto_msgTypes[3]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetArrDictByKeyRequest.ProtoReflect.Descriptor instead.
+func (*GetArrDictByKeyRequest) Descriptor() ([]byte, []int) {
+	return file_dictionary_dictionary_message_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *GetArrDictByKeyRequest) GetKey() string {
+	if x != nil {
+		return x.Key
+	}
+	return ""
+}
+
+func (x *GetArrDictByKeyRequest) GetLanguage() string {
+	if x != nil {
+		return x.Language
+	}
+	return ""
+}
+
+func (x *GetArrDictByKeyRequest) GetCode() int32 {
+	if x != nil {
+		return x.Code
+	}
+	return 0
+}
+
+// Package message 根据key获取字典数组指定配置信息消息响应定义
+type GetArrDictByKeyResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// 字典值数据
+	Value         string `protobuf:"bytes,1,opt,name=value,proto3" json:"value,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetArrDictByKeyResponse) Reset() {
+	*x = GetArrDictByKeyResponse{}
+	mi := &file_dictionary_dictionary_message_proto_msgTypes[4]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetArrDictByKeyResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetArrDictByKeyResponse) ProtoMessage() {}
+
+func (x *GetArrDictByKeyResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_dictionary_dictionary_message_proto_msgTypes[4]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetArrDictByKeyResponse.ProtoReflect.Descriptor instead.
+func (*GetArrDictByKeyResponse) Descriptor() ([]byte, []int) {
+	return file_dictionary_dictionary_message_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *GetArrDictByKeyResponse) GetValue() string {
+	if x != nil {
+		return x.Value
+	}
+	return ""
+}
+
 // Package message 创建数据字典请求消息定义
 type CreateDictRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
@@ -252,7 +362,7 @@ type CreateDictRequest struct {
 
 func (x *CreateDictRequest) Reset() {
 	*x = CreateDictRequest{}
-	mi := &file_dictionary_dictionary_message_proto_msgTypes[3]
+	mi := &file_dictionary_dictionary_message_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -264,7 +374,7 @@ func (x *CreateDictRequest) String() string {
 func (*CreateDictRequest) ProtoMessage() {}
 
 func (x *CreateDictRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_dictionary_dictionary_message_proto_msgTypes[3]
+	mi := &file_dictionary_dictionary_message_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -277,7 +387,7 @@ func (x *CreateDictRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateDictRequest.ProtoReflect.Descriptor instead.
 func (*CreateDictRequest) Descriptor() ([]byte, []int) {
-	return file_dictionary_dictionary_message_proto_rawDescGZIP(), []int{3}
+	return file_dictionary_dictionary_message_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *CreateDictRequest) GetKey() string {
@@ -312,7 +422,7 @@ type CreateDictResponse struct {
 
 func (x *CreateDictResponse) Reset() {
 	*x = CreateDictResponse{}
-	mi := &file_dictionary_dictionary_message_proto_msgTypes[4]
+	mi := &file_dictionary_dictionary_message_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -324,7 +434,7 @@ func (x *CreateDictResponse) String() string {
 func (*CreateDictResponse) ProtoMessage() {}
 
 func (x *CreateDictResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_dictionary_dictionary_message_proto_msgTypes[4]
+	mi := &file_dictionary_dictionary_message_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -337,7 +447,7 @@ func (x *CreateDictResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateDictResponse.ProtoReflect.Descriptor instead.
 func (*CreateDictResponse) Descriptor() ([]byte, []int) {
-	return file_dictionary_dictionary_message_proto_rawDescGZIP(), []int{4}
+	return file_dictionary_dictionary_message_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *CreateDictResponse) GetId() string {
@@ -364,7 +474,7 @@ type UpdateDictRequest struct {
 
 func (x *UpdateDictRequest) Reset() {
 	*x = UpdateDictRequest{}
-	mi := &file_dictionary_dictionary_message_proto_msgTypes[5]
+	mi := &file_dictionary_dictionary_message_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -376,7 +486,7 @@ func (x *UpdateDictRequest) String() string {
 func (*UpdateDictRequest) ProtoMessage() {}
 
 func (x *UpdateDictRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_dictionary_dictionary_message_proto_msgTypes[5]
+	mi := &file_dictionary_dictionary_message_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -389,7 +499,7 @@ func (x *UpdateDictRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateDictRequest.ProtoReflect.Descriptor instead.
 func (*UpdateDictRequest) Descriptor() ([]byte, []int) {
-	return file_dictionary_dictionary_message_proto_rawDescGZIP(), []int{5}
+	return file_dictionary_dictionary_message_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *UpdateDictRequest) GetId() string {
@@ -431,7 +541,7 @@ type DeleteDictRequest struct {
 
 func (x *DeleteDictRequest) Reset() {
 	*x = DeleteDictRequest{}
-	mi := &file_dictionary_dictionary_message_proto_msgTypes[6]
+	mi := &file_dictionary_dictionary_message_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -443,7 +553,7 @@ func (x *DeleteDictRequest) String() string {
 func (*DeleteDictRequest) ProtoMessage() {}
 
 func (x *DeleteDictRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_dictionary_dictionary_message_proto_msgTypes[6]
+	mi := &file_dictionary_dictionary_message_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -456,7 +566,7 @@ func (x *DeleteDictRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteDictRequest.ProtoReflect.Descriptor instead.
 func (*DeleteDictRequest) Descriptor() ([]byte, []int) {
-	return file_dictionary_dictionary_message_proto_rawDescGZIP(), []int{6}
+	return file_dictionary_dictionary_message_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *DeleteDictRequest) GetId() string {
@@ -481,7 +591,7 @@ type ListDictRequest struct {
 
 func (x *ListDictRequest) Reset() {
 	*x = ListDictRequest{}
-	mi := &file_dictionary_dictionary_message_proto_msgTypes[7]
+	mi := &file_dictionary_dictionary_message_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -493,7 +603,7 @@ func (x *ListDictRequest) String() string {
 func (*ListDictRequest) ProtoMessage() {}
 
 func (x *ListDictRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_dictionary_dictionary_message_proto_msgTypes[7]
+	mi := &file_dictionary_dictionary_message_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -506,7 +616,7 @@ func (x *ListDictRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListDictRequest.ProtoReflect.Descriptor instead.
 func (*ListDictRequest) Descriptor() ([]byte, []int) {
-	return file_dictionary_dictionary_message_proto_rawDescGZIP(), []int{7}
+	return file_dictionary_dictionary_message_proto_rawDescGZIP(), []int{9}
 }
 
 func (x *ListDictRequest) GetKeywords() string {
@@ -549,7 +659,7 @@ type ListDictResponse struct {
 
 func (x *ListDictResponse) Reset() {
 	*x = ListDictResponse{}
-	mi := &file_dictionary_dictionary_message_proto_msgTypes[8]
+	mi := &file_dictionary_dictionary_message_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -561,7 +671,7 @@ func (x *ListDictResponse) String() string {
 func (*ListDictResponse) ProtoMessage() {}
 
 func (x *ListDictResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_dictionary_dictionary_message_proto_msgTypes[8]
+	mi := &file_dictionary_dictionary_message_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -574,7 +684,7 @@ func (x *ListDictResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListDictResponse.ProtoReflect.Descriptor instead.
 func (*ListDictResponse) Descriptor() ([]byte, []int) {
-	return file_dictionary_dictionary_message_proto_rawDescGZIP(), []int{8}
+	return file_dictionary_dictionary_message_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *ListDictResponse) GetData() []*DictData {
@@ -639,7 +749,7 @@ type DictData struct {
 
 func (x *DictData) Reset() {
 	*x = DictData{}
-	mi := &file_dictionary_dictionary_message_proto_msgTypes[9]
+	mi := &file_dictionary_dictionary_message_proto_msgTypes[11]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -651,7 +761,7 @@ func (x *DictData) String() string {
 func (*DictData) ProtoMessage() {}
 
 func (x *DictData) ProtoReflect() protoreflect.Message {
-	mi := &file_dictionary_dictionary_message_proto_msgTypes[9]
+	mi := &file_dictionary_dictionary_message_proto_msgTypes[11]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -664,7 +774,7 @@ func (x *DictData) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DictData.ProtoReflect.Descriptor instead.
 func (*DictData) Descriptor() ([]byte, []int) {
-	return file_dictionary_dictionary_message_proto_rawDescGZIP(), []int{9}
+	return file_dictionary_dictionary_message_proto_rawDescGZIP(), []int{11}
 }
 
 func (x *DictData) GetId() string {
@@ -761,7 +871,7 @@ type DictDetail struct {
 
 func (x *DictDetail) Reset() {
 	*x = DictDetail{}
-	mi := &file_dictionary_dictionary_message_proto_msgTypes[10]
+	mi := &file_dictionary_dictionary_message_proto_msgTypes[12]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -773,7 +883,7 @@ func (x *DictDetail) String() string {
 func (*DictDetail) ProtoMessage() {}
 
 func (x *DictDetail) ProtoReflect() protoreflect.Message {
-	mi := &file_dictionary_dictionary_message_proto_msgTypes[10]
+	mi := &file_dictionary_dictionary_message_proto_msgTypes[12]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -786,7 +896,7 @@ func (x *DictDetail) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DictDetail.ProtoReflect.Descriptor instead.
 func (*DictDetail) Descriptor() ([]byte, []int) {
-	return file_dictionary_dictionary_message_proto_rawDescGZIP(), []int{10}
+	return file_dictionary_dictionary_message_proto_rawDescGZIP(), []int{12}
 }
 
 func (x *DictDetail) GetId() string {
@@ -881,7 +991,13 @@ const file_dictionary_dictionary_message_proto_rawDesc = "" +
 	"\x04data\x18\x01 \x01(\v2#.fusion.proto.dictionary.DictDetailH\x00R\x04data\x12\x16\n" +
 	"\x05value\x18\x02 \x01(\tH\x00R\x05value\x12\x12\n" +
 	"\x04flag\x18\x03 \x01(\x05R\x04flagB\b\n" +
-	"\x06result\"|\n" +
+	"\x06result\"{\n" +
+	"\x16GetArrDictByKeyRequest\x12\x1b\n" +
+	"\x03key\x18\x01 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18dR\x03key\x12%\n" +
+	"\blanguage\x18\x02 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18dR\blanguage\x12\x1d\n" +
+	"\x04code\x18\x03 \x01(\x05B\t\xbaH\x06\x1a\x04\x18\x02 \x00R\x04code\"/\n" +
+	"\x17GetArrDictByKeyResponse\x12\x14\n" +
+	"\x05value\x18\x01 \x01(\tR\x05value\"|\n" +
 	"\x11CreateDictRequest\x12\x1b\n" +
 	"\x03key\x18\x01 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18dR\x03key\x12)\n" +
 	"\vdescription\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x18dR\vdescription\x12\x1f\n" +
@@ -944,26 +1060,28 @@ func file_dictionary_dictionary_message_proto_rawDescGZIP() []byte {
 	return file_dictionary_dictionary_message_proto_rawDescData
 }
 
-var file_dictionary_dictionary_message_proto_msgTypes = make([]protoimpl.MessageInfo, 11)
+var file_dictionary_dictionary_message_proto_msgTypes = make([]protoimpl.MessageInfo, 13)
 var file_dictionary_dictionary_message_proto_goTypes = []any{
-	(*GetDictByIDRequest)(nil),    // 0: fusion.proto.dictionary.GetDictByIDRequest
-	(*GetDictByKeyRequest)(nil),   // 1: fusion.proto.dictionary.GetDictByKeyRequest
-	(*GetDictResponse)(nil),       // 2: fusion.proto.dictionary.GetDictResponse
-	(*CreateDictRequest)(nil),     // 3: fusion.proto.dictionary.CreateDictRequest
-	(*CreateDictResponse)(nil),    // 4: fusion.proto.dictionary.CreateDictResponse
-	(*UpdateDictRequest)(nil),     // 5: fusion.proto.dictionary.UpdateDictRequest
-	(*DeleteDictRequest)(nil),     // 6: fusion.proto.dictionary.DeleteDictRequest
-	(*ListDictRequest)(nil),       // 7: fusion.proto.dictionary.ListDictRequest
-	(*ListDictResponse)(nil),      // 8: fusion.proto.dictionary.ListDictResponse
-	(*DictData)(nil),              // 9: fusion.proto.dictionary.DictData
-	(*DictDetail)(nil),            // 10: fusion.proto.dictionary.DictDetail
-	(*timestamppb.Timestamp)(nil), // 11: google.protobuf.Timestamp
+	(*GetDictByIDRequest)(nil),      // 0: fusion.proto.dictionary.GetDictByIDRequest
+	(*GetDictByKeyRequest)(nil),     // 1: fusion.proto.dictionary.GetDictByKeyRequest
+	(*GetDictResponse)(nil),         // 2: fusion.proto.dictionary.GetDictResponse
+	(*GetArrDictByKeyRequest)(nil),  // 3: fusion.proto.dictionary.GetArrDictByKeyRequest
+	(*GetArrDictByKeyResponse)(nil), // 4: fusion.proto.dictionary.GetArrDictByKeyResponse
+	(*CreateDictRequest)(nil),       // 5: fusion.proto.dictionary.CreateDictRequest
+	(*CreateDictResponse)(nil),      // 6: fusion.proto.dictionary.CreateDictResponse
+	(*UpdateDictRequest)(nil),       // 7: fusion.proto.dictionary.UpdateDictRequest
+	(*DeleteDictRequest)(nil),       // 8: fusion.proto.dictionary.DeleteDictRequest
+	(*ListDictRequest)(nil),         // 9: fusion.proto.dictionary.ListDictRequest
+	(*ListDictResponse)(nil),        // 10: fusion.proto.dictionary.ListDictResponse
+	(*DictData)(nil),                // 11: fusion.proto.dictionary.DictData
+	(*DictDetail)(nil),              // 12: fusion.proto.dictionary.DictDetail
+	(*timestamppb.Timestamp)(nil),   // 13: google.protobuf.Timestamp
 }
 var file_dictionary_dictionary_message_proto_depIdxs = []int32{
-	10, // 0: fusion.proto.dictionary.GetDictResponse.data:type_name -> fusion.proto.dictionary.DictDetail
-	9,  // 1: fusion.proto.dictionary.ListDictResponse.data:type_name -> fusion.proto.dictionary.DictData
-	11, // 2: fusion.proto.dictionary.DictDetail.update_at:type_name -> google.protobuf.Timestamp
-	11, // 3: fusion.proto.dictionary.DictDetail.create_at:type_name -> google.protobuf.Timestamp
+	12, // 0: fusion.proto.dictionary.GetDictResponse.data:type_name -> fusion.proto.dictionary.DictDetail
+	11, // 1: fusion.proto.dictionary.ListDictResponse.data:type_name -> fusion.proto.dictionary.DictData
+	13, // 2: fusion.proto.dictionary.DictDetail.update_at:type_name -> google.protobuf.Timestamp
+	13, // 3: fusion.proto.dictionary.DictDetail.create_at:type_name -> google.protobuf.Timestamp
 	4,  // [4:4] is the sub-list for method output_type
 	4,  // [4:4] is the sub-list for method input_type
 	4,  // [4:4] is the sub-list for extension type_name
@@ -986,7 +1104,7 @@ func file_dictionary_dictionary_message_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_dictionary_dictionary_message_proto_rawDesc), len(file_dictionary_dictionary_message_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   11,
+			NumMessages:   13,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
