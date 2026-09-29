@@ -1080,7 +1080,7 @@ func (x *RoleMenuTree) GetChildren() []*RoleMenuTree {
 	return nil
 }
 
-// Package message 获取角色菜单树请求消息定义
+// Package message 获取指定角色在指定平台的菜单树请求消息定义
 type GetMenuRolesRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// 角色ID
@@ -1090,7 +1090,9 @@ type GetMenuRolesRequest struct {
 	// 项目ID，非空时优先以用户在该项目的角色为准
 	ProjectId string `protobuf:"bytes,3,opt,name=project_id,proto3" json:"project_id,omitempty"`
 	// 菜单状态(1-正常 2-禁用 3-锁定)，用于过滤角色菜单列表
-	MenuState     int32 `protobuf:"varint,4,opt,name=menu_state,proto3" json:"menu_state,omitempty"`
+	MenuState int32 `protobuf:"varint,4,opt,name=menu_state,proto3" json:"menu_state,omitempty"`
+	// 渠道(1-用户中心 2-业务平台 3-运维平台 4-开放平台 5-集控平台 6-DPP平台)
+	Channel       int32 `protobuf:"varint,5,opt,name=channel,proto3" json:"channel,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1153,7 +1155,14 @@ func (x *GetMenuRolesRequest) GetMenuState() int32 {
 	return 0
 }
 
-// Package message 获取角色菜单树响应消息定义
+func (x *GetMenuRolesRequest) GetChannel() int32 {
+	if x != nil {
+		return x.Channel
+	}
+	return 0
+}
+
+// Package message 获取指定角色在指定平台的菜单树响应消息定义
 type GetMenuRolesResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// 角色菜单树（按语种解析名称并按层级组装）
@@ -1471,7 +1480,7 @@ const file_menu_menu_message_proto_rawDesc = "" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x12\n" +
 	"\x04sort\x18\x03 \x01(\x05R\x04sort\x12\x12\n" +
 	"\x04type\x18\x04 \x01(\x05R\x04type\x12;\n" +
-	"\bchildren\x18\x05 \x03(\v2\x1f.fusion.proto.menu.RoleMenuTreeR\bchildren\"\xaf\x01\n" +
+	"\bchildren\x18\x05 \x03(\v2\x1f.fusion.proto.menu.RoleMenuTreeR\bchildren\"\xd4\x01\n" +
 	"\x13GetMenuRolesRequest\x12!\n" +
 	"\arole_id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x18(R\arole_id\x12!\n" +
 	"\auser_id\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x18(R\auser_id\x12'\n" +
@@ -1480,7 +1489,8 @@ const file_menu_menu_message_proto_rawDesc = "" +
 	"project_id\x12)\n" +
 	"\n" +
 	"menu_state\x18\x04 \x01(\x05B\t\xbaH\x06\x1a\x04\x18\x03(\x01R\n" +
-	"menu_state\"K\n" +
+	"menu_state\x12#\n" +
+	"\achannel\x18\x05 \x01(\x05B\t\xbaH\x06\x1a\x04\x18\x06(\x01R\achannel\"K\n" +
 	"\x14GetMenuRolesResponse\x123\n" +
 	"\x04data\x18\x01 \x03(\v2\x1f.fusion.proto.menu.RoleMenuTreeR\x04data\";\n" +
 	"\x14SelfRoleMenusRequest\x12#\n" +

@@ -56,7 +56,7 @@ type MenuServiceClient interface {
 	ListMenus(ctx context.Context, in *ListMenusRequest, opts ...grpc.CallOption) (*ListMenusResponse, error)
 	// 获取全局菜单树
 	TreeMenu(ctx context.Context, in *TreeMenuRequest, opts ...grpc.CallOption) (*TreeMenuResponse, error)
-	// 获取指定角色的菜单ID列表
+	// 获取指定角色在指定平台的菜单树
 	GetMenuRoles(ctx context.Context, in *GetMenuRolesRequest, opts ...grpc.CallOption) (*GetMenuRolesResponse, error)
 	// 获取当前用户指定渠道的角色菜单树
 	SelfRoleMenus(ctx context.Context, in *SelfRoleMenusRequest, opts ...grpc.CallOption) (*SelfRoleMenusResponse, error)
@@ -168,7 +168,7 @@ type MenuServiceServer interface {
 	ListMenus(context.Context, *ListMenusRequest) (*ListMenusResponse, error)
 	// 获取全局菜单树
 	TreeMenu(context.Context, *TreeMenuRequest) (*TreeMenuResponse, error)
-	// 获取指定角色的菜单ID列表
+	// 获取指定角色在指定平台的菜单树
 	GetMenuRoles(context.Context, *GetMenuRolesRequest) (*GetMenuRolesResponse, error)
 	// 获取当前用户指定渠道的角色菜单树
 	SelfRoleMenus(context.Context, *SelfRoleMenusRequest) (*SelfRoleMenusResponse, error)
