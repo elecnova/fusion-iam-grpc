@@ -164,8 +164,8 @@ type CreateUserRequest struct {
 	Id *string `protobuf:"bytes,11,opt,name=id,proto3,oneof" json:"id,omitempty"`
 	// 用户类型(1-普通用户 2-预定义用户 3-体验用户)
 	Type int32 `protobuf:"varint,12,opt,name=type,proto3" json:"type,omitempty"`
-	// 角色ID(可选)
-	RoleId        []string `protobuf:"bytes,13,rep,name=role_id,proto3" json:"role_id,omitempty"`
+	// 角色ID
+	RoleId        string `protobuf:"bytes,13,opt,name=role_id,proto3" json:"role_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -277,11 +277,11 @@ func (x *CreateUserRequest) GetType() int32 {
 	return 0
 }
 
-func (x *CreateUserRequest) GetRoleId() []string {
+func (x *CreateUserRequest) GetRoleId() string {
 	if x != nil {
 		return x.RoleId
 	}
-	return nil
+	return ""
 }
 
 // Package message 用户中心-删除用户消息定义
@@ -357,8 +357,8 @@ type UpdateUserRequest struct {
 	ExpireAt *timestamppb.Timestamp `protobuf:"bytes,11,opt,name=expire_at,proto3" json:"expire_at,omitempty"`
 	// 用户类型(1-普通用户 2-预定义用户 3-体验用户)
 	Type int32 `protobuf:"varint,12,opt,name=type,proto3" json:"type,omitempty"`
-	// 角色ID(可选)
-	RoleId        []string `protobuf:"bytes,13,rep,name=role_id,proto3" json:"role_id,omitempty"`
+	// 角色ID
+	RoleId        string `protobuf:"bytes,13,opt,name=role_id,proto3" json:"role_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -477,11 +477,11 @@ func (x *UpdateUserRequest) GetType() int32 {
 	return 0
 }
 
-func (x *UpdateUserRequest) GetRoleId() []string {
+func (x *UpdateUserRequest) GetRoleId() string {
 	if x != nil {
 		return x.RoleId
 	}
-	return nil
+	return ""
 }
 
 // Package message 用户中心-修改用户邮箱、昵称、手机号码等信息消息定义
@@ -2516,7 +2516,7 @@ const file_user_user_message_proto_rawDesc = "" +
 	"\vemail_state\x18\t \x01(\x05B\t\xbaH\x06\x1a\x04\x18\x03(\x01H\x00R\vemail_state\x88\x01\x01\x12\x1c\n" +
 	"\x02id\x18\v \x01(\tB\a\xbaH\x04r\x02\x18(H\x01R\x02id\x88\x01\x01\x12\x1d\n" +
 	"\x04type\x18\f \x01(\x05B\t\xbaH\x06\x1a\x04\x18\x03(\x01R\x04type\x12\x18\n" +
-	"\arole_id\x18\r \x03(\tR\arole_idB\x0e\n" +
+	"\arole_id\x18\r \x01(\tR\arole_idB\x0e\n" +
 	"\f_email_stateB\x05\n" +
 	"\x03_id\".\n" +
 	"\x11DeleteUserRequest\x12\x19\n" +
@@ -2536,7 +2536,7 @@ const file_user_user_message_proto_rawDesc = "" +
 	" \x01(\bB\x06\xbaH\x03\xc8\x01\x01H\x02R\vfirst_login\x88\x01\x01\x128\n" +
 	"\texpire_at\x18\v \x01(\v2\x1a.google.protobuf.TimestampR\texpire_at\x12\x1d\n" +
 	"\x04type\x18\f \x01(\x05B\t\xbaH\x06\x1a\x04\x18\x03(\x01R\x04type\x12\x18\n" +
-	"\arole_id\x18\r \x03(\tR\arole_idB\b\n" +
+	"\arole_id\x18\r \x01(\tR\arole_idB\b\n" +
 	"\x06_stateB\x0e\n" +
 	"\f_email_stateB\x0e\n" +
 	"\f_first_login\"\xfd\x02\n" +
