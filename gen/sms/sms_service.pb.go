@@ -35,8 +35,9 @@ var File_sms_sms_service_proto protoreflect.FileDescriptor
 
 const file_sms_sms_service_proto_rawDesc = "" +
 	"\n" +
-	"\x15sms/sms_service.proto\x12\x10fusion.proto.sms\x1a\x1cgoogle/api/annotations.proto\x1a\x17google/api/client.proto\x1a\x1bgoogle/protobuf/empty.proto\x1a\x15sms/sms_message.proto2}\n" +
-	"\fEmailService\x12m\n" +
+	"\x15sms/sms_service.proto\x12\x10fusion.proto.sms\x1a\x1cgoogle/api/annotations.proto\x1a\x17google/api/client.proto\x1a\x1bgoogle/protobuf/empty.proto\x1a\x15sms/sms_message.proto2{\n" +
+	"\n" +
+	"SMSService\x12m\n" +
 	"\aSendSMS\x12 .fusion.proto.sms.SendSMSRequest\x1a\x16.google.protobuf.Empty\"(\xdaA\x06mobile\x82\xd3\xe4\x93\x02\x19:\x01*\"\x14/3rd-api/v1/sms/sendB\x9f\x01\n" +
 	"\x14com.fusion.proto.smsB\x0fSmsServiceProtoP\x01Z\x14fusion.proto.sms;sms\xa2\x02\x03FPS\xaa\x02\x10Fusion.Proto.Sms\xca\x02\x10Fusion\\Proto\\Sms\xe2\x02\x1cFusion\\Proto\\Sms\\GPBMetadata\xea\x02\x12Fusion::Proto::Smsb\x06proto3"
 
@@ -45,8 +46,8 @@ var file_sms_sms_service_proto_goTypes = []any{
 	(*emptypb.Empty)(nil),  // 1: google.protobuf.Empty
 }
 var file_sms_sms_service_proto_depIdxs = []int32{
-	0, // 0: fusion.proto.sms.EmailService.SendSMS:input_type -> fusion.proto.sms.SendSMSRequest
-	1, // 1: fusion.proto.sms.EmailService.SendSMS:output_type -> google.protobuf.Empty
+	0, // 0: fusion.proto.sms.SMSService.SendSMS:input_type -> fusion.proto.sms.SendSMSRequest
+	1, // 1: fusion.proto.sms.SMSService.SendSMS:output_type -> google.protobuf.Empty
 	1, // [1:2] is the sub-list for method output_type
 	0, // [0:1] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name

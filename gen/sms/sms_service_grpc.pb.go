@@ -29,107 +29,107 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	EmailService_SendSMS_FullMethodName = "/fusion.proto.sms.EmailService/SendSMS"
+	SMSService_SendSMS_FullMethodName = "/fusion.proto.sms.SMSService/SendSMS"
 )
 
-// EmailServiceClient is the client API for EmailService service.
+// SMSServiceClient is the client API for SMSService service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 //
-// Package user_service 用户中心邮件服务接口定义
-type EmailServiceClient interface {
+// Package sms_service 短信服务接口定义
+type SMSServiceClient interface {
 	// 发送短信
 	SendSMS(ctx context.Context, in *SendSMSRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 }
 
-type emailServiceClient struct {
+type sMSServiceClient struct {
 	cc grpc.ClientConnInterface
 }
 
-func NewEmailServiceClient(cc grpc.ClientConnInterface) EmailServiceClient {
-	return &emailServiceClient{cc}
+func NewSMSServiceClient(cc grpc.ClientConnInterface) SMSServiceClient {
+	return &sMSServiceClient{cc}
 }
 
-func (c *emailServiceClient) SendSMS(ctx context.Context, in *SendSMSRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+func (c *sMSServiceClient) SendSMS(ctx context.Context, in *SendSMSRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(emptypb.Empty)
-	err := c.cc.Invoke(ctx, EmailService_SendSMS_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, SMSService_SendSMS_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-// EmailServiceServer is the server API for EmailService service.
-// All implementations must embed UnimplementedEmailServiceServer
+// SMSServiceServer is the server API for SMSService service.
+// All implementations must embed UnimplementedSMSServiceServer
 // for forward compatibility.
 //
-// Package user_service 用户中心邮件服务接口定义
-type EmailServiceServer interface {
+// Package sms_service 短信服务接口定义
+type SMSServiceServer interface {
 	// 发送短信
 	SendSMS(context.Context, *SendSMSRequest) (*emptypb.Empty, error)
-	mustEmbedUnimplementedEmailServiceServer()
+	mustEmbedUnimplementedSMSServiceServer()
 }
 
-// UnimplementedEmailServiceServer must be embedded to have
+// UnimplementedSMSServiceServer must be embedded to have
 // forward compatible implementations.
 //
 // NOTE: this should be embedded by value instead of pointer to avoid a nil
 // pointer dereference when methods are called.
-type UnimplementedEmailServiceServer struct{}
+type UnimplementedSMSServiceServer struct{}
 
-func (UnimplementedEmailServiceServer) SendSMS(context.Context, *SendSMSRequest) (*emptypb.Empty, error) {
+func (UnimplementedSMSServiceServer) SendSMS(context.Context, *SendSMSRequest) (*emptypb.Empty, error) {
 	return nil, status.Error(codes.Unimplemented, "method SendSMS not implemented")
 }
-func (UnimplementedEmailServiceServer) mustEmbedUnimplementedEmailServiceServer() {}
-func (UnimplementedEmailServiceServer) testEmbeddedByValue()                      {}
+func (UnimplementedSMSServiceServer) mustEmbedUnimplementedSMSServiceServer() {}
+func (UnimplementedSMSServiceServer) testEmbeddedByValue()                    {}
 
-// UnsafeEmailServiceServer may be embedded to opt out of forward compatibility for this service.
-// Use of this interface is not recommended, as added methods to EmailServiceServer will
+// UnsafeSMSServiceServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to SMSServiceServer will
 // result in compilation errors.
-type UnsafeEmailServiceServer interface {
-	mustEmbedUnimplementedEmailServiceServer()
+type UnsafeSMSServiceServer interface {
+	mustEmbedUnimplementedSMSServiceServer()
 }
 
-func RegisterEmailServiceServer(s grpc.ServiceRegistrar, srv EmailServiceServer) {
-	// If the following call panics, it indicates UnimplementedEmailServiceServer was
+func RegisterSMSServiceServer(s grpc.ServiceRegistrar, srv SMSServiceServer) {
+	// If the following call panics, it indicates UnimplementedSMSServiceServer was
 	// embedded by pointer and is nil.  This will cause panics if an
 	// unimplemented method is ever invoked, so we test this at initialization
 	// time to prevent it from happening at runtime later due to I/O.
 	if t, ok := srv.(interface{ testEmbeddedByValue() }); ok {
 		t.testEmbeddedByValue()
 	}
-	s.RegisterService(&EmailService_ServiceDesc, srv)
+	s.RegisterService(&SMSService_ServiceDesc, srv)
 }
 
-func _EmailService_SendSMS_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _SMSService_SendSMS_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(SendSMSRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(EmailServiceServer).SendSMS(ctx, in)
+		return srv.(SMSServiceServer).SendSMS(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: EmailService_SendSMS_FullMethodName,
+		FullMethod: SMSService_SendSMS_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(EmailServiceServer).SendSMS(ctx, req.(*SendSMSRequest))
+		return srv.(SMSServiceServer).SendSMS(ctx, req.(*SendSMSRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-// EmailService_ServiceDesc is the grpc.ServiceDesc for EmailService service.
+// SMSService_ServiceDesc is the grpc.ServiceDesc for SMSService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
-var EmailService_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "fusion.proto.sms.EmailService",
-	HandlerType: (*EmailServiceServer)(nil),
+var SMSService_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "fusion.proto.sms.SMSService",
+	HandlerType: (*SMSServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
 			MethodName: "SendSMS",
-			Handler:    _EmailService_SendSMS_Handler,
+			Handler:    _SMSService_SendSMS_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
