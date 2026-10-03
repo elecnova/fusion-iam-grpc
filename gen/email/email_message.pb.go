@@ -824,97 +824,6 @@ func (x *VerifyRequest) GetKey() string {
 	return ""
 }
 
-// Package message 短信中心-发送短信请求消息定义
-type SendSMSRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// 手机号码
-	Mobile string `protobuf:"bytes,1,opt,name=mobile,proto3" json:"mobile,omitempty"`
-	// 短信签名
-	Signature string `protobuf:"bytes,2,opt,name=signature,proto3" json:"signature,omitempty"`
-	// 短信模板代码
-	TemplateCode string `protobuf:"bytes,3,opt,name=template_code,proto3" json:"template_code,omitempty"`
-	// 短信模板参数，示例：{\"keyword1\":\"1234\"}
-	TemplateParam string `protobuf:"bytes,4,opt,name=template_param,json=templateParam,proto3" json:"template_param,omitempty"`
-	// 渠道（1-阿里云短信）
-	Channel int32 `protobuf:"varint,5,opt,name=channel,proto3" json:"channel,omitempty"`
-	// 短信签名ID（若不填，系统使用默认短信签名ID）
-	SignatureId   string `protobuf:"bytes,6,opt,name=signature_id,json=signatureId,proto3" json:"signature_id,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *SendSMSRequest) Reset() {
-	*x = SendSMSRequest{}
-	mi := &file_email_email_message_proto_msgTypes[10]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *SendSMSRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*SendSMSRequest) ProtoMessage() {}
-
-func (x *SendSMSRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_email_email_message_proto_msgTypes[10]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use SendSMSRequest.ProtoReflect.Descriptor instead.
-func (*SendSMSRequest) Descriptor() ([]byte, []int) {
-	return file_email_email_message_proto_rawDescGZIP(), []int{10}
-}
-
-func (x *SendSMSRequest) GetMobile() string {
-	if x != nil {
-		return x.Mobile
-	}
-	return ""
-}
-
-func (x *SendSMSRequest) GetSignature() string {
-	if x != nil {
-		return x.Signature
-	}
-	return ""
-}
-
-func (x *SendSMSRequest) GetTemplateCode() string {
-	if x != nil {
-		return x.TemplateCode
-	}
-	return ""
-}
-
-func (x *SendSMSRequest) GetTemplateParam() string {
-	if x != nil {
-		return x.TemplateParam
-	}
-	return ""
-}
-
-func (x *SendSMSRequest) GetChannel() int32 {
-	if x != nil {
-		return x.Channel
-	}
-	return 0
-}
-
-func (x *SendSMSRequest) GetSignatureId() string {
-	if x != nil {
-		return x.SignatureId
-	}
-	return ""
-}
-
 var File_email_email_message_proto protoreflect.FileDescriptor
 
 const file_email_email_message_proto_rawDesc = "" +
@@ -988,15 +897,7 @@ const file_email_email_message_proto_rawDesc = "" +
 	"errMessage\"@\n" +
 	"\rVerifyRequest\x12\x12\n" +
 	"\x04addr\x18\x01 \x01(\tR\x04addr\x12\x1b\n" +
-	"\x03key\x18\x02 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18dR\x03key\"\x8f\x02\n" +
-	"\x0eSendSMSRequest\x12!\n" +
-	"\x06mobile\x18\x01 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18\x14R\x06mobile\x12'\n" +
-	"\tsignature\x18\x02 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18dR\tsignature\x12/\n" +
-	"\rtemplate_code\x18\x03 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18dR\rtemplate_code\x121\n" +
-	"\x0etemplate_param\x18\x04 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\rtemplateParam\x12!\n" +
-	"\achannel\x18\x05 \x01(\x05B\a\xbaH\x04\x1a\x020\x01R\achannel\x12*\n" +
-	"\fsignature_id\x18\x06 \x01(\tB\a\xbaH\x04r\x02\x18(R\vsignatureIdB\xaf\x01\n" +
+	"\x03key\x18\x02 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18dR\x03keyB\xaf\x01\n" +
 	"\x16com.fusion.proto.emailB\x11EmailMessageProtoP\x01Z\x18fusion.proto.email;email\xa2\x02\x03FPE\xaa\x02\x12Fusion.Proto.Email\xca\x02\x12Fusion\\Proto\\Email\xe2\x02\x1eFusion\\Proto\\Email\\GPBMetadata\xea\x02\x14Fusion::Proto::Emailb\x06proto3"
 
 var (
@@ -1011,7 +912,7 @@ func file_email_email_message_proto_rawDescGZIP() []byte {
 	return file_email_email_message_proto_rawDescData
 }
 
-var file_email_email_message_proto_msgTypes = make([]protoimpl.MessageInfo, 11)
+var file_email_email_message_proto_msgTypes = make([]protoimpl.MessageInfo, 10)
 var file_email_email_message_proto_goTypes = []any{
 	(*SendEmailCodeRequest)(nil),     // 0: fusion.proto.email.SendEmailCodeRequest
 	(*SendEmailActiveRequest)(nil),   // 1: fusion.proto.email.SendEmailActiveRequest
@@ -1023,7 +924,6 @@ var file_email_email_message_proto_goTypes = []any{
 	(*CmpPageRequest)(nil),           // 7: fusion.proto.email.CmpPageRequest
 	(*CmpPageResponse)(nil),          // 8: fusion.proto.email.CmpPageResponse
 	(*VerifyRequest)(nil),            // 9: fusion.proto.email.VerifyRequest
-	(*SendSMSRequest)(nil),           // 10: fusion.proto.email.SendSMSRequest
 }
 var file_email_email_message_proto_depIdxs = []int32{
 	0, // [0:0] is the sub-list for method output_type
@@ -1044,7 +944,7 @@ func file_email_email_message_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_email_email_message_proto_rawDesc), len(file_email_email_message_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   11,
+			NumMessages:   10,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

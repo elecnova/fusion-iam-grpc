@@ -38,7 +38,6 @@ const (
 	EmailService_GetActivationPage_FullMethodName        = "/fusion.proto.email.EmailService/GetActivationPage"
 	EmailService_GetChannelActivationPage_FullMethodName = "/fusion.proto.email.EmailService/GetChannelActivationPage"
 	EmailService_Verify_FullMethodName                   = "/fusion.proto.email.EmailService/Verify"
-	EmailService_SendSMS_FullMethodName                  = "/fusion.proto.email.EmailService/SendSMS"
 )
 
 // EmailServiceClient is the client API for EmailService service.
@@ -65,8 +64,6 @@ type EmailServiceClient interface {
 	GetChannelActivationPage(ctx context.Context, in *CmpPageRequest, opts ...grpc.CallOption) (*CmpPageResponse, error)
 	// 激活用户账户
 	Verify(ctx context.Context, in *VerifyRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
-	// 发送短信
-	SendSMS(ctx context.Context, in *SendSMSRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 }
 
 type emailServiceClient struct {
@@ -167,16 +164,6 @@ func (c *emailServiceClient) Verify(ctx context.Context, in *VerifyRequest, opts
 	return out, nil
 }
 
-func (c *emailServiceClient) SendSMS(ctx context.Context, in *SendSMSRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(emptypb.Empty)
-	err := c.cc.Invoke(ctx, EmailService_SendSMS_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
 // EmailServiceServer is the server API for EmailService service.
 // All implementations must embed UnimplementedEmailServiceServer
 // for forward compatibility.
@@ -201,8 +188,6 @@ type EmailServiceServer interface {
 	GetChannelActivationPage(context.Context, *CmpPageRequest) (*CmpPageResponse, error)
 	// 激活用户账户
 	Verify(context.Context, *VerifyRequest) (*emptypb.Empty, error)
-	// 发送短信
-	SendSMS(context.Context, *SendSMSRequest) (*emptypb.Empty, error)
 	mustEmbedUnimplementedEmailServiceServer()
 }
 
@@ -239,9 +224,6 @@ func (UnimplementedEmailServiceServer) GetChannelActivationPage(context.Context,
 }
 func (UnimplementedEmailServiceServer) Verify(context.Context, *VerifyRequest) (*emptypb.Empty, error) {
 	return nil, status.Error(codes.Unimplemented, "method Verify not implemented")
-}
-func (UnimplementedEmailServiceServer) SendSMS(context.Context, *SendSMSRequest) (*emptypb.Empty, error) {
-	return nil, status.Error(codes.Unimplemented, "method SendSMS not implemented")
 }
 func (UnimplementedEmailServiceServer) mustEmbedUnimplementedEmailServiceServer() {}
 func (UnimplementedEmailServiceServer) testEmbeddedByValue()                      {}
@@ -426,24 +408,6 @@ func _EmailService_Verify_Handler(srv interface{}, ctx context.Context, dec func
 	return interceptor(ctx, in, info, handler)
 }
 
-func _EmailService_SendSMS_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(SendSMSRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(EmailServiceServer).SendSMS(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: EmailService_SendSMS_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(EmailServiceServer).SendSMS(ctx, req.(*SendSMSRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 // EmailService_ServiceDesc is the grpc.ServiceDesc for EmailService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -486,10 +450,6 @@ var EmailService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "Verify",
 			Handler:    _EmailService_Verify_Handler,
-		},
-		{
-			MethodName: "SendSMS",
-			Handler:    _EmailService_SendSMS_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
