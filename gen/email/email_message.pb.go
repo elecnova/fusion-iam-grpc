@@ -123,7 +123,11 @@ type SendEmailActiveRequest struct {
 	// 邮件模板ID（可选，为空则使用平台默认规则匹配邮件模板和通道）
 	TemplateId string `protobuf:"bytes,3,opt,name=template_id,proto3" json:"template_id,omitempty"`
 	// 邮件激活关键字（可用于存取待激活用户ID）
-	Key           string `protobuf:"bytes,4,opt,name=key,proto3" json:"key,omitempty"`
+	Key string `protobuf:"bytes,4,opt,name=key,proto3" json:"key,omitempty"`
+	// 邮箱验证码有效期（单位为:分钟，默认10分钟）
+	Expire int64 `protobuf:"varint,5,opt,name=expire,proto3" json:"expire,omitempty"`
+	// 用户类型(2-客户账户激活邮件 3-运维账户激活邮件 8-渠道平台账户激活邮件)
+	UserType      int64 `protobuf:"varint,6,opt,name=user_type,proto3" json:"user_type,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -184,6 +188,20 @@ func (x *SendEmailActiveRequest) GetKey() string {
 		return x.Key
 	}
 	return ""
+}
+
+func (x *SendEmailActiveRequest) GetExpire() int64 {
+	if x != nil {
+		return x.Expire
+	}
+	return 0
+}
+
+func (x *SendEmailActiveRequest) GetUserType() int64 {
+	if x != nil {
+		return x.UserType
+	}
+	return 0
 }
 
 // Package message 邮件中心-发送告警邮件请求消息定义
@@ -835,12 +853,14 @@ const file_email_email_message_proto_rawDesc = "" +
 	"R\x04code\x12\x16\n" +
 	"\x06expire\x18\x03 \x01(\x03R\x06expire\x12\x1a\n" +
 	"\blanguage\x18\x04 \x01(\tR\blanguage\x12)\n" +
-	"\vtemplate_id\x18\x05 \x01(\tB\a\xbaH\x04r\x02\x18(R\vtemplate_id\"\xa0\x01\n" +
+	"\vtemplate_id\x18\x05 \x01(\tB\a\xbaH\x04r\x02\x18(R\vtemplate_id\"\xd6\x01\n" +
 	"\x16SendEmailActiveRequest\x12#\n" +
 	"\ato_addr\x18\x01 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18dR\ato_addr\x12\x1a\n" +
 	"\blanguage\x18\x02 \x01(\tR\blanguage\x12)\n" +
 	"\vtemplate_id\x18\x03 \x01(\tB\a\xbaH\x04r\x02\x18(R\vtemplate_id\x12\x1a\n" +
-	"\x03key\x18\x04 \x01(\tB\b\xbaH\x05r\x03\x18\xff\x01R\x03key\"\xea\x03\n" +
+	"\x03key\x18\x04 \x01(\tB\b\xbaH\x05r\x03\x18\xff\x01R\x03key\x12\x16\n" +
+	"\x06expire\x18\x05 \x01(\x03R\x06expire\x12\x1c\n" +
+	"\tuser_type\x18\x06 \x01(\x03R\tuser_type\"\xea\x03\n" +
 	"\x15SendEmailAlarmRequest\x12!\n" +
 	"\ato_addr\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x18dR\ato_addr\x12\x1a\n" +
 	"\blanguage\x18\x02 \x01(\tR\blanguage\x12)\n" +
