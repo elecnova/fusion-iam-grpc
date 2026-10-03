@@ -43,7 +43,9 @@ type SendEmailCodeRequest struct {
 	// 邮件语种（默认英文，目前仅支持英文）
 	Language string `protobuf:"bytes,4,opt,name=language,proto3" json:"language,omitempty"`
 	// 邮件模板ID（可选，为空则使用平台默认规则匹配邮件模板和通道）
-	TemplateId    string `protobuf:"bytes,5,opt,name=template_id,proto3" json:"template_id,omitempty"`
+	TemplateId string `protobuf:"bytes,5,opt,name=template_id,proto3" json:"template_id,omitempty"`
+	// 用户类型(2-客户账户激活邮件 3-运维账户激活邮件 8-渠道平台账户激活邮件)
+	UserType      int64 `protobuf:"varint,6,opt,name=user_type,proto3" json:"user_type,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -111,6 +113,13 @@ func (x *SendEmailCodeRequest) GetTemplateId() string {
 		return x.TemplateId
 	}
 	return ""
+}
+
+func (x *SendEmailCodeRequest) GetUserType() int64 {
+	if x != nil {
+		return x.UserType
+	}
+	return 0
 }
 
 // Package message 邮件中心-发送激活邮件请求消息定义
@@ -846,14 +855,15 @@ var File_email_email_message_proto protoreflect.FileDescriptor
 
 const file_email_email_message_proto_rawDesc = "" +
 	"\n" +
-	"\x19email/email_message.proto\x12\x12fusion.proto.email\x1a\x1bbuf/validate/validate.proto\"\xb9\x01\n" +
+	"\x19email/email_message.proto\x12\x12fusion.proto.email\x1a\x1bbuf/validate/validate.proto\"\xd7\x01\n" +
 	"\x14SendEmailCodeRequest\x12#\n" +
 	"\ato_addr\x18\x01 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18dR\ato_addr\x12\x1d\n" +
 	"\x04code\x18\x02 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18\n" +
 	"R\x04code\x12\x16\n" +
 	"\x06expire\x18\x03 \x01(\x03R\x06expire\x12\x1a\n" +
 	"\blanguage\x18\x04 \x01(\tR\blanguage\x12)\n" +
-	"\vtemplate_id\x18\x05 \x01(\tB\a\xbaH\x04r\x02\x18(R\vtemplate_id\"\xd6\x01\n" +
+	"\vtemplate_id\x18\x05 \x01(\tB\a\xbaH\x04r\x02\x18(R\vtemplate_id\x12\x1c\n" +
+	"\tuser_type\x18\x06 \x01(\x03R\tuser_type\"\xd6\x01\n" +
 	"\x16SendEmailActiveRequest\x12#\n" +
 	"\ato_addr\x18\x01 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18dR\ato_addr\x12\x1a\n" +
 	"\blanguage\x18\x02 \x01(\tR\blanguage\x12)\n" +
