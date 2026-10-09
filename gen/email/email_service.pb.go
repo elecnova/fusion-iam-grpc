@@ -35,7 +35,8 @@ var File_email_email_service_proto protoreflect.FileDescriptor
 
 const file_email_email_service_proto_rawDesc = "" +
 	"\n" +
-	"\x19email/email_service.proto\x12\x12fusion.proto.email\x1a\x1cgoogle/api/annotations.proto\x1a\x17google/api/client.proto\x1a\x1bgoogle/protobuf/empty.proto\x1a\x19email/email_message.proto2\xc6\t\n" +
+	"\x19email/email_service.proto\x12\x12fusion.proto.email\x1a\x19email/email_message.proto\x1a\x1cgoogle/api/annotations.proto\x1a\x17google/api/client.proto\x1a\x1bgoogle/protobuf/empty.proto2\xc0\n" +
+	"\n" +
 	"\fEmailService\x12w\n" +
 	"\rSendEmailCode\x12(.fusion.proto.email.SendEmailCodeRequest\x1a\x16.google.protobuf.Empty\"$\xdaA\x00\x82\xd3\xe4\x93\x02\x1b:\x01*\"\x16/3rd-api/v1/email/code\x12\x84\x01\n" +
 	"\x0fSendEmailActive\x12*.fusion.proto.email.SendEmailActiveRequest\x1a\x16.google.protobuf.Empty\"-\xdaA\ato_addr\x82\xd3\xe4\x93\x02\x1d:\x01*\"\x18/3rd-api/v1/email/active\x12\x81\x01\n" +
@@ -45,7 +46,9 @@ const file_email_email_service_proto_rawDesc = "" +
 	"\x0fSendEmailNotice\x12*.fusion.proto.email.SendEmailNoticeRequest\x1a\x16.google.protobuf.Empty\"-\xdaA\ato_addr\x82\xd3\xe4\x93\x02\x1d:\x01*\"\x18/3rd-api/v1/email/notice\x12|\n" +
 	"\x11GetActivationPage\x12\x1f.fusion.proto.email.PageRequest\x1a .fusion.proto.email.PageResponse\"$\xdaA\x00\x82\xd3\xe4\x93\x02\x1b:\x01*\"\x16/3rd-api/v1/email/page\x12\x8d\x01\n" +
 	"\x18GetChannelActivationPage\x12\".fusion.proto.email.CmpPageRequest\x1a#.fusion.proto.email.CmpPageResponse\"(\xdaA\x00\x82\xd3\xe4\x93\x02\x1f:\x01*\"\x1a/3rd-api/v1/email/cmp_page\x12k\n" +
-	"\x06Verify\x12!.fusion.proto.email.VerifyRequest\x1a\x16.google.protobuf.Empty\"&\xdaA\x00\x82\xd3\xe4\x93\x02\x1d:\x01*\"\x18/3rd-api/v1/email/verifyB\xaf\x01\n" +
+	"\x06Verify\x12!.fusion.proto.email.VerifyRequest\x1a\x16.google.protobuf.Empty\"&\xdaA\x00\x82\xd3\xe4\x93\x02\x1d:\x01*\"\x18/3rd-api/v1/email/verify\x12x\n" +
+	"\n" +
+	"VerifyCode\x12%.fusion.proto.email.VerifyCodeRequest\x1a\x16.google.protobuf.Empty\"+\xdaA\x00\x82\xd3\xe4\x93\x02\":\x01*\"\x1d/3rd-api/v1/email/verify/codeB\xaf\x01\n" +
 	"\x16com.fusion.proto.emailB\x11EmailServiceProtoP\x01Z\x18fusion.proto.email;email\xa2\x02\x03FPE\xaa\x02\x12Fusion.Proto.Email\xca\x02\x12Fusion\\Proto\\Email\xe2\x02\x1eFusion\\Proto\\Email\\GPBMetadata\xea\x02\x14Fusion::Proto::Emailb\x06proto3"
 
 var file_email_email_service_proto_goTypes = []any{
@@ -57,9 +60,10 @@ var file_email_email_service_proto_goTypes = []any{
 	(*PageRequest)(nil),              // 5: fusion.proto.email.PageRequest
 	(*CmpPageRequest)(nil),           // 6: fusion.proto.email.CmpPageRequest
 	(*VerifyRequest)(nil),            // 7: fusion.proto.email.VerifyRequest
-	(*emptypb.Empty)(nil),            // 8: google.protobuf.Empty
-	(*PageResponse)(nil),             // 9: fusion.proto.email.PageResponse
-	(*CmpPageResponse)(nil),          // 10: fusion.proto.email.CmpPageResponse
+	(*VerifyCodeRequest)(nil),        // 8: fusion.proto.email.VerifyCodeRequest
+	(*emptypb.Empty)(nil),            // 9: google.protobuf.Empty
+	(*PageResponse)(nil),             // 10: fusion.proto.email.PageResponse
+	(*CmpPageResponse)(nil),          // 11: fusion.proto.email.CmpPageResponse
 }
 var file_email_email_service_proto_depIdxs = []int32{
 	0,  // 0: fusion.proto.email.EmailService.SendEmailCode:input_type -> fusion.proto.email.SendEmailCodeRequest
@@ -71,17 +75,19 @@ var file_email_email_service_proto_depIdxs = []int32{
 	5,  // 6: fusion.proto.email.EmailService.GetActivationPage:input_type -> fusion.proto.email.PageRequest
 	6,  // 7: fusion.proto.email.EmailService.GetChannelActivationPage:input_type -> fusion.proto.email.CmpPageRequest
 	7,  // 8: fusion.proto.email.EmailService.Verify:input_type -> fusion.proto.email.VerifyRequest
-	8,  // 9: fusion.proto.email.EmailService.SendEmailCode:output_type -> google.protobuf.Empty
-	8,  // 10: fusion.proto.email.EmailService.SendEmailActive:output_type -> google.protobuf.Empty
-	8,  // 11: fusion.proto.email.EmailService.SendEmailAlarm:output_type -> google.protobuf.Empty
-	8,  // 12: fusion.proto.email.EmailService.SendEmailStrategyIssue:output_type -> google.protobuf.Empty
-	8,  // 13: fusion.proto.email.EmailService.SendEmailStrategyConfig:output_type -> google.protobuf.Empty
-	8,  // 14: fusion.proto.email.EmailService.SendEmailNotice:output_type -> google.protobuf.Empty
-	9,  // 15: fusion.proto.email.EmailService.GetActivationPage:output_type -> fusion.proto.email.PageResponse
-	10, // 16: fusion.proto.email.EmailService.GetChannelActivationPage:output_type -> fusion.proto.email.CmpPageResponse
-	8,  // 17: fusion.proto.email.EmailService.Verify:output_type -> google.protobuf.Empty
-	9,  // [9:18] is the sub-list for method output_type
-	0,  // [0:9] is the sub-list for method input_type
+	8,  // 9: fusion.proto.email.EmailService.VerifyCode:input_type -> fusion.proto.email.VerifyCodeRequest
+	9,  // 10: fusion.proto.email.EmailService.SendEmailCode:output_type -> google.protobuf.Empty
+	9,  // 11: fusion.proto.email.EmailService.SendEmailActive:output_type -> google.protobuf.Empty
+	9,  // 12: fusion.proto.email.EmailService.SendEmailAlarm:output_type -> google.protobuf.Empty
+	9,  // 13: fusion.proto.email.EmailService.SendEmailStrategyIssue:output_type -> google.protobuf.Empty
+	9,  // 14: fusion.proto.email.EmailService.SendEmailStrategyConfig:output_type -> google.protobuf.Empty
+	9,  // 15: fusion.proto.email.EmailService.SendEmailNotice:output_type -> google.protobuf.Empty
+	10, // 16: fusion.proto.email.EmailService.GetActivationPage:output_type -> fusion.proto.email.PageResponse
+	11, // 17: fusion.proto.email.EmailService.GetChannelActivationPage:output_type -> fusion.proto.email.CmpPageResponse
+	9,  // 18: fusion.proto.email.EmailService.Verify:output_type -> google.protobuf.Empty
+	9,  // 19: fusion.proto.email.EmailService.VerifyCode:output_type -> google.protobuf.Empty
+	10, // [10:20] is the sub-list for method output_type
+	0,  // [0:10] is the sub-list for method input_type
 	0,  // [0:0] is the sub-list for extension type_name
 	0,  // [0:0] is the sub-list for extension extendee
 	0,  // [0:0] is the sub-list for field type_name
