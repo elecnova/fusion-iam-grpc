@@ -48,7 +48,7 @@ const (
 // Package user_service 用户中心邮件服务接口定义
 type EmailServiceClient interface {
 	// 发送邮箱验证码
-	SendEmailCode(ctx context.Context, in *SendEmailCodeRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
+	SendEmailCode(ctx context.Context, in *SendEmailCodeRequest, opts ...grpc.CallOption) (*VerifyCodeResponse, error)
 	// 发送账户激活邮件
 	SendEmailActive(ctx context.Context, in *SendEmailActiveRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// 发送告警邮件
@@ -77,9 +77,9 @@ func NewEmailServiceClient(cc grpc.ClientConnInterface) EmailServiceClient {
 	return &emailServiceClient{cc}
 }
 
-func (c *emailServiceClient) SendEmailCode(ctx context.Context, in *SendEmailCodeRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+func (c *emailServiceClient) SendEmailCode(ctx context.Context, in *SendEmailCodeRequest, opts ...grpc.CallOption) (*VerifyCodeResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(emptypb.Empty)
+	out := new(VerifyCodeResponse)
 	err := c.cc.Invoke(ctx, EmailService_SendEmailCode_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
@@ -184,7 +184,7 @@ func (c *emailServiceClient) VerifyCode(ctx context.Context, in *VerifyCodeReque
 // Package user_service 用户中心邮件服务接口定义
 type EmailServiceServer interface {
 	// 发送邮箱验证码
-	SendEmailCode(context.Context, *SendEmailCodeRequest) (*emptypb.Empty, error)
+	SendEmailCode(context.Context, *SendEmailCodeRequest) (*VerifyCodeResponse, error)
 	// 发送账户激活邮件
 	SendEmailActive(context.Context, *SendEmailActiveRequest) (*emptypb.Empty, error)
 	// 发送告警邮件
@@ -213,7 +213,7 @@ type EmailServiceServer interface {
 // pointer dereference when methods are called.
 type UnimplementedEmailServiceServer struct{}
 
-func (UnimplementedEmailServiceServer) SendEmailCode(context.Context, *SendEmailCodeRequest) (*emptypb.Empty, error) {
+func (UnimplementedEmailServiceServer) SendEmailCode(context.Context, *SendEmailCodeRequest) (*VerifyCodeResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method SendEmailCode not implemented")
 }
 func (UnimplementedEmailServiceServer) SendEmailActive(context.Context, *SendEmailActiveRequest) (*emptypb.Empty, error) {

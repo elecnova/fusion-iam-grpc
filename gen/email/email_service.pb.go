@@ -35,10 +35,10 @@ var File_email_email_service_proto protoreflect.FileDescriptor
 
 const file_email_email_service_proto_rawDesc = "" +
 	"\n" +
-	"\x19email/email_service.proto\x12\x12fusion.proto.email\x1a\x19email/email_message.proto\x1a\x1cgoogle/api/annotations.proto\x1a\x17google/api/client.proto\x1a\x1bgoogle/protobuf/empty.proto2\xd1\n" +
+	"\x19email/email_service.proto\x12\x12fusion.proto.email\x1a\x19email/email_message.proto\x1a\x1cgoogle/api/annotations.proto\x1a\x17google/api/client.proto\x1a\x1bgoogle/protobuf/empty.proto2\xe2\n" +
 	"\n" +
-	"\fEmailService\x12w\n" +
-	"\rSendEmailCode\x12(.fusion.proto.email.SendEmailCodeRequest\x1a\x16.google.protobuf.Empty\"$\xdaA\x00\x82\xd3\xe4\x93\x02\x1b:\x01*\"\x16/3rd-api/v1/email/code\x12\x84\x01\n" +
+	"\fEmailService\x12\x87\x01\n" +
+	"\rSendEmailCode\x12(.fusion.proto.email.SendEmailCodeRequest\x1a&.fusion.proto.email.VerifyCodeResponse\"$\xdaA\x00\x82\xd3\xe4\x93\x02\x1b:\x01*\"\x16/3rd-api/v1/email/code\x12\x84\x01\n" +
 	"\x0fSendEmailActive\x12*.fusion.proto.email.SendEmailActiveRequest\x1a\x16.google.protobuf.Empty\"-\xdaA\ato_addr\x82\xd3\xe4\x93\x02\x1d:\x01*\"\x18/3rd-api/v1/email/active\x12\x81\x01\n" +
 	"\x0eSendEmailAlarm\x12).fusion.proto.email.SendEmailAlarmRequest\x1a\x16.google.protobuf.Empty\",\xdaA\ato_addr\x82\xd3\xe4\x93\x02\x1c:\x01*\"\x17/3rd-api/v1/email/alarm\x12\x95\x01\n" +
 	"\x16SendEmailStrategyIssue\x12,.fusion.proto.email.SendEmailStrategyRequest\x1a\x16.google.protobuf.Empty\"5\xdaA\ato_addr\x82\xd3\xe4\x93\x02%:\x01*\" /3rd-api/v1/email/strategy/issue\x12\x97\x01\n" +
@@ -61,10 +61,10 @@ var file_email_email_service_proto_goTypes = []any{
 	(*CmpPageRequest)(nil),           // 6: fusion.proto.email.CmpPageRequest
 	(*VerifyRequest)(nil),            // 7: fusion.proto.email.VerifyRequest
 	(*VerifyCodeRequest)(nil),        // 8: fusion.proto.email.VerifyCodeRequest
-	(*emptypb.Empty)(nil),            // 9: google.protobuf.Empty
-	(*PageResponse)(nil),             // 10: fusion.proto.email.PageResponse
-	(*CmpPageResponse)(nil),          // 11: fusion.proto.email.CmpPageResponse
-	(*VerifyCodeResponse)(nil),       // 12: fusion.proto.email.VerifyCodeResponse
+	(*VerifyCodeResponse)(nil),       // 9: fusion.proto.email.VerifyCodeResponse
+	(*emptypb.Empty)(nil),            // 10: google.protobuf.Empty
+	(*PageResponse)(nil),             // 11: fusion.proto.email.PageResponse
+	(*CmpPageResponse)(nil),          // 12: fusion.proto.email.CmpPageResponse
 }
 var file_email_email_service_proto_depIdxs = []int32{
 	0,  // 0: fusion.proto.email.EmailService.SendEmailCode:input_type -> fusion.proto.email.SendEmailCodeRequest
@@ -77,16 +77,16 @@ var file_email_email_service_proto_depIdxs = []int32{
 	6,  // 7: fusion.proto.email.EmailService.GetChannelActivationPage:input_type -> fusion.proto.email.CmpPageRequest
 	7,  // 8: fusion.proto.email.EmailService.Verify:input_type -> fusion.proto.email.VerifyRequest
 	8,  // 9: fusion.proto.email.EmailService.VerifyCode:input_type -> fusion.proto.email.VerifyCodeRequest
-	9,  // 10: fusion.proto.email.EmailService.SendEmailCode:output_type -> google.protobuf.Empty
-	9,  // 11: fusion.proto.email.EmailService.SendEmailActive:output_type -> google.protobuf.Empty
-	9,  // 12: fusion.proto.email.EmailService.SendEmailAlarm:output_type -> google.protobuf.Empty
-	9,  // 13: fusion.proto.email.EmailService.SendEmailStrategyIssue:output_type -> google.protobuf.Empty
-	9,  // 14: fusion.proto.email.EmailService.SendEmailStrategyConfig:output_type -> google.protobuf.Empty
-	9,  // 15: fusion.proto.email.EmailService.SendEmailNotice:output_type -> google.protobuf.Empty
-	10, // 16: fusion.proto.email.EmailService.GetActivationPage:output_type -> fusion.proto.email.PageResponse
-	11, // 17: fusion.proto.email.EmailService.GetChannelActivationPage:output_type -> fusion.proto.email.CmpPageResponse
-	9,  // 18: fusion.proto.email.EmailService.Verify:output_type -> google.protobuf.Empty
-	12, // 19: fusion.proto.email.EmailService.VerifyCode:output_type -> fusion.proto.email.VerifyCodeResponse
+	9,  // 10: fusion.proto.email.EmailService.SendEmailCode:output_type -> fusion.proto.email.VerifyCodeResponse
+	10, // 11: fusion.proto.email.EmailService.SendEmailActive:output_type -> google.protobuf.Empty
+	10, // 12: fusion.proto.email.EmailService.SendEmailAlarm:output_type -> google.protobuf.Empty
+	10, // 13: fusion.proto.email.EmailService.SendEmailStrategyIssue:output_type -> google.protobuf.Empty
+	10, // 14: fusion.proto.email.EmailService.SendEmailStrategyConfig:output_type -> google.protobuf.Empty
+	10, // 15: fusion.proto.email.EmailService.SendEmailNotice:output_type -> google.protobuf.Empty
+	11, // 16: fusion.proto.email.EmailService.GetActivationPage:output_type -> fusion.proto.email.PageResponse
+	12, // 17: fusion.proto.email.EmailService.GetChannelActivationPage:output_type -> fusion.proto.email.CmpPageResponse
+	10, // 18: fusion.proto.email.EmailService.Verify:output_type -> google.protobuf.Empty
+	9,  // 19: fusion.proto.email.EmailService.VerifyCode:output_type -> fusion.proto.email.VerifyCodeResponse
 	10, // [10:20] is the sub-list for method output_type
 	0,  // [0:10] is the sub-list for method input_type
 	0,  // [0:0] is the sub-list for extension type_name
