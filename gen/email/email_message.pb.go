@@ -854,8 +854,8 @@ func (x *VerifyRequest) GetKey() string {
 // Package message 邮件中心-验证码检验请求消息定义
 type VerifyCodeRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// 邮箱地址
-	Addr string `protobuf:"bytes,1,opt,name=addr,proto3" json:"addr,omitempty"`
+	// 验证信息
+	Key string `protobuf:"bytes,1,opt,name=key,proto3" json:"key,omitempty"`
 	// 验证码
 	Code          string `protobuf:"bytes,2,opt,name=code,proto3" json:"code,omitempty"`
 	unknownFields protoimpl.UnknownFields
@@ -892,9 +892,9 @@ func (*VerifyCodeRequest) Descriptor() ([]byte, []int) {
 	return file_email_email_message_proto_rawDescGZIP(), []int{10}
 }
 
-func (x *VerifyCodeRequest) GetAddr() string {
+func (x *VerifyCodeRequest) GetKey() string {
 	if x != nil {
-		return x.Addr
+		return x.Key
 	}
 	return ""
 }
@@ -1028,9 +1028,9 @@ const file_email_email_message_proto_rawDesc = "" +
 	"errMessage\"K\n" +
 	"\rVerifyRequest\x12\x1d\n" +
 	"\x04addr\x18\x01 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18dR\x04addr\x12\x1b\n" +
-	"\x03key\x18\x02 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18dR\x03key\"Q\n" +
-	"\x11VerifyCodeRequest\x12\x1d\n" +
-	"\x04addr\x18\x01 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18dR\x04addr\x12\x1d\n" +
+	"\x03key\x18\x02 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18dR\x03key\"O\n" +
+	"\x11VerifyCodeRequest\x12\x1b\n" +
+	"\x03key\x18\x01 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18dR\x03key\x12\x1d\n" +
 	"\x04code\x18\x02 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18\n" +
 	"R\x04code\"&\n" +
 	"\x12VerifyCodeResponse\x12\x10\n" +
