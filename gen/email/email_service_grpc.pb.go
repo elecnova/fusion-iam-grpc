@@ -66,7 +66,7 @@ type EmailServiceClient interface {
 	// 激活用户账户
 	Verify(ctx context.Context, in *VerifyRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// 验证码检验
-	VerifyCode(ctx context.Context, in *VerifyCodeRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
+	VerifyCode(ctx context.Context, in *VerifyCodeRequest, opts ...grpc.CallOption) (*VerifyCodeResponse, error)
 }
 
 type emailServiceClient struct {
@@ -167,9 +167,9 @@ func (c *emailServiceClient) Verify(ctx context.Context, in *VerifyRequest, opts
 	return out, nil
 }
 
-func (c *emailServiceClient) VerifyCode(ctx context.Context, in *VerifyCodeRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+func (c *emailServiceClient) VerifyCode(ctx context.Context, in *VerifyCodeRequest, opts ...grpc.CallOption) (*VerifyCodeResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(emptypb.Empty)
+	out := new(VerifyCodeResponse)
 	err := c.cc.Invoke(ctx, EmailService_VerifyCode_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
@@ -202,7 +202,7 @@ type EmailServiceServer interface {
 	// 激活用户账户
 	Verify(context.Context, *VerifyRequest) (*emptypb.Empty, error)
 	// 验证码检验
-	VerifyCode(context.Context, *VerifyCodeRequest) (*emptypb.Empty, error)
+	VerifyCode(context.Context, *VerifyCodeRequest) (*VerifyCodeResponse, error)
 	mustEmbedUnimplementedEmailServiceServer()
 }
 
@@ -240,7 +240,7 @@ func (UnimplementedEmailServiceServer) GetChannelActivationPage(context.Context,
 func (UnimplementedEmailServiceServer) Verify(context.Context, *VerifyRequest) (*emptypb.Empty, error) {
 	return nil, status.Error(codes.Unimplemented, "method Verify not implemented")
 }
-func (UnimplementedEmailServiceServer) VerifyCode(context.Context, *VerifyCodeRequest) (*emptypb.Empty, error) {
+func (UnimplementedEmailServiceServer) VerifyCode(context.Context, *VerifyCodeRequest) (*VerifyCodeResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method VerifyCode not implemented")
 }
 func (UnimplementedEmailServiceServer) mustEmbedUnimplementedEmailServiceServer() {}

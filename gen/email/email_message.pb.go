@@ -906,6 +906,52 @@ func (x *VerifyCodeRequest) GetCode() string {
 	return ""
 }
 
+// Package message 邮件中心-验证码检验响应消息定义
+type VerifyCodeResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// 验证信息(验证成功时返回)
+	Key           string `protobuf:"bytes,1,opt,name=key,proto3" json:"key,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *VerifyCodeResponse) Reset() {
+	*x = VerifyCodeResponse{}
+	mi := &file_email_email_message_proto_msgTypes[11]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *VerifyCodeResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*VerifyCodeResponse) ProtoMessage() {}
+
+func (x *VerifyCodeResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_email_email_message_proto_msgTypes[11]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use VerifyCodeResponse.ProtoReflect.Descriptor instead.
+func (*VerifyCodeResponse) Descriptor() ([]byte, []int) {
+	return file_email_email_message_proto_rawDescGZIP(), []int{11}
+}
+
+func (x *VerifyCodeResponse) GetKey() string {
+	if x != nil {
+		return x.Key
+	}
+	return ""
+}
+
 var File_email_email_message_proto protoreflect.FileDescriptor
 
 const file_email_email_message_proto_rawDesc = "" +
@@ -986,7 +1032,9 @@ const file_email_email_message_proto_rawDesc = "" +
 	"\x11VerifyCodeRequest\x12\x1d\n" +
 	"\x04addr\x18\x01 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18dR\x04addr\x12\x1d\n" +
 	"\x04code\x18\x02 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18\n" +
-	"R\x04codeB\xaf\x01\n" +
+	"R\x04code\"&\n" +
+	"\x12VerifyCodeResponse\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03keyB\xaf\x01\n" +
 	"\x16com.fusion.proto.emailB\x11EmailMessageProtoP\x01Z\x18fusion.proto.email;email\xa2\x02\x03FPE\xaa\x02\x12Fusion.Proto.Email\xca\x02\x12Fusion\\Proto\\Email\xe2\x02\x1eFusion\\Proto\\Email\\GPBMetadata\xea\x02\x14Fusion::Proto::Emailb\x06proto3"
 
 var (
@@ -1001,7 +1049,7 @@ func file_email_email_message_proto_rawDescGZIP() []byte {
 	return file_email_email_message_proto_rawDescData
 }
 
-var file_email_email_message_proto_msgTypes = make([]protoimpl.MessageInfo, 11)
+var file_email_email_message_proto_msgTypes = make([]protoimpl.MessageInfo, 12)
 var file_email_email_message_proto_goTypes = []any{
 	(*SendEmailCodeRequest)(nil),     // 0: fusion.proto.email.SendEmailCodeRequest
 	(*SendEmailActiveRequest)(nil),   // 1: fusion.proto.email.SendEmailActiveRequest
@@ -1014,6 +1062,7 @@ var file_email_email_message_proto_goTypes = []any{
 	(*CmpPageResponse)(nil),          // 8: fusion.proto.email.CmpPageResponse
 	(*VerifyRequest)(nil),            // 9: fusion.proto.email.VerifyRequest
 	(*VerifyCodeRequest)(nil),        // 10: fusion.proto.email.VerifyCodeRequest
+	(*VerifyCodeResponse)(nil),       // 11: fusion.proto.email.VerifyCodeResponse
 }
 var file_email_email_message_proto_depIdxs = []int32{
 	0, // [0:0] is the sub-list for method output_type
@@ -1034,7 +1083,7 @@ func file_email_email_message_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_email_email_message_proto_rawDesc), len(file_email_email_message_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   11,
+			NumMessages:   12,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
