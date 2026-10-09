@@ -281,7 +281,9 @@ type CreateRoleRequest struct {
 	// 角色序号
 	Sort int32 `protobuf:"varint,4,opt,name=sort,proto3" json:"sort,omitempty"`
 	// 渠道(1-用户中心 2-业务平台 3-运维平台 4-渠道平台 5-开放平台 6-集控平台)
-	Channel       int32 `protobuf:"varint,5,opt,name=channel,proto3" json:"channel,omitempty"`
+	Channel int32 `protobuf:"varint,5,opt,name=channel,proto3" json:"channel,omitempty"`
+	// 项目ID
+	ProjectId     string `protobuf:"bytes,6,opt,name=project_id,proto3" json:"project_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -349,6 +351,13 @@ func (x *CreateRoleRequest) GetChannel() int32 {
 		return x.Channel
 	}
 	return 0
+}
+
+func (x *CreateRoleRequest) GetProjectId() string {
+	if x != nil {
+		return x.ProjectId
+	}
+	return ""
 }
 
 // Package message 创建角色响应消息定义
@@ -484,7 +493,9 @@ type UpdateRoleRequest struct {
 	// 角色序号
 	Sort int32 `protobuf:"varint,5,opt,name=sort,proto3" json:"sort,omitempty"`
 	// 渠道(1-用户中心 2-业务平台 3-运维平台 4-渠道平台 5-开放平台 6-集控平台)
-	Channel       int32 `protobuf:"varint,6,opt,name=channel,proto3" json:"channel,omitempty"`
+	Channel int32 `protobuf:"varint,6,opt,name=channel,proto3" json:"channel,omitempty"`
+	// 项目ID
+	ProjectId     string `protobuf:"bytes,7,opt,name=project_id,proto3" json:"project_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -559,6 +570,13 @@ func (x *UpdateRoleRequest) GetChannel() int32 {
 		return x.Channel
 	}
 	return 0
+}
+
+func (x *UpdateRoleRequest) GetProjectId() string {
+	if x != nil {
+		return x.ProjectId
+	}
+	return ""
 }
 
 // Package message 删除角色请求消息定义
@@ -1515,14 +1533,17 @@ const file_role_role_message_proto_rawDesc = "" +
 	"\tcreate_at\x18\r \x01(\v2\x1a.google.protobuf.TimestampR\tcreate_at\x128\n" +
 	"\tupdate_at\x18\x0e \x01(\v2\x1a.google.protobuf.TimestampR\tupdate_at\x12&\n" +
 	"\x0ecreate_by_name\x18\x0f \x01(\tR\x0ecreate_by_name\x12&\n" +
-	"\x0eupdate_by_name\x18\x10 \x01(\tR\x0eupdate_by_name\"\xe7\x01\n" +
+	"\x0eupdate_by_name\x18\x10 \x01(\tR\x0eupdate_by_name\"\x90\x02\n" +
 	"\x11CreateRoleRequest\x12;\n" +
 	"\x04name\x18\x01 \x03(\v2\x1b.fusion.proto.role.RoleNameB\n" +
 	"\xbaH\a\x92\x01\x04\b\x01\x102R\x04name\x12*\n" +
 	"\vdescription\x18\x02 \x01(\tB\b\xbaH\x05r\x03\x18\xff\x01R\vdescription\x12'\n" +
 	"\bmenu_ids\x18\x03 \x03(\tB\v\xbaH\b\x92\x01\x05\b\x01\x10\xf4\x03R\bmenu_ids\x12\x1b\n" +
 	"\x04sort\x18\x04 \x01(\x05B\a\xbaH\x04\x1a\x02(\x00R\x04sort\x12#\n" +
-	"\achannel\x18\x05 \x01(\x05B\t\xbaH\x06\x1a\x04\x18\x06(\x01R\achannel\"$\n" +
+	"\achannel\x18\x05 \x01(\x05B\t\xbaH\x06\x1a\x04\x18\x06(\x01R\achannel\x12'\n" +
+	"\n" +
+	"project_id\x18\x06 \x01(\tB\a\xbaH\x04r\x02\x18(R\n" +
+	"project_id\"$\n" +
 	"\x12CreateRoleResponse\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\"\xc6\x01\n" +
 	"\x14DuplicateRoleRequest\x12\x19\n" +
@@ -1533,7 +1554,7 @@ const file_role_role_message_proto_rawDesc = "" +
 	"\n" +
 	"project_id\x18\x04 \x03(\tB\n" +
 	"\xbaH\a\x92\x01\x04\b\x01\x10dR\n" +
-	"project_id\"\x82\x02\n" +
+	"project_id\"\xab\x02\n" +
 	"\x11UpdateRoleRequest\x12\x19\n" +
 	"\x02id\x18\x01 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18(R\x02id\x12;\n" +
 	"\x04name\x18\x02 \x03(\v2\x1b.fusion.proto.role.RoleNameB\n" +
@@ -1541,7 +1562,10 @@ const file_role_role_message_proto_rawDesc = "" +
 	"\vdescription\x18\x03 \x01(\tB\b\xbaH\x05r\x03\x18\xff\x01R\vdescription\x12'\n" +
 	"\bmenu_ids\x18\x04 \x03(\tB\v\xbaH\b\x92\x01\x05\b\x01\x10\xf4\x03R\bmenu_ids\x12\x1b\n" +
 	"\x04sort\x18\x05 \x01(\x05B\a\xbaH\x04\x1a\x02(\x00R\x04sort\x12#\n" +
-	"\achannel\x18\x06 \x01(\x05B\t\xbaH\x06\x1a\x04\x18\x06(\x01R\achannel\".\n" +
+	"\achannel\x18\x06 \x01(\x05B\t\xbaH\x06\x1a\x04\x18\x06(\x01R\achannel\x12'\n" +
+	"\n" +
+	"project_id\x18\a \x01(\tB\a\xbaH\x04r\x02\x18(R\n" +
+	"project_id\".\n" +
 	"\x11DeleteRoleRequest\x12\x19\n" +
 	"\x02id\x18\x01 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18(R\x02id\"+\n" +
 	"\x0eGetRoleRequest\x12\x19\n" +
