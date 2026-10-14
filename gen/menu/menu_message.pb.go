@@ -108,7 +108,7 @@ type MenuData struct {
 	Type int32 `protobuf:"varint,8,opt,name=type,proto3" json:"type,omitempty"`
 	// 菜单状态(1-正常 2-禁用 3-锁定)
 	State int32 `protobuf:"varint,9,opt,name=state,proto3" json:"state,omitempty"`
-	// 渠道(1-用户中心 2-业务平台 3-运维平台 4-渠道平台 5-开放平台 6-集控平台)
+	// 渠道(1-用户中心 2-业务平台 3-运维平台 4-渠道平台 5-开放平台 6-集控平台 7-调度平台)
 	Channel int32 `protobuf:"varint,10,opt,name=channel,proto3" json:"channel,omitempty"`
 	// 创建人ID
 	CreateBy string `protobuf:"bytes,11,opt,name=create_by,proto3" json:"create_by,omitempty"`
@@ -370,7 +370,7 @@ type UpsertMenuRequest struct {
 	Type int32 `protobuf:"varint,7,opt,name=type,proto3" json:"type,omitempty"`
 	// 菜单状态(1-正常 2-禁用 3-锁定)
 	State int32 `protobuf:"varint,8,opt,name=state,proto3" json:"state,omitempty"`
-	// 渠道(1-用户中心 2-业务平台 3-运维平台 4-渠道平台 5-开放平台 6-集控平台)
+	// 渠道(1-用户中心 2-业务平台 3-运维平台 4-渠道平台 5-开放平台 6-集控平台 7-调度平台)
 	Channel       int32 `protobuf:"varint,9,opt,name=channel,proto3" json:"channel,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -572,7 +572,7 @@ type ListMenusRequest struct {
 	Type *int32 `protobuf:"varint,3,opt,name=type,proto3,oneof" json:"type,omitempty"`
 	// 菜单状态(1-正常 2-禁用 3-锁定)，不传则不过滤
 	State *int32 `protobuf:"varint,4,opt,name=state,proto3,oneof" json:"state,omitempty"`
-	// 渠道(1-用户中心 2-业务平台 3-运维平台 4-渠道平台 5-开放平台 6-集控平台)
+	// 渠道(1-用户中心 2-业务平台 3-运维平台 4-渠道平台 5-开放平台 6-集控平台 7-调度平台)
 	Channel int32 `protobuf:"varint,5,opt,name=channel,proto3" json:"channel,omitempty"`
 	// 页码
 	Page int32 `protobuf:"varint,6,opt,name=page,proto3" json:"page,omitempty"`
@@ -746,7 +746,7 @@ func (x *ListMenusResponse) GetPageSize() int32 {
 // Package message 全局菜单树请求消息定义
 type TreeMenuRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// 渠道(1-用户中心 2-业务平台 3-运维平台 4-渠道平台 5-开放平台 6-集控平台)
+	// 渠道(1-用户中心 2-业务平台 3-运维平台 4-渠道平台 5-开放平台 6-集控平台 7-调度平台)
 	Channel int32 `protobuf:"varint,1,opt,name=channel,proto3" json:"channel,omitempty"`
 	// 系统角色ID，传入时仅返回该角色拥有权限的菜单
 	RoleId string `protobuf:"bytes,2,opt,name=role_id,proto3" json:"role_id,omitempty"`
@@ -828,7 +828,7 @@ type MenuTreeNode struct {
 	Type int32 `protobuf:"varint,8,opt,name=type,proto3" json:"type,omitempty"`
 	// 菜单状态(1-正常 2-禁用 3-锁定)
 	State int32 `protobuf:"varint,9,opt,name=state,proto3" json:"state,omitempty"`
-	// 渠道(1-用户中心 2-业务平台 3-运维平台 4-渠道平台 5-开放平台 6-集控平台)
+	// 渠道(1-用户中心 2-业务平台 3-运维平台 4-渠道平台 5-开放平台 6-集控平台 7-调度平台)
 	Channel int32 `protobuf:"varint,10,opt,name=channel,proto3" json:"channel,omitempty"`
 	// 子级菜单
 	Children []*MenuTreeNode `protobuf:"bytes,11,rep,name=children,proto3" json:"children,omitempty"`
@@ -1091,7 +1091,7 @@ type GetMenuRolesRequest struct {
 	ProjectId string `protobuf:"bytes,3,opt,name=project_id,proto3" json:"project_id,omitempty"`
 	// 菜单状态(1-正常 2-禁用 3-锁定)，用于过滤角色菜单列表
 	MenuState int32 `protobuf:"varint,4,opt,name=menu_state,proto3" json:"menu_state,omitempty"`
-	// 渠道(1-用户中心 2-业务平台 3-运维平台 4-开放平台 5-集控平台 6-DPP平台)
+	// 渠道(1-用户中心 2-业务平台 3-运维平台 4-开放平台 5-集控平台 6-DPP平台 7-调度平台)
 	Channel       int32 `protobuf:"varint,5,opt,name=channel,proto3" json:"channel,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -1211,7 +1211,7 @@ func (x *GetMenuRolesResponse) GetData() []*RoleMenuTree {
 // Package message 获取当前用户指定渠道角色菜单树请求消息定义
 type SelfRoleMenusRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// 渠道(1-用户中心 2-业务平台 3-运维平台 4-开放平台 5-集控平台 6-DPP平台)
+	// 渠道(1-用户中心 2-业务平台 3-运维平台 4-开放平台 5-集控平台 6-DPP平台 7-调度平台)
 	Channel       int32 `protobuf:"varint,1,opt,name=channel,proto3" json:"channel,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -1303,7 +1303,7 @@ func (x *SelfRoleMenusResponse) GetData() []*RoleMenuTree {
 // Package message 按渠道获取菜单树请求消息定义
 type ChannelMenuTreeRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// 渠道(1-用户中心 2-业务平台 3-运维平台 4-开放平台 5-集控平台 6-DPP平台)
+	// 渠道(1-用户中心 2-业务平台 3-运维平台 4-开放平台 5-集控平台 6-DPP平台 7-调度平台)
 	Channel       int32 `protobuf:"varint,1,opt,name=channel,proto3" json:"channel,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -1433,7 +1433,7 @@ const file_menu_menu_message_proto_rawDesc = "" +
 	"\x04sort\x18\x06 \x01(\x05B\a\xbaH\x04\x1a\x02(\x00R\x04sort\x12\x1d\n" +
 	"\x04type\x18\a \x01(\x05B\t\xbaH\x06\x1a\x04\x18\x03(\x01R\x04type\x12\x1f\n" +
 	"\x05state\x18\b \x01(\x05B\t\xbaH\x06\x1a\x04\x18\x03(\x01R\x05state\x12#\n" +
-	"\achannel\x18\t \x01(\x05B\t\xbaH\x06\x1a\x04\x18\x06(\x01R\achannel\"$\n" +
+	"\achannel\x18\t \x01(\x05B\t\xbaH\x06\x1a\x04\x18\a(\x01R\achannel\"$\n" +
 	"\x12UpsertMenuResponse\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\".\n" +
 	"\x11DeleteMenuRequest\x12\x19\n" +
@@ -1443,7 +1443,7 @@ const file_menu_menu_message_proto_rawDesc = "" +
 	"\x04name\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x18dR\x04name\x12\"\n" +
 	"\x04type\x18\x03 \x01(\x05B\t\xbaH\x06\x1a\x04\x18\x03(\x01H\x00R\x04type\x88\x01\x01\x12$\n" +
 	"\x05state\x18\x04 \x01(\x05B\t\xbaH\x06\x1a\x04\x18\x03(\x01H\x01R\x05state\x88\x01\x01\x12#\n" +
-	"\achannel\x18\x05 \x01(\x05B\t\xbaH\x06\x1a\x04\x18\x06(\x01R\achannel\x12\x1b\n" +
+	"\achannel\x18\x05 \x01(\x05B\t\xbaH\x06\x1a\x04\x18\a(\x01R\achannel\x12\x1b\n" +
 	"\x04page\x18\x06 \x01(\x05B\a\xbaH\x04\x1a\x02 \x00R\x04page\x12(\n" +
 	"\tpage_size\x18\a \x01(\x05B\n" +
 	"\xbaH\a\x1a\x05\x18\xac\x02 \x00R\tpage_size\x12 \n" +
@@ -1456,7 +1456,7 @@ const file_menu_menu_message_proto_rawDesc = "" +
 	"\x04page\x18\x03 \x01(\x05R\x04page\x12\x1c\n" +
 	"\tpage_size\x18\x04 \x01(\x05R\tpage_size\"{\n" +
 	"\x0fTreeMenuRequest\x12#\n" +
-	"\achannel\x18\x01 \x01(\x05B\t\xbaH\x06\x1a\x04\x18\x06(\x01R\achannel\x12!\n" +
+	"\achannel\x18\x01 \x01(\x05B\t\xbaH\x06\x1a\x04\x18\a(\x01R\achannel\x12!\n" +
 	"\arole_id\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x18(R\arole_id\x12 \n" +
 	"\vneed_detail\x18\x03 \x01(\bR\vneed_detail\"\xfc\x02\n" +
 	"\fMenuTreeNode\x12\x0e\n" +
@@ -1490,15 +1490,15 @@ const file_menu_menu_message_proto_rawDesc = "" +
 	"\n" +
 	"menu_state\x18\x04 \x01(\x05B\t\xbaH\x06\x1a\x04\x18\x03(\x01R\n" +
 	"menu_state\x12#\n" +
-	"\achannel\x18\x05 \x01(\x05B\t\xbaH\x06\x1a\x04\x18\x06(\x01R\achannel\"K\n" +
+	"\achannel\x18\x05 \x01(\x05B\t\xbaH\x06\x1a\x04\x18\a(\x01R\achannel\"K\n" +
 	"\x14GetMenuRolesResponse\x123\n" +
 	"\x04data\x18\x01 \x03(\v2\x1f.fusion.proto.menu.RoleMenuTreeR\x04data\";\n" +
 	"\x14SelfRoleMenusRequest\x12#\n" +
-	"\achannel\x18\x01 \x01(\x05B\t\xbaH\x06\x1a\x04\x18\x06(\x01R\achannel\"L\n" +
+	"\achannel\x18\x01 \x01(\x05B\t\xbaH\x06\x1a\x04\x18\a(\x01R\achannel\"L\n" +
 	"\x15SelfRoleMenusResponse\x123\n" +
 	"\x04data\x18\x01 \x03(\v2\x1f.fusion.proto.menu.RoleMenuTreeR\x04data\"=\n" +
 	"\x16ChannelMenuTreeRequest\x12#\n" +
-	"\achannel\x18\x01 \x01(\x05B\t\xbaH\x06\x1a\x04\x18\x06(\x01R\achannel\"N\n" +
+	"\achannel\x18\x01 \x01(\x05B\t\xbaH\x06\x1a\x04\x18\a(\x01R\achannel\"N\n" +
 	"\x17ChannelMenuTreeResponse\x123\n" +
 	"\x04data\x18\x01 \x03(\v2\x1f.fusion.proto.menu.RoleMenuTreeR\x04dataB\xa7\x01\n" +
 	"\x15com.fusion.proto.menuB\x10MenuMessageProtoP\x01Z\x16fusion.proto.menu;menu\xa2\x02\x03FPM\xaa\x02\x11Fusion.Proto.Menu\xca\x02\x11Fusion\\Proto\\Menu\xe2\x02\x1dFusion\\Proto\\Menu\\GPBMetadata\xea\x02\x13Fusion::Proto::Menub\x06proto3"
