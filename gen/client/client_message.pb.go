@@ -46,7 +46,7 @@ type ClientInfo struct {
 	Extend string `protobuf:"bytes,4,opt,name=extend,proto3" json:"extend,omitempty"`
 	// 访问令牌有效时间(h)
 	AccessExp int64 `protobuf:"varint,5,opt,name=access_exp,proto3" json:"access_exp,omitempty"`
-	// 类型(1-用户中心 2-业务平台 3-运维平台 4-渠道平台 5-开放平台 6-集控平台 7-调度平台)
+	// 类型(1-用户中心 2-业务平台 3-运维平台 4-渠道平台 5-开放平台 6-集控平台 7-调度平台 8-预测平台)
 	Type int32 `protobuf:"varint,6,opt,name=type,proto3" json:"type,omitempty"`
 	// 状态(1-启用 2-禁用)
 	State int32 `protobuf:"varint,7,opt,name=state,proto3" json:"state,omitempty"`
@@ -247,7 +247,7 @@ type ListClientsRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// 模糊搜索关键字，可搜索客户端id，备注信息
 	Keywords string `protobuf:"bytes,1,opt,name=keywords,proto3" json:"keywords,omitempty"`
-	// 类型(1-用户中心 2-业务平台 3-运维平台 4-渠道平台 5-开放平台 6-集控平台 7-调度平台，0-不限)
+	// 类型(1-用户中心 2-业务平台 3-运维平台 4-渠道平台 5-开放平台 6-集控平台 7-调度平台 8-预测平台，0-不限)
 	Type int32 `protobuf:"varint,2,opt,name=type,proto3" json:"type,omitempty"`
 	// 状态(1-启用 2-禁用，0-不限)
 	State int32 `protobuf:"varint,3,opt,name=state,proto3" json:"state,omitempty"`
@@ -417,7 +417,7 @@ type CreateClientRequest struct {
 	Extend string `protobuf:"bytes,3,opt,name=extend,proto3" json:"extend,omitempty"`
 	// 访问令牌有效时间(h)
 	AccessExp int64 `protobuf:"varint,4,opt,name=access_exp,proto3" json:"access_exp,omitempty"`
-	// 类型(1-用户中心 2-业务平台 3-运维平台 4-渠道平台 5-开放平台 6-集控平台 7-调度平台)
+	// 类型(1-用户中心 2-业务平台 3-运维平台 4-渠道平台 5-开放平台 6-集控平台 7-调度平台 8-预测平台)
 	Type int32 `protobuf:"varint,5,opt,name=type,proto3" json:"type,omitempty"`
 	// 渠道(1-WEB 2-APP)
 	Channel       int32 `protobuf:"varint,6,opt,name=channel,proto3" json:"channel,omitempty"`
@@ -565,7 +565,7 @@ type UpdateClientRequest struct {
 	Extend string `protobuf:"bytes,4,opt,name=extend,proto3" json:"extend,omitempty"`
 	// 访问令牌有效时间(h)
 	AccessExp int64 `protobuf:"varint,5,opt,name=access_exp,proto3" json:"access_exp,omitempty"`
-	// 类型(1-用户中心 2-业务平台 3-运维平台 4-渠道平台 5-开放平台 6-集控平台 7-调度平台)
+	// 类型(1-用户中心 2-业务平台 3-运维平台 4-渠道平台 5-开放平台 6-集控平台 7-调度平台 8-预测平台)
 	Type int32 `protobuf:"varint,6,opt,name=type,proto3" json:"type,omitempty"`
 	// 状态(1-启用 2-禁用)
 	State int32 `protobuf:"varint,7,opt,name=state,proto3" json:"state,omitempty"`
@@ -836,7 +836,7 @@ const file_client_client_message_proto_rawDesc = "" +
 	"\x02id\x18\x01 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18(R\x02id\"\xe5\x01\n" +
 	"\x12ListClientsRequest\x12#\n" +
 	"\bkeywords\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x18dR\bkeywords\x12\x1d\n" +
-	"\x04type\x18\x02 \x01(\x05B\t\xbaH\x06\x1a\x04\x18\a(\x00R\x04type\x12\x1f\n" +
+	"\x04type\x18\x02 \x01(\x05B\t\xbaH\x06\x1a\x04\x18\b(\x00R\x04type\x12\x1f\n" +
 	"\x05state\x18\x03 \x01(\x05B\t\xbaH\x06\x1a\x04\x18\x02(\x00R\x05state\x12#\n" +
 	"\achannel\x18\x04 \x01(\x05B\t\xbaH\x06\x1a\x04\x18\x02(\x00R\achannel\x12\x1b\n" +
 	"\x04page\x18\x05 \x01(\x05B\a\xbaH\x04\x1a\x02 \x00R\x04page\x12(\n" +
@@ -846,19 +846,19 @@ const file_client_client_message_proto_rawDesc = "" +
 	"\x04data\x18\x01 \x03(\v2\x1f.fusion.proto.client.ClientInfoR\x04data\x12\x12\n" +
 	"\x04page\x18\x02 \x01(\x05R\x04page\x12\x1c\n" +
 	"\tpage_size\x18\x03 \x01(\x05R\tpage_size\x12\x14\n" +
-	"\x05total\x18\x04 \x01(\x03R\x05total\"\xe9\x01\n" +
+	"\x05total\x18\x04 \x01(\x03R\x05total\"\xeb\x01\n" +
 	"\x13CreateClientRequest\x12\x17\n" +
 	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x18(R\x02id\x12*\n" +
 	"\vdescription\x18\x02 \x01(\tB\b\xbaH\x05r\x03\x18\xff\x01R\vdescription\x12\x16\n" +
 	"\x06extend\x18\x03 \x01(\tR\x06extend\x12'\n" +
 	"\n" +
 	"access_exp\x18\x04 \x01(\x03B\a\xbaH\x04\"\x02 \x00R\n" +
-	"access_exp\x12'\n" +
-	"\x04type\x18\x05 \x01(\x05B\x13\xbaH\x10\x1a\x0e0\x010\x020\x030\x040\x050\x060\aR\x04type\x12#\n" +
+	"access_exp\x12)\n" +
+	"\x04type\x18\x05 \x01(\x05B\x15\xbaH\x12\x1a\x100\x010\x020\x030\x040\x050\x060\a0\bR\x04type\x12#\n" +
 	"\achannel\x18\x06 \x01(\x05B\t\xbaH\x06\x1a\x040\x010\x02R\achannel\">\n" +
 	"\x14CreateClientResponse\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x16\n" +
-	"\x06secret\x18\x02 \x01(\tR\x06secret\"\xae\x02\n" +
+	"\x06secret\x18\x02 \x01(\tR\x06secret\"\xb0\x02\n" +
 	"\x13UpdateClientRequest\x12\x19\n" +
 	"\x02id\x18\x01 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18(R\x02id\x12 \n" +
 	"\x06secret\x18\x02 \x01(\tB\b\xbaH\x05r\x03\x18\xff\x01R\x06secret\x12*\n" +
@@ -866,8 +866,8 @@ const file_client_client_message_proto_rawDesc = "" +
 	"\x06extend\x18\x04 \x01(\tR\x06extend\x12'\n" +
 	"\n" +
 	"access_exp\x18\x05 \x01(\x03B\a\xbaH\x04\"\x02 \x00R\n" +
-	"access_exp\x12'\n" +
-	"\x04type\x18\x06 \x01(\x05B\x13\xbaH\x10\x1a\x0e0\x010\x020\x030\x040\x050\x060\aR\x04type\x12\x1f\n" +
+	"access_exp\x12)\n" +
+	"\x04type\x18\x06 \x01(\x05B\x15\xbaH\x12\x1a\x100\x010\x020\x030\x040\x050\x060\a0\bR\x04type\x12\x1f\n" +
 	"\x05state\x18\a \x01(\x05B\t\xbaH\x06\x1a\x040\x010\x02R\x05state\x12#\n" +
 	"\achannel\x18\b \x01(\x05B\t\xbaH\x06\x1a\x040\x010\x02R\achannel\"0\n" +
 	"\x13DeleteClientRequest\x12\x19\n" +
