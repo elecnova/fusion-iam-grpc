@@ -46,7 +46,7 @@ type ClientInfo struct {
 	Extend string `protobuf:"bytes,4,opt,name=extend,proto3" json:"extend,omitempty"`
 	// 访问令牌有效时间(h)
 	AccessExp int64 `protobuf:"varint,5,opt,name=access_exp,proto3" json:"access_exp,omitempty"`
-	// 类型(1-用户中心 2-业务平台 3-运维平台 4-渠道平台 5-开放平台 6-集控平台 7-调度平台 8-预测平台)
+	// 类型(1-用户中心 2-业务平台 3-运维平台 4-开放平台 5-集控平台 6-DPP平台 7-调度平台 8-预测平台)
 	Type int32 `protobuf:"varint,6,opt,name=type,proto3" json:"type,omitempty"`
 	// 状态(1-启用 2-禁用)
 	State int32 `protobuf:"varint,7,opt,name=state,proto3" json:"state,omitempty"`
@@ -247,7 +247,7 @@ type ListClientsRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// 模糊搜索关键字，可搜索客户端id，备注信息
 	Keywords string `protobuf:"bytes,1,opt,name=keywords,proto3" json:"keywords,omitempty"`
-	// 类型(1-用户中心 2-业务平台 3-运维平台 4-渠道平台 5-开放平台 6-集控平台 7-调度平台 8-预测平台，0-不限)
+	// 类型(1-用户中心 2-业务平台 3-运维平台 4-开放平台 5-集控平台 6-DPP平台 7-调度平台 8-预测平台，0-不限)
 	Type int32 `protobuf:"varint,2,opt,name=type,proto3" json:"type,omitempty"`
 	// 状态(1-启用 2-禁用，0-不限)
 	State int32 `protobuf:"varint,3,opt,name=state,proto3" json:"state,omitempty"`
@@ -417,7 +417,7 @@ type CreateClientRequest struct {
 	Extend string `protobuf:"bytes,3,opt,name=extend,proto3" json:"extend,omitempty"`
 	// 访问令牌有效时间(h)
 	AccessExp int64 `protobuf:"varint,4,opt,name=access_exp,proto3" json:"access_exp,omitempty"`
-	// 类型(1-用户中心 2-业务平台 3-运维平台 4-渠道平台 5-开放平台 6-集控平台 7-调度平台 8-预测平台)
+	// 类型(1-用户中心 2-业务平台 3-运维平台 4-开放平台 5-集控平台 6-DPP平台 7-调度平台 8-预测平台)
 	Type int32 `protobuf:"varint,5,opt,name=type,proto3" json:"type,omitempty"`
 	// 渠道(1-WEB 2-APP)
 	Channel       int32 `protobuf:"varint,6,opt,name=channel,proto3" json:"channel,omitempty"`
@@ -565,7 +565,7 @@ type UpdateClientRequest struct {
 	Extend string `protobuf:"bytes,4,opt,name=extend,proto3" json:"extend,omitempty"`
 	// 访问令牌有效时间(h)
 	AccessExp int64 `protobuf:"varint,5,opt,name=access_exp,proto3" json:"access_exp,omitempty"`
-	// 类型(1-用户中心 2-业务平台 3-运维平台 4-渠道平台 5-开放平台 6-集控平台 7-调度平台 8-预测平台)
+	// 类型(1-用户中心 2-业务平台 3-运维平台 4-开放平台 5-集控平台 6-DPP平台 7-调度平台 8-预测平台)
 	Type int32 `protobuf:"varint,6,opt,name=type,proto3" json:"type,omitempty"`
 	// 状态(1-启用 2-禁用)
 	State int32 `protobuf:"varint,7,opt,name=state,proto3" json:"state,omitempty"`
