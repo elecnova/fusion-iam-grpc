@@ -1374,7 +1374,7 @@ type AllUsersRequest struct {
 	// 渠道ID
 	AgentId []string `protobuf:"bytes,3,rep,name=agent_id,proto3" json:"agent_id,omitempty"`
 	// 电站ID
-	SiteId *string `protobuf:"bytes,4,opt,name=site_id,proto3,oneof" json:"site_id,omitempty"`
+	SiteId []string `protobuf:"bytes,4,rep,name=site_id,proto3" json:"site_id,omitempty"`
 	// 角色ID
 	RoleId *string `protobuf:"bytes,5,opt,name=role_id,proto3,oneof" json:"role_id,omitempty"`
 	// 用户状态(1-正常 2-禁用 3-锁定)
@@ -1434,11 +1434,11 @@ func (x *AllUsersRequest) GetAgentId() []string {
 	return nil
 }
 
-func (x *AllUsersRequest) GetSiteId() string {
-	if x != nil && x.SiteId != nil {
-		return *x.SiteId
+func (x *AllUsersRequest) GetSiteId() []string {
+	if x != nil {
+		return x.SiteId
 	}
-	return ""
+	return nil
 }
 
 func (x *AllUsersRequest) GetRoleId() string {
@@ -2620,18 +2620,16 @@ const file_user_user_message_proto_rawDesc = "" +
 	"\x04data\x18\x01 \x03(\v2\".fusion.proto.user.GetUserResponseR\x04data\x12\x12\n" +
 	"\x04page\x18\x02 \x01(\x05R\x04page\x12\x1c\n" +
 	"\tpage_size\x18\x03 \x01(\x05R\tpage_size\x12\x14\n" +
-	"\x05total\x18\x04 \x01(\x03R\x05total\"\x9c\x02\n" +
+	"\x05total\x18\x04 \x01(\x03R\x05total\"\x8c\x02\n" +
 	"\x0fAllUsersRequest\x12!\n" +
 	"\akeyword\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x18<R\akeyword\x12(\n" +
 	"\n" +
 	"project_id\x18\x02 \x03(\tB\b\xbaH\x05\x92\x01\x02\x10dR\n" +
 	"project_id\x12$\n" +
-	"\bagent_id\x18\x03 \x03(\tB\b\xbaH\x05\x92\x01\x02\x10dR\bagent_id\x12&\n" +
-	"\asite_id\x18\x04 \x01(\tB\a\xbaH\x04r\x02\x18(H\x00R\asite_id\x88\x01\x01\x12&\n" +
-	"\arole_id\x18\x05 \x01(\tB\a\xbaH\x04r\x02\x18(H\x01R\arole_id\x88\x01\x01\x12$\n" +
-	"\x05state\x18\x06 \x01(\x05B\t\xbaH\x06\x1a\x04\x18\x03(\x01H\x02R\x05state\x88\x01\x01B\n" +
-	"\n" +
-	"\b_site_idB\n" +
+	"\bagent_id\x18\x03 \x03(\tB\b\xbaH\x05\x92\x01\x02\x10dR\bagent_id\x12\"\n" +
+	"\asite_id\x18\x04 \x03(\tB\b\xbaH\x05\x92\x01\x02\x10dR\asite_id\x12&\n" +
+	"\arole_id\x18\x05 \x01(\tB\a\xbaH\x04r\x02\x18(H\x00R\arole_id\x88\x01\x01\x12$\n" +
+	"\x05state\x18\x06 \x01(\x05B\t\xbaH\x06\x1a\x04\x18\x03(\x01H\x01R\x05state\x88\x01\x01B\n" +
 	"\n" +
 	"\b_role_idB\b\n" +
 	"\x06_state\"J\n" +
