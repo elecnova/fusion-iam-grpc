@@ -1198,10 +1198,13 @@ type ListUsersRequest struct {
 	RoleId *string `protobuf:"bytes,5,opt,name=role_id,proto3,oneof" json:"role_id,omitempty"`
 	// 用户状态(1-正常 2-禁用 3-锁定)
 	State *int32 `protobuf:"varint,6,opt,name=state,proto3,oneof" json:"state,omitempty"`
+	// 用户类型(1-普通用户 2-预定义用户 3-体验用户 4-渠道用户 5-渠道体验用户
+	// 7-渠道脱敏用户 11-户储用户)
+	Type *int32 `protobuf:"varint,7,opt,name=type,proto3,oneof" json:"type,omitempty"`
 	// 页码
-	Page int32 `protobuf:"varint,7,opt,name=page,proto3" json:"page,omitempty"`
+	Page int32 `protobuf:"varint,8,opt,name=page,proto3" json:"page,omitempty"`
 	// 分页大小
-	PageSize      int32 `protobuf:"varint,8,opt,name=page_size,proto3" json:"page_size,omitempty"`
+	PageSize      int32 `protobuf:"varint,9,opt,name=page_size,proto3" json:"page_size,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1274,6 +1277,13 @@ func (x *ListUsersRequest) GetRoleId() string {
 func (x *ListUsersRequest) GetState() int32 {
 	if x != nil && x.State != nil {
 		return *x.State
+	}
+	return 0
+}
+
+func (x *ListUsersRequest) GetType() int32 {
+	if x != nil && x.Type != nil {
+		return *x.Type
 	}
 	return 0
 }
@@ -1378,7 +1388,10 @@ type AllUsersRequest struct {
 	// 角色ID
 	RoleId *string `protobuf:"bytes,5,opt,name=role_id,proto3,oneof" json:"role_id,omitempty"`
 	// 用户状态(1-正常 2-禁用 3-锁定)
-	State         *int32 `protobuf:"varint,6,opt,name=state,proto3,oneof" json:"state,omitempty"`
+	State *int32 `protobuf:"varint,6,opt,name=state,proto3,oneof" json:"state,omitempty"`
+	// 用户类型(1-普通用户 2-预定义用户 3-体验用户 4-渠道用户 5-渠道体验用户
+	// 7-渠道脱敏用户 11-户储用户)
+	Type          *int32 `protobuf:"varint,7,opt,name=type,proto3,oneof" json:"type,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1451,6 +1464,13 @@ func (x *AllUsersRequest) GetRoleId() string {
 func (x *AllUsersRequest) GetState() int32 {
 	if x != nil && x.State != nil {
 		return *x.State
+	}
+	return 0
+}
+
+func (x *AllUsersRequest) GetType() int32 {
+	if x != nil && x.Type != nil {
+		return *x.Type
 	}
 	return 0
 }
@@ -1992,7 +2012,8 @@ type ChangeAvatarRequest_Meta struct {
 
 type ChangeAvatarRequest_Chunk struct {
 	// 文件数据分片（二进制）
-	// 针对大文件，客户端将文件按固定大小切分（如 64KB）逐块发送，服务端按顺序接收并拼接
+	// 针对大文件，客户端将文件按固定大小切分（如
+	// 64KB）逐块发送，服务端按顺序接收并拼接
 	Chunk []byte `protobuf:"bytes,2,opt,name=chunk,proto3,oneof"`
 }
 
@@ -2598,7 +2619,7 @@ const file_user_user_message_proto_rawDesc = "" +
 	"\x0eUserRoleSystem\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x05R\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x12\n" +
-	"\x04sort\x18\x03 \x01(\x05R\x04sort\"\xd4\x02\n" +
+	"\x04sort\x18\x03 \x01(\x05R\x04sort\"\x81\x03\n" +
 	"\x10ListUsersRequest\x12!\n" +
 	"\akeyword\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x18<R\akeyword\x12(\n" +
 	"\n" +
@@ -2607,18 +2628,20 @@ const file_user_user_message_proto_rawDesc = "" +
 	"\bagent_id\x18\x03 \x03(\tB\b\xbaH\x05\x92\x01\x02\x10dR\bagent_id\x12\"\n" +
 	"\asite_id\x18\x04 \x03(\tB\b\xbaH\x05\x92\x01\x02\x10dR\asite_id\x12&\n" +
 	"\arole_id\x18\x05 \x01(\tB\a\xbaH\x04r\x02\x18(H\x00R\arole_id\x88\x01\x01\x12$\n" +
-	"\x05state\x18\x06 \x01(\x05B\t\xbaH\x06\x1a\x04\x18\x03(\x01H\x01R\x05state\x88\x01\x01\x12\x1b\n" +
-	"\x04page\x18\a \x01(\x05B\a\xbaH\x04\x1a\x02 \x00R\x04page\x12(\n" +
-	"\tpage_size\x18\b \x01(\x05B\n" +
+	"\x05state\x18\x06 \x01(\x05B\t\xbaH\x06\x1a\x04\x18\x03(\x01H\x01R\x05state\x88\x01\x01\x12\"\n" +
+	"\x04type\x18\a \x01(\x05B\t\xbaH\x06\x1a\x04\x18\v(\x01H\x02R\x04type\x88\x01\x01\x12\x1b\n" +
+	"\x04page\x18\b \x01(\x05B\a\xbaH\x04\x1a\x02 \x00R\x04page\x12(\n" +
+	"\tpage_size\x18\t \x01(\x05B\n" +
 	"\xbaH\a\x1a\x05\x18\xac\x02 \x00R\tpage_sizeB\n" +
 	"\n" +
 	"\b_role_idB\b\n" +
-	"\x06_state\"\x93\x01\n" +
+	"\x06_stateB\a\n" +
+	"\x05_type\"\x93\x01\n" +
 	"\x11ListUsersResponse\x126\n" +
 	"\x04data\x18\x01 \x03(\v2\".fusion.proto.user.GetUserResponseR\x04data\x12\x12\n" +
 	"\x04page\x18\x02 \x01(\x05R\x04page\x12\x1c\n" +
 	"\tpage_size\x18\x03 \x01(\x05R\tpage_size\x12\x14\n" +
-	"\x05total\x18\x04 \x01(\x03R\x05total\"\x8c\x02\n" +
+	"\x05total\x18\x04 \x01(\x03R\x05total\"\xb9\x02\n" +
 	"\x0fAllUsersRequest\x12!\n" +
 	"\akeyword\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x18<R\akeyword\x12(\n" +
 	"\n" +
@@ -2627,10 +2650,12 @@ const file_user_user_message_proto_rawDesc = "" +
 	"\bagent_id\x18\x03 \x03(\tB\b\xbaH\x05\x92\x01\x02\x10dR\bagent_id\x12\"\n" +
 	"\asite_id\x18\x04 \x03(\tB\b\xbaH\x05\x92\x01\x02\x10dR\asite_id\x12&\n" +
 	"\arole_id\x18\x05 \x01(\tB\a\xbaH\x04r\x02\x18(H\x00R\arole_id\x88\x01\x01\x12$\n" +
-	"\x05state\x18\x06 \x01(\x05B\t\xbaH\x06\x1a\x04\x18\x03(\x01H\x01R\x05state\x88\x01\x01B\n" +
+	"\x05state\x18\x06 \x01(\x05B\t\xbaH\x06\x1a\x04\x18\x03(\x01H\x01R\x05state\x88\x01\x01\x12\"\n" +
+	"\x04type\x18\a \x01(\x05B\t\xbaH\x06\x1a\x04\x18\v(\x01H\x02R\x04type\x88\x01\x01B\n" +
 	"\n" +
 	"\b_role_idB\b\n" +
-	"\x06_state\"J\n" +
+	"\x06_stateB\a\n" +
+	"\x05_type\"J\n" +
 	"\x10AllUsersResponse\x126\n" +
 	"\x04data\x18\x01 \x03(\v2\".fusion.proto.user.GetUserResponseR\x04data\"a\n" +
 	"\x14ResetPasswordRequest\x12\x19\n" +
