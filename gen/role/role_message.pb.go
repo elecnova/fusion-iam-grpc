@@ -1611,7 +1611,7 @@ type RoleKeyInfo struct {
 	// 角色名称（按语种解析后的名称）
 	Name string `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`
 	// 角色类型(1-普通角色 2-预定义普通角色 3-预定义管理角色)
-	Type          int32 `protobuf:"varint,9,opt,name=type,proto3" json:"type,omitempty"`
+	Type          int32 `protobuf:"varint,4,opt,name=type,proto3" json:"type,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1806,7 +1806,7 @@ const file_role_role_message_proto_rawDesc = "" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
 	"\x04code\x18\x02 \x01(\tR\x04code\x12\x12\n" +
 	"\x04name\x18\x03 \x01(\tR\x04name\x12\x12\n" +
-	"\x04type\x18\t \x01(\x05R\x04typeB\xa7\x01\n" +
+	"\x04type\x18\x04 \x01(\x05R\x04typeB\xa7\x01\n" +
 	"\x15com.fusion.proto.roleB\x10RoleMessageProtoP\x01Z\x16fusion.proto.role;role\xa2\x02\x03FPR\xaa\x02\x11Fusion.Proto.Role\xca\x02\x11Fusion\\Proto\\Role\xe2\x02\x1dFusion\\Proto\\Role\\GPBMetadata\xea\x02\x13Fusion::Proto::Roleb\x06proto3"
 
 var (
