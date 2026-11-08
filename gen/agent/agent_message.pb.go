@@ -418,7 +418,7 @@ var File_agent_agent_message_proto protoreflect.FileDescriptor
 
 const file_agent_agent_message_proto_rawDesc = "" +
 	"\n" +
-	"\x19agent/agent_message.proto\x12\x12fusion.proto.agent\x1a\x1bgoogle/protobuf/empty.proto\x1a\x1bbuf/validate/validate.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\x9f\x01\n" +
+	"\x19agent/agent_message.proto\x12\x12fusion.proto.agent\x1a\x1bbuf/validate/validate.proto\x1a\x1bgoogle/protobuf/empty.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\x9f\x01\n" +
 	"\x10AllAgentsRequest\x12!\n" +
 	"\akeyword\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x18<R\akeyword\x12*\n" +
 	"\tparent_id\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x18(H\x00R\tparent_id\x88\x01\x01\x12$\n" +

@@ -109,7 +109,8 @@ type RoleData struct {
 	State int32 `protobuf:"varint,8,opt,name=state,proto3" json:"state,omitempty"`
 	// 角色类型(1-普通角色 2-预定义普通角色 3-预定义管理角色)
 	Type int32 `protobuf:"varint,9,opt,name=type,proto3" json:"type,omitempty"`
-	// 渠道(1-用户中心 2-业务平台 3-运维平台 4-开放平台 5-集控平台 6-DPP平台 7-调度平台 8-预测平台 9-接入平台)
+	// 渠道(1-用户中心 2-业务平台 3-运维平台 4-开放平台 5-集控平台 6-DPP平台
+	// 7-调度平台 8-预测平台 9-接入平台)
 	Channel int32 `protobuf:"varint,10,opt,name=channel,proto3" json:"channel,omitempty"`
 	// 创建人ID
 	CreateBy string `protobuf:"bytes,11,opt,name=create_by,proto3" json:"create_by,omitempty"`
@@ -272,7 +273,8 @@ func (x *RoleData) GetUpdateByName() string {
 // Package message 创建角色请求消息定义
 type CreateRoleRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// 角色名称(多语种) eg:[{"lang": "zh", "content": "角色A"}, {"lang": "en", "content": "Role A"}]
+	// 角色名称(多语种) eg:[{"lang": "zh", "content": "角色A"}, {"lang": "en",
+	// "content": "Role A"}]
 	Name []*RoleName `protobuf:"bytes,1,rep,name=name,proto3" json:"name,omitempty"`
 	// 角色描述
 	Description string `protobuf:"bytes,2,opt,name=description,proto3" json:"description,omitempty"`
@@ -280,7 +282,8 @@ type CreateRoleRequest struct {
 	MenuIds []string `protobuf:"bytes,3,rep,name=menu_ids,proto3" json:"menu_ids,omitempty"`
 	// 角色序号
 	Sort int32 `protobuf:"varint,4,opt,name=sort,proto3" json:"sort,omitempty"`
-	// 渠道(1-用户中心 2-业务平台 3-运维平台 4-开放平台 5-集控平台 6-DPP平台 7-调度平台 8-预测平台 9-接入平台)
+	// 渠道(1-用户中心 2-业务平台 3-运维平台 4-开放平台 5-集控平台 6-DPP平台
+	// 7-调度平台 8-预测平台 9-接入平台)
 	Channel int32 `protobuf:"varint,5,opt,name=channel,proto3" json:"channel,omitempty"`
 	// 项目ID
 	ProjectId     string `protobuf:"bytes,6,opt,name=project_id,proto3" json:"project_id,omitempty"`
@@ -492,7 +495,8 @@ type UpdateRoleRequest struct {
 	MenuIds []string `protobuf:"bytes,4,rep,name=menu_ids,proto3" json:"menu_ids,omitempty"`
 	// 角色序号
 	Sort int32 `protobuf:"varint,5,opt,name=sort,proto3" json:"sort,omitempty"`
-	// 渠道(1-用户中心 2-业务平台 3-运维平台 4-开放平台 5-集控平台 6-DPP平台 7-调度平台 8-预测平台 9-接入平台)
+	// 渠道(1-用户中心 2-业务平台 3-运维平台 4-开放平台 5-集控平台 6-DPP平台
+	// 7-调度平台 8-预测平台 9-接入平台)
 	Channel int32 `protobuf:"varint,6,opt,name=channel,proto3" json:"channel,omitempty"`
 	// 项目ID
 	ProjectId     string `protobuf:"bytes,7,opt,name=project_id,proto3" json:"project_id,omitempty"`
@@ -1387,7 +1391,8 @@ type UserRole struct {
 	Name string `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`
 	// 角色类型(1-普通角色 2-预定义普通角色 3-预定义管理角色)
 	Type int32 `protobuf:"varint,4,opt,name=type,proto3" json:"type,omitempty"`
-	// 渠道(1-用户中心 2-业务平台 3-运维平台 4-开放平台 5-集控平台 6-DPP平台 7-调度平台 8-预测平台 9-接入平台)
+	// 渠道(1-用户中心 2-业务平台 3-运维平台 4-开放平台 5-集控平台 6-DPP平台
+	// 7-调度平台 8-预测平台 9-接入平台)
 	Channel       int32 `protobuf:"varint,5,opt,name=channel,proto3" json:"channel,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -1498,6 +1503,98 @@ func (*GetUserRolesResponse) Descriptor() ([]byte, []int) {
 }
 
 func (x *GetUserRolesResponse) GetData() []*UserRole {
+	if x != nil {
+		return x.Data
+	}
+	return nil
+}
+
+// Package message 批量获取角色ID和名称消息请求定义
+type GetRolesByIDsRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// 角色ID列表
+	Ids           []string `protobuf:"bytes,1,rep,name=ids,proto3" json:"ids,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetRolesByIDsRequest) Reset() {
+	*x = GetRolesByIDsRequest{}
+	mi := &file_role_role_message_proto_msgTypes[22]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetRolesByIDsRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetRolesByIDsRequest) ProtoMessage() {}
+
+func (x *GetRolesByIDsRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_role_role_message_proto_msgTypes[22]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetRolesByIDsRequest.ProtoReflect.Descriptor instead.
+func (*GetRolesByIDsRequest) Descriptor() ([]byte, []int) {
+	return file_role_role_message_proto_rawDescGZIP(), []int{22}
+}
+
+func (x *GetRolesByIDsRequest) GetIds() []string {
+	if x != nil {
+		return x.Ids
+	}
+	return nil
+}
+
+// Package message 批量获取角色ID和名称消息响应定义
+type GetRolesByIDsResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// 角色列表
+	Data          []*RoleData `protobuf:"bytes,1,rep,name=data,proto3" json:"data,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetRolesByIDsResponse) Reset() {
+	*x = GetRolesByIDsResponse{}
+	mi := &file_role_role_message_proto_msgTypes[23]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetRolesByIDsResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetRolesByIDsResponse) ProtoMessage() {}
+
+func (x *GetRolesByIDsResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_role_role_message_proto_msgTypes[23]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetRolesByIDsResponse.ProtoReflect.Descriptor instead.
+func (*GetRolesByIDsResponse) Descriptor() ([]byte, []int) {
+	return file_role_role_message_proto_rawDescGZIP(), []int{23}
+}
+
+func (x *GetRolesByIDsResponse) GetData() []*RoleData {
 	if x != nil {
 		return x.Data
 	}
@@ -1626,7 +1723,12 @@ const file_role_role_message_proto_rawDesc = "" +
 	"\x04type\x18\x04 \x01(\x05R\x04type\x12\x18\n" +
 	"\achannel\x18\x05 \x01(\x05R\achannel\"G\n" +
 	"\x14GetUserRolesResponse\x12/\n" +
-	"\x04data\x18\x01 \x03(\v2\x1b.fusion.proto.role.UserRoleR\x04dataB\xa7\x01\n" +
+	"\x04data\x18\x01 \x03(\v2\x1b.fusion.proto.role.UserRoleR\x04data\"4\n" +
+	"\x14GetRolesByIDsRequest\x12\x1c\n" +
+	"\x03ids\x18\x01 \x03(\tB\n" +
+	"\xbaH\a\x92\x01\x04\b\x01\x10dR\x03ids\"H\n" +
+	"\x15GetRolesByIDsResponse\x12/\n" +
+	"\x04data\x18\x01 \x03(\v2\x1b.fusion.proto.role.RoleDataR\x04dataB\xa7\x01\n" +
 	"\x15com.fusion.proto.roleB\x10RoleMessageProtoP\x01Z\x16fusion.proto.role;role\xa2\x02\x03FPR\xaa\x02\x11Fusion.Proto.Role\xca\x02\x11Fusion\\Proto\\Role\xe2\x02\x1dFusion\\Proto\\Role\\GPBMetadata\xea\x02\x13Fusion::Proto::Roleb\x06proto3"
 
 var (
@@ -1641,7 +1743,7 @@ func file_role_role_message_proto_rawDescGZIP() []byte {
 	return file_role_role_message_proto_rawDescData
 }
 
-var file_role_role_message_proto_msgTypes = make([]protoimpl.MessageInfo, 22)
+var file_role_role_message_proto_msgTypes = make([]protoimpl.MessageInfo, 24)
 var file_role_role_message_proto_goTypes = []any{
 	(*RoleName)(nil),                   // 0: fusion.proto.role.RoleName
 	(*RoleData)(nil),                   // 1: fusion.proto.role.RoleData
@@ -1665,12 +1767,14 @@ var file_role_role_message_proto_goTypes = []any{
 	(*GetUserRolesRequest)(nil),        // 19: fusion.proto.role.GetUserRolesRequest
 	(*UserRole)(nil),                   // 20: fusion.proto.role.UserRole
 	(*GetUserRolesResponse)(nil),       // 21: fusion.proto.role.GetUserRolesResponse
-	(*timestamppb.Timestamp)(nil),      // 22: google.protobuf.Timestamp
+	(*GetRolesByIDsRequest)(nil),       // 22: fusion.proto.role.GetRolesByIDsRequest
+	(*GetRolesByIDsResponse)(nil),      // 23: fusion.proto.role.GetRolesByIDsResponse
+	(*timestamppb.Timestamp)(nil),      // 24: google.protobuf.Timestamp
 }
 var file_role_role_message_proto_depIdxs = []int32{
 	0,  // 0: fusion.proto.role.RoleData.name_detail:type_name -> fusion.proto.role.RoleName
-	22, // 1: fusion.proto.role.RoleData.create_at:type_name -> google.protobuf.Timestamp
-	22, // 2: fusion.proto.role.RoleData.update_at:type_name -> google.protobuf.Timestamp
+	24, // 1: fusion.proto.role.RoleData.create_at:type_name -> google.protobuf.Timestamp
+	24, // 2: fusion.proto.role.RoleData.update_at:type_name -> google.protobuf.Timestamp
 	0,  // 3: fusion.proto.role.CreateRoleRequest.name:type_name -> fusion.proto.role.RoleName
 	0,  // 4: fusion.proto.role.DuplicateRoleRequest.name:type_name -> fusion.proto.role.RoleName
 	0,  // 5: fusion.proto.role.UpdateRoleRequest.name:type_name -> fusion.proto.role.RoleName
@@ -1679,11 +1783,12 @@ var file_role_role_message_proto_depIdxs = []int32{
 	1,  // 8: fusion.proto.role.ListRolesResponse.data:type_name -> fusion.proto.role.RoleData
 	1,  // 9: fusion.proto.role.AllRolesResponse.data:type_name -> fusion.proto.role.RoleData
 	20, // 10: fusion.proto.role.GetUserRolesResponse.data:type_name -> fusion.proto.role.UserRole
-	11, // [11:11] is the sub-list for method output_type
-	11, // [11:11] is the sub-list for method input_type
-	11, // [11:11] is the sub-list for extension type_name
-	11, // [11:11] is the sub-list for extension extendee
-	0,  // [0:11] is the sub-list for field type_name
+	1,  // 11: fusion.proto.role.GetRolesByIDsResponse.data:type_name -> fusion.proto.role.RoleData
+	12, // [12:12] is the sub-list for method output_type
+	12, // [12:12] is the sub-list for method input_type
+	12, // [12:12] is the sub-list for extension type_name
+	12, // [12:12] is the sub-list for extension extendee
+	0,  // [0:12] is the sub-list for field type_name
 }
 
 func init() { file_role_role_message_proto_init() }
@@ -1699,7 +1804,7 @@ func file_role_role_message_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_role_role_message_proto_rawDesc), len(file_role_role_message_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   22,
+			NumMessages:   24,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

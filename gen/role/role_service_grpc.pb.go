@@ -42,6 +42,7 @@ const (
 	RoleService_CheckRolePermission_FullMethodName = "/fusion.proto.role.RoleService/CheckRolePermission"
 	RoleService_ProjectRole_FullMethodName         = "/fusion.proto.role.RoleService/ProjectRole"
 	RoleService_GetUserRoles_FullMethodName        = "/fusion.proto.role.RoleService/GetUserRoles"
+	RoleService_GetRolesByIDs_FullMethodName       = "/fusion.proto.role.RoleService/GetRolesByIDs"
 )
 
 // RoleServiceClient is the client API for RoleService service.
@@ -74,6 +75,8 @@ type RoleServiceClient interface {
 	ProjectRole(ctx context.Context, in *ProjectRoleRequest, opts ...grpc.CallOption) (*ProjectRoleResponse, error)
 	// 查询用户角色列表
 	GetUserRoles(ctx context.Context, in *GetUserRolesRequest, opts ...grpc.CallOption) (*GetUserRolesResponse, error)
+	// 批量获取角色ID和名称
+	GetRolesByIDs(ctx context.Context, in *GetRolesByIDsRequest, opts ...grpc.CallOption) (*GetRolesByIDsResponse, error)
 }
 
 type roleServiceClient struct {
@@ -204,6 +207,16 @@ func (c *roleServiceClient) GetUserRoles(ctx context.Context, in *GetUserRolesRe
 	return out, nil
 }
 
+func (c *roleServiceClient) GetRolesByIDs(ctx context.Context, in *GetRolesByIDsRequest, opts ...grpc.CallOption) (*GetRolesByIDsResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetRolesByIDsResponse)
+	err := c.cc.Invoke(ctx, RoleService_GetRolesByIDs_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // RoleServiceServer is the server API for RoleService service.
 // All implementations must embed UnimplementedRoleServiceServer
 // for forward compatibility.
@@ -234,6 +247,8 @@ type RoleServiceServer interface {
 	ProjectRole(context.Context, *ProjectRoleRequest) (*ProjectRoleResponse, error)
 	// 查询用户角色列表
 	GetUserRoles(context.Context, *GetUserRolesRequest) (*GetUserRolesResponse, error)
+	// 批量获取角色ID和名称
+	GetRolesByIDs(context.Context, *GetRolesByIDsRequest) (*GetRolesByIDsResponse, error)
 	mustEmbedUnimplementedRoleServiceServer()
 }
 
@@ -279,6 +294,9 @@ func (UnimplementedRoleServiceServer) ProjectRole(context.Context, *ProjectRoleR
 }
 func (UnimplementedRoleServiceServer) GetUserRoles(context.Context, *GetUserRolesRequest) (*GetUserRolesResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method GetUserRoles not implemented")
+}
+func (UnimplementedRoleServiceServer) GetRolesByIDs(context.Context, *GetRolesByIDsRequest) (*GetRolesByIDsResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method GetRolesByIDs not implemented")
 }
 func (UnimplementedRoleServiceServer) mustEmbedUnimplementedRoleServiceServer() {}
 func (UnimplementedRoleServiceServer) testEmbeddedByValue()                     {}
@@ -517,6 +535,24 @@ func _RoleService_GetUserRoles_Handler(srv interface{}, ctx context.Context, dec
 	return interceptor(ctx, in, info, handler)
 }
 
+func _RoleService_GetRolesByIDs_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetRolesByIDsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RoleServiceServer).GetRolesByIDs(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RoleService_GetRolesByIDs_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RoleServiceServer).GetRolesByIDs(ctx, req.(*GetRolesByIDsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // RoleService_ServiceDesc is the grpc.ServiceDesc for RoleService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -571,6 +607,10 @@ var RoleService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetUserRoles",
 			Handler:    _RoleService_GetUserRoles_Handler,
+		},
+		{
+			MethodName: "GetRolesByIDs",
+			Handler:    _RoleService_GetRolesByIDs_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

@@ -36,7 +36,7 @@ var File_client_client_service_proto protoreflect.FileDescriptor
 
 const file_client_client_service_proto_rawDesc = "" +
 	"\n" +
-	"\x1bclient/client_service.proto\x12\x13fusion.proto.client\x1a\x1cgoogle/api/annotations.proto\x1a\x17google/api/client.proto\x1a\x1bgoogle/protobuf/empty.proto\x1a\x1bclient/client_message.proto2\x92\a\n" +
+	"\x1bclient/client_service.proto\x12\x13fusion.proto.client\x1a\x1bclient/client_message.proto\x1a\x1cgoogle/api/annotations.proto\x1a\x17google/api/client.proto\x1a\x1bgoogle/protobuf/empty.proto2\x92\a\n" +
 	"\rClientService\x12y\n" +
 	"\tGetClient\x12%.fusion.proto.client.GetClientRequest\x1a\x1f.fusion.proto.client.ClientInfo\"$\xdaA\x02id\x82\xd3\xe4\x93\x02\x19\x12\x17/3rd-api/v2/client/{id}\x12\xaa\x01\n" +
 	"\vListClients\x12'.fusion.proto.client.ListClientsRequest\x1a(.fusion.proto.client.ListClientsResponse\"H\xdaA*keywords,type,state,channel,page,page_size\x82\xd3\xe4\x93\x02\x15\x12\x13/3rd-api/v2/clients\x12\xb2\x01\n" +

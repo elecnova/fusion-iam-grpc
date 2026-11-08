@@ -35,7 +35,7 @@ var File_country_country_service_proto protoreflect.FileDescriptor
 
 const file_country_country_service_proto_rawDesc = "" +
 	"\n" +
-	"\x1dcountry/country_service.proto\x12\x14fusion.proto.country\x1a\x1cgoogle/api/annotations.proto\x1a\x17google/api/client.proto\x1a\x1bgoogle/protobuf/empty.proto\x1a\x1dcountry/country_message.proto2\xd1\b\n" +
+	"\x1dcountry/country_service.proto\x12\x14fusion.proto.country\x1a\x1dcountry/country_message.proto\x1a\x1cgoogle/api/annotations.proto\x1a\x17google/api/client.proto\x1a\x1bgoogle/protobuf/empty.proto2\xd1\b\n" +
 	"\x0eCountryService\x12\xb5\x01\n" +
 	"\rCreateCountry\x12*.fusion.proto.country.CreateCountryRequest\x1a+.fusion.proto.country.CreateCountryResponse\"K\xdaA*parent_id,description,phone_code,zone,sort\x82\xd3\xe4\x93\x02\x18:\x01*\"\x13/3rd-api/v2/country\x12\x9e\x01\n" +
 	"\rUpdateCountry\x12*.fusion.proto.country.UpdateCountryRequest\x1a\x16.google.protobuf.Empty\"I\xdaA#id,description,phone_code,zone,sort\x82\xd3\xe4\x93\x02\x1d:\x01*\x1a\x18/3rd-api/v2/country/{id}\x12z\n" +

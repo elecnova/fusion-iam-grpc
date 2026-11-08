@@ -36,7 +36,7 @@ var File_role_role_service_proto protoreflect.FileDescriptor
 
 const file_role_role_service_proto_rawDesc = "" +
 	"\n" +
-	"\x17role/role_service.proto\x12\x11fusion.proto.role\x1a\x1cgoogle/api/annotations.proto\x1a\x17google/api/client.proto\x1a\x1bgoogle/protobuf/empty.proto\x1a\x17role/role_message.proto2\xc4\r\n" +
+	"\x17role/role_service.proto\x12\x11fusion.proto.role\x1a\x1cgoogle/api/annotations.proto\x1a\x17google/api/client.proto\x1a\x1bgoogle/protobuf/empty.proto\x1a\x17role/role_message.proto2\xd3\x0e\n" +
 	"\vRoleService\x12\x9f\x01\n" +
 	"\n" +
 	"CreateRole\x12$.fusion.proto.role.CreateRoleRequest\x1a%.fusion.proto.role.CreateRoleResponse\"D\xdaA&name,description,menu_ids,sort,channel\x82\xd3\xe4\x93\x02\x15:\x01*\"\x10/3rd-api/v1/role\x12\x9d\x01\n" +
@@ -52,7 +52,8 @@ const file_role_role_service_proto_rawDesc = "" +
 	"\bSysRoles\x12\".fusion.proto.role.AllRolesRequest\x1a#.fusion.proto.role.AllRolesResponse\" \x82\xd3\xe4\x93\x02\x1a\x12\x18/3rd-api/v1/role/all/sys\x12\xa0\x01\n" +
 	"\x13CheckRolePermission\x12-.fusion.proto.role.CheckRolePermissionRequest\x1a\x16.google.protobuf.Empty\"B\xdaA\x13role_id,path,method\x82\xd3\xe4\x93\x02&:\x01*\"!/3rd-api/v1/role/permission/check\x12\x90\x01\n" +
 	"\vProjectRole\x12%.fusion.proto.role.ProjectRoleRequest\x1a&.fusion.proto.role.ProjectRoleResponse\"2\xdaA\x0fuser_id,site_id\x82\xd3\xe4\x93\x02\x1a\x12\x18/3rd-api/v1/role/project\x12\x93\x01\n" +
-	"\fGetUserRoles\x12&.fusion.proto.role.GetUserRolesRequest\x1a'.fusion.proto.role.GetUserRolesResponse\"2\xdaA\auser_id\x82\xd3\xe4\x93\x02\"\x12 /3rd-api/v1/user/{user_id}/rolesB\xa7\x01\n" +
+	"\fGetUserRoles\x12&.fusion.proto.role.GetUserRolesRequest\x1a'.fusion.proto.role.GetUserRolesResponse\"2\xdaA\auser_id\x82\xd3\xe4\x93\x02\"\x12 /3rd-api/v1/user/{user_id}/roles\x12\x8c\x01\n" +
+	"\rGetRolesByIDs\x12'.fusion.proto.role.GetRolesByIDsRequest\x1a(.fusion.proto.role.GetRolesByIDsResponse\"(\xdaA\x03ids\x82\xd3\xe4\x93\x02\x1c:\x01*\"\x17/3rd-api/v1/roles/batchB\xa7\x01\n" +
 	"\x15com.fusion.proto.roleB\x10RoleServiceProtoP\x01Z\x16fusion.proto.role;role\xa2\x02\x03FPR\xaa\x02\x11Fusion.Proto.Role\xca\x02\x11Fusion\\Proto\\Role\xe2\x02\x1dFusion\\Proto\\Role\\GPBMetadata\xea\x02\x13Fusion::Proto::Roleb\x06proto3"
 
 var file_role_role_service_proto_goTypes = []any{
@@ -67,14 +68,16 @@ var file_role_role_service_proto_goTypes = []any{
 	(*CheckRolePermissionRequest)(nil), // 8: fusion.proto.role.CheckRolePermissionRequest
 	(*ProjectRoleRequest)(nil),         // 9: fusion.proto.role.ProjectRoleRequest
 	(*GetUserRolesRequest)(nil),        // 10: fusion.proto.role.GetUserRolesRequest
-	(*CreateRoleResponse)(nil),         // 11: fusion.proto.role.CreateRoleResponse
-	(*emptypb.Empty)(nil),              // 12: google.protobuf.Empty
-	(*GetRoleResponse)(nil),            // 13: fusion.proto.role.GetRoleResponse
-	(*GetRolePermsResponse)(nil),       // 14: fusion.proto.role.GetRolePermsResponse
-	(*ListRolesResponse)(nil),          // 15: fusion.proto.role.ListRolesResponse
-	(*AllRolesResponse)(nil),           // 16: fusion.proto.role.AllRolesResponse
-	(*ProjectRoleResponse)(nil),        // 17: fusion.proto.role.ProjectRoleResponse
-	(*GetUserRolesResponse)(nil),       // 18: fusion.proto.role.GetUserRolesResponse
+	(*GetRolesByIDsRequest)(nil),       // 11: fusion.proto.role.GetRolesByIDsRequest
+	(*CreateRoleResponse)(nil),         // 12: fusion.proto.role.CreateRoleResponse
+	(*emptypb.Empty)(nil),              // 13: google.protobuf.Empty
+	(*GetRoleResponse)(nil),            // 14: fusion.proto.role.GetRoleResponse
+	(*GetRolePermsResponse)(nil),       // 15: fusion.proto.role.GetRolePermsResponse
+	(*ListRolesResponse)(nil),          // 16: fusion.proto.role.ListRolesResponse
+	(*AllRolesResponse)(nil),           // 17: fusion.proto.role.AllRolesResponse
+	(*ProjectRoleResponse)(nil),        // 18: fusion.proto.role.ProjectRoleResponse
+	(*GetUserRolesResponse)(nil),       // 19: fusion.proto.role.GetUserRolesResponse
+	(*GetRolesByIDsResponse)(nil),      // 20: fusion.proto.role.GetRolesByIDsResponse
 }
 var file_role_role_service_proto_depIdxs = []int32{
 	0,  // 0: fusion.proto.role.RoleService.CreateRole:input_type -> fusion.proto.role.CreateRoleRequest
@@ -89,20 +92,22 @@ var file_role_role_service_proto_depIdxs = []int32{
 	8,  // 9: fusion.proto.role.RoleService.CheckRolePermission:input_type -> fusion.proto.role.CheckRolePermissionRequest
 	9,  // 10: fusion.proto.role.RoleService.ProjectRole:input_type -> fusion.proto.role.ProjectRoleRequest
 	10, // 11: fusion.proto.role.RoleService.GetUserRoles:input_type -> fusion.proto.role.GetUserRolesRequest
-	11, // 12: fusion.proto.role.RoleService.CreateRole:output_type -> fusion.proto.role.CreateRoleResponse
-	12, // 13: fusion.proto.role.RoleService.DuplicateRole:output_type -> google.protobuf.Empty
-	12, // 14: fusion.proto.role.RoleService.UpdateRole:output_type -> google.protobuf.Empty
-	12, // 15: fusion.proto.role.RoleService.DeleteRole:output_type -> google.protobuf.Empty
-	13, // 16: fusion.proto.role.RoleService.GetRole:output_type -> fusion.proto.role.GetRoleResponse
-	14, // 17: fusion.proto.role.RoleService.GetRolePerms:output_type -> fusion.proto.role.GetRolePermsResponse
-	15, // 18: fusion.proto.role.RoleService.ListRoles:output_type -> fusion.proto.role.ListRolesResponse
-	16, // 19: fusion.proto.role.RoleService.AllRoles:output_type -> fusion.proto.role.AllRolesResponse
-	16, // 20: fusion.proto.role.RoleService.SysRoles:output_type -> fusion.proto.role.AllRolesResponse
-	12, // 21: fusion.proto.role.RoleService.CheckRolePermission:output_type -> google.protobuf.Empty
-	17, // 22: fusion.proto.role.RoleService.ProjectRole:output_type -> fusion.proto.role.ProjectRoleResponse
-	18, // 23: fusion.proto.role.RoleService.GetUserRoles:output_type -> fusion.proto.role.GetUserRolesResponse
-	12, // [12:24] is the sub-list for method output_type
-	0,  // [0:12] is the sub-list for method input_type
+	11, // 12: fusion.proto.role.RoleService.GetRolesByIDs:input_type -> fusion.proto.role.GetRolesByIDsRequest
+	12, // 13: fusion.proto.role.RoleService.CreateRole:output_type -> fusion.proto.role.CreateRoleResponse
+	13, // 14: fusion.proto.role.RoleService.DuplicateRole:output_type -> google.protobuf.Empty
+	13, // 15: fusion.proto.role.RoleService.UpdateRole:output_type -> google.protobuf.Empty
+	13, // 16: fusion.proto.role.RoleService.DeleteRole:output_type -> google.protobuf.Empty
+	14, // 17: fusion.proto.role.RoleService.GetRole:output_type -> fusion.proto.role.GetRoleResponse
+	15, // 18: fusion.proto.role.RoleService.GetRolePerms:output_type -> fusion.proto.role.GetRolePermsResponse
+	16, // 19: fusion.proto.role.RoleService.ListRoles:output_type -> fusion.proto.role.ListRolesResponse
+	17, // 20: fusion.proto.role.RoleService.AllRoles:output_type -> fusion.proto.role.AllRolesResponse
+	17, // 21: fusion.proto.role.RoleService.SysRoles:output_type -> fusion.proto.role.AllRolesResponse
+	13, // 22: fusion.proto.role.RoleService.CheckRolePermission:output_type -> google.protobuf.Empty
+	18, // 23: fusion.proto.role.RoleService.ProjectRole:output_type -> fusion.proto.role.ProjectRoleResponse
+	19, // 24: fusion.proto.role.RoleService.GetUserRoles:output_type -> fusion.proto.role.GetUserRolesResponse
+	20, // 25: fusion.proto.role.RoleService.GetRolesByIDs:output_type -> fusion.proto.role.GetRolesByIDsResponse
+	13, // [13:26] is the sub-list for method output_type
+	0,  // [0:13] is the sub-list for method input_type
 	0,  // [0:0] is the sub-list for extension type_name
 	0,  // [0:0] is the sub-list for extension extendee
 	0,  // [0:0] is the sub-list for field type_name

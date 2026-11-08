@@ -36,7 +36,7 @@ var File_domain_domain_service_proto protoreflect.FileDescriptor
 
 const file_domain_domain_service_proto_rawDesc = "" +
 	"\n" +
-	"\x1bdomain/domain_service.proto\x12\x13fusion.proto.domain\x1a\x1cgoogle/api/annotations.proto\x1a\x17google/api/client.proto\x1a\x1bgoogle/protobuf/empty.proto\x1a\x1bdomain/domain_message.proto2\xfd\x06\n" +
+	"\x1bdomain/domain_service.proto\x12\x13fusion.proto.domain\x1a\x1bdomain/domain_message.proto\x1a\x1cgoogle/api/annotations.proto\x1a\x17google/api/client.proto\x1a\x1bgoogle/protobuf/empty.proto2\xfd\x06\n" +
 	"\rDomainService\x12\xa1\x01\n" +
 	"\fCreateDomain\x12(.fusion.proto.domain.CreateDomainRequest\x1a).fusion.proto.domain.CreateDomainResponse\"<\xdaA\x1cdomain,icon,logo,name,extend\x82\xd3\xe4\x93\x02\x17:\x01*\"\x12/3rd-api/v2/domain\x12\x96\x01\n" +
 	"\fUpdateDomain\x12(.fusion.proto.domain.UpdateDomainRequest\x1a\x16.google.protobuf.Empty\"D\xdaA\x1fid,domain,icon,logo,name,extend\x82\xd3\xe4\x93\x02\x1c:\x01*\x1a\x17/3rd-api/v2/domain/{id}\x12v\n" +

@@ -878,7 +878,9 @@ type ListProjectsRequest struct {
 	// 页码
 	Page int32 `protobuf:"varint,4,opt,name=page,proto3" json:"page,omitempty"`
 	// 分页大小
-	PageSize      int32 `protobuf:"varint,5,opt,name=page_size,proto3" json:"page_size,omitempty"`
+	PageSize int32 `protobuf:"varint,5,opt,name=page_size,proto3" json:"page_size,omitempty"`
+	// 渠道ID
+	AgentId       []string `protobuf:"bytes,6,rep,name=agent_id,proto3" json:"agent_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -946,6 +948,13 @@ func (x *ListProjectsRequest) GetPageSize() int32 {
 		return x.PageSize
 	}
 	return 0
+}
+
+func (x *ListProjectsRequest) GetAgentId() []string {
+	if x != nil {
+		return x.AgentId
+	}
+	return nil
 }
 
 // Package message 业务中心-列表项目响应消息定义(分页)
@@ -1029,7 +1038,9 @@ type AllProjectsRequest struct {
 	// 项目状态(1-启用 2-禁用)
 	State *int32 `protobuf:"varint,2,opt,name=state,proto3,oneof" json:"state,omitempty"`
 	// 项目类型(1-普通项目 2-预置项目 3-渠道项目 9-体验项目)
-	Type          *int32 `protobuf:"varint,3,opt,name=type,proto3,oneof" json:"type,omitempty"`
+	Type *int32 `protobuf:"varint,3,opt,name=type,proto3,oneof" json:"type,omitempty"`
+	// 渠道ID
+	AgentId       []string `protobuf:"bytes,4,rep,name=agent_id,proto3" json:"agent_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1083,6 +1094,13 @@ func (x *AllProjectsRequest) GetType() int32 {
 		return *x.Type
 	}
 	return 0
+}
+
+func (x *AllProjectsRequest) GetAgentId() []string {
+	if x != nil {
+		return x.AgentId
+	}
+	return nil
 }
 
 // Package message 业务中心-列表项目响应消息定义(不分页)
@@ -1501,25 +1519,27 @@ const file_project_project_message_proto_rawDesc = "" +
 	"email_name\x12\x18\n" +
 	"\aps_name\x18\x1b \x01(\tR\aps_name\x12 \n" +
 	"\vupdate_name\x18\x1c \x01(\tR\vupdate_name\x12\x19\n" +
-	"\bthird_id\x18\x1d \x01(\tR\athid_id\"\xdc\x01\n" +
+	"\bthird_id\x18\x1d \x01(\tR\athid_id\"\x82\x02\n" +
 	"\x13ListProjectsRequest\x12!\n" +
 	"\akeyword\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x18<R\akeyword\x12$\n" +
 	"\x05state\x18\x02 \x01(\x05B\t\xbaH\x06\x1a\x04\x18\x02(\x01H\x00R\x05state\x88\x01\x01\x12\"\n" +
 	"\x04type\x18\x03 \x01(\x05B\t\xbaH\x06\x1a\x04\x18\t(\x01H\x01R\x04type\x88\x01\x01\x12\x1b\n" +
 	"\x04page\x18\x04 \x01(\x05B\a\xbaH\x04\x1a\x02 \x00R\x04page\x12(\n" +
 	"\tpage_size\x18\x05 \x01(\x05B\n" +
-	"\xbaH\a\x1a\x05\x18\xac\x02 \x00R\tpage_sizeB\b\n" +
+	"\xbaH\a\x1a\x05\x18\xac\x02 \x00R\tpage_size\x12$\n" +
+	"\bagent_id\x18\x06 \x03(\tB\b\xbaH\x05\x92\x01\x02\x10dR\bagent_idB\b\n" +
 	"\x06_stateB\a\n" +
 	"\x05_type\"\x99\x01\n" +
 	"\x14ListProjectsResponse\x129\n" +
 	"\x04data\x18\x01 \x03(\v2%.fusion.proto.project.ProjectResponseR\x04data\x12\x12\n" +
 	"\x04page\x18\x02 \x01(\x05R\x04page\x12\x1c\n" +
 	"\tpage_size\x18\x03 \x01(\x05R\tpage_size\x12\x14\n" +
-	"\x05total\x18\x04 \x01(\x03R\x05total\"\x94\x01\n" +
+	"\x05total\x18\x04 \x01(\x03R\x05total\"\xba\x01\n" +
 	"\x12AllProjectsRequest\x12!\n" +
 	"\akeyword\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x18<R\akeyword\x12$\n" +
 	"\x05state\x18\x02 \x01(\x05B\t\xbaH\x06\x1a\x04\x18\x02(\x01H\x00R\x05state\x88\x01\x01\x12\"\n" +
-	"\x04type\x18\x03 \x01(\x05B\t\xbaH\x06\x1a\x04\x18\t(\x01H\x01R\x04type\x88\x01\x01B\b\n" +
+	"\x04type\x18\x03 \x01(\x05B\t\xbaH\x06\x1a\x04\x18\t(\x01H\x01R\x04type\x88\x01\x01\x12$\n" +
+	"\bagent_id\x18\x04 \x03(\tB\b\xbaH\x05\x92\x01\x02\x10dR\bagent_idB\b\n" +
 	"\x06_stateB\a\n" +
 	"\x05_type\"P\n" +
 	"\x13AllProjectsResponse\x129\n" +
