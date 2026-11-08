@@ -260,7 +260,9 @@ type UpdateProjectRequest struct {
 	// 开放平台客户端ID
 	ThirdId string `protobuf:"bytes,17,opt,name=third_id,json=thid_id,proto3" json:"third_id,omitempty"`
 	// 类型(1-普通项目 2-预置项目 3-渠道项目 9-体验项目)
-	Type          int32 `protobuf:"varint,18,opt,name=type,proto3" json:"type,omitempty"`
+	Type int32 `protobuf:"varint,18,opt,name=type,proto3" json:"type,omitempty"`
+	// 项目状态(1-启用 2-禁用)
+	State         int32 `protobuf:"varint,19,opt,name=state,proto3" json:"state,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -417,6 +419,13 @@ func (x *UpdateProjectRequest) GetThirdId() string {
 func (x *UpdateProjectRequest) GetType() int32 {
 	if x != nil {
 		return x.Type
+	}
+	return 0
+}
+
+func (x *UpdateProjectRequest) GetState() int32 {
+	if x != nil {
+		return x.State
 	}
 	return 0
 }
@@ -1431,7 +1440,7 @@ const file_project_project_message_proto_rawDesc = "" +
 	"\vzone_offset\x18\x0f \x01(\x05R\vzone_offset\x12\"\n" +
 	"\bthird_id\x18\x10 \x01(\tB\a\xbaH\x04r\x02\x18(R\athid_id\x12\x12\n" +
 	"\x04type\x18\x11 \x01(\x05R\x04typeB\v\n" +
-	"\t_capacity\"\x91\x05\n" +
+	"\t_capacity\"\xa7\x05\n" +
 	"\x14UpdateProjectRequest\x12\x19\n" +
 	"\x02id\x18\x01 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18(R\x02id\x12\x1b\n" +
 	"\x04name\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x18dR\x04name\x12\x1b\n" +
@@ -1451,7 +1460,8 @@ const file_project_project_message_proto_rawDesc = "" +
 	"\bcapacity\x18\x0f \x01(\x03H\x00R\bcapacity\x88\x01\x01\x12 \n" +
 	"\vzone_offset\x18\x10 \x01(\x05R\vzone_offset\x12\"\n" +
 	"\bthird_id\x18\x11 \x01(\tB\a\xbaH\x04r\x02\x18(R\athid_id\x12\x12\n" +
-	"\x04type\x18\x12 \x01(\x05R\x04typeB\v\n" +
+	"\x04type\x18\x12 \x01(\x05R\x04type\x12\x14\n" +
+	"\x05state\x18\x13 \x01(\x05R\x05stateB\v\n" +
 	"\t_capacity\"1\n" +
 	"\x14DeleteProjectRequest\x12\x19\n" +
 	"\x02id\x18\x01 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18(R\x02id\"6\n" +
