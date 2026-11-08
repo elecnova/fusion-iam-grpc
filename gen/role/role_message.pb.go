@@ -1559,7 +1559,7 @@ func (x *GetRolesByIDsRequest) GetIds() []string {
 type GetRolesByIDsResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// 角色列表
-	Data          []*RoleData `protobuf:"bytes,1,rep,name=data,proto3" json:"data,omitempty"`
+	Data          []*RoleKeyInfo `protobuf:"bytes,1,rep,name=data,proto3" json:"data,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1594,11 +1594,84 @@ func (*GetRolesByIDsResponse) Descriptor() ([]byte, []int) {
 	return file_role_role_message_proto_rawDescGZIP(), []int{23}
 }
 
-func (x *GetRolesByIDsResponse) GetData() []*RoleData {
+func (x *GetRolesByIDsResponse) GetData() []*RoleKeyInfo {
 	if x != nil {
 		return x.Data
 	}
 	return nil
+}
+
+// Package message 角色关键信息
+type RoleKeyInfo struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// 角色ID
+	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	// 角色编码
+	Code string `protobuf:"bytes,2,opt,name=code,proto3" json:"code,omitempty"`
+	// 角色名称（按语种解析后的名称）
+	Name string `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`
+	// 角色类型(1-普通角色 2-预定义普通角色 3-预定义管理角色)
+	Type          int32 `protobuf:"varint,9,opt,name=type,proto3" json:"type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *RoleKeyInfo) Reset() {
+	*x = RoleKeyInfo{}
+	mi := &file_role_role_message_proto_msgTypes[24]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *RoleKeyInfo) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*RoleKeyInfo) ProtoMessage() {}
+
+func (x *RoleKeyInfo) ProtoReflect() protoreflect.Message {
+	mi := &file_role_role_message_proto_msgTypes[24]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use RoleKeyInfo.ProtoReflect.Descriptor instead.
+func (*RoleKeyInfo) Descriptor() ([]byte, []int) {
+	return file_role_role_message_proto_rawDescGZIP(), []int{24}
+}
+
+func (x *RoleKeyInfo) GetId() string {
+	if x != nil {
+		return x.Id
+	}
+	return ""
+}
+
+func (x *RoleKeyInfo) GetCode() string {
+	if x != nil {
+		return x.Code
+	}
+	return ""
+}
+
+func (x *RoleKeyInfo) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+func (x *RoleKeyInfo) GetType() int32 {
+	if x != nil {
+		return x.Type
+	}
+	return 0
 }
 
 var File_role_role_message_proto protoreflect.FileDescriptor
@@ -1726,9 +1799,14 @@ const file_role_role_message_proto_rawDesc = "" +
 	"\x04data\x18\x01 \x03(\v2\x1b.fusion.proto.role.UserRoleR\x04data\"4\n" +
 	"\x14GetRolesByIDsRequest\x12\x1c\n" +
 	"\x03ids\x18\x01 \x03(\tB\n" +
-	"\xbaH\a\x92\x01\x04\b\x01\x10dR\x03ids\"H\n" +
-	"\x15GetRolesByIDsResponse\x12/\n" +
-	"\x04data\x18\x01 \x03(\v2\x1b.fusion.proto.role.RoleDataR\x04dataB\xa7\x01\n" +
+	"\xbaH\a\x92\x01\x04\b\x01\x10dR\x03ids\"K\n" +
+	"\x15GetRolesByIDsResponse\x122\n" +
+	"\x04data\x18\x01 \x03(\v2\x1e.fusion.proto.role.RoleKeyInfoR\x04data\"Y\n" +
+	"\vRoleKeyInfo\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
+	"\x04code\x18\x02 \x01(\tR\x04code\x12\x12\n" +
+	"\x04name\x18\x03 \x01(\tR\x04name\x12\x12\n" +
+	"\x04type\x18\t \x01(\x05R\x04typeB\xa7\x01\n" +
 	"\x15com.fusion.proto.roleB\x10RoleMessageProtoP\x01Z\x16fusion.proto.role;role\xa2\x02\x03FPR\xaa\x02\x11Fusion.Proto.Role\xca\x02\x11Fusion\\Proto\\Role\xe2\x02\x1dFusion\\Proto\\Role\\GPBMetadata\xea\x02\x13Fusion::Proto::Roleb\x06proto3"
 
 var (
@@ -1743,7 +1821,7 @@ func file_role_role_message_proto_rawDescGZIP() []byte {
 	return file_role_role_message_proto_rawDescData
 }
 
-var file_role_role_message_proto_msgTypes = make([]protoimpl.MessageInfo, 24)
+var file_role_role_message_proto_msgTypes = make([]protoimpl.MessageInfo, 25)
 var file_role_role_message_proto_goTypes = []any{
 	(*RoleName)(nil),                   // 0: fusion.proto.role.RoleName
 	(*RoleData)(nil),                   // 1: fusion.proto.role.RoleData
@@ -1769,12 +1847,13 @@ var file_role_role_message_proto_goTypes = []any{
 	(*GetUserRolesResponse)(nil),       // 21: fusion.proto.role.GetUserRolesResponse
 	(*GetRolesByIDsRequest)(nil),       // 22: fusion.proto.role.GetRolesByIDsRequest
 	(*GetRolesByIDsResponse)(nil),      // 23: fusion.proto.role.GetRolesByIDsResponse
-	(*timestamppb.Timestamp)(nil),      // 24: google.protobuf.Timestamp
+	(*RoleKeyInfo)(nil),                // 24: fusion.proto.role.RoleKeyInfo
+	(*timestamppb.Timestamp)(nil),      // 25: google.protobuf.Timestamp
 }
 var file_role_role_message_proto_depIdxs = []int32{
 	0,  // 0: fusion.proto.role.RoleData.name_detail:type_name -> fusion.proto.role.RoleName
-	24, // 1: fusion.proto.role.RoleData.create_at:type_name -> google.protobuf.Timestamp
-	24, // 2: fusion.proto.role.RoleData.update_at:type_name -> google.protobuf.Timestamp
+	25, // 1: fusion.proto.role.RoleData.create_at:type_name -> google.protobuf.Timestamp
+	25, // 2: fusion.proto.role.RoleData.update_at:type_name -> google.protobuf.Timestamp
 	0,  // 3: fusion.proto.role.CreateRoleRequest.name:type_name -> fusion.proto.role.RoleName
 	0,  // 4: fusion.proto.role.DuplicateRoleRequest.name:type_name -> fusion.proto.role.RoleName
 	0,  // 5: fusion.proto.role.UpdateRoleRequest.name:type_name -> fusion.proto.role.RoleName
@@ -1783,7 +1862,7 @@ var file_role_role_message_proto_depIdxs = []int32{
 	1,  // 8: fusion.proto.role.ListRolesResponse.data:type_name -> fusion.proto.role.RoleData
 	1,  // 9: fusion.proto.role.AllRolesResponse.data:type_name -> fusion.proto.role.RoleData
 	20, // 10: fusion.proto.role.GetUserRolesResponse.data:type_name -> fusion.proto.role.UserRole
-	1,  // 11: fusion.proto.role.GetRolesByIDsResponse.data:type_name -> fusion.proto.role.RoleData
+	24, // 11: fusion.proto.role.GetRolesByIDsResponse.data:type_name -> fusion.proto.role.RoleKeyInfo
 	12, // [12:12] is the sub-list for method output_type
 	12, // [12:12] is the sub-list for method input_type
 	12, // [12:12] is the sub-list for extension type_name
@@ -1804,7 +1883,7 @@ func file_role_role_message_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_role_role_message_proto_rawDesc), len(file_role_role_message_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   24,
+			NumMessages:   25,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
