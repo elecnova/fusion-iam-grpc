@@ -819,10 +819,12 @@ type ListProjectsRequest struct {
 	Keyword string `protobuf:"bytes,1,opt,name=keyword,proto3" json:"keyword,omitempty"`
 	// 项目状态(1-启用 2-禁用)
 	State *int32 `protobuf:"varint,2,opt,name=state,proto3,oneof" json:"state,omitempty"`
+	// 项目类型(1-普通项目 2-预置项目 3-渠道项目 9-体验项目)
+	Type *int32 `protobuf:"varint,3,opt,name=type,proto3,oneof" json:"type,omitempty"`
 	// 页码
-	Page int32 `protobuf:"varint,3,opt,name=page,proto3" json:"page,omitempty"`
+	Page int32 `protobuf:"varint,4,opt,name=page,proto3" json:"page,omitempty"`
 	// 分页大小
-	PageSize      int32 `protobuf:"varint,4,opt,name=page_size,proto3" json:"page_size,omitempty"`
+	PageSize      int32 `protobuf:"varint,5,opt,name=page_size,proto3" json:"page_size,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -867,6 +869,13 @@ func (x *ListProjectsRequest) GetKeyword() string {
 func (x *ListProjectsRequest) GetState() int32 {
 	if x != nil && x.State != nil {
 		return *x.State
+	}
+	return 0
+}
+
+func (x *ListProjectsRequest) GetType() int32 {
+	if x != nil && x.Type != nil {
+		return *x.Type
 	}
 	return 0
 }
@@ -964,7 +973,9 @@ type AllProjectsRequest struct {
 	// 模糊搜索关键字，可搜索项目名称、编码、联系人、联系方式
 	Keyword string `protobuf:"bytes,1,opt,name=keyword,proto3" json:"keyword,omitempty"`
 	// 项目状态(1-启用 2-禁用)
-	State         *int32 `protobuf:"varint,2,opt,name=state,proto3,oneof" json:"state,omitempty"`
+	State *int32 `protobuf:"varint,2,opt,name=state,proto3,oneof" json:"state,omitempty"`
+	// 项目类型(1-普通项目 2-预置项目 3-渠道项目 9-体验项目)
+	Type          *int32 `protobuf:"varint,3,opt,name=type,proto3,oneof" json:"type,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1009,6 +1020,13 @@ func (x *AllProjectsRequest) GetKeyword() string {
 func (x *AllProjectsRequest) GetState() int32 {
 	if x != nil && x.State != nil {
 		return *x.State
+	}
+	return 0
+}
+
+func (x *AllProjectsRequest) GetType() int32 {
+	if x != nil && x.Type != nil {
+		return *x.Type
 	}
 	return 0
 }
@@ -1423,23 +1441,27 @@ const file_project_project_message_proto_rawDesc = "" +
 	"email_name\x18\x1a \x01(\tR\n" +
 	"email_name\x12\x18\n" +
 	"\aps_name\x18\x1b \x01(\tR\aps_name\x12 \n" +
-	"\vupdate_name\x18\x1c \x01(\tR\vupdate_name\"\xaf\x01\n" +
+	"\vupdate_name\x18\x1c \x01(\tR\vupdate_name\"\xdc\x01\n" +
 	"\x13ListProjectsRequest\x12!\n" +
 	"\akeyword\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x18<R\akeyword\x12$\n" +
-	"\x05state\x18\x02 \x01(\x05B\t\xbaH\x06\x1a\x04\x18\x02(\x01H\x00R\x05state\x88\x01\x01\x12\x1b\n" +
-	"\x04page\x18\x03 \x01(\x05B\a\xbaH\x04\x1a\x02 \x00R\x04page\x12(\n" +
-	"\tpage_size\x18\x04 \x01(\x05B\n" +
+	"\x05state\x18\x02 \x01(\x05B\t\xbaH\x06\x1a\x04\x18\x02(\x01H\x00R\x05state\x88\x01\x01\x12\"\n" +
+	"\x04type\x18\x03 \x01(\x05B\t\xbaH\x06\x1a\x04\x18\t(\x01H\x01R\x04type\x88\x01\x01\x12\x1b\n" +
+	"\x04page\x18\x04 \x01(\x05B\a\xbaH\x04\x1a\x02 \x00R\x04page\x12(\n" +
+	"\tpage_size\x18\x05 \x01(\x05B\n" +
 	"\xbaH\a\x1a\x05\x18\xac\x02 \x00R\tpage_sizeB\b\n" +
-	"\x06_state\"\x99\x01\n" +
+	"\x06_stateB\a\n" +
+	"\x05_type\"\x99\x01\n" +
 	"\x14ListProjectsResponse\x129\n" +
 	"\x04data\x18\x01 \x03(\v2%.fusion.proto.project.ProjectResponseR\x04data\x12\x12\n" +
 	"\x04page\x18\x02 \x01(\x05R\x04page\x12\x1c\n" +
 	"\tpage_size\x18\x03 \x01(\x05R\tpage_size\x12\x14\n" +
-	"\x05total\x18\x04 \x01(\x03R\x05total\"g\n" +
+	"\x05total\x18\x04 \x01(\x03R\x05total\"\x94\x01\n" +
 	"\x12AllProjectsRequest\x12!\n" +
 	"\akeyword\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x18<R\akeyword\x12$\n" +
-	"\x05state\x18\x02 \x01(\x05B\t\xbaH\x06\x1a\x04\x18\x02(\x01H\x00R\x05state\x88\x01\x01B\b\n" +
-	"\x06_state\"P\n" +
+	"\x05state\x18\x02 \x01(\x05B\t\xbaH\x06\x1a\x04\x18\x02(\x01H\x00R\x05state\x88\x01\x01\x12\"\n" +
+	"\x04type\x18\x03 \x01(\x05B\t\xbaH\x06\x1a\x04\x18\t(\x01H\x01R\x04type\x88\x01\x01B\b\n" +
+	"\x06_stateB\a\n" +
+	"\x05_type\"P\n" +
 	"\x13AllProjectsResponse\x129\n" +
 	"\x04data\x18\x01 \x03(\v2%.fusion.proto.project.ProjectResponseR\x04data\"4\n" +
 	"\x17GetProjectPsInfoRequest\x12\x19\n" +
