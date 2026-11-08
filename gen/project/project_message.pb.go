@@ -66,7 +66,9 @@ type CreateProjectRequest struct {
 	// 项目时区偏移量
 	ZoneOffset int32 `protobuf:"varint,15,opt,name=zone_offset,proto3" json:"zone_offset,omitempty"`
 	// 开放平台客户端ID
-	ThirdId       string `protobuf:"bytes,16,opt,name=third_id,json=thid_id,proto3" json:"third_id,omitempty"`
+	ThirdId string `protobuf:"bytes,16,opt,name=third_id,json=thid_id,proto3" json:"third_id,omitempty"`
+	// 类型(1-普通项目 2-预置项目 3-渠道项目 9-体验项目)
+	Type          int32 `protobuf:"varint,17,opt,name=type,proto3" json:"type,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -213,6 +215,13 @@ func (x *CreateProjectRequest) GetThirdId() string {
 	return ""
 }
 
+func (x *CreateProjectRequest) GetType() int32 {
+	if x != nil {
+		return x.Type
+	}
+	return 0
+}
+
 // Package message 业务中心-更新项目请求消息定义
 type UpdateProjectRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
@@ -249,7 +258,9 @@ type UpdateProjectRequest struct {
 	// 项目时区偏移量
 	ZoneOffset int32 `protobuf:"varint,16,opt,name=zone_offset,proto3" json:"zone_offset,omitempty"`
 	// 开放平台客户端ID
-	ThirdId       string `protobuf:"bytes,17,opt,name=third_id,json=thid_id,proto3" json:"third_id,omitempty"`
+	ThirdId string `protobuf:"bytes,17,opt,name=third_id,json=thid_id,proto3" json:"third_id,omitempty"`
+	// 类型(1-普通项目 2-预置项目 3-渠道项目 9-体验项目)
+	Type          int32 `protobuf:"varint,18,opt,name=type,proto3" json:"type,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -401,6 +412,13 @@ func (x *UpdateProjectRequest) GetThirdId() string {
 		return x.ThirdId
 	}
 	return ""
+}
+
+func (x *UpdateProjectRequest) GetType() int32 {
+	if x != nil {
+		return x.Type
+	}
+	return 0
 }
 
 // Package message 业务中心-删除项目请求消息定义
@@ -576,7 +594,7 @@ type ProjectResponse struct {
 	PsId string `protobuf:"bytes,15,opt,name=ps_id,proto3" json:"ps_id,omitempty"`
 	// 接入设备数量
 	Capacity int64 `protobuf:"varint,16,opt,name=capacity,proto3" json:"capacity,omitempty"`
-	// 类型(1-普通项目 2-预置项目 3-渠道项目)
+	// 类型(1-普通项目 2-预置项目 3-渠道项目 9-体验项目)
 	Type int32 `protobuf:"varint,17,opt,name=type,proto3" json:"type,omitempty"`
 	// 项目状态(1-启用 2-禁用)
 	State int32 `protobuf:"varint,18,opt,name=state,proto3" json:"state,omitempty"`
@@ -1392,7 +1410,7 @@ var File_project_project_message_proto protoreflect.FileDescriptor
 
 const file_project_project_message_proto_rawDesc = "" +
 	"\n" +
-	"\x1dproject/project_message.proto\x12\x14fusion.proto.project\x1a\x1bbuf/validate/validate.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xe8\x04\n" +
+	"\x1dproject/project_message.proto\x12\x14fusion.proto.project\x1a\x1bbuf/validate/validate.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xfc\x04\n" +
 	"\x14CreateProjectRequest\x12\x1d\n" +
 	"\x04name\x18\x01 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18dR\x04name\x12\x1b\n" +
 	"\x04code\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x18(R\x04code\x12#\n" +
@@ -1411,8 +1429,9 @@ const file_project_project_message_proto_rawDesc = "" +
 	"\x05ps_id\x18\r \x01(\tB\a\xbaH\x04r\x02\x18(R\x05ps_id\x12\x1f\n" +
 	"\bcapacity\x18\x0e \x01(\x03H\x00R\bcapacity\x88\x01\x01\x12 \n" +
 	"\vzone_offset\x18\x0f \x01(\x05R\vzone_offset\x12\"\n" +
-	"\bthird_id\x18\x10 \x01(\tB\a\xbaH\x04r\x02\x18(R\athid_idB\v\n" +
-	"\t_capacity\"\xfd\x04\n" +
+	"\bthird_id\x18\x10 \x01(\tB\a\xbaH\x04r\x02\x18(R\athid_id\x12\x12\n" +
+	"\x04type\x18\x11 \x01(\x05R\x04typeB\v\n" +
+	"\t_capacity\"\x91\x05\n" +
 	"\x14UpdateProjectRequest\x12\x19\n" +
 	"\x02id\x18\x01 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18(R\x02id\x12\x1b\n" +
 	"\x04name\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x18dR\x04name\x12\x1b\n" +
@@ -1431,7 +1450,8 @@ const file_project_project_message_proto_rawDesc = "" +
 	"\x05ps_id\x18\x0e \x01(\tB\a\xbaH\x04r\x02\x18(R\x05ps_id\x12\x1f\n" +
 	"\bcapacity\x18\x0f \x01(\x03H\x00R\bcapacity\x88\x01\x01\x12 \n" +
 	"\vzone_offset\x18\x10 \x01(\x05R\vzone_offset\x12\"\n" +
-	"\bthird_id\x18\x11 \x01(\tB\a\xbaH\x04r\x02\x18(R\athid_idB\v\n" +
+	"\bthird_id\x18\x11 \x01(\tB\a\xbaH\x04r\x02\x18(R\athid_id\x12\x12\n" +
+	"\x04type\x18\x12 \x01(\x05R\x04typeB\v\n" +
 	"\t_capacity\"1\n" +
 	"\x14DeleteProjectRequest\x12\x19\n" +
 	"\x02id\x18\x01 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18(R\x02id\"6\n" +
