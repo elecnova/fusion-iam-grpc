@@ -64,7 +64,9 @@ type CreateProjectRequest struct {
 	// 接入设备数量
 	Capacity *int64 `protobuf:"varint,14,opt,name=capacity,proto3,oneof" json:"capacity,omitempty"`
 	// 项目时区偏移量
-	ZoneOffset    int32 `protobuf:"varint,15,opt,name=zone_offset,proto3" json:"zone_offset,omitempty"`
+	ZoneOffset int32 `protobuf:"varint,15,opt,name=zone_offset,proto3" json:"zone_offset,omitempty"`
+	// 开放平台客户端ID
+	ThirdId       string `protobuf:"bytes,16,opt,name=third_id,json=thid_id,proto3" json:"third_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -204,6 +206,13 @@ func (x *CreateProjectRequest) GetZoneOffset() int32 {
 	return 0
 }
 
+func (x *CreateProjectRequest) GetThirdId() string {
+	if x != nil {
+		return x.ThirdId
+	}
+	return ""
+}
+
 // Package message 业务中心-更新项目请求消息定义
 type UpdateProjectRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
@@ -238,7 +247,9 @@ type UpdateProjectRequest struct {
 	// 接入设备数量
 	Capacity *int64 `protobuf:"varint,15,opt,name=capacity,proto3,oneof" json:"capacity,omitempty"`
 	// 项目时区偏移量
-	ZoneOffset    int32 `protobuf:"varint,16,opt,name=zone_offset,proto3" json:"zone_offset,omitempty"`
+	ZoneOffset int32 `protobuf:"varint,16,opt,name=zone_offset,proto3" json:"zone_offset,omitempty"`
+	// 开放平台客户端ID
+	ThirdId       string `protobuf:"bytes,17,opt,name=third_id,json=thid_id,proto3" json:"third_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -383,6 +394,13 @@ func (x *UpdateProjectRequest) GetZoneOffset() int32 {
 		return x.ZoneOffset
 	}
 	return 0
+}
+
+func (x *UpdateProjectRequest) GetThirdId() string {
+	if x != nil {
+		return x.ThirdId
+	}
+	return ""
 }
 
 // Package message 业务中心-删除项目请求消息定义
@@ -581,7 +599,9 @@ type ProjectResponse struct {
 	// 售后服务名称
 	PsName string `protobuf:"bytes,27,opt,name=ps_name,proto3" json:"ps_name,omitempty"`
 	// 更新人用户名
-	UpdateName    string `protobuf:"bytes,28,opt,name=update_name,proto3" json:"update_name,omitempty"`
+	UpdateName string `protobuf:"bytes,28,opt,name=update_name,proto3" json:"update_name,omitempty"`
+	// 开放平台客户端ID
+	ThirdId       string `protobuf:"bytes,29,opt,name=third_id,json=thid_id,proto3" json:"third_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -808,6 +828,13 @@ func (x *ProjectResponse) GetPsName() string {
 func (x *ProjectResponse) GetUpdateName() string {
 	if x != nil {
 		return x.UpdateName
+	}
+	return ""
+}
+
+func (x *ProjectResponse) GetThirdId() string {
+	if x != nil {
+		return x.ThirdId
 	}
 	return ""
 }
@@ -1365,7 +1392,7 @@ var File_project_project_message_proto protoreflect.FileDescriptor
 
 const file_project_project_message_proto_rawDesc = "" +
 	"\n" +
-	"\x1dproject/project_message.proto\x12\x14fusion.proto.project\x1a\x1bbuf/validate/validate.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xc4\x04\n" +
+	"\x1dproject/project_message.proto\x12\x14fusion.proto.project\x1a\x1bbuf/validate/validate.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xe8\x04\n" +
 	"\x14CreateProjectRequest\x12\x1d\n" +
 	"\x04name\x18\x01 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18dR\x04name\x12\x1b\n" +
 	"\x04code\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x18(R\x04code\x12#\n" +
@@ -1383,8 +1410,9 @@ const file_project_project_message_proto_rawDesc = "" +
 	"\x05email\x18\f \x01(\tB\a\xbaH\x04r\x02\x18(R\x05email\x12\x1d\n" +
 	"\x05ps_id\x18\r \x01(\tB\a\xbaH\x04r\x02\x18(R\x05ps_id\x12\x1f\n" +
 	"\bcapacity\x18\x0e \x01(\x03H\x00R\bcapacity\x88\x01\x01\x12 \n" +
-	"\vzone_offset\x18\x0f \x01(\x05R\vzone_offsetB\v\n" +
-	"\t_capacity\"\xd9\x04\n" +
+	"\vzone_offset\x18\x0f \x01(\x05R\vzone_offset\x12\"\n" +
+	"\bthird_id\x18\x10 \x01(\tB\a\xbaH\x04r\x02\x18(R\athid_idB\v\n" +
+	"\t_capacity\"\xfd\x04\n" +
 	"\x14UpdateProjectRequest\x12\x19\n" +
 	"\x02id\x18\x01 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18(R\x02id\x12\x1b\n" +
 	"\x04name\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x18dR\x04name\x12\x1b\n" +
@@ -1402,14 +1430,15 @@ const file_project_project_message_proto_rawDesc = "" +
 	"\x05email\x18\r \x01(\tB\a\xbaH\x04r\x02\x18(R\x05email\x12\x1d\n" +
 	"\x05ps_id\x18\x0e \x01(\tB\a\xbaH\x04r\x02\x18(R\x05ps_id\x12\x1f\n" +
 	"\bcapacity\x18\x0f \x01(\x03H\x00R\bcapacity\x88\x01\x01\x12 \n" +
-	"\vzone_offset\x18\x10 \x01(\x05R\vzone_offsetB\v\n" +
+	"\vzone_offset\x18\x10 \x01(\x05R\vzone_offset\x12\"\n" +
+	"\bthird_id\x18\x11 \x01(\tB\a\xbaH\x04r\x02\x18(R\athid_idB\v\n" +
 	"\t_capacity\"1\n" +
 	"\x14DeleteProjectRequest\x12\x19\n" +
 	"\x02id\x18\x01 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18(R\x02id\"6\n" +
 	"\x19ForceDeleteProjectRequest\x12\x19\n" +
 	"\x02id\x18\x01 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18(R\x02id\".\n" +
 	"\x11GetProjectRequest\x12\x19\n" +
-	"\x02id\x18\x01 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18(R\x02id\"\xe9\x06\n" +
+	"\x02id\x18\x01 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18(R\x02id\"\x84\a\n" +
 	"\x0fProjectResponse\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x12\n" +
@@ -1441,7 +1470,8 @@ const file_project_project_message_proto_rawDesc = "" +
 	"email_name\x18\x1a \x01(\tR\n" +
 	"email_name\x12\x18\n" +
 	"\aps_name\x18\x1b \x01(\tR\aps_name\x12 \n" +
-	"\vupdate_name\x18\x1c \x01(\tR\vupdate_name\"\xdc\x01\n" +
+	"\vupdate_name\x18\x1c \x01(\tR\vupdate_name\x12\x19\n" +
+	"\bthird_id\x18\x1d \x01(\tR\athid_id\"\xdc\x01\n" +
 	"\x13ListProjectsRequest\x12!\n" +
 	"\akeyword\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x18<R\akeyword\x12$\n" +
 	"\x05state\x18\x02 \x01(\x05B\t\xbaH\x06\x1a\x04\x18\x02(\x01H\x00R\x05state\x88\x01\x01\x12\"\n" +
