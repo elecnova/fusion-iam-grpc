@@ -46,7 +46,11 @@ type CreateCountryRequest struct {
 	// 时区偏移量
 	ZoneOffset *int64 `protobuf:"varint,5,opt,name=zone_offset,proto3,oneof" json:"zone_offset,omitempty"`
 	// 排序
-	Sort          int32 `protobuf:"varint,6,opt,name=sort,proto3" json:"sort,omitempty"`
+	Sort int32 `protobuf:"varint,6,opt,name=sort,proto3" json:"sort,omitempty"`
+	// 纬度
+	Latitude *float64 `protobuf:"fixed64,7,opt,name=latitude,proto3,oneof" json:"latitude,omitempty"`
+	// 经度
+	Longitude     *float64 `protobuf:"fixed64,8,opt,name=longitude,proto3,oneof" json:"longitude,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -123,6 +127,20 @@ func (x *CreateCountryRequest) GetSort() int32 {
 	return 0
 }
 
+func (x *CreateCountryRequest) GetLatitude() float64 {
+	if x != nil && x.Latitude != nil {
+		return *x.Latitude
+	}
+	return 0
+}
+
+func (x *CreateCountryRequest) GetLongitude() float64 {
+	if x != nil && x.Longitude != nil {
+		return *x.Longitude
+	}
+	return 0
+}
+
 // Package message 创建国家地区响应消息定义
 type CreateCountryResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
@@ -183,7 +201,11 @@ type UpdateCountryRequest struct {
 	// 时区偏移量
 	ZoneOffset *int64 `protobuf:"varint,5,opt,name=zone_offset,proto3,oneof" json:"zone_offset,omitempty"`
 	// 排序
-	Sort          int32 `protobuf:"varint,6,opt,name=sort,proto3" json:"sort,omitempty"`
+	Sort int32 `protobuf:"varint,6,opt,name=sort,proto3" json:"sort,omitempty"`
+	// 纬度
+	Latitude *float64 `protobuf:"fixed64,7,opt,name=latitude,proto3,oneof" json:"latitude,omitempty"`
+	// 经度
+	Longitude     *float64 `protobuf:"fixed64,8,opt,name=longitude,proto3,oneof" json:"longitude,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -260,15 +282,25 @@ func (x *UpdateCountryRequest) GetSort() int32 {
 	return 0
 }
 
+func (x *UpdateCountryRequest) GetLatitude() float64 {
+	if x != nil && x.Latitude != nil {
+		return *x.Latitude
+	}
+	return 0
+}
+
+func (x *UpdateCountryRequest) GetLongitude() float64 {
+	if x != nil && x.Longitude != nil {
+		return *x.Longitude
+	}
+	return 0
+}
+
 // Package message 删除国家地区消息定义
 type DeleteCountryRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// 国家地区ID
-	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	// 纬度
-	Latitude *float64 `protobuf:"fixed64,7,opt,name=latitude,proto3,oneof" json:"latitude,omitempty"`
-	// 经度
-	Longitude     *float64 `protobuf:"fixed64,8,opt,name=longitude,proto3,oneof" json:"longitude,omitempty"`
+	Id            string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -308,20 +340,6 @@ func (x *DeleteCountryRequest) GetId() string {
 		return x.Id
 	}
 	return ""
-}
-
-func (x *DeleteCountryRequest) GetLatitude() float64 {
-	if x != nil && x.Latitude != nil {
-		return *x.Latitude
-	}
-	return 0
-}
-
-func (x *DeleteCountryRequest) GetLongitude() float64 {
-	if x != nil && x.Longitude != nil {
-		return *x.Longitude
-	}
-	return 0
 }
 
 // Package message 获取国家地区详情消息定义
@@ -599,11 +617,7 @@ type ListCountriesRequest struct {
 	// 页码
 	Page int32 `protobuf:"varint,4,opt,name=page,proto3" json:"page,omitempty"`
 	// 分页大小
-	PageSize int32 `protobuf:"varint,5,opt,name=page_size,proto3" json:"page_size,omitempty"`
-	// 纬度
-	Latitude *float64 `protobuf:"fixed64,7,opt,name=latitude,proto3,oneof" json:"latitude,omitempty"`
-	// 经度
-	Longitude     *float64 `protobuf:"fixed64,8,opt,name=longitude,proto3,oneof" json:"longitude,omitempty"`
+	PageSize      int32 `protobuf:"varint,5,opt,name=page_size,proto3" json:"page_size,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -669,20 +683,6 @@ func (x *ListCountriesRequest) GetPage() int32 {
 func (x *ListCountriesRequest) GetPageSize() int32 {
 	if x != nil {
 		return x.PageSize
-	}
-	return 0
-}
-
-func (x *ListCountriesRequest) GetLatitude() float64 {
-	if x != nil && x.Latitude != nil {
-		return *x.Latitude
-	}
-	return 0
-}
-
-func (x *ListCountriesRequest) GetLongitude() float64 {
-	if x != nil && x.Longitude != nil {
-		return *x.Longitude
 	}
 	return 0
 }
@@ -1202,7 +1202,7 @@ var File_country_country_message_proto protoreflect.FileDescriptor
 
 const file_country_country_message_proto_rawDesc = "" +
 	"\n" +
-	"\x1dcountry/country_message.proto\x12\x14fusion.proto.country\x1a\x1bbuf/validate/validate.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xb3\x02\n" +
+	"\x1dcountry/country_message.proto\x12\x14fusion.proto.country\x1a\x1bbuf/validate/validate.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xc4\x03\n" +
 	"\x14CreateCountryRequest\x12%\n" +
 	"\tparent_id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x18(R\tparent_id\x12O\n" +
 	"\vdescription\x18\x02 \x03(\v2!.fusion.proto.country.DescriptionB\n" +
@@ -1213,10 +1213,15 @@ const file_country_country_message_proto_rawDesc = "" +
 	"phone_code\x12\x1d\n" +
 	"\x04zone\x18\x04 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18<R\x04zone\x12,\n" +
 	"\vzone_offset\x18\x05 \x01(\x03B\x05\xbaH\x02\"\x00H\x00R\vzone_offset\x88\x01\x01\x12\x1b\n" +
-	"\x04sort\x18\x06 \x01(\x05B\a\xbaH\x04\x1a\x02(\x00R\x04sortB\x0e\n" +
-	"\f_zone_offset\"'\n" +
+	"\x04sort\x18\x06 \x01(\x05B\a\xbaH\x04\x1a\x02(\x00R\x04sort\x128\n" +
+	"\blatitude\x18\a \x01(\x01B\x17\xbaH\x14\x12\x12\x19\x00\x00\x00\x00\x00\x80V@)\x00\x00\x00\x00\x00\x80V\xc0H\x01R\blatitude\x88\x01\x01\x12:\n" +
+	"\tlongitude\x18\b \x01(\x01B\x17\xbaH\x14\x12\x12\x19\x00\x00\x00\x00\x00\x80f@)\x00\x00\x00\x00\x00\x80f\xc0H\x02R\tlongitude\x88\x01\x01B\x0e\n" +
+	"\f_zone_offsetB\v\n" +
+	"\t_latitudeB\f\n" +
+	"\n" +
+	"_longitude\"'\n" +
 	"\x15CreateCountryResponse\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\tR\x02id\"\xa7\x02\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\"\xb8\x03\n" +
 	"\x14UpdateCountryRequest\x12\x19\n" +
 	"\x02id\x18\x01 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18(R\x02id\x12O\n" +
 	"\vdescription\x18\x02 \x03(\v2!.fusion.proto.country.DescriptionB\n" +
@@ -1227,15 +1232,15 @@ const file_country_country_message_proto_rawDesc = "" +
 	"phone_code\x12\x1d\n" +
 	"\x04zone\x18\x04 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18<R\x04zone\x12,\n" +
 	"\vzone_offset\x18\x05 \x01(\x03B\x05\xbaH\x02\"\x00H\x00R\vzone_offset\x88\x01\x01\x12\x1b\n" +
-	"\x04sort\x18\x06 \x01(\x05B\a\xbaH\x04\x1a\x02(\x00R\x04sortB\x0e\n" +
-	"\f_zone_offset\"\xc2\x01\n" +
-	"\x14DeleteCountryRequest\x12\x19\n" +
-	"\x02id\x18\x01 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18(R\x02id\x128\n" +
-	"\blatitude\x18\a \x01(\x01B\x17\xbaH\x14\x12\x12\x19\x00\x00\x00\x00\x00\x80V@)\x00\x00\x00\x00\x00\x80V\xc0H\x00R\blatitude\x88\x01\x01\x12:\n" +
-	"\tlongitude\x18\b \x01(\x01B\x17\xbaH\x14\x12\x12\x19\x00\x00\x00\x00\x00\x80f@)\x00\x00\x00\x00\x00\x80f\xc0H\x01R\tlongitude\x88\x01\x01B\v\n" +
+	"\x04sort\x18\x06 \x01(\x05B\a\xbaH\x04\x1a\x02(\x00R\x04sort\x128\n" +
+	"\blatitude\x18\a \x01(\x01B\x17\xbaH\x14\x12\x12\x19\x00\x00\x00\x00\x00\x80V@)\x00\x00\x00\x00\x00\x80V\xc0H\x01R\blatitude\x88\x01\x01\x12:\n" +
+	"\tlongitude\x18\b \x01(\x01B\x17\xbaH\x14\x12\x12\x19\x00\x00\x00\x00\x00\x80f@)\x00\x00\x00\x00\x00\x80f\xc0H\x02R\tlongitude\x88\x01\x01B\x0e\n" +
+	"\f_zone_offsetB\v\n" +
 	"\t_latitudeB\f\n" +
 	"\n" +
-	"_longitude\"@\n" +
+	"_longitude\"1\n" +
+	"\x14DeleteCountryRequest\x12\x19\n" +
+	"\x02id\x18\x01 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18(R\x02id\"@\n" +
 	"\x11GetCountryRequest\x12\x19\n" +
 	"\x02id\x18\x01 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18(R\x02id\x12\x10\n" +
 	"\x03all\x18\x02 \x01(\bR\x03all\"\x96\x06\n" +
@@ -1268,19 +1273,14 @@ const file_country_country_message_proto_rawDesc = "" +
 	"\f_zone_offsetB\v\n" +
 	"\t_latitudeB\f\n" +
 	"\n" +
-	"_longitude\"\xcb\x02\n" +
+	"_longitude\"\xba\x01\n" +
 	"\x14ListCountriesRequest\x12\"\n" +
 	"\akeyword\x18\x01 \x01(\tB\b\xbaH\x05r\x03\x18\xc8\x01R\akeyword\x12%\n" +
 	"\tparent_id\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x18(R\tparent_id\x12\x10\n" +
 	"\x03all\x18\x03 \x01(\bR\x03all\x12\x1b\n" +
 	"\x04page\x18\x04 \x01(\x05B\a\xbaH\x04\x1a\x02 \x00R\x04page\x12(\n" +
 	"\tpage_size\x18\x05 \x01(\x05B\n" +
-	"\xbaH\a\x1a\x05\x18\xac\x02 \x00R\tpage_size\x128\n" +
-	"\blatitude\x18\a \x01(\x01B\x17\xbaH\x14\x12\x12\x19\x00\x00\x00\x00\x00\x80V@)\x00\x00\x00\x00\x00\x80V\xc0H\x00R\blatitude\x88\x01\x01\x12:\n" +
-	"\tlongitude\x18\b \x01(\x01B\x17\xbaH\x14\x12\x12\x19\x00\x00\x00\x00\x00\x80f@)\x00\x00\x00\x00\x00\x80f\xc0H\x01R\tlongitude\x88\x01\x01B\v\n" +
-	"\t_latitudeB\f\n" +
-	"\n" +
-	"_longitude\"\x9d\x01\n" +
+	"\xbaH\a\x1a\x05\x18\xac\x02 \x00R\tpage_size\"\x9d\x01\n" +
 	"\x15ListCountriesResponse\x12<\n" +
 	"\x04data\x18\x01 \x03(\v2(.fusion.proto.country.GetCountryResponseR\x04data\x12\x12\n" +
 	"\x04page\x18\x02 \x01(\x05R\x04page\x12\x1c\n" +
@@ -1382,9 +1382,7 @@ func file_country_country_message_proto_init() {
 	}
 	file_country_country_message_proto_msgTypes[0].OneofWrappers = []any{}
 	file_country_country_message_proto_msgTypes[2].OneofWrappers = []any{}
-	file_country_country_message_proto_msgTypes[3].OneofWrappers = []any{}
 	file_country_country_message_proto_msgTypes[5].OneofWrappers = []any{}
-	file_country_country_message_proto_msgTypes[6].OneofWrappers = []any{}
 	file_country_country_message_proto_msgTypes[12].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
