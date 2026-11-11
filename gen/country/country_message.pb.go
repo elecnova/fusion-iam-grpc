@@ -264,7 +264,11 @@ func (x *UpdateCountryRequest) GetSort() int32 {
 type DeleteCountryRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// 国家地区ID
-	Id            string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	// 纬度
+	Latitude *float64 `protobuf:"fixed64,7,opt,name=latitude,proto3,oneof" json:"latitude,omitempty"`
+	// 经度
+	Longitude     *float64 `protobuf:"fixed64,8,opt,name=longitude,proto3,oneof" json:"longitude,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -304,6 +308,20 @@ func (x *DeleteCountryRequest) GetId() string {
 		return x.Id
 	}
 	return ""
+}
+
+func (x *DeleteCountryRequest) GetLatitude() float64 {
+	if x != nil && x.Latitude != nil {
+		return *x.Latitude
+	}
+	return 0
+}
+
+func (x *DeleteCountryRequest) GetLongitude() float64 {
+	if x != nil && x.Longitude != nil {
+		return *x.Longitude
+	}
+	return 0
 }
 
 // Package message 获取国家地区详情消息定义
@@ -397,7 +415,11 @@ type GetCountryResponse struct {
 	// 电话区号
 	PhoneCode string `protobuf:"bytes,16,opt,name=phone_code,proto3" json:"phone_code,omitempty"`
 	// 排序
-	Sort          int32 `protobuf:"varint,17,opt,name=sort,proto3" json:"sort,omitempty"`
+	Sort int32 `protobuf:"varint,17,opt,name=sort,proto3" json:"sort,omitempty"`
+	// 纬度
+	Latitude *float64 `protobuf:"fixed64,18,opt,name=latitude,proto3,oneof" json:"latitude,omitempty"`
+	// 经度
+	Longitude     *float64 `protobuf:"fixed64,19,opt,name=longitude,proto3,oneof" json:"longitude,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -551,6 +573,20 @@ func (x *GetCountryResponse) GetSort() int32 {
 	return 0
 }
 
+func (x *GetCountryResponse) GetLatitude() float64 {
+	if x != nil && x.Latitude != nil {
+		return *x.Latitude
+	}
+	return 0
+}
+
+func (x *GetCountryResponse) GetLongitude() float64 {
+	if x != nil && x.Longitude != nil {
+		return *x.Longitude
+	}
+	return 0
+}
+
 // Package message 列表查询国家地区请求消息定义
 type ListCountriesRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
@@ -563,7 +599,11 @@ type ListCountriesRequest struct {
 	// 页码
 	Page int32 `protobuf:"varint,4,opt,name=page,proto3" json:"page,omitempty"`
 	// 分页大小
-	PageSize      int32 `protobuf:"varint,5,opt,name=page_size,proto3" json:"page_size,omitempty"`
+	PageSize int32 `protobuf:"varint,5,opt,name=page_size,proto3" json:"page_size,omitempty"`
+	// 纬度
+	Latitude *float64 `protobuf:"fixed64,7,opt,name=latitude,proto3,oneof" json:"latitude,omitempty"`
+	// 经度
+	Longitude     *float64 `protobuf:"fixed64,8,opt,name=longitude,proto3,oneof" json:"longitude,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -629,6 +669,20 @@ func (x *ListCountriesRequest) GetPage() int32 {
 func (x *ListCountriesRequest) GetPageSize() int32 {
 	if x != nil {
 		return x.PageSize
+	}
+	return 0
+}
+
+func (x *ListCountriesRequest) GetLatitude() float64 {
+	if x != nil && x.Latitude != nil {
+		return *x.Latitude
+	}
+	return 0
+}
+
+func (x *ListCountriesRequest) GetLongitude() float64 {
+	if x != nil && x.Longitude != nil {
+		return *x.Longitude
 	}
 	return 0
 }
@@ -921,7 +975,11 @@ type CountryTreeNode struct {
 	// 排序
 	Sort int32 `protobuf:"varint,9,opt,name=sort,proto3" json:"sort,omitempty"`
 	// 子节点
-	Children      []*CountryTreeNode `protobuf:"bytes,10,rep,name=children,proto3" json:"children,omitempty"`
+	Children []*CountryTreeNode `protobuf:"bytes,10,rep,name=children,proto3" json:"children,omitempty"`
+	// 纬度
+	Latitude *float64 `protobuf:"fixed64,11,opt,name=latitude,proto3,oneof" json:"latitude,omitempty"`
+	// 经度
+	Longitude     *float64 `protobuf:"fixed64,12,opt,name=longitude,proto3,oneof" json:"longitude,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1024,6 +1082,20 @@ func (x *CountryTreeNode) GetChildren() []*CountryTreeNode {
 		return x.Children
 	}
 	return nil
+}
+
+func (x *CountryTreeNode) GetLatitude() float64 {
+	if x != nil && x.Latitude != nil {
+		return *x.Latitude
+	}
+	return 0
+}
+
+func (x *CountryTreeNode) GetLongitude() float64 {
+	if x != nil && x.Longitude != nil {
+		return *x.Longitude
+	}
+	return 0
 }
 
 // Package message 描述内容列表
@@ -1156,12 +1228,17 @@ const file_country_country_message_proto_rawDesc = "" +
 	"\x04zone\x18\x04 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18<R\x04zone\x12,\n" +
 	"\vzone_offset\x18\x05 \x01(\x03B\x05\xbaH\x02\"\x00H\x00R\vzone_offset\x88\x01\x01\x12\x1b\n" +
 	"\x04sort\x18\x06 \x01(\x05B\a\xbaH\x04\x1a\x02(\x00R\x04sortB\x0e\n" +
-	"\f_zone_offset\"1\n" +
+	"\f_zone_offset\"\xc2\x01\n" +
 	"\x14DeleteCountryRequest\x12\x19\n" +
-	"\x02id\x18\x01 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18(R\x02id\"@\n" +
+	"\x02id\x18\x01 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18(R\x02id\x128\n" +
+	"\blatitude\x18\a \x01(\x01B\x17\xbaH\x14\x12\x12\x19\x00\x00\x00\x00\x00\x80V@)\x00\x00\x00\x00\x00\x80V\xc0H\x00R\blatitude\x88\x01\x01\x12:\n" +
+	"\tlongitude\x18\b \x01(\x01B\x17\xbaH\x14\x12\x12\x19\x00\x00\x00\x00\x00\x80f@)\x00\x00\x00\x00\x00\x80f\xc0H\x01R\tlongitude\x88\x01\x01B\v\n" +
+	"\t_latitudeB\f\n" +
+	"\n" +
+	"_longitude\"@\n" +
 	"\x11GetCountryRequest\x12\x19\n" +
 	"\x02id\x18\x01 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18(R\x02id\x12\x10\n" +
-	"\x03all\x18\x02 \x01(\bR\x03all\"\xb7\x05\n" +
+	"\x03all\x18\x02 \x01(\bR\x03all\"\x96\x06\n" +
 	"\x12GetCountryResponse\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x1c\n" +
@@ -1182,18 +1259,28 @@ const file_country_country_message_proto_rawDesc = "" +
 	"\n" +
 	"phone_code\x18\x10 \x01(\tR\n" +
 	"phone_code\x12\x12\n" +
-	"\x04sort\x18\x11 \x01(\x05R\x04sortB\x0e\n" +
+	"\x04sort\x18\x11 \x01(\x05R\x04sort\x12\x1f\n" +
+	"\blatitude\x18\x12 \x01(\x01H\x04R\blatitude\x88\x01\x01\x12!\n" +
+	"\tlongitude\x18\x13 \x01(\x01H\x05R\tlongitude\x88\x01\x01B\x0e\n" +
 	"\f_descriptionB\x0e\n" +
 	"\f_location_idB\x0e\n" +
 	"\f_region_codeB\x0e\n" +
-	"\f_zone_offset\"\xba\x01\n" +
+	"\f_zone_offsetB\v\n" +
+	"\t_latitudeB\f\n" +
+	"\n" +
+	"_longitude\"\xcb\x02\n" +
 	"\x14ListCountriesRequest\x12\"\n" +
 	"\akeyword\x18\x01 \x01(\tB\b\xbaH\x05r\x03\x18\xc8\x01R\akeyword\x12%\n" +
 	"\tparent_id\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x18(R\tparent_id\x12\x10\n" +
 	"\x03all\x18\x03 \x01(\bR\x03all\x12\x1b\n" +
 	"\x04page\x18\x04 \x01(\x05B\a\xbaH\x04\x1a\x02 \x00R\x04page\x12(\n" +
 	"\tpage_size\x18\x05 \x01(\x05B\n" +
-	"\xbaH\a\x1a\x05\x18\xac\x02 \x00R\tpage_size\"\x9d\x01\n" +
+	"\xbaH\a\x1a\x05\x18\xac\x02 \x00R\tpage_size\x128\n" +
+	"\blatitude\x18\a \x01(\x01B\x17\xbaH\x14\x12\x12\x19\x00\x00\x00\x00\x00\x80V@)\x00\x00\x00\x00\x00\x80V\xc0H\x00R\blatitude\x88\x01\x01\x12:\n" +
+	"\tlongitude\x18\b \x01(\x01B\x17\xbaH\x14\x12\x12\x19\x00\x00\x00\x00\x00\x80f@)\x00\x00\x00\x00\x00\x80f\xc0H\x01R\tlongitude\x88\x01\x01B\v\n" +
+	"\t_latitudeB\f\n" +
+	"\n" +
+	"_longitude\"\x9d\x01\n" +
 	"\x15ListCountriesResponse\x12<\n" +
 	"\x04data\x18\x01 \x03(\v2(.fusion.proto.country.GetCountryResponseR\x04data\x12\x12\n" +
 	"\x04page\x18\x02 \x01(\x05R\x04page\x12\x1c\n" +
@@ -1207,7 +1294,7 @@ const file_country_country_message_proto_rawDesc = "" +
 	"\x04data\x18\x01 \x03(\v2(.fusion.proto.country.GetCountryResponseR\x04data\"\x16\n" +
 	"\x14TreeCountriesRequest\"R\n" +
 	"\x15TreeCountriesResponse\x129\n" +
-	"\x04data\x18\x01 \x03(\v2%.fusion.proto.country.CountryTreeNodeR\x04data\"\x83\x03\n" +
+	"\x04data\x18\x01 \x03(\v2%.fusion.proto.country.CountryTreeNodeR\x04data\"\xe2\x03\n" +
 	"\x0fCountryTreeNode\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x1c\n" +
@@ -1221,10 +1308,15 @@ const file_country_country_message_proto_rawDesc = "" +
 	"phone_code\x12\x12\n" +
 	"\x04sort\x18\t \x01(\x05R\x04sort\x12A\n" +
 	"\bchildren\x18\n" +
-	" \x03(\v2%.fusion.proto.country.CountryTreeNodeR\bchildrenB\x0e\n" +
+	" \x03(\v2%.fusion.proto.country.CountryTreeNodeR\bchildren\x12\x1f\n" +
+	"\blatitude\x18\v \x01(\x01H\x03R\blatitude\x88\x01\x01\x12!\n" +
+	"\tlongitude\x18\f \x01(\x01H\x04R\tlongitude\x88\x01\x01B\x0e\n" +
 	"\f_region_codeB\x0e\n" +
 	"\f_location_idB\x0e\n" +
-	"\f_zone_offset\"O\n" +
+	"\f_zone_offsetB\v\n" +
+	"\t_latitudeB\f\n" +
+	"\n" +
+	"_longitude\"O\n" +
 	"\x0fDescriptionList\x12<\n" +
 	"\vdescription\x18\x01 \x03(\v2!.fusion.proto.country.DescriptionR\x04desc\"R\n" +
 	"\vDescription\x12\x1d\n" +
@@ -1290,7 +1382,9 @@ func file_country_country_message_proto_init() {
 	}
 	file_country_country_message_proto_msgTypes[0].OneofWrappers = []any{}
 	file_country_country_message_proto_msgTypes[2].OneofWrappers = []any{}
+	file_country_country_message_proto_msgTypes[3].OneofWrappers = []any{}
 	file_country_country_message_proto_msgTypes[5].OneofWrappers = []any{}
+	file_country_country_message_proto_msgTypes[6].OneofWrappers = []any{}
 	file_country_country_message_proto_msgTypes[12].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
