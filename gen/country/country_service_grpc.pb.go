@@ -36,6 +36,7 @@ const (
 	CountryService_ListCountries_FullMethodName = "/fusion.proto.country.CountryService/ListCountries"
 	CountryService_AllCountries_FullMethodName  = "/fusion.proto.country.CountryService/AllCountries"
 	CountryService_TreeCountries_FullMethodName = "/fusion.proto.country.CountryService/TreeCountries"
+	CountryService_TreeCountry_FullMethodName   = "/fusion.proto.country.CountryService/TreeCountry"
 )
 
 // CountryServiceClient is the client API for CountryService service.
@@ -58,6 +59,8 @@ type CountryServiceClient interface {
 	AllCountries(ctx context.Context, in *AllCountriesRequest, opts ...grpc.CallOption) (*AllCountriesResponse, error)
 	// 查询国家地区树
 	TreeCountries(ctx context.Context, in *TreeCountriesRequest, opts ...grpc.CallOption) (*TreeCountriesResponse, error)
+	// 查询指定国家地区为根节点的子树（包含当前节点）
+	TreeCountry(ctx context.Context, in *TreeCountryRequest, opts ...grpc.CallOption) (*TreeCountryResponse, error)
 }
 
 type countryServiceClient struct {
@@ -138,6 +141,16 @@ func (c *countryServiceClient) TreeCountries(ctx context.Context, in *TreeCountr
 	return out, nil
 }
 
+func (c *countryServiceClient) TreeCountry(ctx context.Context, in *TreeCountryRequest, opts ...grpc.CallOption) (*TreeCountryResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(TreeCountryResponse)
+	err := c.cc.Invoke(ctx, CountryService_TreeCountry_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // CountryServiceServer is the server API for CountryService service.
 // All implementations must embed UnimplementedCountryServiceServer
 // for forward compatibility.
@@ -158,6 +171,8 @@ type CountryServiceServer interface {
 	AllCountries(context.Context, *AllCountriesRequest) (*AllCountriesResponse, error)
 	// 查询国家地区树
 	TreeCountries(context.Context, *TreeCountriesRequest) (*TreeCountriesResponse, error)
+	// 查询指定国家地区为根节点的子树（包含当前节点）
+	TreeCountry(context.Context, *TreeCountryRequest) (*TreeCountryResponse, error)
 	mustEmbedUnimplementedCountryServiceServer()
 }
 
@@ -188,6 +203,9 @@ func (UnimplementedCountryServiceServer) AllCountries(context.Context, *AllCount
 }
 func (UnimplementedCountryServiceServer) TreeCountries(context.Context, *TreeCountriesRequest) (*TreeCountriesResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method TreeCountries not implemented")
+}
+func (UnimplementedCountryServiceServer) TreeCountry(context.Context, *TreeCountryRequest) (*TreeCountryResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method TreeCountry not implemented")
 }
 func (UnimplementedCountryServiceServer) mustEmbedUnimplementedCountryServiceServer() {}
 func (UnimplementedCountryServiceServer) testEmbeddedByValue()                        {}
@@ -336,6 +354,24 @@ func _CountryService_TreeCountries_Handler(srv interface{}, ctx context.Context,
 	return interceptor(ctx, in, info, handler)
 }
 
+func _CountryService_TreeCountry_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TreeCountryRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CountryServiceServer).TreeCountry(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: CountryService_TreeCountry_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CountryServiceServer).TreeCountry(ctx, req.(*TreeCountryRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // CountryService_ServiceDesc is the grpc.ServiceDesc for CountryService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -370,6 +406,10 @@ var CountryService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "TreeCountries",
 			Handler:    _CountryService_TreeCountries_Handler,
+		},
+		{
+			MethodName: "TreeCountry",
+			Handler:    _CountryService_TreeCountry_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

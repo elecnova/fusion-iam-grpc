@@ -35,7 +35,7 @@ var File_country_country_service_proto protoreflect.FileDescriptor
 
 const file_country_country_service_proto_rawDesc = "" +
 	"\n" +
-	"\x1dcountry/country_service.proto\x12\x14fusion.proto.country\x1a\x1dcountry/country_message.proto\x1a\x1cgoogle/api/annotations.proto\x1a\x17google/api/client.proto\x1a\x1bgoogle/protobuf/empty.proto2\xd1\b\n" +
+	"\x1dcountry/country_service.proto\x12\x14fusion.proto.country\x1a\x1dcountry/country_message.proto\x1a\x1cgoogle/api/annotations.proto\x1a\x17google/api/client.proto\x1a\x1bgoogle/protobuf/empty.proto2\xe2\t\n" +
 	"\x0eCountryService\x12\xb5\x01\n" +
 	"\rCreateCountry\x12*.fusion.proto.country.CreateCountryRequest\x1a+.fusion.proto.country.CreateCountryResponse\"K\xdaA*parent_id,description,phone_code,zone,sort\x82\xd3\xe4\x93\x02\x18:\x01*\"\x13/3rd-api/v2/country\x12\x9e\x01\n" +
 	"\rUpdateCountry\x12*.fusion.proto.country.UpdateCountryRequest\x1a\x16.google.protobuf.Empty\"I\xdaA#id,description,phone_code,zone,sort\x82\xd3\xe4\x93\x02\x1d:\x01*\x1a\x18/3rd-api/v2/country/{id}\x12z\n" +
@@ -44,7 +44,8 @@ const file_country_country_service_proto_rawDesc = "" +
 	"GetCountry\x12'.fusion.proto.country.GetCountryRequest\x1a(.fusion.proto.country.GetCountryResponse\")\xdaA\x06id,all\x82\xd3\xe4\x93\x02\x1a\x12\x18/3rd-api/v2/country/{id}\x12\xae\x01\n" +
 	"\rListCountries\x12*.fusion.proto.country.ListCountriesRequest\x1a+.fusion.proto.country.ListCountriesResponse\"D\xdaA$keyword,parent_id,all,page,page_size\x82\xd3\xe4\x93\x02\x17\x12\x15/3rd-api/v2/countries\x12\x9e\x01\n" +
 	"\fAllCountries\x12).fusion.proto.country.AllCountriesRequest\x1a*.fusion.proto.country.AllCountriesResponse\"7\xdaA\x15keyword,parent_id,all\x82\xd3\xe4\x93\x02\x19\x12\x17/3rd-api/v2/country/all\x12\x8a\x01\n" +
-	"\rTreeCountries\x12*.fusion.proto.country.TreeCountriesRequest\x1a+.fusion.proto.country.TreeCountriesResponse\" \x82\xd3\xe4\x93\x02\x1a\x12\x18/3rd-api/v2/country/treeB\xbf\x01\n" +
+	"\rTreeCountries\x12*.fusion.proto.country.TreeCountriesRequest\x1a+.fusion.proto.country.TreeCountriesResponse\" \x82\xd3\xe4\x93\x02\x1a\x12\x18/3rd-api/v2/country/tree\x12\x8e\x01\n" +
+	"\vTreeCountry\x12(.fusion.proto.country.TreeCountryRequest\x1a).fusion.proto.country.TreeCountryResponse\"*\xdaA\x02id\x82\xd3\xe4\x93\x02\x1f\x12\x1d/3rd-api/v2/country/{id}/treeB\xbf\x01\n" +
 	"\x18com.fusion.proto.countryB\x13CountryServiceProtoP\x01Z\x1cfusion.proto.country;country\xa2\x02\x03FPC\xaa\x02\x14Fusion.Proto.Country\xca\x02\x14Fusion\\Proto\\Country\xe2\x02 Fusion\\Proto\\Country\\GPBMetadata\xea\x02\x16Fusion::Proto::Countryb\x06proto3"
 
 var file_country_country_service_proto_goTypes = []any{
@@ -55,12 +56,14 @@ var file_country_country_service_proto_goTypes = []any{
 	(*ListCountriesRequest)(nil),  // 4: fusion.proto.country.ListCountriesRequest
 	(*AllCountriesRequest)(nil),   // 5: fusion.proto.country.AllCountriesRequest
 	(*TreeCountriesRequest)(nil),  // 6: fusion.proto.country.TreeCountriesRequest
-	(*CreateCountryResponse)(nil), // 7: fusion.proto.country.CreateCountryResponse
-	(*emptypb.Empty)(nil),         // 8: google.protobuf.Empty
-	(*GetCountryResponse)(nil),    // 9: fusion.proto.country.GetCountryResponse
-	(*ListCountriesResponse)(nil), // 10: fusion.proto.country.ListCountriesResponse
-	(*AllCountriesResponse)(nil),  // 11: fusion.proto.country.AllCountriesResponse
-	(*TreeCountriesResponse)(nil), // 12: fusion.proto.country.TreeCountriesResponse
+	(*TreeCountryRequest)(nil),    // 7: fusion.proto.country.TreeCountryRequest
+	(*CreateCountryResponse)(nil), // 8: fusion.proto.country.CreateCountryResponse
+	(*emptypb.Empty)(nil),         // 9: google.protobuf.Empty
+	(*GetCountryResponse)(nil),    // 10: fusion.proto.country.GetCountryResponse
+	(*ListCountriesResponse)(nil), // 11: fusion.proto.country.ListCountriesResponse
+	(*AllCountriesResponse)(nil),  // 12: fusion.proto.country.AllCountriesResponse
+	(*TreeCountriesResponse)(nil), // 13: fusion.proto.country.TreeCountriesResponse
+	(*TreeCountryResponse)(nil),   // 14: fusion.proto.country.TreeCountryResponse
 }
 var file_country_country_service_proto_depIdxs = []int32{
 	0,  // 0: fusion.proto.country.CountryService.CreateCountry:input_type -> fusion.proto.country.CreateCountryRequest
@@ -70,15 +73,17 @@ var file_country_country_service_proto_depIdxs = []int32{
 	4,  // 4: fusion.proto.country.CountryService.ListCountries:input_type -> fusion.proto.country.ListCountriesRequest
 	5,  // 5: fusion.proto.country.CountryService.AllCountries:input_type -> fusion.proto.country.AllCountriesRequest
 	6,  // 6: fusion.proto.country.CountryService.TreeCountries:input_type -> fusion.proto.country.TreeCountriesRequest
-	7,  // 7: fusion.proto.country.CountryService.CreateCountry:output_type -> fusion.proto.country.CreateCountryResponse
-	8,  // 8: fusion.proto.country.CountryService.UpdateCountry:output_type -> google.protobuf.Empty
-	8,  // 9: fusion.proto.country.CountryService.DeleteCountry:output_type -> google.protobuf.Empty
-	9,  // 10: fusion.proto.country.CountryService.GetCountry:output_type -> fusion.proto.country.GetCountryResponse
-	10, // 11: fusion.proto.country.CountryService.ListCountries:output_type -> fusion.proto.country.ListCountriesResponse
-	11, // 12: fusion.proto.country.CountryService.AllCountries:output_type -> fusion.proto.country.AllCountriesResponse
-	12, // 13: fusion.proto.country.CountryService.TreeCountries:output_type -> fusion.proto.country.TreeCountriesResponse
-	7,  // [7:14] is the sub-list for method output_type
-	0,  // [0:7] is the sub-list for method input_type
+	7,  // 7: fusion.proto.country.CountryService.TreeCountry:input_type -> fusion.proto.country.TreeCountryRequest
+	8,  // 8: fusion.proto.country.CountryService.CreateCountry:output_type -> fusion.proto.country.CreateCountryResponse
+	9,  // 9: fusion.proto.country.CountryService.UpdateCountry:output_type -> google.protobuf.Empty
+	9,  // 10: fusion.proto.country.CountryService.DeleteCountry:output_type -> google.protobuf.Empty
+	10, // 11: fusion.proto.country.CountryService.GetCountry:output_type -> fusion.proto.country.GetCountryResponse
+	11, // 12: fusion.proto.country.CountryService.ListCountries:output_type -> fusion.proto.country.ListCountriesResponse
+	12, // 13: fusion.proto.country.CountryService.AllCountries:output_type -> fusion.proto.country.AllCountriesResponse
+	13, // 14: fusion.proto.country.CountryService.TreeCountries:output_type -> fusion.proto.country.TreeCountriesResponse
+	14, // 15: fusion.proto.country.CountryService.TreeCountry:output_type -> fusion.proto.country.TreeCountryResponse
+	8,  // [8:16] is the sub-list for method output_type
+	0,  // [0:8] is the sub-list for method input_type
 	0,  // [0:0] is the sub-list for extension type_name
 	0,  // [0:0] is the sub-list for extension extendee
 	0,  // [0:0] is the sub-list for field type_name
