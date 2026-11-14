@@ -566,7 +566,9 @@ type GetAgentUsersResponse_Data struct {
 	// 渠道ID
 	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	// 渠道名称
-	Name          string `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
+	Name string `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
+	// 用户ID
+	UserId        string `protobuf:"bytes,3,opt,name=user_id,proto3" json:"user_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -611,6 +613,13 @@ func (x *GetAgentUsersResponse_Data) GetId() string {
 func (x *GetAgentUsersResponse_Data) GetName() string {
 	if x != nil {
 		return x.Name
+	}
+	return ""
+}
+
+func (x *GetAgentUsersResponse_Data) GetUserId() string {
+	if x != nil {
+		return x.UserId
 	}
 	return ""
 }
@@ -668,12 +677,13 @@ const file_agent_agent_message_proto_rawDesc = "" +
 	"\x03ids\x18\x01 \x03(\tB\n" +
 	"\xbaH\a\x92\x01\x04\b\x01\x10dR\x03ids\x12$\n" +
 	"\auser_id\x18\x02 \x03(\tB\n" +
-	"\xbaH\a\x92\x01\x04\b\x01\x10dR\auser_id\"\x87\x01\n" +
+	"\xbaH\a\x92\x01\x04\b\x01\x10dR\auser_id\"\xa1\x01\n" +
 	"\x15GetAgentUsersResponse\x12B\n" +
-	"\x04data\x18\x01 \x03(\v2..fusion.proto.agent.GetAgentUsersResponse.DataR\x04data\x1a*\n" +
+	"\x04data\x18\x01 \x03(\v2..fusion.proto.agent.GetAgentUsersResponse.DataR\x04data\x1aD\n" +
 	"\x04Data\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
-	"\x04name\x18\x02 \x01(\tR\x04nameB\xaf\x01\n" +
+	"\x04name\x18\x02 \x01(\tR\x04name\x12\x18\n" +
+	"\auser_id\x18\x03 \x01(\tR\auser_idB\xaf\x01\n" +
 	"\x16com.fusion.proto.agentB\x11AgentMessageProtoP\x01Z\x18fusion.proto.agent;agent\xa2\x02\x03FPA\xaa\x02\x12Fusion.Proto.Agent\xca\x02\x12Fusion\\Proto\\Agent\xe2\x02\x1eFusion\\Proto\\Agent\\GPBMetadata\xea\x02\x14Fusion::Proto::Agentb\x06proto3"
 
 var (

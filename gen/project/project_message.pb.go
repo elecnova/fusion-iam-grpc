@@ -1541,7 +1541,9 @@ type GetProjectUsersResponse_Data struct {
 	// 项目名称
 	Name string `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
 	// 项目编码
-	Code          string `protobuf:"bytes,3,opt,name=code,proto3" json:"code,omitempty"`
+	Code string `protobuf:"bytes,3,opt,name=code,proto3" json:"code,omitempty"`
+	// 用户ID
+	UserId        string `protobuf:"bytes,4,opt,name=user_id,proto3" json:"user_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1593,6 +1595,13 @@ func (x *GetProjectUsersResponse_Data) GetName() string {
 func (x *GetProjectUsersResponse_Data) GetCode() string {
 	if x != nil {
 		return x.Code
+	}
+	return ""
+}
+
+func (x *GetProjectUsersResponse_Data) GetUserId() string {
+	if x != nil {
+		return x.UserId
 	}
 	return ""
 }
@@ -1729,13 +1738,14 @@ const file_project_project_message_proto_rawDesc = "" +
 	"\x03ids\x18\x01 \x03(\tB\n" +
 	"\xbaH\a\x92\x01\x04\b\x01\x10dR\x03ids\x12$\n" +
 	"\auser_id\x18\x02 \x03(\tB\n" +
-	"\xbaH\a\x92\x01\x04\b\x01\x10dR\auser_id\"\xa1\x01\n" +
+	"\xbaH\a\x92\x01\x04\b\x01\x10dR\auser_id\"\xbb\x01\n" +
 	"\x17GetProjectUsersResponse\x12F\n" +
-	"\x04data\x18\x01 \x03(\v22.fusion.proto.project.GetProjectUsersResponse.DataR\x04data\x1a>\n" +
+	"\x04data\x18\x01 \x03(\v22.fusion.proto.project.GetProjectUsersResponse.DataR\x04data\x1aX\n" +
 	"\x04Data\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x12\n" +
-	"\x04code\x18\x03 \x01(\tR\x04codeB\xbf\x01\n" +
+	"\x04code\x18\x03 \x01(\tR\x04code\x12\x18\n" +
+	"\auser_id\x18\x04 \x01(\tR\auser_idB\xbf\x01\n" +
 	"\x18com.fusion.proto.projectB\x13ProjectMessageProtoP\x01Z\x1cfusion.proto.project;project\xa2\x02\x03FPP\xaa\x02\x14Fusion.Proto.Project\xca\x02\x14Fusion\\Proto\\Project\xe2\x02 Fusion\\Proto\\Project\\GPBMetadata\xea\x02\x16Fusion::Proto::Projectb\x06proto3"
 
 var (
