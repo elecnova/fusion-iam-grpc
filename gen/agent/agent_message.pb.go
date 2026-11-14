@@ -341,8 +341,8 @@ func (x *GetAgentResponse) GetUpdateAt() *timestamppb.Timestamp {
 	return nil
 }
 
-// Package message 渠道服务-获取用户的所有渠道信息请求消息定义
-type GetUserAgentsRequest struct {
+// Package message 渠道服务- 获取所有渠道信息(根据用户ID)请求消息定义
+type GetAgentsByUserRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// 模糊搜索关键字，可搜索渠道名称、渠道联系人、组织代码
 	UserId string `protobuf:"bytes,1,opt,name=user_id,proto3" json:"user_id,omitempty"`
@@ -356,20 +356,20 @@ type GetUserAgentsRequest struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *GetUserAgentsRequest) Reset() {
-	*x = GetUserAgentsRequest{}
+func (x *GetAgentsByUserRequest) Reset() {
+	*x = GetAgentsByUserRequest{}
 	mi := &file_agent_agent_message_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *GetUserAgentsRequest) String() string {
+func (x *GetAgentsByUserRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*GetUserAgentsRequest) ProtoMessage() {}
+func (*GetAgentsByUserRequest) ProtoMessage() {}
 
-func (x *GetUserAgentsRequest) ProtoReflect() protoreflect.Message {
+func (x *GetAgentsByUserRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_agent_agent_message_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -381,37 +381,83 @@ func (x *GetUserAgentsRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use GetUserAgentsRequest.ProtoReflect.Descriptor instead.
-func (*GetUserAgentsRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use GetAgentsByUserRequest.ProtoReflect.Descriptor instead.
+func (*GetAgentsByUserRequest) Descriptor() ([]byte, []int) {
 	return file_agent_agent_message_proto_rawDescGZIP(), []int{3}
 }
 
-func (x *GetUserAgentsRequest) GetUserId() string {
+func (x *GetAgentsByUserRequest) GetUserId() string {
 	if x != nil {
 		return x.UserId
 	}
 	return ""
 }
 
-func (x *GetUserAgentsRequest) GetKeyword() string {
+func (x *GetAgentsByUserRequest) GetKeyword() string {
 	if x != nil {
 		return x.Keyword
 	}
 	return ""
 }
 
-func (x *GetUserAgentsRequest) GetParentId() string {
+func (x *GetAgentsByUserRequest) GetParentId() string {
 	if x != nil && x.ParentId != nil {
 		return *x.ParentId
 	}
 	return ""
 }
 
-func (x *GetUserAgentsRequest) GetState() int32 {
+func (x *GetAgentsByUserRequest) GetState() int32 {
 	if x != nil && x.State != nil {
 		return *x.State
 	}
 	return 0
+}
+
+// Package message 渠道服务-获取所有渠道信息(根据项目ID)请求消息定义
+type GetAgentsByProjectRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// 项目ID
+	ProjectId     []string `protobuf:"bytes,1,rep,name=project_id,proto3" json:"project_id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetAgentsByProjectRequest) Reset() {
+	*x = GetAgentsByProjectRequest{}
+	mi := &file_agent_agent_message_proto_msgTypes[4]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetAgentsByProjectRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetAgentsByProjectRequest) ProtoMessage() {}
+
+func (x *GetAgentsByProjectRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_agent_agent_message_proto_msgTypes[4]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetAgentsByProjectRequest.ProtoReflect.Descriptor instead.
+func (*GetAgentsByProjectRequest) Descriptor() ([]byte, []int) {
+	return file_agent_agent_message_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *GetAgentsByProjectRequest) GetProjectId() []string {
+	if x != nil {
+		return x.ProjectId
+	}
+	return nil
 }
 
 var File_agent_agent_message_proto protoreflect.FileDescriptor
@@ -449,15 +495,20 @@ const file_agent_agent_message_proto_rawDesc = "" +
 	"\vcreate_name\x18\x0f \x01(\tR\vcreate_name\x12\x1c\n" +
 	"\tupdate_by\x18\x10 \x01(\tR\tupdate_by\x128\n" +
 	"\tcreate_at\x18\x11 \x01(\v2\x1a.google.protobuf.TimestampR\tcreate_at\x128\n" +
-	"\tupdate_at\x18\x12 \x01(\v2\x1a.google.protobuf.TimestampR\tupdate_at\"\xc6\x01\n" +
-	"\x14GetUserAgentsRequest\x12!\n" +
+	"\tupdate_at\x18\x12 \x01(\v2\x1a.google.protobuf.TimestampR\tupdate_at\"\xc8\x01\n" +
+	"\x16GetAgentsByUserRequest\x12!\n" +
 	"\auser_id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x18<R\auser_id\x12!\n" +
 	"\akeyword\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x18<R\akeyword\x12*\n" +
 	"\tparent_id\x18\x03 \x01(\tB\a\xbaH\x04r\x02\x18(H\x00R\tparent_id\x88\x01\x01\x12$\n" +
 	"\x05state\x18\x04 \x01(\x05B\t\xbaH\x06\x1a\x04\x18\x02(\x01H\x01R\x05state\x88\x01\x01B\f\n" +
 	"\n" +
 	"_parent_idB\b\n" +
-	"\x06_stateB\xaf\x01\n" +
+	"\x06_state\"G\n" +
+	"\x19GetAgentsByProjectRequest\x12*\n" +
+	"\n" +
+	"project_id\x18\x01 \x03(\tB\n" +
+	"\xbaH\a\x92\x01\x04\b\x01\x10dR\n" +
+	"project_idB\xaf\x01\n" +
 	"\x16com.fusion.proto.agentB\x11AgentMessageProtoP\x01Z\x18fusion.proto.agent;agent\xa2\x02\x03FPA\xaa\x02\x12Fusion.Proto.Agent\xca\x02\x12Fusion\\Proto\\Agent\xe2\x02\x1eFusion\\Proto\\Agent\\GPBMetadata\xea\x02\x14Fusion::Proto::Agentb\x06proto3"
 
 var (
@@ -472,18 +523,19 @@ func file_agent_agent_message_proto_rawDescGZIP() []byte {
 	return file_agent_agent_message_proto_rawDescData
 }
 
-var file_agent_agent_message_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
+var file_agent_agent_message_proto_msgTypes = make([]protoimpl.MessageInfo, 5)
 var file_agent_agent_message_proto_goTypes = []any{
-	(*AllAgentsRequest)(nil),      // 0: fusion.proto.agent.AllAgentsRequest
-	(*AllAgentsResponse)(nil),     // 1: fusion.proto.agent.AllAgentsResponse
-	(*GetAgentResponse)(nil),      // 2: fusion.proto.agent.GetAgentResponse
-	(*GetUserAgentsRequest)(nil),  // 3: fusion.proto.agent.GetUserAgentsRequest
-	(*timestamppb.Timestamp)(nil), // 4: google.protobuf.Timestamp
+	(*AllAgentsRequest)(nil),          // 0: fusion.proto.agent.AllAgentsRequest
+	(*AllAgentsResponse)(nil),         // 1: fusion.proto.agent.AllAgentsResponse
+	(*GetAgentResponse)(nil),          // 2: fusion.proto.agent.GetAgentResponse
+	(*GetAgentsByUserRequest)(nil),    // 3: fusion.proto.agent.GetAgentsByUserRequest
+	(*GetAgentsByProjectRequest)(nil), // 4: fusion.proto.agent.GetAgentsByProjectRequest
+	(*timestamppb.Timestamp)(nil),     // 5: google.protobuf.Timestamp
 }
 var file_agent_agent_message_proto_depIdxs = []int32{
 	2, // 0: fusion.proto.agent.AllAgentsResponse.data:type_name -> fusion.proto.agent.GetAgentResponse
-	4, // 1: fusion.proto.agent.GetAgentResponse.create_at:type_name -> google.protobuf.Timestamp
-	4, // 2: fusion.proto.agent.GetAgentResponse.update_at:type_name -> google.protobuf.Timestamp
+	5, // 1: fusion.proto.agent.GetAgentResponse.create_at:type_name -> google.protobuf.Timestamp
+	5, // 2: fusion.proto.agent.GetAgentResponse.update_at:type_name -> google.protobuf.Timestamp
 	3, // [3:3] is the sub-list for method output_type
 	3, // [3:3] is the sub-list for method input_type
 	3, // [3:3] is the sub-list for extension type_name
@@ -504,7 +556,7 @@ func file_agent_agent_message_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_agent_agent_message_proto_rawDesc), len(file_agent_agent_message_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   4,
+			NumMessages:   5,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

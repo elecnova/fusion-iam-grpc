@@ -35,24 +35,29 @@ var File_agent_agent_service_proto protoreflect.FileDescriptor
 
 const file_agent_agent_service_proto_rawDesc = "" +
 	"\n" +
-	"\x19agent/agent_service.proto\x12\x12fusion.proto.agent\x1a\x19agent/agent_message.proto\x1a\x1cgoogle/api/annotations.proto\x1a\x17google/api/client.proto\x1a\x1bgoogle/protobuf/empty.proto2\xa0\x02\n" +
+	"\x19agent/agent_service.proto\x12\x12fusion.proto.agent\x1a\x19agent/agent_message.proto\x1a\x1cgoogle/api/annotations.proto\x1a\x17google/api/client.proto\x1a\x1bgoogle/protobuf/empty.proto2\xca\x03\n" +
 	"\fAgentService\x12z\n" +
-	"\tAllAgents\x12$.fusion.proto.agent.AllAgentsRequest\x1a%.fusion.proto.agent.AllAgentsResponse\" \xdaA\x00\x82\xd3\xe4\x93\x02\x17\x12\x15/3rd-api/v1/agent/all\x12\x93\x01\n" +
-	"\rGetUserAgents\x12(.fusion.proto.agent.GetUserAgentsRequest\x1a%.fusion.proto.agent.AllAgentsResponse\"1\xdaA\auser_id\x82\xd3\xe4\x93\x02!\x12\x1f/3rd-api/v1/agent/{user_id}/allB\xaf\x01\n" +
+	"\tAllAgents\x12$.fusion.proto.agent.AllAgentsRequest\x1a%.fusion.proto.agent.AllAgentsResponse\" \xdaA\x00\x82\xd3\xe4\x93\x02\x17\x12\x15/3rd-api/v1/agent/all\x12\x97\x01\n" +
+	"\x0fGetAgentsByUser\x12*.fusion.proto.agent.GetAgentsByUserRequest\x1a%.fusion.proto.agent.AllAgentsResponse\"1\xdaA\auser_id\x82\xd3\xe4\x93\x02!\x12\x1f/3rd-api/v1/agent/{user_id}/all\x12\xa3\x01\n" +
+	"\x12GetAgentsByProject\x12-.fusion.proto.agent.GetAgentsByProjectRequest\x1a%.fusion.proto.agent.AllAgentsResponse\"7\xdaA\n" +
+	"project_id\x82\xd3\xe4\x93\x02$\x12\"/3rd-api/v1/agent/{project_id}/allB\xaf\x01\n" +
 	"\x16com.fusion.proto.agentB\x11AgentServiceProtoP\x01Z\x18fusion.proto.agent;agent\xa2\x02\x03FPA\xaa\x02\x12Fusion.Proto.Agent\xca\x02\x12Fusion\\Proto\\Agent\xe2\x02\x1eFusion\\Proto\\Agent\\GPBMetadata\xea\x02\x14Fusion::Proto::Agentb\x06proto3"
 
 var file_agent_agent_service_proto_goTypes = []any{
-	(*AllAgentsRequest)(nil),     // 0: fusion.proto.agent.AllAgentsRequest
-	(*GetUserAgentsRequest)(nil), // 1: fusion.proto.agent.GetUserAgentsRequest
-	(*AllAgentsResponse)(nil),    // 2: fusion.proto.agent.AllAgentsResponse
+	(*AllAgentsRequest)(nil),          // 0: fusion.proto.agent.AllAgentsRequest
+	(*GetAgentsByUserRequest)(nil),    // 1: fusion.proto.agent.GetAgentsByUserRequest
+	(*GetAgentsByProjectRequest)(nil), // 2: fusion.proto.agent.GetAgentsByProjectRequest
+	(*AllAgentsResponse)(nil),         // 3: fusion.proto.agent.AllAgentsResponse
 }
 var file_agent_agent_service_proto_depIdxs = []int32{
 	0, // 0: fusion.proto.agent.AgentService.AllAgents:input_type -> fusion.proto.agent.AllAgentsRequest
-	1, // 1: fusion.proto.agent.AgentService.GetUserAgents:input_type -> fusion.proto.agent.GetUserAgentsRequest
-	2, // 2: fusion.proto.agent.AgentService.AllAgents:output_type -> fusion.proto.agent.AllAgentsResponse
-	2, // 3: fusion.proto.agent.AgentService.GetUserAgents:output_type -> fusion.proto.agent.AllAgentsResponse
-	2, // [2:4] is the sub-list for method output_type
-	0, // [0:2] is the sub-list for method input_type
+	1, // 1: fusion.proto.agent.AgentService.GetAgentsByUser:input_type -> fusion.proto.agent.GetAgentsByUserRequest
+	2, // 2: fusion.proto.agent.AgentService.GetAgentsByProject:input_type -> fusion.proto.agent.GetAgentsByProjectRequest
+	3, // 3: fusion.proto.agent.AgentService.AllAgents:output_type -> fusion.proto.agent.AllAgentsResponse
+	3, // 4: fusion.proto.agent.AgentService.GetAgentsByUser:output_type -> fusion.proto.agent.AllAgentsResponse
+	3, // 5: fusion.proto.agent.AgentService.GetAgentsByProject:output_type -> fusion.proto.agent.AllAgentsResponse
+	3, // [3:6] is the sub-list for method output_type
+	0, // [0:3] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name
 	0, // [0:0] is the sub-list for extension extendee
 	0, // [0:0] is the sub-list for field type_name

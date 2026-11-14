@@ -28,8 +28,9 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	AgentService_AllAgents_FullMethodName     = "/fusion.proto.agent.AgentService/AllAgents"
-	AgentService_GetUserAgents_FullMethodName = "/fusion.proto.agent.AgentService/GetUserAgents"
+	AgentService_AllAgents_FullMethodName          = "/fusion.proto.agent.AgentService/AllAgents"
+	AgentService_GetAgentsByUser_FullMethodName    = "/fusion.proto.agent.AgentService/GetAgentsByUser"
+	AgentService_GetAgentsByProject_FullMethodName = "/fusion.proto.agent.AgentService/GetAgentsByProject"
 )
 
 // AgentServiceClient is the client API for AgentService service.
@@ -40,8 +41,10 @@ const (
 type AgentServiceClient interface {
 	// 所有渠道信息
 	AllAgents(ctx context.Context, in *AllAgentsRequest, opts ...grpc.CallOption) (*AllAgentsResponse, error)
-	// 获取用户的所有渠道信息
-	GetUserAgents(ctx context.Context, in *GetUserAgentsRequest, opts ...grpc.CallOption) (*AllAgentsResponse, error)
+	// 获取所有渠道信息(根据用户ID)
+	GetAgentsByUser(ctx context.Context, in *GetAgentsByUserRequest, opts ...grpc.CallOption) (*AllAgentsResponse, error)
+	// 获取所有渠道信息(根据项目ID)
+	GetAgentsByProject(ctx context.Context, in *GetAgentsByProjectRequest, opts ...grpc.CallOption) (*AllAgentsResponse, error)
 }
 
 type agentServiceClient struct {
@@ -62,10 +65,20 @@ func (c *agentServiceClient) AllAgents(ctx context.Context, in *AllAgentsRequest
 	return out, nil
 }
 
-func (c *agentServiceClient) GetUserAgents(ctx context.Context, in *GetUserAgentsRequest, opts ...grpc.CallOption) (*AllAgentsResponse, error) {
+func (c *agentServiceClient) GetAgentsByUser(ctx context.Context, in *GetAgentsByUserRequest, opts ...grpc.CallOption) (*AllAgentsResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(AllAgentsResponse)
-	err := c.cc.Invoke(ctx, AgentService_GetUserAgents_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, AgentService_GetAgentsByUser_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *agentServiceClient) GetAgentsByProject(ctx context.Context, in *GetAgentsByProjectRequest, opts ...grpc.CallOption) (*AllAgentsResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(AllAgentsResponse)
+	err := c.cc.Invoke(ctx, AgentService_GetAgentsByProject_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -80,8 +93,10 @@ func (c *agentServiceClient) GetUserAgents(ctx context.Context, in *GetUserAgent
 type AgentServiceServer interface {
 	// 所有渠道信息
 	AllAgents(context.Context, *AllAgentsRequest) (*AllAgentsResponse, error)
-	// 获取用户的所有渠道信息
-	GetUserAgents(context.Context, *GetUserAgentsRequest) (*AllAgentsResponse, error)
+	// 获取所有渠道信息(根据用户ID)
+	GetAgentsByUser(context.Context, *GetAgentsByUserRequest) (*AllAgentsResponse, error)
+	// 获取所有渠道信息(根据项目ID)
+	GetAgentsByProject(context.Context, *GetAgentsByProjectRequest) (*AllAgentsResponse, error)
 	mustEmbedUnimplementedAgentServiceServer()
 }
 
@@ -95,8 +110,11 @@ type UnimplementedAgentServiceServer struct{}
 func (UnimplementedAgentServiceServer) AllAgents(context.Context, *AllAgentsRequest) (*AllAgentsResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method AllAgents not implemented")
 }
-func (UnimplementedAgentServiceServer) GetUserAgents(context.Context, *GetUserAgentsRequest) (*AllAgentsResponse, error) {
-	return nil, status.Error(codes.Unimplemented, "method GetUserAgents not implemented")
+func (UnimplementedAgentServiceServer) GetAgentsByUser(context.Context, *GetAgentsByUserRequest) (*AllAgentsResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method GetAgentsByUser not implemented")
+}
+func (UnimplementedAgentServiceServer) GetAgentsByProject(context.Context, *GetAgentsByProjectRequest) (*AllAgentsResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method GetAgentsByProject not implemented")
 }
 func (UnimplementedAgentServiceServer) mustEmbedUnimplementedAgentServiceServer() {}
 func (UnimplementedAgentServiceServer) testEmbeddedByValue()                      {}
@@ -137,20 +155,38 @@ func _AgentService_AllAgents_Handler(srv interface{}, ctx context.Context, dec f
 	return interceptor(ctx, in, info, handler)
 }
 
-func _AgentService_GetUserAgents_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetUserAgentsRequest)
+func _AgentService_GetAgentsByUser_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetAgentsByUserRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(AgentServiceServer).GetUserAgents(ctx, in)
+		return srv.(AgentServiceServer).GetAgentsByUser(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: AgentService_GetUserAgents_FullMethodName,
+		FullMethod: AgentService_GetAgentsByUser_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AgentServiceServer).GetUserAgents(ctx, req.(*GetUserAgentsRequest))
+		return srv.(AgentServiceServer).GetAgentsByUser(ctx, req.(*GetAgentsByUserRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _AgentService_GetAgentsByProject_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetAgentsByProjectRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AgentServiceServer).GetAgentsByProject(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: AgentService_GetAgentsByProject_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AgentServiceServer).GetAgentsByProject(ctx, req.(*GetAgentsByProjectRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -167,8 +203,12 @@ var AgentService_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _AgentService_AllAgents_Handler,
 		},
 		{
-			MethodName: "GetUserAgents",
-			Handler:    _AgentService_GetUserAgents_Handler,
+			MethodName: "GetAgentsByUser",
+			Handler:    _AgentService_GetAgentsByUser_Handler,
+		},
+		{
+			MethodName: "GetAgentsByProject",
+			Handler:    _AgentService_GetAgentsByProject_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
