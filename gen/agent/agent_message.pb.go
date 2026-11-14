@@ -460,6 +460,161 @@ func (x *GetAgentsByProjectRequest) GetProjectId() []string {
 	return nil
 }
 
+// Package message 业务中心-获取渠道用户列表请求消息定义
+type GetAgentUsersRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// 渠道ID
+	Ids []string `protobuf:"bytes,1,rep,name=ids,proto3" json:"ids,omitempty"`
+	// 用户ID
+	UserId        []string `protobuf:"bytes,2,rep,name=user_id,proto3" json:"user_id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetAgentUsersRequest) Reset() {
+	*x = GetAgentUsersRequest{}
+	mi := &file_agent_agent_message_proto_msgTypes[5]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetAgentUsersRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetAgentUsersRequest) ProtoMessage() {}
+
+func (x *GetAgentUsersRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_agent_agent_message_proto_msgTypes[5]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetAgentUsersRequest.ProtoReflect.Descriptor instead.
+func (*GetAgentUsersRequest) Descriptor() ([]byte, []int) {
+	return file_agent_agent_message_proto_rawDescGZIP(), []int{5}
+}
+
+func (x *GetAgentUsersRequest) GetIds() []string {
+	if x != nil {
+		return x.Ids
+	}
+	return nil
+}
+
+func (x *GetAgentUsersRequest) GetUserId() []string {
+	if x != nil {
+		return x.UserId
+	}
+	return nil
+}
+
+// Package message 业务中心-获取渠道用户列表响应消息定义
+type GetAgentUsersResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// 渠道用户列表
+	Data          []*GetAgentUsersResponse_Data `protobuf:"bytes,1,rep,name=data,proto3" json:"data,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetAgentUsersResponse) Reset() {
+	*x = GetAgentUsersResponse{}
+	mi := &file_agent_agent_message_proto_msgTypes[6]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetAgentUsersResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetAgentUsersResponse) ProtoMessage() {}
+
+func (x *GetAgentUsersResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_agent_agent_message_proto_msgTypes[6]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetAgentUsersResponse.ProtoReflect.Descriptor instead.
+func (*GetAgentUsersResponse) Descriptor() ([]byte, []int) {
+	return file_agent_agent_message_proto_rawDescGZIP(), []int{6}
+}
+
+func (x *GetAgentUsersResponse) GetData() []*GetAgentUsersResponse_Data {
+	if x != nil {
+		return x.Data
+	}
+	return nil
+}
+
+type GetAgentUsersResponse_Data struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// 渠道ID
+	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	// 渠道名称
+	Name          string `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetAgentUsersResponse_Data) Reset() {
+	*x = GetAgentUsersResponse_Data{}
+	mi := &file_agent_agent_message_proto_msgTypes[7]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetAgentUsersResponse_Data) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetAgentUsersResponse_Data) ProtoMessage() {}
+
+func (x *GetAgentUsersResponse_Data) ProtoReflect() protoreflect.Message {
+	mi := &file_agent_agent_message_proto_msgTypes[7]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetAgentUsersResponse_Data.ProtoReflect.Descriptor instead.
+func (*GetAgentUsersResponse_Data) Descriptor() ([]byte, []int) {
+	return file_agent_agent_message_proto_rawDescGZIP(), []int{6, 0}
+}
+
+func (x *GetAgentUsersResponse_Data) GetId() string {
+	if x != nil {
+		return x.Id
+	}
+	return ""
+}
+
+func (x *GetAgentUsersResponse_Data) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
 var File_agent_agent_message_proto protoreflect.FileDescriptor
 
 const file_agent_agent_message_proto_rawDesc = "" +
@@ -508,7 +663,17 @@ const file_agent_agent_message_proto_rawDesc = "" +
 	"\n" +
 	"project_id\x18\x01 \x03(\tB\n" +
 	"\xbaH\a\x92\x01\x04\b\x01\x10dR\n" +
-	"project_idB\xaf\x01\n" +
+	"project_id\"Z\n" +
+	"\x14GetAgentUsersRequest\x12\x1c\n" +
+	"\x03ids\x18\x01 \x03(\tB\n" +
+	"\xbaH\a\x92\x01\x04\b\x01\x10dR\x03ids\x12$\n" +
+	"\auser_id\x18\x02 \x03(\tB\n" +
+	"\xbaH\a\x92\x01\x04\b\x01\x10dR\auser_id\"\x87\x01\n" +
+	"\x15GetAgentUsersResponse\x12B\n" +
+	"\x04data\x18\x01 \x03(\v2..fusion.proto.agent.GetAgentUsersResponse.DataR\x04data\x1a*\n" +
+	"\x04Data\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
+	"\x04name\x18\x02 \x01(\tR\x04nameB\xaf\x01\n" +
 	"\x16com.fusion.proto.agentB\x11AgentMessageProtoP\x01Z\x18fusion.proto.agent;agent\xa2\x02\x03FPA\xaa\x02\x12Fusion.Proto.Agent\xca\x02\x12Fusion\\Proto\\Agent\xe2\x02\x1eFusion\\Proto\\Agent\\GPBMetadata\xea\x02\x14Fusion::Proto::Agentb\x06proto3"
 
 var (
@@ -523,24 +688,28 @@ func file_agent_agent_message_proto_rawDescGZIP() []byte {
 	return file_agent_agent_message_proto_rawDescData
 }
 
-var file_agent_agent_message_proto_msgTypes = make([]protoimpl.MessageInfo, 5)
+var file_agent_agent_message_proto_msgTypes = make([]protoimpl.MessageInfo, 8)
 var file_agent_agent_message_proto_goTypes = []any{
-	(*AllAgentsRequest)(nil),          // 0: fusion.proto.agent.AllAgentsRequest
-	(*AllAgentsResponse)(nil),         // 1: fusion.proto.agent.AllAgentsResponse
-	(*GetAgentResponse)(nil),          // 2: fusion.proto.agent.GetAgentResponse
-	(*GetAgentsByUserRequest)(nil),    // 3: fusion.proto.agent.GetAgentsByUserRequest
-	(*GetAgentsByProjectRequest)(nil), // 4: fusion.proto.agent.GetAgentsByProjectRequest
-	(*timestamppb.Timestamp)(nil),     // 5: google.protobuf.Timestamp
+	(*AllAgentsRequest)(nil),           // 0: fusion.proto.agent.AllAgentsRequest
+	(*AllAgentsResponse)(nil),          // 1: fusion.proto.agent.AllAgentsResponse
+	(*GetAgentResponse)(nil),           // 2: fusion.proto.agent.GetAgentResponse
+	(*GetAgentsByUserRequest)(nil),     // 3: fusion.proto.agent.GetAgentsByUserRequest
+	(*GetAgentsByProjectRequest)(nil),  // 4: fusion.proto.agent.GetAgentsByProjectRequest
+	(*GetAgentUsersRequest)(nil),       // 5: fusion.proto.agent.GetAgentUsersRequest
+	(*GetAgentUsersResponse)(nil),      // 6: fusion.proto.agent.GetAgentUsersResponse
+	(*GetAgentUsersResponse_Data)(nil), // 7: fusion.proto.agent.GetAgentUsersResponse.Data
+	(*timestamppb.Timestamp)(nil),      // 8: google.protobuf.Timestamp
 }
 var file_agent_agent_message_proto_depIdxs = []int32{
 	2, // 0: fusion.proto.agent.AllAgentsResponse.data:type_name -> fusion.proto.agent.GetAgentResponse
-	5, // 1: fusion.proto.agent.GetAgentResponse.create_at:type_name -> google.protobuf.Timestamp
-	5, // 2: fusion.proto.agent.GetAgentResponse.update_at:type_name -> google.protobuf.Timestamp
-	3, // [3:3] is the sub-list for method output_type
-	3, // [3:3] is the sub-list for method input_type
-	3, // [3:3] is the sub-list for extension type_name
-	3, // [3:3] is the sub-list for extension extendee
-	0, // [0:3] is the sub-list for field type_name
+	8, // 1: fusion.proto.agent.GetAgentResponse.create_at:type_name -> google.protobuf.Timestamp
+	8, // 2: fusion.proto.agent.GetAgentResponse.update_at:type_name -> google.protobuf.Timestamp
+	7, // 3: fusion.proto.agent.GetAgentUsersResponse.data:type_name -> fusion.proto.agent.GetAgentUsersResponse.Data
+	4, // [4:4] is the sub-list for method output_type
+	4, // [4:4] is the sub-list for method input_type
+	4, // [4:4] is the sub-list for extension type_name
+	4, // [4:4] is the sub-list for extension extendee
+	0, // [0:4] is the sub-list for field type_name
 }
 
 func init() { file_agent_agent_message_proto_init() }
@@ -556,7 +725,7 @@ func file_agent_agent_message_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_agent_agent_message_proto_rawDesc), len(file_agent_agent_message_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   5,
+			NumMessages:   8,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

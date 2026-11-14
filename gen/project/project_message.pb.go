@@ -1433,6 +1433,170 @@ func (x *GetProjectsByIDsResponse) GetData() []*ProjectResponse {
 	return nil
 }
 
+// Package message 业务中心-获取项目用户列表请求消息定义
+type GetProjectUsersRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// 项目ID
+	Ids []string `protobuf:"bytes,1,rep,name=ids,proto3" json:"ids,omitempty"`
+	// 用户ID
+	UserId        []string `protobuf:"bytes,2,rep,name=user_id,proto3" json:"user_id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetProjectUsersRequest) Reset() {
+	*x = GetProjectUsersRequest{}
+	mi := &file_project_project_message_proto_msgTypes[15]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetProjectUsersRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetProjectUsersRequest) ProtoMessage() {}
+
+func (x *GetProjectUsersRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_project_project_message_proto_msgTypes[15]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetProjectUsersRequest.ProtoReflect.Descriptor instead.
+func (*GetProjectUsersRequest) Descriptor() ([]byte, []int) {
+	return file_project_project_message_proto_rawDescGZIP(), []int{15}
+}
+
+func (x *GetProjectUsersRequest) GetIds() []string {
+	if x != nil {
+		return x.Ids
+	}
+	return nil
+}
+
+func (x *GetProjectUsersRequest) GetUserId() []string {
+	if x != nil {
+		return x.UserId
+	}
+	return nil
+}
+
+// Package message 业务中心-获取项目用户列表响应消息定义
+type GetProjectUsersResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// 项目用户列表
+	Data          []*GetProjectUsersResponse_Data `protobuf:"bytes,1,rep,name=data,proto3" json:"data,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetProjectUsersResponse) Reset() {
+	*x = GetProjectUsersResponse{}
+	mi := &file_project_project_message_proto_msgTypes[16]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetProjectUsersResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetProjectUsersResponse) ProtoMessage() {}
+
+func (x *GetProjectUsersResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_project_project_message_proto_msgTypes[16]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetProjectUsersResponse.ProtoReflect.Descriptor instead.
+func (*GetProjectUsersResponse) Descriptor() ([]byte, []int) {
+	return file_project_project_message_proto_rawDescGZIP(), []int{16}
+}
+
+func (x *GetProjectUsersResponse) GetData() []*GetProjectUsersResponse_Data {
+	if x != nil {
+		return x.Data
+	}
+	return nil
+}
+
+type GetProjectUsersResponse_Data struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// 项目ID
+	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	// 项目名称
+	Name string `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
+	// 项目编码
+	Code          string `protobuf:"bytes,3,opt,name=code,proto3" json:"code,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetProjectUsersResponse_Data) Reset() {
+	*x = GetProjectUsersResponse_Data{}
+	mi := &file_project_project_message_proto_msgTypes[17]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetProjectUsersResponse_Data) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetProjectUsersResponse_Data) ProtoMessage() {}
+
+func (x *GetProjectUsersResponse_Data) ProtoReflect() protoreflect.Message {
+	mi := &file_project_project_message_proto_msgTypes[17]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetProjectUsersResponse_Data.ProtoReflect.Descriptor instead.
+func (*GetProjectUsersResponse_Data) Descriptor() ([]byte, []int) {
+	return file_project_project_message_proto_rawDescGZIP(), []int{16, 0}
+}
+
+func (x *GetProjectUsersResponse_Data) GetId() string {
+	if x != nil {
+		return x.Id
+	}
+	return ""
+}
+
+func (x *GetProjectUsersResponse_Data) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+func (x *GetProjectUsersResponse_Data) GetCode() string {
+	if x != nil {
+		return x.Code
+	}
+	return ""
+}
+
 var File_project_project_message_proto protoreflect.FileDescriptor
 
 const file_project_project_message_proto_rawDesc = "" +
@@ -1560,7 +1724,18 @@ const file_project_project_message_proto_rawDesc = "" +
 	"\x03ids\x18\x01 \x03(\tB\n" +
 	"\xbaH\a\x92\x01\x04\b\x01\x10dR\x03ids\"U\n" +
 	"\x18GetProjectsByIDsResponse\x129\n" +
-	"\x04data\x18\x01 \x03(\v2%.fusion.proto.project.ProjectResponseR\x04dataB\xbf\x01\n" +
+	"\x04data\x18\x01 \x03(\v2%.fusion.proto.project.ProjectResponseR\x04data\"\\\n" +
+	"\x16GetProjectUsersRequest\x12\x1c\n" +
+	"\x03ids\x18\x01 \x03(\tB\n" +
+	"\xbaH\a\x92\x01\x04\b\x01\x10dR\x03ids\x12$\n" +
+	"\auser_id\x18\x02 \x03(\tB\n" +
+	"\xbaH\a\x92\x01\x04\b\x01\x10dR\auser_id\"\xa1\x01\n" +
+	"\x17GetProjectUsersResponse\x12F\n" +
+	"\x04data\x18\x01 \x03(\v22.fusion.proto.project.GetProjectUsersResponse.DataR\x04data\x1a>\n" +
+	"\x04Data\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
+	"\x04name\x18\x02 \x01(\tR\x04name\x12\x12\n" +
+	"\x04code\x18\x03 \x01(\tR\x04codeB\xbf\x01\n" +
 	"\x18com.fusion.proto.projectB\x13ProjectMessageProtoP\x01Z\x1cfusion.proto.project;project\xa2\x02\x03FPP\xaa\x02\x14Fusion.Proto.Project\xca\x02\x14Fusion\\Proto\\Project\xe2\x02 Fusion\\Proto\\Project\\GPBMetadata\xea\x02\x16Fusion::Proto::Projectb\x06proto3"
 
 var (
@@ -1575,43 +1750,47 @@ func file_project_project_message_proto_rawDescGZIP() []byte {
 	return file_project_project_message_proto_rawDescData
 }
 
-var file_project_project_message_proto_msgTypes = make([]protoimpl.MessageInfo, 15)
+var file_project_project_message_proto_msgTypes = make([]protoimpl.MessageInfo, 18)
 var file_project_project_message_proto_goTypes = []any{
-	(*CreateProjectRequest)(nil),      // 0: fusion.proto.project.CreateProjectRequest
-	(*UpdateProjectRequest)(nil),      // 1: fusion.proto.project.UpdateProjectRequest
-	(*DeleteProjectRequest)(nil),      // 2: fusion.proto.project.DeleteProjectRequest
-	(*ForceDeleteProjectRequest)(nil), // 3: fusion.proto.project.ForceDeleteProjectRequest
-	(*GetProjectRequest)(nil),         // 4: fusion.proto.project.GetProjectRequest
-	(*ProjectResponse)(nil),           // 5: fusion.proto.project.ProjectResponse
-	(*ListProjectsRequest)(nil),       // 6: fusion.proto.project.ListProjectsRequest
-	(*ListProjectsResponse)(nil),      // 7: fusion.proto.project.ListProjectsResponse
-	(*AllProjectsRequest)(nil),        // 8: fusion.proto.project.AllProjectsRequest
-	(*AllProjectsResponse)(nil),       // 9: fusion.proto.project.AllProjectsResponse
-	(*GetProjectPsInfoRequest)(nil),   // 10: fusion.proto.project.GetProjectPsInfoRequest
-	(*ProjectPsInfoResponse)(nil),     // 11: fusion.proto.project.ProjectPsInfoResponse
-	(*ProjectPsInfoItem)(nil),         // 12: fusion.proto.project.ProjectPsInfoItem
-	(*GetProjectsByIDsRequest)(nil),   // 13: fusion.proto.project.GetProjectsByIDsRequest
-	(*GetProjectsByIDsResponse)(nil),  // 14: fusion.proto.project.GetProjectsByIDsResponse
-	(*timestamppb.Timestamp)(nil),     // 15: google.protobuf.Timestamp
+	(*CreateProjectRequest)(nil),         // 0: fusion.proto.project.CreateProjectRequest
+	(*UpdateProjectRequest)(nil),         // 1: fusion.proto.project.UpdateProjectRequest
+	(*DeleteProjectRequest)(nil),         // 2: fusion.proto.project.DeleteProjectRequest
+	(*ForceDeleteProjectRequest)(nil),    // 3: fusion.proto.project.ForceDeleteProjectRequest
+	(*GetProjectRequest)(nil),            // 4: fusion.proto.project.GetProjectRequest
+	(*ProjectResponse)(nil),              // 5: fusion.proto.project.ProjectResponse
+	(*ListProjectsRequest)(nil),          // 6: fusion.proto.project.ListProjectsRequest
+	(*ListProjectsResponse)(nil),         // 7: fusion.proto.project.ListProjectsResponse
+	(*AllProjectsRequest)(nil),           // 8: fusion.proto.project.AllProjectsRequest
+	(*AllProjectsResponse)(nil),          // 9: fusion.proto.project.AllProjectsResponse
+	(*GetProjectPsInfoRequest)(nil),      // 10: fusion.proto.project.GetProjectPsInfoRequest
+	(*ProjectPsInfoResponse)(nil),        // 11: fusion.proto.project.ProjectPsInfoResponse
+	(*ProjectPsInfoItem)(nil),            // 12: fusion.proto.project.ProjectPsInfoItem
+	(*GetProjectsByIDsRequest)(nil),      // 13: fusion.proto.project.GetProjectsByIDsRequest
+	(*GetProjectsByIDsResponse)(nil),     // 14: fusion.proto.project.GetProjectsByIDsResponse
+	(*GetProjectUsersRequest)(nil),       // 15: fusion.proto.project.GetProjectUsersRequest
+	(*GetProjectUsersResponse)(nil),      // 16: fusion.proto.project.GetProjectUsersResponse
+	(*GetProjectUsersResponse_Data)(nil), // 17: fusion.proto.project.GetProjectUsersResponse.Data
+	(*timestamppb.Timestamp)(nil),        // 18: google.protobuf.Timestamp
 }
 var file_project_project_message_proto_depIdxs = []int32{
-	15, // 0: fusion.proto.project.CreateProjectRequest.begin_at:type_name -> google.protobuf.Timestamp
-	15, // 1: fusion.proto.project.CreateProjectRequest.expire_at:type_name -> google.protobuf.Timestamp
-	15, // 2: fusion.proto.project.UpdateProjectRequest.begin_at:type_name -> google.protobuf.Timestamp
-	15, // 3: fusion.proto.project.UpdateProjectRequest.expire_at:type_name -> google.protobuf.Timestamp
-	15, // 4: fusion.proto.project.ProjectResponse.begin_at:type_name -> google.protobuf.Timestamp
-	15, // 5: fusion.proto.project.ProjectResponse.expire_at:type_name -> google.protobuf.Timestamp
-	15, // 6: fusion.proto.project.ProjectResponse.create_at:type_name -> google.protobuf.Timestamp
-	15, // 7: fusion.proto.project.ProjectResponse.update_at:type_name -> google.protobuf.Timestamp
+	18, // 0: fusion.proto.project.CreateProjectRequest.begin_at:type_name -> google.protobuf.Timestamp
+	18, // 1: fusion.proto.project.CreateProjectRequest.expire_at:type_name -> google.protobuf.Timestamp
+	18, // 2: fusion.proto.project.UpdateProjectRequest.begin_at:type_name -> google.protobuf.Timestamp
+	18, // 3: fusion.proto.project.UpdateProjectRequest.expire_at:type_name -> google.protobuf.Timestamp
+	18, // 4: fusion.proto.project.ProjectResponse.begin_at:type_name -> google.protobuf.Timestamp
+	18, // 5: fusion.proto.project.ProjectResponse.expire_at:type_name -> google.protobuf.Timestamp
+	18, // 6: fusion.proto.project.ProjectResponse.create_at:type_name -> google.protobuf.Timestamp
+	18, // 7: fusion.proto.project.ProjectResponse.update_at:type_name -> google.protobuf.Timestamp
 	5,  // 8: fusion.proto.project.ListProjectsResponse.data:type_name -> fusion.proto.project.ProjectResponse
 	5,  // 9: fusion.proto.project.AllProjectsResponse.data:type_name -> fusion.proto.project.ProjectResponse
 	12, // 10: fusion.proto.project.ProjectPsInfoResponse.custom:type_name -> fusion.proto.project.ProjectPsInfoItem
 	5,  // 11: fusion.proto.project.GetProjectsByIDsResponse.data:type_name -> fusion.proto.project.ProjectResponse
-	12, // [12:12] is the sub-list for method output_type
-	12, // [12:12] is the sub-list for method input_type
-	12, // [12:12] is the sub-list for extension type_name
-	12, // [12:12] is the sub-list for extension extendee
-	0,  // [0:12] is the sub-list for field type_name
+	17, // 12: fusion.proto.project.GetProjectUsersResponse.data:type_name -> fusion.proto.project.GetProjectUsersResponse.Data
+	13, // [13:13] is the sub-list for method output_type
+	13, // [13:13] is the sub-list for method input_type
+	13, // [13:13] is the sub-list for extension type_name
+	13, // [13:13] is the sub-list for extension extendee
+	0,  // [0:13] is the sub-list for field type_name
 }
 
 func init() { file_project_project_message_proto_init() }
@@ -1629,7 +1808,7 @@ func file_project_project_message_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_project_project_message_proto_rawDesc), len(file_project_project_message_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   15,
+			NumMessages:   18,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

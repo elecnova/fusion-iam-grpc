@@ -31,6 +31,7 @@ const (
 	AgentService_AllAgents_FullMethodName          = "/fusion.proto.agent.AgentService/AllAgents"
 	AgentService_GetAgentsByUser_FullMethodName    = "/fusion.proto.agent.AgentService/GetAgentsByUser"
 	AgentService_GetAgentsByProject_FullMethodName = "/fusion.proto.agent.AgentService/GetAgentsByProject"
+	AgentService_GetAgentUsers_FullMethodName      = "/fusion.proto.agent.AgentService/GetAgentUsers"
 )
 
 // AgentServiceClient is the client API for AgentService service.
@@ -45,6 +46,8 @@ type AgentServiceClient interface {
 	GetAgentsByUser(ctx context.Context, in *GetAgentsByUserRequest, opts ...grpc.CallOption) (*AllAgentsResponse, error)
 	// 获取所有渠道信息(根据项目ID)
 	GetAgentsByProject(ctx context.Context, in *GetAgentsByProjectRequest, opts ...grpc.CallOption) (*AllAgentsResponse, error)
+	// 获取渠道用户列表
+	GetAgentUsers(ctx context.Context, in *GetAgentUsersRequest, opts ...grpc.CallOption) (*GetAgentUsersResponse, error)
 }
 
 type agentServiceClient struct {
@@ -85,6 +88,16 @@ func (c *agentServiceClient) GetAgentsByProject(ctx context.Context, in *GetAgen
 	return out, nil
 }
 
+func (c *agentServiceClient) GetAgentUsers(ctx context.Context, in *GetAgentUsersRequest, opts ...grpc.CallOption) (*GetAgentUsersResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetAgentUsersResponse)
+	err := c.cc.Invoke(ctx, AgentService_GetAgentUsers_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // AgentServiceServer is the server API for AgentService service.
 // All implementations must embed UnimplementedAgentServiceServer
 // for forward compatibility.
@@ -97,6 +110,8 @@ type AgentServiceServer interface {
 	GetAgentsByUser(context.Context, *GetAgentsByUserRequest) (*AllAgentsResponse, error)
 	// 获取所有渠道信息(根据项目ID)
 	GetAgentsByProject(context.Context, *GetAgentsByProjectRequest) (*AllAgentsResponse, error)
+	// 获取渠道用户列表
+	GetAgentUsers(context.Context, *GetAgentUsersRequest) (*GetAgentUsersResponse, error)
 	mustEmbedUnimplementedAgentServiceServer()
 }
 
@@ -115,6 +130,9 @@ func (UnimplementedAgentServiceServer) GetAgentsByUser(context.Context, *GetAgen
 }
 func (UnimplementedAgentServiceServer) GetAgentsByProject(context.Context, *GetAgentsByProjectRequest) (*AllAgentsResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method GetAgentsByProject not implemented")
+}
+func (UnimplementedAgentServiceServer) GetAgentUsers(context.Context, *GetAgentUsersRequest) (*GetAgentUsersResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method GetAgentUsers not implemented")
 }
 func (UnimplementedAgentServiceServer) mustEmbedUnimplementedAgentServiceServer() {}
 func (UnimplementedAgentServiceServer) testEmbeddedByValue()                      {}
@@ -191,6 +209,24 @@ func _AgentService_GetAgentsByProject_Handler(srv interface{}, ctx context.Conte
 	return interceptor(ctx, in, info, handler)
 }
 
+func _AgentService_GetAgentUsers_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetAgentUsersRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AgentServiceServer).GetAgentUsers(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: AgentService_GetAgentUsers_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AgentServiceServer).GetAgentUsers(ctx, req.(*GetAgentUsersRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // AgentService_ServiceDesc is the grpc.ServiceDesc for AgentService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -209,6 +245,10 @@ var AgentService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetAgentsByProject",
 			Handler:    _AgentService_GetAgentsByProject_Handler,
+		},
+		{
+			MethodName: "GetAgentUsers",
+			Handler:    _AgentService_GetAgentUsers_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

@@ -38,6 +38,7 @@ const (
 	ProjectService_AllProjects_FullMethodName        = "/fusion.proto.project.ProjectService/AllProjects"
 	ProjectService_GetProjectPsInfo_FullMethodName   = "/fusion.proto.project.ProjectService/GetProjectPsInfo"
 	ProjectService_GetProjectsByIDs_FullMethodName   = "/fusion.proto.project.ProjectService/GetProjectsByIDs"
+	ProjectService_GetProjectUsers_FullMethodName    = "/fusion.proto.project.ProjectService/GetProjectUsers"
 )
 
 // ProjectServiceClient is the client API for ProjectService service.
@@ -64,6 +65,8 @@ type ProjectServiceClient interface {
 	GetProjectPsInfo(ctx context.Context, in *GetProjectPsInfoRequest, opts ...grpc.CallOption) (*ProjectPsInfoResponse, error)
 	// 批量获取有效项目
 	GetProjectsByIDs(ctx context.Context, in *GetProjectsByIDsRequest, opts ...grpc.CallOption) (*GetProjectsByIDsResponse, error)
+	// 获取项目用户列表
+	GetProjectUsers(ctx context.Context, in *GetProjectUsersRequest, opts ...grpc.CallOption) (*GetProjectUsersResponse, error)
 }
 
 type projectServiceClient struct {
@@ -164,6 +167,16 @@ func (c *projectServiceClient) GetProjectsByIDs(ctx context.Context, in *GetProj
 	return out, nil
 }
 
+func (c *projectServiceClient) GetProjectUsers(ctx context.Context, in *GetProjectUsersRequest, opts ...grpc.CallOption) (*GetProjectUsersResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetProjectUsersResponse)
+	err := c.cc.Invoke(ctx, ProjectService_GetProjectUsers_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // ProjectServiceServer is the server API for ProjectService service.
 // All implementations must embed UnimplementedProjectServiceServer
 // for forward compatibility.
@@ -188,6 +201,8 @@ type ProjectServiceServer interface {
 	GetProjectPsInfo(context.Context, *GetProjectPsInfoRequest) (*ProjectPsInfoResponse, error)
 	// 批量获取有效项目
 	GetProjectsByIDs(context.Context, *GetProjectsByIDsRequest) (*GetProjectsByIDsResponse, error)
+	// 获取项目用户列表
+	GetProjectUsers(context.Context, *GetProjectUsersRequest) (*GetProjectUsersResponse, error)
 	mustEmbedUnimplementedProjectServiceServer()
 }
 
@@ -224,6 +239,9 @@ func (UnimplementedProjectServiceServer) GetProjectPsInfo(context.Context, *GetP
 }
 func (UnimplementedProjectServiceServer) GetProjectsByIDs(context.Context, *GetProjectsByIDsRequest) (*GetProjectsByIDsResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method GetProjectsByIDs not implemented")
+}
+func (UnimplementedProjectServiceServer) GetProjectUsers(context.Context, *GetProjectUsersRequest) (*GetProjectUsersResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method GetProjectUsers not implemented")
 }
 func (UnimplementedProjectServiceServer) mustEmbedUnimplementedProjectServiceServer() {}
 func (UnimplementedProjectServiceServer) testEmbeddedByValue()                        {}
@@ -408,6 +426,24 @@ func _ProjectService_GetProjectsByIDs_Handler(srv interface{}, ctx context.Conte
 	return interceptor(ctx, in, info, handler)
 }
 
+func _ProjectService_GetProjectUsers_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetProjectUsersRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ProjectServiceServer).GetProjectUsers(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ProjectService_GetProjectUsers_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ProjectServiceServer).GetProjectUsers(ctx, req.(*GetProjectUsersRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // ProjectService_ServiceDesc is the grpc.ServiceDesc for ProjectService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -450,6 +486,10 @@ var ProjectService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetProjectsByIDs",
 			Handler:    _ProjectService_GetProjectsByIDs_Handler,
+		},
+		{
+			MethodName: "GetProjectUsers",
+			Handler:    _ProjectService_GetProjectUsers_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
