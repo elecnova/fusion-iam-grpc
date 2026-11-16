@@ -1366,7 +1366,9 @@ func (x *Description) GetContent() string {
 type GetCountriesByIDsRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// 国家ID列表
-	Ids           []string `protobuf:"bytes,1,rep,name=ids,proto3" json:"ids,omitempty"`
+	Ids []string `protobuf:"bytes,1,rep,name=ids,proto3" json:"ids,omitempty"`
+	// 语种信息
+	Lang          string `protobuf:"bytes,2,opt,name=lang,proto3" json:"lang,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1406,6 +1408,13 @@ func (x *GetCountriesByIDsRequest) GetIds() []string {
 		return x.Ids
 	}
 	return nil
+}
+
+func (x *GetCountriesByIDsRequest) GetLang() string {
+	if x != nil {
+		return x.Lang
+	}
+	return ""
 }
 
 // Package message 批量获取国家地区ID和名称消息响应定义
@@ -1754,10 +1763,12 @@ const file_country_country_message_proto_rawDesc = "" +
 	"\x04lang\x18\x01 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18\n" +
 	"R\x04lang\x12$\n" +
 	"\acontent\x18\x02 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x01\x18\x80\x04R\acontent\"8\n" +
+	"\xbaH\ar\x05\x10\x01\x18\x80\x04R\acontent\"W\n" +
 	"\x18GetCountriesByIDsRequest\x12\x1c\n" +
 	"\x03ids\x18\x01 \x03(\tB\n" +
-	"\xbaH\a\x92\x01\x04\b\x01\x10dR\x03ids\"V\n" +
+	"\xbaH\a\x92\x01\x04\b\x01\x10dR\x03ids\x12\x1d\n" +
+	"\x04lang\x18\x02 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18\n" +
+	"R\x04lang\"V\n" +
 	"\x19GetCountriesByIDsResponse\x129\n" +
 	"\x04data\x18\x01 \x03(\v2%.fusion.proto.country.CountryMainDataR\x04data\"T\n" +
 	"\x13MatchCountryRequest\x12\x1d\n" +
