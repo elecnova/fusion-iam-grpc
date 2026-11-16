@@ -1362,6 +1362,260 @@ func (x *Description) GetContent() string {
 	return ""
 }
 
+// Package message 批量获取国家地区ID和名称消息请求定义
+type GetCountriesByIDsRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// 国家ID列表
+	Ids           []string `protobuf:"bytes,1,rep,name=ids,proto3" json:"ids,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetCountriesByIDsRequest) Reset() {
+	*x = GetCountriesByIDsRequest{}
+	mi := &file_country_country_message_proto_msgTypes[17]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetCountriesByIDsRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetCountriesByIDsRequest) ProtoMessage() {}
+
+func (x *GetCountriesByIDsRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_country_country_message_proto_msgTypes[17]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetCountriesByIDsRequest.ProtoReflect.Descriptor instead.
+func (*GetCountriesByIDsRequest) Descriptor() ([]byte, []int) {
+	return file_country_country_message_proto_rawDescGZIP(), []int{17}
+}
+
+func (x *GetCountriesByIDsRequest) GetIds() []string {
+	if x != nil {
+		return x.Ids
+	}
+	return nil
+}
+
+// Package message 批量获取国家地区ID和名称消息响应定义
+type GetCountriesByIDsResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// 国家地区列表
+	Data          []*CountryMainData `protobuf:"bytes,1,rep,name=data,proto3" json:"data,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetCountriesByIDsResponse) Reset() {
+	*x = GetCountriesByIDsResponse{}
+	mi := &file_country_country_message_proto_msgTypes[18]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetCountriesByIDsResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetCountriesByIDsResponse) ProtoMessage() {}
+
+func (x *GetCountriesByIDsResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_country_country_message_proto_msgTypes[18]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetCountriesByIDsResponse.ProtoReflect.Descriptor instead.
+func (*GetCountriesByIDsResponse) Descriptor() ([]byte, []int) {
+	return file_country_country_message_proto_rawDescGZIP(), []int{18}
+}
+
+func (x *GetCountriesByIDsResponse) GetData() []*CountryMainData {
+	if x != nil {
+		return x.Data
+	}
+	return nil
+}
+
+type MatchCountryRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// 语种信息
+	Lang string `protobuf:"bytes,1,opt,name=lang,proto3" json:"lang,omitempty"`
+	// 国家地区名称
+	Name          string `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *MatchCountryRequest) Reset() {
+	*x = MatchCountryRequest{}
+	mi := &file_country_country_message_proto_msgTypes[19]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *MatchCountryRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*MatchCountryRequest) ProtoMessage() {}
+
+func (x *MatchCountryRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_country_country_message_proto_msgTypes[19]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use MatchCountryRequest.ProtoReflect.Descriptor instead.
+func (*MatchCountryRequest) Descriptor() ([]byte, []int) {
+	return file_country_country_message_proto_rawDescGZIP(), []int{19}
+}
+
+func (x *MatchCountryRequest) GetLang() string {
+	if x != nil {
+		return x.Lang
+	}
+	return ""
+}
+
+func (x *MatchCountryRequest) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+type MatchCountryResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// 国家地区列表
+	Data          []*CountryMainData `protobuf:"bytes,1,rep,name=data,proto3" json:"data,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *MatchCountryResponse) Reset() {
+	*x = MatchCountryResponse{}
+	mi := &file_country_country_message_proto_msgTypes[20]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *MatchCountryResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*MatchCountryResponse) ProtoMessage() {}
+
+func (x *MatchCountryResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_country_country_message_proto_msgTypes[20]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use MatchCountryResponse.ProtoReflect.Descriptor instead.
+func (*MatchCountryResponse) Descriptor() ([]byte, []int) {
+	return file_country_country_message_proto_rawDescGZIP(), []int{20}
+}
+
+func (x *MatchCountryResponse) GetData() []*CountryMainData {
+	if x != nil {
+		return x.Data
+	}
+	return nil
+}
+
+type CountryMainData struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// 国家地区ID
+	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	// 国家地区名称
+	Name string `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
+	// 区域编码 国家 ISO-3166-1 Alpha-2 省州首府(二级区域) ISO-3166-2
+	RegionCode    *string `protobuf:"bytes,3,opt,name=region_code,proto3,oneof" json:"region_code,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CountryMainData) Reset() {
+	*x = CountryMainData{}
+	mi := &file_country_country_message_proto_msgTypes[21]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CountryMainData) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CountryMainData) ProtoMessage() {}
+
+func (x *CountryMainData) ProtoReflect() protoreflect.Message {
+	mi := &file_country_country_message_proto_msgTypes[21]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CountryMainData.ProtoReflect.Descriptor instead.
+func (*CountryMainData) Descriptor() ([]byte, []int) {
+	return file_country_country_message_proto_rawDescGZIP(), []int{21}
+}
+
+func (x *CountryMainData) GetId() string {
+	if x != nil {
+		return x.Id
+	}
+	return ""
+}
+
+func (x *CountryMainData) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+func (x *CountryMainData) GetRegionCode() string {
+	if x != nil && x.RegionCode != nil {
+		return *x.RegionCode
+	}
+	return ""
+}
+
 var File_country_country_message_proto protoreflect.FileDescriptor
 
 const file_country_country_message_proto_rawDesc = "" +
@@ -1500,7 +1754,24 @@ const file_country_country_message_proto_rawDesc = "" +
 	"\x04lang\x18\x01 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18\n" +
 	"R\x04lang\x12$\n" +
 	"\acontent\x18\x02 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x01\x18\x80\x04R\acontentB\xbf\x01\n" +
+	"\xbaH\ar\x05\x10\x01\x18\x80\x04R\acontent\"8\n" +
+	"\x18GetCountriesByIDsRequest\x12\x1c\n" +
+	"\x03ids\x18\x01 \x03(\tB\n" +
+	"\xbaH\a\x92\x01\x04\b\x01\x10dR\x03ids\"V\n" +
+	"\x19GetCountriesByIDsResponse\x129\n" +
+	"\x04data\x18\x01 \x03(\v2%.fusion.proto.country.CountryMainDataR\x04data\"T\n" +
+	"\x13MatchCountryRequest\x12\x1d\n" +
+	"\x04lang\x18\x01 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18\n" +
+	"R\x04lang\x12\x1e\n" +
+	"\x04name\x18\x02 \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x01\x18\x80\x04R\x04name\"Q\n" +
+	"\x14MatchCountryResponse\x129\n" +
+	"\x04data\x18\x01 \x03(\v2%.fusion.proto.country.CountryMainDataR\x04data\"l\n" +
+	"\x0fCountryMainData\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
+	"\x04name\x18\x02 \x01(\tR\x04name\x12%\n" +
+	"\vregion_code\x18\x03 \x01(\tH\x00R\vregion_code\x88\x01\x01B\x0e\n" +
+	"\f_region_codeB\xbf\x01\n" +
 	"\x18com.fusion.proto.countryB\x13CountryMessageProtoP\x01Z\x1cfusion.proto.country;country\xa2\x02\x03FPC\xaa\x02\x14Fusion.Proto.Country\xca\x02\x14Fusion\\Proto\\Country\xe2\x02 Fusion\\Proto\\Country\\GPBMetadata\xea\x02\x16Fusion::Proto::Countryb\x06proto3"
 
 var (
@@ -1515,47 +1786,54 @@ func file_country_country_message_proto_rawDescGZIP() []byte {
 	return file_country_country_message_proto_rawDescData
 }
 
-var file_country_country_message_proto_msgTypes = make([]protoimpl.MessageInfo, 17)
+var file_country_country_message_proto_msgTypes = make([]protoimpl.MessageInfo, 22)
 var file_country_country_message_proto_goTypes = []any{
-	(*CreateCountryRequest)(nil),  // 0: fusion.proto.country.CreateCountryRequest
-	(*CreateCountryResponse)(nil), // 1: fusion.proto.country.CreateCountryResponse
-	(*UpdateCountryRequest)(nil),  // 2: fusion.proto.country.UpdateCountryRequest
-	(*DeleteCountryRequest)(nil),  // 3: fusion.proto.country.DeleteCountryRequest
-	(*GetCountryRequest)(nil),     // 4: fusion.proto.country.GetCountryRequest
-	(*GetCountryResponse)(nil),    // 5: fusion.proto.country.GetCountryResponse
-	(*ListCountriesRequest)(nil),  // 6: fusion.proto.country.ListCountriesRequest
-	(*ListCountriesResponse)(nil), // 7: fusion.proto.country.ListCountriesResponse
-	(*AllCountriesRequest)(nil),   // 8: fusion.proto.country.AllCountriesRequest
-	(*AllCountriesResponse)(nil),  // 9: fusion.proto.country.AllCountriesResponse
-	(*TreeCountriesRequest)(nil),  // 10: fusion.proto.country.TreeCountriesRequest
-	(*TreeCountriesResponse)(nil), // 11: fusion.proto.country.TreeCountriesResponse
-	(*TreeCountryRequest)(nil),    // 12: fusion.proto.country.TreeCountryRequest
-	(*TreeCountryResponse)(nil),   // 13: fusion.proto.country.TreeCountryResponse
-	(*CountryTreeNode)(nil),       // 14: fusion.proto.country.CountryTreeNode
-	(*DescriptionList)(nil),       // 15: fusion.proto.country.DescriptionList
-	(*Description)(nil),           // 16: fusion.proto.country.Description
-	(*timestamppb.Timestamp)(nil), // 17: google.protobuf.Timestamp
+	(*CreateCountryRequest)(nil),      // 0: fusion.proto.country.CreateCountryRequest
+	(*CreateCountryResponse)(nil),     // 1: fusion.proto.country.CreateCountryResponse
+	(*UpdateCountryRequest)(nil),      // 2: fusion.proto.country.UpdateCountryRequest
+	(*DeleteCountryRequest)(nil),      // 3: fusion.proto.country.DeleteCountryRequest
+	(*GetCountryRequest)(nil),         // 4: fusion.proto.country.GetCountryRequest
+	(*GetCountryResponse)(nil),        // 5: fusion.proto.country.GetCountryResponse
+	(*ListCountriesRequest)(nil),      // 6: fusion.proto.country.ListCountriesRequest
+	(*ListCountriesResponse)(nil),     // 7: fusion.proto.country.ListCountriesResponse
+	(*AllCountriesRequest)(nil),       // 8: fusion.proto.country.AllCountriesRequest
+	(*AllCountriesResponse)(nil),      // 9: fusion.proto.country.AllCountriesResponse
+	(*TreeCountriesRequest)(nil),      // 10: fusion.proto.country.TreeCountriesRequest
+	(*TreeCountriesResponse)(nil),     // 11: fusion.proto.country.TreeCountriesResponse
+	(*TreeCountryRequest)(nil),        // 12: fusion.proto.country.TreeCountryRequest
+	(*TreeCountryResponse)(nil),       // 13: fusion.proto.country.TreeCountryResponse
+	(*CountryTreeNode)(nil),           // 14: fusion.proto.country.CountryTreeNode
+	(*DescriptionList)(nil),           // 15: fusion.proto.country.DescriptionList
+	(*Description)(nil),               // 16: fusion.proto.country.Description
+	(*GetCountriesByIDsRequest)(nil),  // 17: fusion.proto.country.GetCountriesByIDsRequest
+	(*GetCountriesByIDsResponse)(nil), // 18: fusion.proto.country.GetCountriesByIDsResponse
+	(*MatchCountryRequest)(nil),       // 19: fusion.proto.country.MatchCountryRequest
+	(*MatchCountryResponse)(nil),      // 20: fusion.proto.country.MatchCountryResponse
+	(*CountryMainData)(nil),           // 21: fusion.proto.country.CountryMainData
+	(*timestamppb.Timestamp)(nil),     // 22: google.protobuf.Timestamp
 }
 var file_country_country_message_proto_depIdxs = []int32{
 	16, // 0: fusion.proto.country.CreateCountryRequest.description:type_name -> fusion.proto.country.Description
 	16, // 1: fusion.proto.country.UpdateCountryRequest.description:type_name -> fusion.proto.country.Description
 	15, // 2: fusion.proto.country.GetCountryResponse.description:type_name -> fusion.proto.country.DescriptionList
-	17, // 3: fusion.proto.country.GetCountryResponse.create_at:type_name -> google.protobuf.Timestamp
-	17, // 4: fusion.proto.country.GetCountryResponse.update_at:type_name -> google.protobuf.Timestamp
+	22, // 3: fusion.proto.country.GetCountryResponse.create_at:type_name -> google.protobuf.Timestamp
+	22, // 4: fusion.proto.country.GetCountryResponse.update_at:type_name -> google.protobuf.Timestamp
 	5,  // 5: fusion.proto.country.ListCountriesResponse.data:type_name -> fusion.proto.country.GetCountryResponse
 	5,  // 6: fusion.proto.country.AllCountriesResponse.data:type_name -> fusion.proto.country.GetCountryResponse
 	14, // 7: fusion.proto.country.TreeCountriesResponse.data:type_name -> fusion.proto.country.CountryTreeNode
 	14, // 8: fusion.proto.country.TreeCountryResponse.data:type_name -> fusion.proto.country.CountryTreeNode
 	14, // 9: fusion.proto.country.CountryTreeNode.children:type_name -> fusion.proto.country.CountryTreeNode
 	15, // 10: fusion.proto.country.CountryTreeNode.description:type_name -> fusion.proto.country.DescriptionList
-	17, // 11: fusion.proto.country.CountryTreeNode.create_at:type_name -> google.protobuf.Timestamp
-	17, // 12: fusion.proto.country.CountryTreeNode.update_at:type_name -> google.protobuf.Timestamp
+	22, // 11: fusion.proto.country.CountryTreeNode.create_at:type_name -> google.protobuf.Timestamp
+	22, // 12: fusion.proto.country.CountryTreeNode.update_at:type_name -> google.protobuf.Timestamp
 	16, // 13: fusion.proto.country.DescriptionList.description:type_name -> fusion.proto.country.Description
-	14, // [14:14] is the sub-list for method output_type
-	14, // [14:14] is the sub-list for method input_type
-	14, // [14:14] is the sub-list for extension type_name
-	14, // [14:14] is the sub-list for extension extendee
-	0,  // [0:14] is the sub-list for field type_name
+	21, // 14: fusion.proto.country.GetCountriesByIDsResponse.data:type_name -> fusion.proto.country.CountryMainData
+	21, // 15: fusion.proto.country.MatchCountryResponse.data:type_name -> fusion.proto.country.CountryMainData
+	16, // [16:16] is the sub-list for method output_type
+	16, // [16:16] is the sub-list for method input_type
+	16, // [16:16] is the sub-list for extension type_name
+	16, // [16:16] is the sub-list for extension extendee
+	0,  // [0:16] is the sub-list for field type_name
 }
 
 func init() { file_country_country_message_proto_init() }
@@ -1567,13 +1845,14 @@ func file_country_country_message_proto_init() {
 	file_country_country_message_proto_msgTypes[2].OneofWrappers = []any{}
 	file_country_country_message_proto_msgTypes[5].OneofWrappers = []any{}
 	file_country_country_message_proto_msgTypes[14].OneofWrappers = []any{}
+	file_country_country_message_proto_msgTypes[21].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_country_country_message_proto_rawDesc), len(file_country_country_message_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   17,
+			NumMessages:   22,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
