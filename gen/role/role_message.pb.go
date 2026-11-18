@@ -110,7 +110,7 @@ type RoleData struct {
 	// 角色类型(1-普通角色 2-预定义普通角色 3-预定义管理角色)
 	Type int32 `protobuf:"varint,9,opt,name=type,proto3" json:"type,omitempty"`
 	// 渠道(1-用户中心 2-业务平台 3-运维平台 4-开放平台 5-集控平台 6-DPP平台
-	// 7-调度平台 8-预测平台 9-接入平台)
+	// 7-调度平台 8-预测平台 9-接入平台 10-VGA平台)
 	Channel int32 `protobuf:"varint,10,opt,name=channel,proto3" json:"channel,omitempty"`
 	// 创建人ID
 	CreateBy string `protobuf:"bytes,11,opt,name=create_by,proto3" json:"create_by,omitempty"`
@@ -283,7 +283,7 @@ type CreateRoleRequest struct {
 	// 角色序号
 	Sort int32 `protobuf:"varint,4,opt,name=sort,proto3" json:"sort,omitempty"`
 	// 渠道(1-用户中心 2-业务平台 3-运维平台 4-开放平台 5-集控平台 6-DPP平台
-	// 7-调度平台 8-预测平台 9-接入平台)
+	// 7-调度平台 8-预测平台 9-接入平台 10-VGA平台)
 	Channel int32 `protobuf:"varint,5,opt,name=channel,proto3" json:"channel,omitempty"`
 	// 项目ID
 	ProjectId     string `protobuf:"bytes,6,opt,name=project_id,proto3" json:"project_id,omitempty"`
@@ -496,7 +496,7 @@ type UpdateRoleRequest struct {
 	// 角色序号
 	Sort int32 `protobuf:"varint,5,opt,name=sort,proto3" json:"sort,omitempty"`
 	// 渠道(1-用户中心 2-业务平台 3-运维平台 4-开放平台 5-集控平台 6-DPP平台
-	// 7-调度平台 8-预测平台 9-接入平台)
+	// 7-调度平台 8-预测平台 9-接入平台 10-VGA平台)
 	Channel int32 `protobuf:"varint,6,opt,name=channel,proto3" json:"channel,omitempty"`
 	// 项目ID
 	ProjectId     string `protobuf:"bytes,7,opt,name=project_id,proto3" json:"project_id,omitempty"`
@@ -1392,7 +1392,7 @@ type UserRole struct {
 	// 角色类型(1-普通角色 2-预定义普通角色 3-预定义管理角色)
 	Type int32 `protobuf:"varint,4,opt,name=type,proto3" json:"type,omitempty"`
 	// 渠道(1-用户中心 2-业务平台 3-运维平台 4-开放平台 5-集控平台 6-DPP平台
-	// 7-调度平台 8-预测平台 9-接入平台)
+	// 7-调度平台 8-预测平台 9-接入平台 10-VGA平台)
 	Channel       int32 `protobuf:"varint,5,opt,name=channel,proto3" json:"channel,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -1710,7 +1710,8 @@ const file_role_role_message_proto_rawDesc = "" +
 	"\vdescription\x18\x02 \x01(\tB\b\xbaH\x05r\x03\x18\xff\x01R\vdescription\x12'\n" +
 	"\bmenu_ids\x18\x03 \x03(\tB\v\xbaH\b\x92\x01\x05\b\x01\x10\xf4\x03R\bmenu_ids\x12\x1b\n" +
 	"\x04sort\x18\x04 \x01(\x05B\a\xbaH\x04\x1a\x02(\x00R\x04sort\x12#\n" +
-	"\achannel\x18\x05 \x01(\x05B\t\xbaH\x06\x1a\x04\x18\t(\x01R\achannel\x12'\n" +
+	"\achannel\x18\x05 \x01(\x05B\t\xbaH\x06\x1a\x04\x18\n" +
+	"(\x01R\achannel\x12'\n" +
 	"\n" +
 	"project_id\x18\x06 \x01(\tB\a\xbaH\x04r\x02\x18(R\n" +
 	"project_id\"$\n" +
@@ -1732,7 +1733,8 @@ const file_role_role_message_proto_rawDesc = "" +
 	"\vdescription\x18\x03 \x01(\tB\b\xbaH\x05r\x03\x18\xff\x01R\vdescription\x12'\n" +
 	"\bmenu_ids\x18\x04 \x03(\tB\v\xbaH\b\x92\x01\x05\b\x01\x10\xf4\x03R\bmenu_ids\x12\x1b\n" +
 	"\x04sort\x18\x05 \x01(\x05B\a\xbaH\x04\x1a\x02(\x00R\x04sort\x12#\n" +
-	"\achannel\x18\x06 \x01(\x05B\t\xbaH\x06\x1a\x04\x18\t(\x01R\achannel\x12'\n" +
+	"\achannel\x18\x06 \x01(\x05B\t\xbaH\x06\x1a\x04\x18\n" +
+	"(\x01R\achannel\x12'\n" +
 	"\n" +
 	"project_id\x18\a \x01(\tB\a\xbaH\x04r\x02\x18(R\n" +
 	"project_id\".\n" +
