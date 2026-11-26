@@ -10,6 +10,7 @@ package project
 
 import (
 	"context"
+	"encoding/json"
 	"errors"
 	"io"
 	"net/http"
@@ -28,6 +29,7 @@ import (
 var (
 	_ codes.Code
 	_ io.Reader
+	_ json.Token
 	_ status.Status
 	_ = errors.New
 	_ = runtime.String
@@ -40,8 +42,14 @@ func request_ProjectService_CreateProject_0(ctx context.Context, marshaler runti
 		protoReq CreateProjectRequest
 		metadata runtime.ServerMetadata
 	)
-	if err := marshaler.NewDecoder(req.Body).Decode(&protoReq); err != nil && !errors.Is(err, io.EOF) {
+	dec := marshaler.NewDecoder(req.Body)
+	if err := dec.Decode(&protoReq); err != nil && !errors.Is(err, io.EOF) {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
+	}
+	if td, ok := dec.(interface{ Token() (json.Token, error) }); ok {
+		if _, err := td.Token(); !errors.Is(err, io.EOF) {
+			return nil, metadata, status.Error(codes.InvalidArgument, "unexpected data after request body")
+		}
 	}
 	if req.Body != nil {
 		_, _ = io.Copy(io.Discard, req.Body)
@@ -55,8 +63,14 @@ func local_request_ProjectService_CreateProject_0(ctx context.Context, marshaler
 		protoReq CreateProjectRequest
 		metadata runtime.ServerMetadata
 	)
-	if err := marshaler.NewDecoder(req.Body).Decode(&protoReq); err != nil && !errors.Is(err, io.EOF) {
+	dec := marshaler.NewDecoder(req.Body)
+	if err := dec.Decode(&protoReq); err != nil && !errors.Is(err, io.EOF) {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
+	}
+	if td, ok := dec.(interface{ Token() (json.Token, error) }); ok {
+		if _, err := td.Token(); !errors.Is(err, io.EOF) {
+			return nil, metadata, status.Error(codes.InvalidArgument, "unexpected data after request body")
+		}
 	}
 	msg, err := server.CreateProject(ctx, &protoReq)
 	return msg, metadata, err
@@ -146,8 +160,14 @@ func request_ProjectService_UpdateProject_0(ctx context.Context, marshaler runti
 		metadata runtime.ServerMetadata
 		err      error
 	)
-	if err := marshaler.NewDecoder(req.Body).Decode(&protoReq); err != nil && !errors.Is(err, io.EOF) {
+	dec := marshaler.NewDecoder(req.Body)
+	if err := dec.Decode(&protoReq); err != nil && !errors.Is(err, io.EOF) {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
+	}
+	if td, ok := dec.(interface{ Token() (json.Token, error) }); ok {
+		if _, err := td.Token(); !errors.Is(err, io.EOF) {
+			return nil, metadata, status.Error(codes.InvalidArgument, "unexpected data after request body")
+		}
 	}
 	val, ok := pathParams["id"]
 	if !ok {
@@ -170,8 +190,14 @@ func local_request_ProjectService_UpdateProject_0(ctx context.Context, marshaler
 		metadata runtime.ServerMetadata
 		err      error
 	)
-	if err := marshaler.NewDecoder(req.Body).Decode(&protoReq); err != nil && !errors.Is(err, io.EOF) {
+	dec := marshaler.NewDecoder(req.Body)
+	if err := dec.Decode(&protoReq); err != nil && !errors.Is(err, io.EOF) {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
+	}
+	if td, ok := dec.(interface{ Token() (json.Token, error) }); ok {
+		if _, err := td.Token(); !errors.Is(err, io.EOF) {
+			return nil, metadata, status.Error(codes.InvalidArgument, "unexpected data after request body")
+		}
 	}
 	val, ok := pathParams["id"]
 	if !ok {
@@ -338,8 +364,14 @@ func request_ProjectService_GetProjectsByIDs_0(ctx context.Context, marshaler ru
 		protoReq GetProjectsByIDsRequest
 		metadata runtime.ServerMetadata
 	)
-	if err := marshaler.NewDecoder(req.Body).Decode(&protoReq); err != nil && !errors.Is(err, io.EOF) {
+	dec := marshaler.NewDecoder(req.Body)
+	if err := dec.Decode(&protoReq); err != nil && !errors.Is(err, io.EOF) {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
+	}
+	if td, ok := dec.(interface{ Token() (json.Token, error) }); ok {
+		if _, err := td.Token(); !errors.Is(err, io.EOF) {
+			return nil, metadata, status.Error(codes.InvalidArgument, "unexpected data after request body")
+		}
 	}
 	if req.Body != nil {
 		_, _ = io.Copy(io.Discard, req.Body)
@@ -353,8 +385,14 @@ func local_request_ProjectService_GetProjectsByIDs_0(ctx context.Context, marsha
 		protoReq GetProjectsByIDsRequest
 		metadata runtime.ServerMetadata
 	)
-	if err := marshaler.NewDecoder(req.Body).Decode(&protoReq); err != nil && !errors.Is(err, io.EOF) {
+	dec := marshaler.NewDecoder(req.Body)
+	if err := dec.Decode(&protoReq); err != nil && !errors.Is(err, io.EOF) {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
+	}
+	if td, ok := dec.(interface{ Token() (json.Token, error) }); ok {
+		if _, err := td.Token(); !errors.Is(err, io.EOF) {
+			return nil, metadata, status.Error(codes.InvalidArgument, "unexpected data after request body")
+		}
 	}
 	msg, err := server.GetProjectsByIDs(ctx, &protoReq)
 	return msg, metadata, err
@@ -365,8 +403,14 @@ func request_ProjectService_GetProjectUsers_0(ctx context.Context, marshaler run
 		protoReq GetProjectUsersRequest
 		metadata runtime.ServerMetadata
 	)
-	if err := marshaler.NewDecoder(req.Body).Decode(&protoReq); err != nil && !errors.Is(err, io.EOF) {
+	dec := marshaler.NewDecoder(req.Body)
+	if err := dec.Decode(&protoReq); err != nil && !errors.Is(err, io.EOF) {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
+	}
+	if td, ok := dec.(interface{ Token() (json.Token, error) }); ok {
+		if _, err := td.Token(); !errors.Is(err, io.EOF) {
+			return nil, metadata, status.Error(codes.InvalidArgument, "unexpected data after request body")
+		}
 	}
 	if req.Body != nil {
 		_, _ = io.Copy(io.Discard, req.Body)
@@ -380,8 +424,14 @@ func local_request_ProjectService_GetProjectUsers_0(ctx context.Context, marshal
 		protoReq GetProjectUsersRequest
 		metadata runtime.ServerMetadata
 	)
-	if err := marshaler.NewDecoder(req.Body).Decode(&protoReq); err != nil && !errors.Is(err, io.EOF) {
+	dec := marshaler.NewDecoder(req.Body)
+	if err := dec.Decode(&protoReq); err != nil && !errors.Is(err, io.EOF) {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
+	}
+	if td, ok := dec.(interface{ Token() (json.Token, error) }); ok {
+		if _, err := td.Token(); !errors.Is(err, io.EOF) {
+			return nil, metadata, status.Error(codes.InvalidArgument, "unexpected data after request body")
+		}
 	}
 	msg, err := server.GetProjectUsers(ctx, &protoReq)
 	return msg, metadata, err
